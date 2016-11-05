@@ -1,5 +1,6 @@
 // Que les parece:
 // test.fiuba.algo3.modelo.tests
+
 package test;
 
 import org.junit.Test;
@@ -19,9 +20,12 @@ public class BatallaTests {
 
 		assertEquals(170, charmander.vida());
 
+		squirtle.atacar("Burbuja", charmander);
 		assertEquals(150, charmander.vida());
 
+		squirtle.atacar("Cañón de agua", charmander);
 		assertEquals(110, charmander.vida());
+		
 	}
 
 	@Test
@@ -32,8 +36,10 @@ public class BatallaTests {
 
 		assertEquals(140, bulbasaur.vida());
 
+		squirtle.atacar("Burbuja", bulbasaur);
 		assertEquals(135, bulbasaur.vida());
 
+		squirtle.atacar("Cañón de agua", bulbasaur);
 		assertEquals(125, bulbasaur.vida());
 
 	}
