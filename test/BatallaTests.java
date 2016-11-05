@@ -19,17 +19,9 @@ public class BatallaTests {
 
 		assertEquals(170, charmander.vida());
 
-		/* Como le decimos cual ataque?
-		 * Un enum?
-		 */
-		squirtle.atacar(/*Ataque.BURBUJA,*/ charmander);
-
 		assertEquals(150, charmander.vida());
 
-		squirtle.atacar(/*Ataque.CAÑONAGUA,*/ charmander);
-
 		assertEquals(110, charmander.vida());
-
 	}
 
 	@Test
@@ -40,11 +32,7 @@ public class BatallaTests {
 
 		assertEquals(140, bulbasaur.vida());
 
-		squirtle.atacar(/*Ataque.BURBUJA,*/ bulbasaur);
-
 		assertEquals(135, bulbasaur.vida());
-
-		squirtle.atacar(/*Ataque.CAÑONAGUA,*/ bulbasaur);
 
 		assertEquals(125, bulbasaur.vida());
 
