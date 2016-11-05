@@ -15,20 +15,19 @@ public class BatallaTests {
 		 * pero lo hacemos como quieran.
 		 */
 
-		Algomon charmander = new AlgomonBuilder().crearCharmander();
-		Algomon squirtle = new AlgomonBuilder().crearSquirtle();
+		Algomon charmander = AlgomonBuilder.crearCharmander();
+		Algomon squirtle = AlgomonBuilder.crearSquirtle();
 
 		assertEquals(170, charmander.vida());
 
 		/* Como le decimos cual ataque?
 		 * Un enum?
 		 */
-		squirtle.atacar( /* Ataque.BURBUJA ,*/ charmander);
-
+		squirtle.atacar(/*Ataque.BURBUJA,*/ charmander);
 
 		assertEquals(150, charmander.vida());
 
-		squirtle.atacar( /* Ataque.CAÑONAGUA ,*/ charmander);
+		squirtle.atacar(/*Ataque.CAÑONAGUA,*/ charmander);
 
 		assertEquals(110, charmander.vida());
 
@@ -36,6 +35,19 @@ public class BatallaTests {
 
 	@Test
 	public void test02SquirtleAtacaABulbasaurConBurbujaYCanionDeAgua() {
+
+		Algomon bulbasaur = AlgomonBuilder.crearBulbasaur();
+		Algomon squirtle = AlgomonBuilder.crearSquirtle();
+
+		assertEquals(140, bulbasaur.vida());
+
+		squirtle.atacar(/*Ataque.BURBUJA,*/ bulbasaur);
+
+		assertEquals(135, bulbasaur.vida());
+
+		squirtle.atacar(/*Ataque.CAÑONAGUA,*/ bulbasaur);
+
+		assertEquals(125, bulbasaur.vida());
 
 	}
 
