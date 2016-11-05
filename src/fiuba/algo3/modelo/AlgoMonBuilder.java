@@ -1,4 +1,5 @@
 package src.fiuba.algo3.modelo;
+import src.fiuba.algo3.modelo.ataques.*;
 
 public class AlgoMonBuilder {
 
@@ -63,6 +64,31 @@ public class AlgoMonBuilder {
 
 		return new AlgoMonFuego(nombre, vida, ataque1, ataque2, ataque3);
 
+	}
+
+	public static AlgoMon crearBulbasaur() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static AlgoMon crearSquirtle() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static AlgoMon crearChansey() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static AlgoMon crearJigglypuff() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static AlgoMon crearRattata() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

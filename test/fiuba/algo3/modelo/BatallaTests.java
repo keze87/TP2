@@ -1,7 +1,7 @@
 package test.fiuba.algo3.modelo;
 
 import org.junit.Test;
-import org.junit.Assert.*;
+import static org.junit.Assert.*;
 import src.fiuba.algo3.modelo.*;
 
 public class BatallaTests {
@@ -274,6 +274,7 @@ public class BatallaTests {
 
 	@Test(expected = AtaqueAgotado.class)
 	public void test11AlgomonesAgotanCantidadDisponibleDeAtaques() {
+
 		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
 		AlgoMon rattata = AlgoMonBuilder.crearRattata();
 
