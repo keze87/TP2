@@ -22,7 +22,6 @@ public class BatallaTests {
 
 		/* Como le decimos cual ataque?
 		 * Un enum?
-		 * Para mi un enum por algomon onda AtaqueSquirtle.Burbuja
 		 */
 		squirtle.atacar(/*Ataque.BURBUJA,*/ charmander);
 
