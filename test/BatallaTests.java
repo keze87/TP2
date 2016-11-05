@@ -10,11 +10,10 @@ public class BatallaTests {
 	@Test
 	public void test01SquirtleAtacaACharmanderConBurbujaYCanionDeAgua() {
 
-		/* Yo habia pensado usar buidler pattern
+		/* Yo habia pensado usar builder pattern
 		 * https://en.wikipedia.org/wiki/Builder_pattern
 		 * pero lo hacemos como quieran.
 		 */
-
 		Algomon charmander = AlgomonBuilder.crearCharmander();
 		Algomon squirtle = AlgomonBuilder.crearSquirtle();
 
