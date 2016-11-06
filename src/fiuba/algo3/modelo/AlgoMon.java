@@ -71,7 +71,7 @@ public class AlgoMon {
 	 * @param ataque ataque recibido de otro algoMon.
 	 */
 	public void recibirAtaque(Ataque ataque) {
-		this.estado.setVida(estado.getVida() - ataque.aplicarAtaque(this));
+		//this.estado.setVida(estado.getVida() - ataque.aplicarAtaque(this));
 
 		Efecto efectoDelAtaque;
 
