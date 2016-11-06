@@ -4,7 +4,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import src.fiuba.algo3.modelo.*;
 
-public class AlgoMonTests {
+public class AlgoMonTest {
 
 	@Test
 	public void test01SquirtleAtacaACharmanderConBurbujaYCanionDeAgua() {
