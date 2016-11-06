@@ -14,10 +14,16 @@ public class AlgoMon {
 	protected List<Ataque> ataques;
 
 	public AlgoMon(String nombre, int vidaMaxima, Ataque ataque1, Ataque ataque2, Ataque ataque3) {
+
 		this.nombre = nombre;
 		this.vidaMaxima = vidaMaxima;
 		this.vida = vidaMaxima;
+
 		this.ataques = new ArrayList<Ataque>();
+		this.ataques.add(ataque1);
+		this.ataques.add(ataque2);
+		this.ataques.add(ataque3);
+
 	}
 
 	/**

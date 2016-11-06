@@ -33,9 +33,9 @@ public class AtaqueBuilder {
 		return new AtaqueNormal(this.nombre, this.potencia, this.usosMaximos);
 	}
 
-	/* Crea y devuelve una nueva instancia de Ataque correspondiente a Ataque Rápido. */
+	/* Crea y devuelve una nueva instancia de Ataque correspondiente a Ataque RÃ¡pido. */
 	public static Ataque crearAtaqueRapido() {
-		AtaqueBuilder builder = new AtaqueBuilder("Ataque Rápido", 10, 16);
+		AtaqueBuilder builder = new AtaqueBuilder("Ataque RÃ¡pido", 10, 16);
 
 		return builder.crearAtaqueNormal();
 	}
@@ -54,9 +54,9 @@ public class AtaqueBuilder {
 		return builder.crearAtaqueAgua();
 	}
 
-	/* Crea y devuelve una nueva instancia de Ataque correspondiente a Cañón de agua. */
+	/* Crea y devuelve una nueva instancia de Ataque correspondiente a CaÃ±Ã³n de agua. */
 	public static Ataque crearCanionDeAgua() {
-		AtaqueBuilder builder = new AtaqueBuilder("Cañón de agua", 20, 8);
+		AtaqueBuilder builder = new AtaqueBuilder("CaÃ±Ã³n de agua", 20, 8);
 
 		return builder.crearAtaqueAgua();
 	}
@@ -68,9 +68,9 @@ public class AtaqueBuilder {
 		return builder.crearAtaquePlanta();
 	}
 
-	/* Crea y devuelve una nueva instancia de Ataque correspondiente a Látigo cepa. */
+	/* Crea y devuelve una nueva instancia de Ataque correspondiente a LÃ¡tigo cepa. */
 	public static Ataque crearLatigoCepa() {
-		AtaqueBuilder builder = new AtaqueBuilder("Látigo cepa", 15, 10);
+		AtaqueBuilder builder = new AtaqueBuilder("LÃ¡tigo cepa", 15, 10);
 
 		return builder.crearAtaquePlanta();
 	}
