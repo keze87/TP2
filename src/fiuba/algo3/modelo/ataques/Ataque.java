@@ -2,6 +2,9 @@ package src.fiuba.algo3.modelo.ataques;
 
 import src.fiuba.algo3.modelo.AlgoMon;
 import src.fiuba.algo3.modelo.Tipo;
+import src.fiuba.algo3.modelo.efectos.Efecto;
+import src.fiuba.algo3.modelo.efectos.EfectoMultiple;
+import src.fiuba.algo3.modelo.efectos.QuitarVida;
 
 public abstract class Ataque {
 	protected String nombre;
