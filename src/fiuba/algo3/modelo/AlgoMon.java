@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import src.fiuba.algo3.modelo.ataques.Ataque;
+import src.fiuba.algo3.modelo.efectos.Efecto;
 import src.fiuba.algo3.modelo.estados.Estado;
 import src.fiuba.algo3.modelo.estados.EstadoNormal;
 
@@ -62,6 +63,11 @@ public class AlgoMon {
 	 */
 	public void recibirAtaque(Ataque ataque) {
 		this.estado.setVida(estado.getVida() - ataque.aplicarAtaque(this));
+
+		Efecto efectoDelAtaque;
+
+		efectoDelAtaque = ataque.atacar(this.tipo);
+		this.estado = efectoDelAtaque.aplicar(this.estado);
 	}
 
 	public double getVida() {
