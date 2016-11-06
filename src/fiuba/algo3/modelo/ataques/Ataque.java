@@ -61,6 +61,7 @@ public abstract class Ataque {
 		}
 
 		this.usosRestantes--;
+		efecto = new EfectoMultiple(); //TODO: Esto está mal
 		this.efecto.agregarEfecto(new QuitarVida(this.calcularDanioContraElTipo(tipo)));
 		return this.efecto;
 	}

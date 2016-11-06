@@ -62,10 +62,12 @@ public class AlgoMon {
 	 * @param ataque ataque recibido de otro algoMon.
 	 */
 	public void recibirAtaque(Ataque ataque) {
-		//estado.setVida(estado.getVida() - ataque.aplicarAtaque(this)); // TODO: creo que esto está mal
+
 		Efecto efectoDelAtaque;
-		efectoDelAtaque=ataque.atacar(this.tipo);
-		this.estado=efectoDelAtaque.aplicar(this.estado);
+
+		efectoDelAtaque = ataque.atacar(this.tipo);
+		this.estado = efectoDelAtaque.aplicar(this.estado);
+
 	}
 
 	public double getVida() {
