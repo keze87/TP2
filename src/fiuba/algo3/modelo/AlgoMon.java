@@ -21,17 +21,17 @@ public class AlgoMon {
 	}
 
 	/**
-	 * Agrega un ataque a la colección de ataques.
+	 * Agrega un ataque a la colecciÃ³n de ataques.
 	 * @param numeroAtaque numero del ataque a agregar.
-	 * @param ataque ataque para agregar a la colección de ataques.
+	 * @param ataque ataque para agregar a la colecciÃ³n de ataques.
 	 */
 	private void setAtaque(int numeroAtaque, Ataque ataque) {
 		this.ataques.add(numeroAtaque, ataque);
 	}
 
 	/**
-	 * Determina si el algoMon está vivo.
-	 * @return true si está vivo, sino false.
+	 * Determina si el algoMon estÃ¡ vivo.
+	 * @return true si estÃ¡ vivo, sino false.
 	 */
 	public boolean estaVivo() {
 		return this.vida > 0;
@@ -54,7 +54,7 @@ public class AlgoMon {
 	}
 
 	/**
-	 * Aplica el daño resultante de recibir un ataque.
+	 * Aplica el daÃ±o resultante de recibir un ataque.
 	 * @param ataque ataque recibido de otro algoMon.
 	 */
 	public void recibirAtaque(Ataque ataque) {
