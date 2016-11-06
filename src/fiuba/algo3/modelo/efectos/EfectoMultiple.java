@@ -19,8 +19,8 @@ public final class EfectoMultiple extends Efecto {
 	@Override
 	public Estado aplicar(Estado estado) {
 		Estado estadoFinal = estado;
-		for(Efecto efecto:efectos){
-			estadoFinal=efecto.aplicar(estado);
+		for(Efecto efecto : efectos){
+			estadoFinal = efecto.aplicar(estado);
 		}
 		return estadoFinal;
 	}
