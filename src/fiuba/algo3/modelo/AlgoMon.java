@@ -67,4 +67,10 @@ public class AlgoMon {
 		return vida;
 	}
 
+	public String nombre() {
+
+		return nombre;
+
+	}
+
 }
