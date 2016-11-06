@@ -11,7 +11,7 @@ public abstract class Ataque {
 	protected Tipo tipo;
 	protected EfectoMultiple efecto;
 	
-	public Ataque(String nombre, int poder, int usosTotales) {
+	public Ataque(String nombre, int poder, int usosTotales, Efecto efectoBase) {
 		this.nombre = nombre;
 		this.potencia = poder;
 		this.usosTotales = usosTotales;
