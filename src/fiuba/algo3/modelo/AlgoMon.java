@@ -42,15 +42,15 @@ public class AlgoMon {
 	 * @param contrincante algoMon al cual se desea atacar.
 	 */
 	public void ataque1(AlgoMon contrincante) {
-		// TODO Auto-generated method stub
+		contrincante.recibirAtaque(this.ataques.get(0));
 	}
 
 	public void ataque2(AlgoMon contrincante) {
-		// TODO Auto-generated method stub
+		contrincante.recibirAtaque(this.ataques.get(1));
 	}
 
 	public void ataque3(AlgoMon contrincante) {
-		// TODO Auto-generated method stub
+		contrincante.recibirAtaque(this.ataques.get(2));
 	}
 
 	/**
