@@ -37,7 +37,7 @@ public class AlgoMon {
 	 * @return true si está vivo, sino false.
 	 */
 	public boolean estaVivo() {
-		return estado.estaVivo();
+		return this.estado.estaVivo();
 	}
 
 	/**

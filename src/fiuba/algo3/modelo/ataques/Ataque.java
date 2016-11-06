@@ -50,10 +50,12 @@ public abstract class Ataque {
 		return nombre;
 
 	}
+
 	public double calcularDanioContraElTipo(Tipo tipo) {
 		return Math.floor(this.potencia * this.tipo.getMultiplicadorContra(tipo));
 	}
-	public Efecto atacar(Tipo tipo) throws AtaqueAgotado{
+
+	public Efecto atacar(Tipo tipo) throws AtaqueAgotado {
 		if(this.usosRestantes == 0) {
 			throw new AtaqueAgotado("No quedan más usos para este ataque!");
 		}

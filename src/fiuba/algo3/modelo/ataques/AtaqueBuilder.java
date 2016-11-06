@@ -18,18 +18,18 @@ public class AtaqueBuilder {
 		this.nombre = nombre;
 		this.potencia = potencia;
 		this.usosMaximos = usosMaximos;
-		this.efectoBase= efectoBase;
+		this.efectoBase = efectoBase;
 
 	}
 
 	/* Crea un ataque de tipo fuego con los valores actuales de los atributos. */
 	private Ataque crearAtaqueFuego() {
-		return new AtaqueFuego(this.nombre, this.potencia, this.usosMaximos,this.efectoBase);
+		return new AtaqueFuego(this.nombre, this.potencia, this.usosMaximos, this.efectoBase);
 	}
 
 	/* Crea un ataque de tipo agua con los valores actuales de los atributos. */
 	private Ataque crearAtaqueAgua() {
-		return new AtaqueAgua(this.nombre, this.potencia, this.usosMaximos,this.efectoBase);
+		return new AtaqueAgua(this.nombre, this.potencia, this.usosMaximos, this.efectoBase);
 	}
 
 	/* Crea un ataque de tipo planta con los valores actuales de los atributos. */
@@ -39,7 +39,7 @@ public class AtaqueBuilder {
 
 	/* Crea un ataque de tipo normal con los valores actuales de los atributos. */
 	private Ataque crearAtaqueNormal() {
-		return new AtaqueNormal(this.nombre, this.potencia, this.usosMaximos,this.efectoBase);
+		return new AtaqueNormal(this.nombre, this.potencia, this.usosMaximos, this.efectoBase);
 	}
 
 	/* Crea y devuelve una nueva instancia de Ataque correspondiente a Ataque Rápido. */
@@ -51,7 +51,7 @@ public class AtaqueBuilder {
 
 	/* Crea y devuelve una nueva instancia de Ataque correspondiente a Canto. */
 	public static Ataque crearCanto() {
-		AtaqueBuilder builder = new AtaqueBuilder("Canto", 0, 6,new Dormir());
+		AtaqueBuilder builder = new AtaqueBuilder("Canto", 0, 6, new Dormir());
 
 		return builder.crearAtaqueNormal();
 	}

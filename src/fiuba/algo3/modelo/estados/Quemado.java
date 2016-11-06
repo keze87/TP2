@@ -1,6 +1,7 @@
 package src.fiuba.algo3.modelo.estados;
 
 public final class Quemado extends EstadoAlterado {
+
 	public Quemado(Estado estadoAnterior) {
 		super.setEstadoAnterior(estadoAnterior);
 		super.setVida(estadoAnterior.getVida());
