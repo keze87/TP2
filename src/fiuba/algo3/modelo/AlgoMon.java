@@ -58,7 +58,7 @@ public class AlgoMon {
 	 * @param ataque ataque recibido de otro algoMon.
 	 */
 	public void recibirAtaque(Ataque ataque) {
-		this.vida -= ataque.calcularDanioContra(this);
+		this.vida -= ataque.aplicarAtaque(this);
 	}
 
 	public double getVida() {

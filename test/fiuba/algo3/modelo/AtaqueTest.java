@@ -22,12 +22,12 @@ public class AtaqueTest {
 		AlgoMon chansey = AlgoMonBuilder.crearChansey();
 		AlgoMon rattata = AlgoMonBuilder.crearRattata();
 
-		assertEquals(10, ataque.calcularDanioContra(charmander), 0.0001D);
-		assertEquals(10, ataque.calcularDanioContra(squirtle), 0.0001D);
-		assertEquals(10, ataque.calcularDanioContra(bulbasaur), 0.0001D);
-		assertEquals(10, ataque.calcularDanioContra(jigglypuff), 0.0001D);
-		assertEquals(10, ataque.calcularDanioContra(chansey), 0.0001D);
-		assertEquals(10, ataque.calcularDanioContra(rattata), 0.0001D);
+		assertEquals(10, ataque.aplicarAtaque(charmander), 0.0001D);
+		assertEquals(10, ataque.aplicarAtaque(squirtle), 0.0001D);
+		assertEquals(10, ataque.aplicarAtaque(bulbasaur), 0.0001D);
+		assertEquals(10, ataque.aplicarAtaque(jigglypuff), 0.0001D);
+		assertEquals(10, ataque.aplicarAtaque(chansey), 0.0001D);
+		assertEquals(10, ataque.aplicarAtaque(rattata), 0.0001D);
 	}
 
 	@Test
@@ -40,12 +40,12 @@ public class AtaqueTest {
 		AlgoMon chansey = AlgoMonBuilder.crearChansey();
 		AlgoMon rattata = AlgoMonBuilder.crearRattata();
 
-		assertEquals(0, ataque.calcularDanioContra(charmander), 0.0001D);
-		assertEquals(0, ataque.calcularDanioContra(squirtle), 0.0001D);
-		assertEquals(0, ataque.calcularDanioContra(bulbasaur), 0.0001D);
-		assertEquals(0, ataque.calcularDanioContra(jigglypuff), 0.0001D);
-		assertEquals(0, ataque.calcularDanioContra(chansey), 0.0001D);
-		assertEquals(0, ataque.calcularDanioContra(rattata), 0.0001D);
+		assertEquals(0, ataque.aplicarAtaque(charmander), 0.0001D);
+		assertEquals(0, ataque.aplicarAtaque(squirtle), 0.0001D);
+		assertEquals(0, ataque.aplicarAtaque(bulbasaur), 0.0001D);
+		assertEquals(0, ataque.aplicarAtaque(jigglypuff), 0.0001D);
+		assertEquals(0, ataque.aplicarAtaque(chansey), 0.0001D);
+		assertEquals(0, ataque.aplicarAtaque(rattata), 0.0001D);
 	}
 
 	@Test
@@ -58,12 +58,12 @@ public class AtaqueTest {
 		AlgoMon chansey = AlgoMonBuilder.crearChansey();
 		AlgoMon rattata = AlgoMonBuilder.crearRattata();
 
-		assertEquals(20, ataque.calcularDanioContra(charmander), 0.0001D);
-		assertEquals(5, ataque.calcularDanioContra(squirtle), 0.0001D);
-		assertEquals(5, ataque.calcularDanioContra(bulbasaur), 0.0001D);
-		assertEquals(10, ataque.calcularDanioContra(jigglypuff), 0.0001D);
-		assertEquals(10, ataque.calcularDanioContra(chansey), 0.0001D);
-		assertEquals(10, ataque.calcularDanioContra(rattata), 0.0001D);
+		assertEquals(20, ataque.aplicarAtaque(charmander), 0.0001D);
+		assertEquals(5, ataque.aplicarAtaque(squirtle), 0.0001D);
+		assertEquals(5, ataque.aplicarAtaque(bulbasaur), 0.0001D);
+		assertEquals(10, ataque.aplicarAtaque(jigglypuff), 0.0001D);
+		assertEquals(10, ataque.aplicarAtaque(chansey), 0.0001D);
+		assertEquals(10, ataque.aplicarAtaque(rattata), 0.0001D);
 	}
 
 	@Test
@@ -76,12 +76,12 @@ public class AtaqueTest {
 		AlgoMon chansey = AlgoMonBuilder.crearChansey();
 		AlgoMon rattata = AlgoMonBuilder.crearRattata();
 
-		assertEquals(40, ataque.calcularDanioContra(charmander), 0.0001D);
-		assertEquals(10, ataque.calcularDanioContra(squirtle), 0.0001D);
-		assertEquals(10, ataque.calcularDanioContra(bulbasaur), 0.0001D);
-		assertEquals(20, ataque.calcularDanioContra(jigglypuff), 0.0001D);
-		assertEquals(20, ataque.calcularDanioContra(chansey), 0.0001D);
-		assertEquals(20, ataque.calcularDanioContra(rattata), 0.0001D);
+		assertEquals(40, ataque.aplicarAtaque(charmander), 0.0001D);
+		assertEquals(10, ataque.aplicarAtaque(squirtle), 0.0001D);
+		assertEquals(10, ataque.aplicarAtaque(bulbasaur), 0.0001D);
+		assertEquals(20, ataque.aplicarAtaque(jigglypuff), 0.0001D);
+		assertEquals(20, ataque.aplicarAtaque(chansey), 0.0001D);
+		assertEquals(20, ataque.aplicarAtaque(rattata), 0.0001D);
 	}
 
 	@Test
@@ -94,12 +94,12 @@ public class AtaqueTest {
 		AlgoMon chansey = AlgoMonBuilder.crearChansey();
 		AlgoMon rattata = AlgoMonBuilder.crearRattata();
 
-		assertEquals(7, ataque.calcularDanioContra(charmander), 0.0001D);
-		assertEquals(30, ataque.calcularDanioContra(squirtle), 0.0001D);
-		assertEquals(7, ataque.calcularDanioContra(bulbasaur), 0.0001D);
-		assertEquals(15, ataque.calcularDanioContra(jigglypuff), 0.0001D);
-		assertEquals(15, ataque.calcularDanioContra(chansey), 0.0001D);
-		assertEquals(15, ataque.calcularDanioContra(rattata), 0.0001D);
+		assertEquals(7, ataque.aplicarAtaque(charmander), 0.0001D);
+		assertEquals(30, ataque.aplicarAtaque(squirtle), 0.0001D);
+		assertEquals(7, ataque.aplicarAtaque(bulbasaur), 0.0001D);
+		assertEquals(15, ataque.aplicarAtaque(jigglypuff), 0.0001D);
+		assertEquals(15, ataque.aplicarAtaque(chansey), 0.0001D);
+		assertEquals(15, ataque.aplicarAtaque(rattata), 0.0001D);
 	}
 
 	@Test
@@ -112,12 +112,12 @@ public class AtaqueTest {
 		AlgoMon chansey = AlgoMonBuilder.crearChansey();
 		AlgoMon rattata = AlgoMonBuilder.crearRattata();
 
-		assertEquals(7, ataque.calcularDanioContra(charmander), 0.0001D);
-		assertEquals(30, ataque.calcularDanioContra(squirtle), 0.0001D);
-		assertEquals(7, ataque.calcularDanioContra(bulbasaur), 0.0001D);
-		assertEquals(15, ataque.calcularDanioContra(jigglypuff), 0.0001D);
-		assertEquals(15, ataque.calcularDanioContra(chansey), 0.0001D);
-		assertEquals(15, ataque.calcularDanioContra(rattata), 0.0001D);
+		assertEquals(7, ataque.aplicarAtaque(charmander), 0.0001D);
+		assertEquals(30, ataque.aplicarAtaque(squirtle), 0.0001D);
+		assertEquals(7, ataque.aplicarAtaque(bulbasaur), 0.0001D);
+		assertEquals(15, ataque.aplicarAtaque(jigglypuff), 0.0001D);
+		assertEquals(15, ataque.aplicarAtaque(chansey), 0.0001D);
+		assertEquals(15, ataque.aplicarAtaque(rattata), 0.0001D);
 	}
 
 	@Test
@@ -130,12 +130,12 @@ public class AtaqueTest {
 		AlgoMon chansey = AlgoMonBuilder.crearChansey();
 		AlgoMon rattata = AlgoMonBuilder.crearRattata();
 
-		assertEquals(8, ataque.calcularDanioContra(charmander), 0.0001D);
-		assertEquals(8, ataque.calcularDanioContra(squirtle), 0.0001D);
-		assertEquals(32, ataque.calcularDanioContra(bulbasaur), 0.0001D);
-		assertEquals(16, ataque.calcularDanioContra(jigglypuff), 0.0001D);
-		assertEquals(16, ataque.calcularDanioContra(chansey), 0.0001D);
-		assertEquals(16, ataque.calcularDanioContra(rattata), 0.0001D);
+		assertEquals(8, ataque.aplicarAtaque(charmander), 0.0001D);
+		assertEquals(8, ataque.aplicarAtaque(squirtle), 0.0001D);
+		assertEquals(32, ataque.aplicarAtaque(bulbasaur), 0.0001D);
+		assertEquals(16, ataque.aplicarAtaque(jigglypuff), 0.0001D);
+		assertEquals(16, ataque.aplicarAtaque(chansey), 0.0001D);
+		assertEquals(16, ataque.aplicarAtaque(rattata), 0.0001D);
 	}
 
 	@Test
@@ -148,15 +148,15 @@ public class AtaqueTest {
 		AlgoMon chansey = AlgoMonBuilder.crearChansey();
 		AlgoMon rattata = AlgoMonBuilder.crearRattata();
 
-		assertEquals(1, ataque.calcularDanioContra(charmander), 0.0001D);
-		assertEquals(1, ataque.calcularDanioContra(squirtle), 0.0001D);
-		assertEquals(4, ataque.calcularDanioContra(bulbasaur), 0.0001D);
-		assertEquals(2, ataque.calcularDanioContra(jigglypuff), 0.0001D);
+		assertEquals(1, ataque.aplicarAtaque(charmander), 0.0001D);
+		assertEquals(1, ataque.aplicarAtaque(squirtle), 0.0001D);
+		assertEquals(4, ataque.aplicarAtaque(bulbasaur), 0.0001D);
+		assertEquals(2, ataque.aplicarAtaque(jigglypuff), 0.0001D);
 
 		ataque = AtaqueBuilder.crearFogonazo();
 
-		assertEquals(2, ataque.calcularDanioContra(chansey), 0.0001D);
-		assertEquals(2, ataque.calcularDanioContra(rattata), 0.0001D);
+		assertEquals(2, ataque.aplicarAtaque(chansey), 0.0001D);
+		assertEquals(2, ataque.aplicarAtaque(rattata), 0.0001D);
 	}
 
 	@Test
