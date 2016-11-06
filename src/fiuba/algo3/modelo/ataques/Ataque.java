@@ -33,7 +33,7 @@ public abstract class Ataque {
 		}
 
 		this.usosRestantes--;
-		return this.calcularDaño(algoMon);
+		return this.calcularDanio(algoMon);
 	}
 
 	/**
@@ -41,7 +41,7 @@ public abstract class Ataque {
 	 * @param algoMon algoMon a atacar.
 	 * @return el daño calculado.
 	 */
-	private double calcularDaño(AlgoMon algoMon) {
+	private double calcularDanio(AlgoMon algoMon) {
 		return Math.floor(this.potencia * this.tipo.getMultiplicadorContra(algoMon.getTipo()));
 	}
 
@@ -62,7 +62,7 @@ public abstract class Ataque {
 
 		this.usosRestantes--;
 
-		this.efecto.agregarEfecto(new QuitarVida(this.calcularDanioContraElTipo(tipo)));
+		this.efecto.agregarEfecto(new QuitarVida(this.calcularDanio(algoMon)));
 
 		return this.efecto;
 	}
