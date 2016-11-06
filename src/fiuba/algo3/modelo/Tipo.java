@@ -2,7 +2,7 @@ package src.fiuba.algo3.modelo;
 
 public interface Tipo {
 	/**
-	 * Devuelve el multiplicador de daño que resulta de atacar a un AlgoMon de un tipo dado.
+	 * Devuelve el multiplicador de daÃ±o que resulta de atacar a un AlgoMon de un tipo dado.
 	 * @param tipo tipo del AlgoMon.
 	 * @return el valor del multiplicador.
 	 */
