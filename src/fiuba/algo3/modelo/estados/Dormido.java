@@ -5,11 +5,11 @@ public final class Dormido extends EstadoAlterado {
 	public Dormido(Estado estadoAnterior){
 		super.setEstadoAnterior(estadoAnterior);
 		super.setVida(estadoAnterior.getVida());
-		turnosRestantes=3;
+		turnosRestantes = 3;
 	}
 	@Override
 	public boolean puedeRealizarAccion() {
-		return turnosRestantes==0&&super.getEstadoAnterior().puedeRealizarAccion();
+		return turnosRestantes == 0 && super.getEstadoAnterior().puedeRealizarAccion();
 	}
 
 	@Override
