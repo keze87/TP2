@@ -9,7 +9,7 @@ public class AlgoMon {
 
 	protected String nombre;
 	protected int vidaMaxima;
-	protected int vida;
+	protected double vida;
 	protected Tipo tipo;
 	protected List<Ataque> ataques;
 
@@ -22,7 +22,7 @@ public class AlgoMon {
 		this.agregarAtaques(ataque1, ataque2, ataque3);
 	}
 
-	/* Agrega los ataques a la colección de ataques. */
+	/* Agrega los ataques a la colecciÃ³n de ataques. */
 	private void agregarAtaques(Ataque ataque1, Ataque ataque2, Ataque ataque3) {
 		this.ataques.add(0, ataque1);
 		this.ataques.add(1, ataque2);
@@ -61,9 +61,9 @@ public class AlgoMon {
 		this.vida -= ataque.calcularDanioContra(this);
 	}
 
-	public int getVida() {
-		// TODO Auto-generated method stub
+	public double getVida() {
 		return vida;
+
 	}
 
 	public String nombre() {

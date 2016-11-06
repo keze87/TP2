@@ -24,7 +24,7 @@ public abstract class Ataque {
 
 	public double calcularDanioContra(AlgoMon algoMon) {
 		if(this.usosRestantes == 0) {
-			throw new AtaqueAgotado("°No quedan m·s usos para este ataque!");
+			throw new AtaqueAgotado("No quedan m√°s usos para este ataque!");
 		}
 
 		this.usosRestantes--;

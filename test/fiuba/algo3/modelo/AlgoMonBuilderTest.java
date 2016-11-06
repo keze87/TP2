@@ -14,7 +14,7 @@ public class AlgoMonBuilderTest { // TODO: faltan los ataques
 		algomon = AlgoMonBuilder.crearBulbasaur();
 
 		assertTrue( algomon.nombre().equals("Bulbasaur") );
-		assertEquals( 140, algomon.getVida() );
+		assertEquals( 140, algomon.getVida(), 0 );
 
 	}
 
@@ -24,7 +24,7 @@ public class AlgoMonBuilderTest { // TODO: faltan los ataques
 		algomon = AlgoMonBuilder.crearChansey();
 
 		assertTrue( algomon.nombre().equals("Chansey") );
-		assertEquals( 130, algomon.getVida() );
+		assertEquals( 130, algomon.getVida(), 0 );
 
 	}
 
@@ -34,7 +34,7 @@ public class AlgoMonBuilderTest { // TODO: faltan los ataques
 		algomon = AlgoMonBuilder.crearCharmander();
 
 		assertTrue( algomon.nombre().equals("Charmander") );
-		assertEquals( 170, algomon.getVida() );
+		assertEquals( 170, algomon.getVida(), 0 );
 
 	}
 
@@ -44,7 +44,7 @@ public class AlgoMonBuilderTest { // TODO: faltan los ataques
 		algomon = AlgoMonBuilder.crearJigglypuff();
 
 		assertTrue( algomon.nombre().equals("Jigglypuff") );
-		assertEquals( 130, algomon.getVida() );
+		assertEquals( 130, algomon.getVida(), 0 );
 
 	}
 
@@ -54,7 +54,7 @@ public class AlgoMonBuilderTest { // TODO: faltan los ataques
 		algomon = AlgoMonBuilder.crearRattata();
 
 		assertTrue( algomon.nombre().equals("Rattata") );
-		assertEquals( 170, algomon.getVida() );
+		assertEquals( 170, algomon.getVida(), 0 );
 
 	}
 
@@ -64,7 +64,7 @@ public class AlgoMonBuilderTest { // TODO: faltan los ataques
 		algomon = AlgoMonBuilder.crearSquirtle();
 
 		assertTrue( algomon.nombre().equals("Squirtle") );
-		assertEquals( 150, algomon.getVida() );
+		assertEquals( 150, algomon.getVida(), 0 );
 
 	}
 
