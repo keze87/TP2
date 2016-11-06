@@ -2,7 +2,7 @@ package test.fiuba.algo3.modelo;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
-import src.fiuba.algo3.modelo.*;
+import src.fiuba.algo3.modelo.estados.*;
 
 public class EstadoNormalTest {
 	Estado estado;
@@ -23,14 +23,14 @@ public class EstadoNormalTest {
 	public void testAumentarVida() {
 		estado= new EstadoNormal(170);
 		estado.aumentarVida(10);
-		assertEquals(180,estado.getVida(),0.01);	
+		assertEquals(180,estado.getVida(),0.01);
 	}
 
 	@Test
 	public void testQuitarVida() {
 		estado= new EstadoNormal(170);
 		estado.quitarVida(10);
-		assertEquals(160,estado.getVida(),0.01);	
+		assertEquals(160,estado.getVida(),0.01);
 	}
 
 	@Test
