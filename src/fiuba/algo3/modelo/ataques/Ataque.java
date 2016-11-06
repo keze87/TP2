@@ -1,5 +1,6 @@
 package src.fiuba.algo3.modelo.ataques;
 
+import src.fiuba.algo3.modelo.AlgoMon;
 import src.fiuba.algo3.modelo.Tipo;
 
 public abstract class Ataque {
@@ -24,5 +25,14 @@ public abstract class Ataque {
 	/* Devuelve el tipo del ataque. */
 	public Tipo getTipo() {
 		return this.tipo;
+	}
+
+	public float calcularDanioContra(AlgoMon algoMon) {
+		if(this.usosRestantes == 0) {
+			throw new AtaqueAgotado("¡No quedan más usos para este ataque!");
+		}
+
+		this.usosRestantes--;
+		return (float) Math.floor(this.potencia * this.tipo.getMultiplicadorContra(algoMon.getTipo()));
 	}
 }

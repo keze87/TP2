@@ -18,15 +18,14 @@ public class AlgoMon {
 		this.vidaMaxima = vidaMaxima;
 		this.vida = vidaMaxima;
 		this.ataques = new ArrayList<Ataque>();
+		this.agregarAtaques(ataque1, ataque2, ataque3);
 	}
 
-	/**
-	 * Agrega un ataque a la colección de ataques.
-	 * @param numeroAtaque numero del ataque a agregar.
-	 * @param ataque ataque para agregar a la colección de ataques.
-	 */
-	private void setAtaque(int numeroAtaque, Ataque ataque) {
-		this.ataques.add(numeroAtaque, ataque);
+	/* Agrega los ataques a la colecci�n de ataques. */
+	private void agregarAtaques(Ataque ataque1, Ataque ataque2, Ataque ataque3) {
+		this.ataques.add(0, ataque1);
+		this.ataques.add(1, ataque2);
+		this.ataques.add(2, ataque3);
 	}
 
 	/**
@@ -58,8 +57,8 @@ public class AlgoMon {
 	 * @param ataque ataque recibido de otro algoMon.
 	 */
 	public void recibirAtaque(Ataque ataque) {
-		// Testear
-		this.vida -= ataque.getPotencia() * ataque.getTipo().getMultiplicadorContra(this.tipo);
+		this.vida -= Math.floor(ataque.getPotencia() * ataque.getTipo().getMultiplicadorContra(this.tipo));
+		//this.vida -= ataque.calcularDanioContra(this);
 	}
 
 	public int getVida() {
@@ -71,6 +70,10 @@ public class AlgoMon {
 
 		return nombre;
 
+	}
+
+	public Tipo getTipo() {
+		return this.tipo;
 	}
 
 }

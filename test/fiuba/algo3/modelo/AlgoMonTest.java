@@ -1,9 +1,12 @@
 package test.fiuba.algo3.modelo;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
-import static org.junit.Assert.*;
-import src.fiuba.algo3.modelo.*;
-import src.fiuba.algo3.modelo.ataques.*;
+
+import src.fiuba.algo3.modelo.AlgoMon;
+import src.fiuba.algo3.modelo.AlgoMonBuilder;
+import src.fiuba.algo3.modelo.ataques.AtaqueAgotado;
 
 public class AlgoMonTest {
 
@@ -69,7 +72,7 @@ public class AlgoMonTest {
 		assertEquals(100, chansey.getVida());
 
 		squirtle.ataque2(rattata);
-		assertEquals(100, rattata.getVida());
+		assertEquals(140, rattata.getVida());
 
 	}
 
@@ -215,7 +218,7 @@ public class AlgoMonTest {
 		assertEquals(150, charmander.getVida());
 
 		bulbasaur.ataque3(squirtle);
-		assertEquals(120, squirtle.getVida());
+		assertEquals(130, squirtle.getVida());
 
 		bulbasaur.ataque3(jigglypuff);
 		assertEquals(100, jigglypuff.getVida());
@@ -227,13 +230,13 @@ public class AlgoMonTest {
 		assertEquals(140, rattata.getVida());
 
 		jigglypuff.ataque3(charmander);
-		assertEquals(130, charmander.getVida());
+		assertEquals(140, charmander.getVida());
 
 		jigglypuff.ataque3(squirtle);
-		assertEquals(110, squirtle.getVida());
+		assertEquals(120, squirtle.getVida());
 
 		jigglypuff.ataque3(bulbasaur);
-		assertEquals(100, bulbasaur.getVida());
+		assertEquals(110, bulbasaur.getVida());
 
 		jigglypuff.ataque3(chansey);
 		assertEquals(90, chansey.getVida());
@@ -242,34 +245,34 @@ public class AlgoMonTest {
 		assertEquals(130, rattata.getVida());
 
 		chansey.ataque3(charmander);
-		assertEquals(120, charmander.getVida());
+		assertEquals(130, charmander.getVida());
 
 		chansey.ataque3(squirtle);
-		assertEquals(100, squirtle.getVida());
+		assertEquals(110, squirtle.getVida());
 
 		chansey.ataque3(bulbasaur);
-		assertEquals(90, bulbasaur.getVida());
+		assertEquals(100, bulbasaur.getVida());
 
 		chansey.ataque3(jigglypuff);
-		assertEquals(80, jigglypuff.getVida());
+		assertEquals(90, jigglypuff.getVida());
 
 		chansey.ataque3(rattata);
 		assertEquals(120, rattata.getVida());
 
 		rattata.ataque3(charmander);
-		assertEquals(110, charmander.getVida());
+		assertEquals(120, charmander.getVida());
 
 		rattata.ataque3(squirtle);
-		assertEquals(90, squirtle.getVida());
+		assertEquals(100, squirtle.getVida());
 
 		rattata.ataque3(bulbasaur);
-		assertEquals(80, bulbasaur.getVida());
+		assertEquals(90, bulbasaur.getVida());
 
 		rattata.ataque3(jigglypuff);
-		assertEquals(70, jigglypuff.getVida());
+		assertEquals(80, jigglypuff.getVida());
 
 		rattata.ataque3(chansey);
-		assertEquals(70, chansey.getVida());
+		assertEquals(80, chansey.getVida());
 
 	}
 
