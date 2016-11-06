@@ -1,5 +1,5 @@
 package src.fiuba.algo3.modelo;
-import src.fiuba.algo3.modelo.ataques.*;
+import src.fiuba.algo3.modelo.ataques.Ataque;
 
 public class AlgoMonBuilder {
 
@@ -74,12 +74,12 @@ public class AlgoMonBuilder {
 		return null;
 	}
 
-	public static AlgoMon crearChansey() {
+	public static AlgoMon crearJigglypuff() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public static AlgoMon crearJigglypuff() {
+	public static AlgoMon crearChansey() {
 		// TODO Auto-generated method stub
 		return null;
 	}

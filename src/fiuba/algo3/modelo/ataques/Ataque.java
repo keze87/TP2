@@ -16,10 +16,12 @@ public abstract class Ataque {
 		this.usosRestantes = usosTotales;
 	}
 
+	/* Devuelve el poder del ataque. */
 	public int getPoder() {
 		return this.poder;
 	}
 
+	/* Devuelve el tipo del ataque. */
 	public Tipo getTipo() {
 		return this.tipo;
 	}

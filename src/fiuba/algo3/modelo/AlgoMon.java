@@ -20,22 +20,27 @@ public class AlgoMon {
 		this.ataques = new ArrayList<Ataque>();
 	}
 
-	private void setAtaque1(Ataque ataque) {
-		this.ataques.add(0, ataque);
+	/**
+	 * Agrega un ataque a la colección de ataques.
+	 * @param numeroAtaque numero del ataque a agregar.
+	 * @param ataque ataque para agregar a la colección de ataques.
+	 */
+	private void setAtaque(int numeroAtaque, Ataque ataque) {
+		this.ataques.add(numeroAtaque, ataque);
 	}
 
-	private void setAtaque2(Ataque ataque) {
-		this.ataques.add(1, ataque);
-	}
-
-	private void setAtaque3(Ataque ataque) {
-		this.ataques.add(2, ataque);
-	}
-
+	/**
+	 * Determina si el algoMon está vivo.
+	 * @return true si está vivo, sino false.
+	 */
 	public boolean estaVivo() {
 		return this.vida > 0;
 	}
 
+	/**
+	 * Ataca a otro algoMon con el ataque seleccionado.
+	 * @param contrincante algoMon al cual se desea atacar.
+	 */
 	public void ataque1(AlgoMon contrincante) {
 		// TODO Auto-generated method stub
 	}
@@ -48,6 +53,10 @@ public class AlgoMon {
 		// TODO Auto-generated method stub
 	}
 
+	/**
+	 * Aplica el daño resultante de recibir un ataque.
+	 * @param ataque ataque recibido de otro algoMon.
+	 */
 	public void recibirAtaque(Ataque ataque) {
 		// Testear
 		this.vida -= ataque.getPoder() * ataque.getTipo().getMultiplicadorContra(this.tipo);
