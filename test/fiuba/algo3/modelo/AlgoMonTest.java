@@ -45,12 +45,6 @@ public class AlgoMonTest {
 	@Test
 	public void test03SquirtleAtacaALosOtrosAlgoMonesConBurbujaYCanionDeAgua() {
 
-		/* Otros AlgoMones:
-		 * Chansey
-		 * Rattata
-		 * Jigglypuff
-		 */
-
 		AlgoMon squirtle = AlgoMonBuilder.crearSquirtle();
 		AlgoMon jigglypuff = AlgoMonBuilder.crearJigglypuff();
 		AlgoMon chansey = AlgoMonBuilder.crearChansey();
