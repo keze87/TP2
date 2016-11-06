@@ -21,7 +21,7 @@ public class EstadoNormalTest {
 
 	@Test
 	public void testAccionRealizadaNoHaceNadaEnEstadoNormal() {
-		estado= new EstadoNormal(170);
+		estado = new EstadoNormal(170);
 		estado.accionRealizada();
 		assertEquals(170, estado.getVida(), 0.01);
 	}
@@ -42,7 +42,6 @@ public class EstadoNormalTest {
 
 		assertEquals(160, estado.getVida(), 0.01);
 		assertEquals(160,estado.getVida(),0.01);
-
 	}
 
 	@Test
