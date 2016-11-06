@@ -61,7 +61,9 @@ public abstract class Ataque {
 		}
 
 		this.usosRestantes--;
-		this.efecto.agregarEfecto(new QuitarVida(this.calcularDanioContraElTipo(algoMon.getTipo())));
+
+		this.efecto.agregarEfecto(new QuitarVida(this.calcularDanioContraElTipo(tipo)));
+
 		return this.efecto;
 	}
 }
