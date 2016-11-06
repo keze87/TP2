@@ -15,7 +15,7 @@ public abstract class Estado {
 		return vida;
 	}
 
-	protected void setVida(double cantidad) {
+	public void setVida(double cantidad) {
 		vida = cantidad;
 	}
 

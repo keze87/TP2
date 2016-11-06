@@ -4,22 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import src.fiuba.algo3.modelo.ataques.Ataque;
+import src.fiuba.algo3.modelo.estados.Estado;
+import src.fiuba.algo3.modelo.estados.EstadoNormal;
 
 public class AlgoMon {
 
 	protected String nombre;
 	protected int vidaMaxima;
-	protected double vida;
 	protected Tipo tipo;
 	protected List<Ataque> ataques;
+	protected Estado estado;
 
 	public AlgoMon(String nombre, int vidaMaxima, Ataque ataque1, Ataque ataque2, Ataque ataque3) {
 
 		this.nombre = nombre;
 		this.vidaMaxima = vidaMaxima;
-		this.vida = vidaMaxima;
 		this.ataques = new ArrayList<Ataque>();
 		this.agregarAtaques(ataque1, ataque2, ataque3);
+		this.estado = new EstadoNormal(vidaMaxima);
 
 	}
 
@@ -35,7 +37,7 @@ public class AlgoMon {
 	 * @return true si está vivo, sino false.
 	 */
 	public boolean estaVivo() {
-		return this.vida > 0;
+		return estado.estaVivo();
 	}
 
 	/**
@@ -59,12 +61,12 @@ public class AlgoMon {
 	 * @param ataque ataque recibido de otro algoMon.
 	 */
 	public void recibirAtaque(Ataque ataque) {
-		this.vida -= ataque.aplicarAtaque(this);
+		estado.setVida(estado.getVida() - ataque.aplicarAtaque(this)); // TODO: creo que esto está mal
 	}
 
 	public double getVida() {
 
-		return vida;
+		return estado.getVida();
 
 	}
 
