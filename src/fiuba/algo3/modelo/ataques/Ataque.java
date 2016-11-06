@@ -9,12 +9,14 @@ public abstract class Ataque {
 	protected int usosTotales;
 	protected int usosRestantes;
 	protected Tipo tipo;
-
+	protected EfectoMultiple efecto;
+	
 	public Ataque(String nombre, int poder, int usosTotales) {
 		this.nombre = nombre;
 		this.potencia = poder;
 		this.usosTotales = usosTotales;
 		this.usosRestantes = usosTotales;
+		efecto.agregarEfecto(efectoBase);
 	}
 
 	/**
@@ -44,5 +46,17 @@ public abstract class Ataque {
 
 		return nombre;
 
+	}
+	public double calcularDanioContraElTipo(Tipo tipo) {
+		return Math.floor(this.potencia * this.tipo.getMultiplicadorContra(tipo));
+	}
+	public Efecto atacar(Tipo tipo) throws AtaqueAgotado{
+		if(this.usosRestantes == 0) {
+			throw new AtaqueAgotado("No quedan más usos para este ataque!");
+		}
+
+		this.usosRestantes--;
+		this.efecto.agregarEfecto(new QuitarVida(this.calcularDanioContraElTipo(tipo)));
+		return this.efecto;
 	}
 }
