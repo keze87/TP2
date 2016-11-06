@@ -13,8 +13,8 @@ public class AlgoMonBuilder {
 
 		AlgoMonBuilder builder = new AlgoMonBuilder();
 
-		builder.nombre("Charmander").vida(170).ataque1(new Brasas()).
-		ataque2(new Fogonazo()).ataque3(new AtaqueRapido());
+		builder.nombre("Charmander").vida(170).ataque1(new Brasas(10)).
+		ataque2(new Fogonazo(4)).ataque3(new AtaqueRapido(16));
 
 		return builder.crearTipoFuego();
 
@@ -61,7 +61,9 @@ public class AlgoMonBuilder {
 	}
 
 	private AlgoMon crearTipoFuego() {
+
 		return new AlgoMonFuego(nombre, vida, ataque1, ataque2, ataque3);
+
 	}
 
 	public static AlgoMon crearBulbasaur() {
