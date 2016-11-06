@@ -7,12 +7,15 @@ import src.fiuba.algo3.modelo.estados.Estado;
 
 public final class EfectoMultiple extends Efecto {
 	private List<Efecto> efectos;
+
 	public EfectoMultiple() {
-		 efectos= new ArrayList<Efecto>();
+		efectos = new ArrayList<Efecto>();
 	}
+
 	public void agregarEfecto(Efecto efecto){
 		this.efectos.add(efecto);
 	}
+
 	@Override
 	public Estado aplicar(Estado estado) {
 		Estado estadoFinal = estado;

@@ -7,7 +7,7 @@ public class Vampiro extends Efecto {
 	@Override
 	public Estado aplicar(Estado estado) {
 		// TODO hacer
-		return null;
+		return estado;
 	}
 
 }

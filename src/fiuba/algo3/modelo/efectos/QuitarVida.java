@@ -7,6 +7,7 @@ public final class QuitarVida extends Efecto {
 	public QuitarVida(double vidaQuitada) {
 		this.vidaQuitada = vidaQuitada;
 	}
+
 	@Override
 	public Estado aplicar(Estado estado) {
 		estado.quitarVida(vidaQuitada);

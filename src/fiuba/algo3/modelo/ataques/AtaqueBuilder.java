@@ -12,11 +12,14 @@ public class AtaqueBuilder {
 	private int potencia;
 	private int usosMaximos;
 	private Efecto efectoBase;
-	private AtaqueBuilder(String nombre, int potencia, int usosMaximos,Efecto efectoBase) {
+
+	private AtaqueBuilder(String nombre, int potencia, int usosMaximos, Efecto efectoBase) {
+
 		this.nombre = nombre;
 		this.potencia = potencia;
 		this.usosMaximos = usosMaximos;
 		this.efectoBase= efectoBase;
+
 	}
 
 	/* Crea un ataque de tipo fuego con los valores actuales de los atributos. */
@@ -31,8 +34,7 @@ public class AtaqueBuilder {
 
 	/* Crea un ataque de tipo planta con los valores actuales de los atributos. */
 	private Ataque crearAtaquePlanta() {
-		return new AtaquePlanta(this.nombre, this.potencia, this.usosMaximos,this.efectoBase);
-
+		return new AtaquePlanta(this.nombre, this.potencia, this.usosMaximos, this.efectoBase);
 	}
 
 	/* Crea un ataque de tipo normal con los valores actuales de los atributos. */
@@ -56,7 +58,7 @@ public class AtaqueBuilder {
 
 	/* Crea y devuelve una nueva instancia de Ataque correspondiente a Burbuja. */
 	public static Ataque crearBurbuja() {
-		AtaqueBuilder builder = new AtaqueBuilder("Burbuja", 10, 15,new SinEfecto());
+		AtaqueBuilder builder = new AtaqueBuilder("Burbuja", 10, 15, new SinEfecto());
 
 		return builder.crearAtaqueAgua();
 	}

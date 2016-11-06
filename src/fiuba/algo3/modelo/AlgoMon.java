@@ -20,6 +20,7 @@ public class AlgoMon {
 		this.vida = vidaMaxima;
 		this.ataques = new ArrayList<Ataque>();
 		this.agregarAtaques(ataque1, ataque2, ataque3);
+
 	}
 
 	/* Agrega los ataques a la colección de ataques. */
