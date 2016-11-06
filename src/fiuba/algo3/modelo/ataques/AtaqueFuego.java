@@ -1,12 +1,13 @@
 package src.fiuba.algo3.modelo.ataques;
 
 import src.fiuba.algo3.modelo.Fuego;
+import src.fiuba.algo3.modelo.efectos.Efecto;
+
 
 public class AtaqueFuego extends Ataque {
 
-	public AtaqueFuego(String nombre, int poder, int usosTotales) {
-		super(nombre, poder, usosTotales);
+	public AtaqueFuego(String nombre, int poder, int usosTotales, Efecto efectoBase) {
+		super(nombre, poder, usosTotales,efectoBase);
 		this.tipo = new Fuego();
 	}
-
 }
