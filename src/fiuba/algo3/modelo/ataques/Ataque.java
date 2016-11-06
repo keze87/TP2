@@ -17,7 +17,7 @@ public abstract class Ataque {
 		this.usosRestantes = usosTotales;
 	}
 
-	public double calcularDanioContra(AlgoMon algoMon) {
+	public double calcularDañoContra(AlgoMon algoMon) {
 		if(this.usosRestantes == 0) {
 			throw new AtaqueAgotado("No quedan más usos para este ataque!");
 		}
