@@ -5,9 +5,14 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+<<<<<<< HEAD
 
 import src.fiuba.algo3.modelo.estados.Estado;
 import src.fiuba.algo3.modelo.estados.EstadoNormal;
+=======
+import static org.junit.Assert.*;
+import src.fiuba.algo3.modelo.estados.*;
+>>>>>>> origin/master
 
 public class EstadoNormalTest {
 	Estado estado;
@@ -29,14 +34,22 @@ public class EstadoNormalTest {
 	public void testAumentarVida() {
 		estado = new EstadoNormal(170);
 		estado.aumentarVida(10);
+<<<<<<< HEAD
 		assertEquals(180, estado.getVida(), 0.01);
+=======
+		assertEquals(180,estado.getVida(),0.01);
+>>>>>>> origin/master
 	}
 
 	@Test
 	public void testQuitarVida() {
 		estado = new EstadoNormal(170);
 		estado.quitarVida(10);
+<<<<<<< HEAD
 		assertEquals(160, estado.getVida(), 0.01);
+=======
+		assertEquals(160,estado.getVida(),0.01);
+>>>>>>> origin/master
 	}
 
 	@Test

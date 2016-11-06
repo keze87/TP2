@@ -5,9 +5,14 @@ import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+<<<<<<< HEAD
 
 import src.fiuba.algo3.modelo.estados.EstadoNormal;
 import src.fiuba.algo3.modelo.estados.Quemado;
+=======
+import static org.junit.Assert.*;
+import src.fiuba.algo3.modelo.estados.*;
+>>>>>>> origin/master
 
 public class QuemadoTest {
 

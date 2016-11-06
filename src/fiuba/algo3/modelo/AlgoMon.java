@@ -62,4 +62,9 @@ public class AlgoMon {
 		this.vida -= ataque.getPoder() * ataque.getTipo().getMultiplicadorContra(this.tipo);
 	}
 
+	public int getVida() {
+		// TODO Auto-generated method stub
+		return vida;
+	}
+
 }
