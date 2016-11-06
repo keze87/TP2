@@ -2,9 +2,10 @@ package src.fiuba.algo3.modelo.estados;
 
 public final class EstadoNormal extends Estado {
 
-	public EstadoNormal(int vida){
+	public EstadoNormal(int vida) {
 		super.setVida(vida);
 	}
+
 	@Override
 	public boolean puedeRealizarAccion() {
 		return true;
@@ -12,6 +13,7 @@ public final class EstadoNormal extends Estado {
 
 	@Override
 	public void accionRealizada() {
+
 	}
 
 }

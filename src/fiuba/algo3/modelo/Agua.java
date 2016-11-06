@@ -1,4 +1,4 @@
-package src;
+package src.fiuba.algo3.modelo;
 
 public class Agua implements Tipo {
 
