@@ -4,6 +4,7 @@ public final class Dormido extends EstadoAlterado {
 	private int turnosRestantes;
 	public Dormido(Estado estadoAnterior){
 		super.setEstadoAnterior(estadoAnterior);
+		super.setVida(estadoAnterior.getVida());
 		turnosRestantes=3;
 	}
 	@Override
@@ -15,6 +16,9 @@ public final class Dormido extends EstadoAlterado {
 	public void accionRealizada() {
 		super.getEstadoAnterior().accionRealizada();
 		turnosRestantes--;
+	}
+	public int getTurnosRestantesDormido(){
+		return turnosRestantes;
 	}
 
 }

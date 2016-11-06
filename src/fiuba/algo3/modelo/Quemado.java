@@ -3,10 +3,10 @@ package fiuba.algo3.modelo;
 public final class Quemado extends EstadoAlterado {
 	public Quemado(Estado estadoAnterior){
 		super.setEstadoAnterior(estadoAnterior);
+		super.setVida(estadoAnterior.getVida());
 	}
 	@Override
 	public boolean puedeRealizarAccion() {
-		// TODO Auto-generated method stub
 		return true&&super.getEstadoAnterior().puedeRealizarAccion();
 	}
 

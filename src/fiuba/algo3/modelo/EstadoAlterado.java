@@ -9,6 +9,7 @@ public abstract class EstadoAlterado extends Estado {
 		this.estadoAnterior = estadoAnterior;
 	}
 	public Estado volverEstadoAnterior(){
+		estadoAnterior.setVida(super.getVida());
 		return estadoAnterior;
 	}
 	
