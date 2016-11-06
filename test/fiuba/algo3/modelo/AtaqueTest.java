@@ -30,6 +30,12 @@ public class AtaqueTest {
 		assertEquals(10, ataque.aplicarAtaque(chansey), 0.0001D);
 		assertEquals(10, ataque.aplicarAtaque(rattata), 0.0001D);
 	}
+	@Test
+	public void test01DanioAtaqueRapidoConAtacar() {
+		Ataque ataque = AtaqueBuilder.crearAtaqueRapido();
+		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
+		assertEquals(160, ataque.atacar(charmander).aplicar(charmander.getEstado()).getVida(), 0.0001D);//aca funciona
+	}
 
 	@Test
 	public void test02DanioCanto() {

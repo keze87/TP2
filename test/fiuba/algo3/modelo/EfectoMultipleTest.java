@@ -31,15 +31,15 @@ public class EfectoMultipleTest {
 	@Test
 	public void testAplicarSinEfecto() {
 		efecto= new EfectoMultiple();
-		EstadoNormal estado = new EstadoNormal(140);
-		Estado nuevoEstado;
-
+		Estado estado = new EstadoNormal(140);
 		efecto.agregarEfecto(new SinEfecto());
 		efecto.agregarEfecto(new QuitarVida(10));
-		nuevoEstado = efecto.aplicar(estado);
-		nuevoEstado.accionRealizada();
+		estado = efecto.aplicar(estado);
+		estado.accionRealizada();
+		estado = efecto.aplicar(estado);
+		estado.accionRealizada();
 		
-		assertEquals(130,nuevoEstado.getVida(),0.01);
+		assertEquals(120,estado.getVida(),0.01);
 		
 		
 	}

@@ -12,14 +12,15 @@ public abstract class Ataque {
 	protected int usosTotales;
 	protected int usosRestantes;
 	protected Tipo tipo;
-	protected EfectoMultiple efecto = new EfectoMultiple();
+	protected EfectoMultiple efecto;
+	protected Efecto efectoBase;
 
 	public Ataque(String nombre, int poder, int usosTotales, Efecto efectoBase) {
 		this.nombre = nombre;
 		this.potencia = poder;
 		this.usosTotales = usosTotales;
 		this.usosRestantes = usosTotales;
-		efecto.agregarEfecto(efectoBase);
+		this.efectoBase = efectoBase;
 	}
 
 	/**
@@ -56,14 +57,15 @@ public abstract class Ataque {
 	}
 
 	public Efecto atacar(AlgoMon algoMon) throws AtaqueAgotado {
+		this.efecto = new EfectoMultiple();
+		this.efecto.agregarEfecto(this.efectoBase);
 		if(this.usosRestantes == 0) {
 			throw new AtaqueAgotado("No quedan más usos para este ataque!");
 		}
 
-		this.usosRestantes--;
-
 		this.efecto.agregarEfecto(new QuitarVida(this.calcularDanio(algoMon)));
-
+		
+		this.usosRestantes--;
 		return this.efecto;
 	}
 }

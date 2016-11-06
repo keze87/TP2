@@ -51,10 +51,11 @@ public class AlgoMonTest {
 		AlgoMon rattata = AlgoMonBuilder.crearRattata();
 
 		squirtle.ataque1(jigglypuff);
+
 		assertEquals(120, jigglypuff.getVida(), 0.0001D);
 
 		squirtle.ataque1(chansey);
-		assertEquals(120, jigglypuff.getVida(), 0.0001D);
+		assertEquals(120, chansey.getVida(), 0.0001D);
 
 		squirtle.ataque1(rattata);
 		assertEquals(160, rattata.getVida(), 0.0001D);

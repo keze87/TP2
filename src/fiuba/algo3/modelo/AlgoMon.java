@@ -25,6 +25,9 @@ public class AlgoMon {
 		this.estado = new EstadoNormal(vidaMaxima);
 
 	}
+	public Estado getEstado() {
+		return estado;
+	}
 
 	/* Agrega los ataques a la colección de ataques. */
 	private void agregarAtaques(Ataque ataque1, Ataque ataque2, Ataque ataque3) {
