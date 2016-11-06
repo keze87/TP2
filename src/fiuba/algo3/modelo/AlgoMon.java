@@ -62,6 +62,7 @@ public class AlgoMon {
 	}
 
 	public double getVida() {
+
 		return vida;
 
 	}
@@ -73,7 +74,28 @@ public class AlgoMon {
 	}
 
 	public Tipo getTipo() {
+
 		return this.tipo;
+
 	}
+
+	public Ataque ataque1() {
+
+		return this.ataques.get(0);
+
+	}
+
+	public Ataque ataque2() {
+
+		return this.ataques.get(1);
+
+	}
+
+	public Ataque ataque3() {
+
+		return this.ataques.get(2);
+
+	}
+
 
 }

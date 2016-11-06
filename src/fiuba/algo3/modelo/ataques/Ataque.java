@@ -25,4 +25,10 @@ public abstract class Ataque {
 		this.usosRestantes--;
 		return Math.floor(this.potencia * this.tipo.getMultiplicadorContra(algoMon.getTipo()));
 	}
+
+	public String nombre() {
+
+		return nombre;
+
+	}
 }
