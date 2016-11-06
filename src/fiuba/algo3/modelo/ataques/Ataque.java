@@ -4,21 +4,21 @@ import src.fiuba.algo3.modelo.Tipo;
 
 public abstract class Ataque {
 	protected String nombre;
-	protected int poder;
+	protected int potencia;
 	protected int usosTotales;
 	protected int usosRestantes;
 	protected Tipo tipo;
 
 	public Ataque(String nombre, int poder, int usosTotales) {
 		this.nombre = nombre;
-		this.poder = poder;
+		this.potencia = poder;
 		this.usosTotales = usosTotales;
 		this.usosRestantes = usosTotales;
 	}
 
-	/* Devuelve el poder del ataque. */
-	public int getPoder() {
-		return this.poder;
+	/* Devuelve el potencia del ataque. */
+	public int getPotencia() {
+		return this.potencia;
 	}
 
 	/* Devuelve el tipo del ataque. */

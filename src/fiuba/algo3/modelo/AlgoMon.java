@@ -59,7 +59,7 @@ public class AlgoMon {
 	 */
 	public void recibirAtaque(Ataque ataque) {
 		// Testear
-		this.vida -= ataque.getPoder() * ataque.getTipo().getMultiplicadorContra(this.tipo);
+		this.vida -= ataque.getPotencia() * ataque.getTipo().getMultiplicadorContra(this.tipo);
 	}
 
 	public int getVida() {
