@@ -22,17 +22,12 @@ public abstract class Ataque {
 		return this.potencia;
 	}
 
-	/* Devuelve el tipo del ataque. */
-	public Tipo getTipo() {
-		return this.tipo;
-	}
-
-	public float calcularDanioContra(AlgoMon algoMon) {
+	public double calcularDanioContra(AlgoMon algoMon) {
 		if(this.usosRestantes == 0) {
 			throw new AtaqueAgotado("¡No quedan más usos para este ataque!");
 		}
 
 		this.usosRestantes--;
-		return (float) Math.floor(this.potencia * this.tipo.getMultiplicadorContra(algoMon.getTipo()));
+		return Math.floor(this.potencia * this.tipo.getMultiplicadorContra(algoMon.getTipo()));
 	}
 }

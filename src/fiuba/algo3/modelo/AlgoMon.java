@@ -58,8 +58,7 @@ public class AlgoMon {
 	 * @param ataque ataque recibido de otro algoMon.
 	 */
 	public void recibirAtaque(Ataque ataque) {
-		this.vida -= Math.floor(ataque.getPotencia() * ataque.getTipo().getMultiplicadorContra(this.tipo));
-		//this.vida -= ataque.calcularDanioContra(this);
+		this.vida -= ataque.calcularDanioContra(this);
 	}
 
 	public int getVida() {

@@ -286,6 +286,7 @@ public class AlgoMonTest {
 		charmander.ataque2(rattata);
 		charmander.ataque2(rattata);
 		charmander.ataque2(rattata);
+		charmander.ataque2(rattata);
 
 	}
 
