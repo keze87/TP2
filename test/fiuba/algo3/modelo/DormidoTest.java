@@ -4,13 +4,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
-
 import org.junit.Test;
-
 import src.fiuba.algo3.modelo.estados.Dormido;
 import src.fiuba.algo3.modelo.estados.EstadoNormal;
-import static org.junit.Assert.*;
-import src.fiuba.algo3.modelo.estados.*;
 
 
 public class DormidoTest {
