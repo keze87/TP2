@@ -1,5 +1,6 @@
 package src.fiuba.algo3.modelo;
 import src.fiuba.algo3.modelo.ataques.Ataque;
+import src.fiuba.algo3.modelo.ataques.AtaqueBuilder;
 
 public class AlgoMonBuilder {
 
@@ -13,8 +14,8 @@ public class AlgoMonBuilder {
 
 		AlgoMonBuilder builder = new AlgoMonBuilder();
 
-		builder.nombre("Bulbasaur").vida(140);//.ataque1(new Chupavidas()).
-		//ataque2(new LatigoCepa()).ataque3(new AtaqueRapido());
+		builder.nombre("Bulbasaur").vida(140).ataque1(AtaqueBuilder.crearChupavidas()).
+		ataque2(AtaqueBuilder.crearLatigoCepa()).ataque3(AtaqueBuilder.crearAtaqueRapido());
 
 		return builder.crearTipoPlanta();
 
@@ -23,8 +24,8 @@ public class AlgoMonBuilder {
 
 		AlgoMonBuilder builder = new AlgoMonBuilder();
 
-		builder.nombre("Chansey").vida(130);//.ataque1(new Canto()).
-		//ataque2(new LatigoCepa()).ataque3(new AtaqueRapido());
+		builder.nombre("Chansey").vida(130).ataque1(AtaqueBuilder.crearCanto()).
+		ataque2(AtaqueBuilder.crearLatigoCepa()).ataque3(AtaqueBuilder.crearAtaqueRapido());
 
 		return builder.crearTipoNormal();
 
@@ -33,8 +34,8 @@ public class AlgoMonBuilder {
 
 		AlgoMonBuilder builder = new AlgoMonBuilder();
 
-		builder.nombre("Charmander").vida(170);//.ataque1(new Brasas()).
-		//ataque2(new Fogonazo()).ataque3(new AtaqueRapido());
+		builder.nombre("Charmander").vida(170).ataque1(AtaqueBuilder.crearBrasas()).
+		ataque2(AtaqueBuilder.crearFogonazo()).ataque3(AtaqueBuilder.crearAtaqueRapido());
 
 		return builder.crearTipoFuego();
 
@@ -43,8 +44,8 @@ public class AlgoMonBuilder {
 
 		AlgoMonBuilder builder = new AlgoMonBuilder();
 
-		builder.nombre("Jigglypuff").vida(130);//.ataque1(new Canto()).
-		//ataque2(new Burbuja()).ataque3(new AtaqueRapido());
+		builder.nombre("Jigglypuff").vida(130).ataque1(AtaqueBuilder.crearCanto()).
+		ataque2(AtaqueBuilder.crearBurbuja()).ataque3(AtaqueBuilder.crearAtaqueRapido());
 
 		return builder.crearTipoNormal();
 
@@ -55,8 +56,8 @@ public class AlgoMonBuilder {
 
 		AlgoMonBuilder builder = new AlgoMonBuilder();
 
-		builder.nombre("Rattata").vida(170);//.ataque1(new Fogonazo()).
-		//ataque2(new Burbuja()).ataque3(new AtaqueRapido());
+		builder.nombre("Rattata").vida(170).ataque1(AtaqueBuilder.crearFogonazo()).
+		ataque2(AtaqueBuilder.crearBurbuja()).ataque3(AtaqueBuilder.crearAtaqueRapido());
 
 		return builder.crearTipoNormal();
 
@@ -66,8 +67,8 @@ public class AlgoMonBuilder {
 
 		AlgoMonBuilder builder = new AlgoMonBuilder();
 
-		builder.nombre("Squirtle").vida(150);//.ataque1(new Burbuja()).
-		//ataque2(new CañonAgua()).ataque3(new AtaqueRapido());
+		builder.nombre("Squirtle").vida(150).ataque1(AtaqueBuilder.crearBurbuja()).
+		ataque2(AtaqueBuilder.crearCanionDeAgua()).ataque3(AtaqueBuilder.crearAtaqueRapido());
 
 		return builder.crearTipoAgua();
 
