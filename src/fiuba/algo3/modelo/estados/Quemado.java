@@ -9,7 +9,7 @@ public final class Quemado extends EstadoAlterado {
 
 	@Override
 	public boolean puedeRealizarAccion() {
-		return true && super.getEstadoAnterior().puedeRealizarAccion();
+		return super.getEstadoAnterior().puedeRealizarAccion();
 	}
 
 	@Override

@@ -13,6 +13,7 @@ public final class EstadoNormal extends Estado {
 
 	@Override
 	public void accionRealizada() {
+		// TODO Auto-generated method stub
 
 	}
 
