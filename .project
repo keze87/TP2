@@ -14,4 +14,36 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src/fiuba/algo3/modelo/Agua.java</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Desktop/Agua.java</locationURI>
+		</link>
+		<link>
+			<name>src/fiuba/algo3/modelo/Fuego.java</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Desktop/Fuego.java</locationURI>
+		</link>
+		<link>
+			<name>src/fiuba/algo3/modelo/Normal.java</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Desktop/Normal.java</locationURI>
+		</link>
+		<link>
+			<name>src/fiuba/algo3/modelo/Planta.java</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Desktop/Planta.java</locationURI>
+		</link>
+		<link>
+			<name>src/fiuba/algo3/modelo/Tipo.java</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Desktop/Tipo.java</locationURI>
+		</link>
+		<link>
+			<name>test/fiuba/algo3/modelo/TipoTests.java</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Desktop/TipoTests.java</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>
