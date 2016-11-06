@@ -7,6 +7,7 @@ import org.junit.Test;
 import src.fiuba.algo3.modelo.efectos.EfectoMultiple;
 import src.fiuba.algo3.modelo.efectos.Quemar;
 import src.fiuba.algo3.modelo.efectos.QuitarVida;
+import src.fiuba.algo3.modelo.efectos.SinEfecto;
 import src.fiuba.algo3.modelo.estados.Estado;
 import src.fiuba.algo3.modelo.estados.EstadoNormal;
 
@@ -24,6 +25,21 @@ public class EfectoMultipleTest {
 		nuevoEstado.accionRealizada();
 		
 		assertEquals(63,nuevoEstado.getVida(),0.01);
+		
+		
+	}
+	@Test
+	public void testAplicarSinEfecto() {
+		efecto= new EfectoMultiple();
+		EstadoNormal estado = new EstadoNormal(140);
+		Estado nuevoEstado;
+
+		efecto.agregarEfecto(new SinEfecto());
+		efecto.agregarEfecto(new QuitarVida(10));
+		nuevoEstado = efecto.aplicar(estado);
+		nuevoEstado.accionRealizada();
+		
+		assertEquals(130,nuevoEstado.getVida(),0.01);
 		
 		
 	}

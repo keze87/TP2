@@ -55,13 +55,13 @@ public abstract class Ataque {
 		return Math.floor(this.potencia * this.tipo.getMultiplicadorContra(tipo));
 	}
 
-	public Efecto atacar(Tipo tipo) throws AtaqueAgotado {
+	public Efecto atacar(AlgoMon algoMon) throws AtaqueAgotado {
 		if(this.usosRestantes == 0) {
 			throw new AtaqueAgotado("No quedan más usos para este ataque!");
 		}
 
 		this.usosRestantes--;
-		this.efecto.agregarEfecto(new QuitarVida(this.calcularDanioContraElTipo(tipo)));
+		this.efecto.agregarEfecto(new QuitarVida(this.calcularDanioContraElTipo(algoMon.getTipo())));
 		return this.efecto;
 	}
 }

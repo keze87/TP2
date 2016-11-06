@@ -46,15 +46,24 @@ public class AlgoMon {
 	 * @param contrincante algoMon al cual se desea atacar.
 	 */
 	public void ataque1(AlgoMon contrincante) {
-		contrincante.recibirAtaque(this.ataques.get(0));
+		if(estado.puedeRealizarAccion()){
+			contrincante.recibirAtaque(this.ataques.get(0));
+			estado.accionRealizada();
+		}
 	}
 
 	public void ataque2(AlgoMon contrincante) {
-		contrincante.recibirAtaque(this.ataques.get(1));
+		if(estado.puedeRealizarAccion()){
+			contrincante.recibirAtaque(this.ataques.get(1));
+			estado.accionRealizada();
+		}
 	}
 
 	public void ataque3(AlgoMon contrincante) {
-		contrincante.recibirAtaque(this.ataques.get(2));
+		if(estado.puedeRealizarAccion()){
+			contrincante.recibirAtaque(this.ataques.get(2));
+			estado.accionRealizada();
+		}
 	}
 
 	/**
@@ -64,7 +73,7 @@ public class AlgoMon {
 	public void recibirAtaque(Ataque ataque) {
 		//estado.setVida(estado.getVida() - ataque.aplicarAtaque(this)); // TODO: creo que esto está mal
 		Efecto efectoDelAtaque;
-		efectoDelAtaque=ataque.atacar(this.tipo);
+		efectoDelAtaque=ataque.atacar(this);
 		this.estado=efectoDelAtaque.aplicar(this.estado);
 	}
 
