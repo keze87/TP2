@@ -13,12 +13,13 @@ public class AlgoMonBuilder {
 
 		AlgoMonBuilder builder = new AlgoMonBuilder();
 
-		builder.nombre("Bulbasaur").vida(140);//.ataque1(new Chupavidas()).
-		//ataque2(new LatigoCepa()).ataque3(new AtaqueRapido());
+		builder.nombre("Bulbasaur").vida(140).ataque1(AtaqueBuilder.crearChupavidas()).
+		ataque2(AtaqueBuilder.crearLatigoCepa()).ataque3(AtaqueBuilder.crearAtaqueRapido());
 
 		return builder.crearTipoPlanta();
 
 	}
+
 	public static AlgoMon crearChansey() {
 
 		AlgoMonBuilder builder = new AlgoMonBuilder();
@@ -29,6 +30,7 @@ public class AlgoMonBuilder {
 		return builder.crearTipoNormal();
 
 	}
+
 	public static AlgoMon crearCharmander() {
 
 		AlgoMonBuilder builder = new AlgoMonBuilder();
@@ -39,6 +41,7 @@ public class AlgoMonBuilder {
 		return builder.crearTipoFuego();
 
 	}
+
 	public static AlgoMon crearJigglypuff() {
 
 		AlgoMonBuilder builder = new AlgoMonBuilder();
@@ -74,67 +77,44 @@ public class AlgoMonBuilder {
 	}
 
 	public AlgoMonBuilder ataque1(Ataque ataque) {
-
 		this.ataque1 = ataque;
-
 		return this;
-
 	}
 
 	public AlgoMonBuilder ataque2(Ataque ataque) {
-
 		this.ataque2 = ataque;
-
 		return this;
-
 	}
 
 	public AlgoMonBuilder ataque3(Ataque ataque) {
-
 		this.ataque3 = ataque;
-
 		return this;
-
 	}
 
 	public AlgoMonBuilder nombre(String nombre) {
-
 		this.nombre = nombre;
-
 		return this;
-
 	}
 
 	public AlgoMonBuilder vida(int vida) {
-
 		this.vida = vida;
-
 		return this;
-
 	}
 
 	public AlgoMon crearTipoAgua() {
-
 		return new AlgoMonAgua(nombre, vida, ataque1, ataque2, ataque3);
-
 	}
 
 	public AlgoMon crearTipoFuego() {
-
 		return new AlgoMonFuego(nombre, vida, ataque1, ataque2, ataque3);
-
 	}
 
 	public AlgoMon crearTipoNormal() {
-
 		return new AlgoMonNormal(nombre, vida, ataque1, ataque2, ataque3);
-
 	}
 
 	public AlgoMon crearTipoPlanta() {
-
 		return new AlgoMonPlanta(nombre, vida, ataque1, ataque2, ataque3);
-
 	}
 
 }
