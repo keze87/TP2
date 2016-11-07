@@ -78,8 +78,8 @@ public class AlgoMon {
 
 		Efecto efectoDelAtaque;
 
-		efectoDelAtaque=ataque.atacar(this);
-		this.estado=efectoDelAtaque.aplicar(this.estado);
+		efectoDelAtaque = ataque.atacar(this);
+		this.estado = efectoDelAtaque.aplicar(this.estado);
 
 	}
 

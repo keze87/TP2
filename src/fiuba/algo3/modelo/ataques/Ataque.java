@@ -59,12 +59,13 @@ public abstract class Ataque {
 	public Efecto atacar(AlgoMon algoMon) throws AtaqueAgotado {
 		this.efecto = new EfectoMultiple();
 		this.efecto.agregarEfecto(this.efectoBase);
+
 		if(this.usosRestantes == 0) {
 			throw new AtaqueAgotado("No quedan más usos para este ataque!");
 		}
 
 		this.efecto.agregarEfecto(new QuitarVida(this.calcularDanio(algoMon)));
-		
+
 		this.usosRestantes--;
 		return this.efecto;
 	}
