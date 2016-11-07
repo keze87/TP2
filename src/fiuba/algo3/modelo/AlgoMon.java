@@ -48,25 +48,35 @@ public class AlgoMon {
 	 * Ataca a otro algoMon con el ataque seleccionado.
 	 * @param contrincante algoMon al cual se desea atacar.
 	 */
+	private void ataque(int numeroAtaque, AlgoMon contrincante) {
+		if(estado.puedeRealizarAccion()) {
+			contrincante.recibirAtaque(this.ataques.get(numeroAtaque));
+			estado.accionRealizada();
+		}
+	}
+
+	/**
+	 * Ataca a un algoMon con el primer ataque.
+	 * @param contrincante algoMon a atacar.
+	 */
 	public void ataque1(AlgoMon contrincante) {
-		if(estado.puedeRealizarAccion()){
-			contrincante.recibirAtaque(this.ataques.get(0));
-			estado.accionRealizada();
-		}
+		this.ataque(0, contrincante);
 	}
 
+	/**
+	 * Ataca a un algoMon con el segundo ataque.
+	 * @param contrincante algoMon a atacar.
+	 */
 	public void ataque2(AlgoMon contrincante) {
-		if(estado.puedeRealizarAccion()){
-			contrincante.recibirAtaque(this.ataques.get(1));
-			estado.accionRealizada();
-		}
+		this.ataque(1, contrincante);
 	}
 
+	/**
+	 * Ataca a un algoMon con el tercer ataque.
+	 * @param contrincante algoMon a atacar.
+	 */
 	public void ataque3(AlgoMon contrincante) {
-		if(estado.puedeRealizarAccion()){
-			contrincante.recibirAtaque(this.ataques.get(2));
-			estado.accionRealizada();
-		}
+		this.ataque(2, contrincante);
 	}
 
 	/**
@@ -83,41 +93,28 @@ public class AlgoMon {
 
 	}
 
-	public double getVida() {
-
-		return estado.getVida();
-
+	public String nombre() {
+		return nombre;
 	}
 
-	public String nombre() {
-
-		return nombre;
-
+	public double getVida() {
+		return estado.getVida();
 	}
 
 	public Tipo getTipo() {
-
 		return this.tipo;
-
 	}
 
 	public Ataque ataque1() {
-
 		return this.ataques.get(0);
-
 	}
 
 	public Ataque ataque2() {
-
 		return this.ataques.get(1);
-
 	}
 
 	public Ataque ataque3() {
-
 		return this.ataques.get(2);
-
 	}
-
 
 }

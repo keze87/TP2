@@ -34,7 +34,7 @@ public abstract class Ataque {
 		}
 
 		this.usosRestantes--;
-		return this.calcularDanio(algoMon);
+		return this.calcularDaño(algoMon);
 	}
 
 	/**
@@ -42,7 +42,7 @@ public abstract class Ataque {
 	 * @param algoMon algoMon a atacar.
 	 * @return el daño calculado.
 	 */
-	private double calcularDanio(AlgoMon algoMon) {
+	private double calcularDaño(AlgoMon algoMon) {
 		return Math.floor(this.potencia * this.tipo.getMultiplicadorContra(algoMon.getTipo()));
 	}
 
@@ -52,9 +52,9 @@ public abstract class Ataque {
 
 	}
 
-	public double calcularDanioContraElTipo(Tipo tipo) {
-		return Math.floor(this.potencia * this.tipo.getMultiplicadorContra(tipo));
-	}
+//	public double calcularDanioContraElTipo(Tipo tipo) {
+//		return Math.floor(this.potencia * this.tipo.getMultiplicadorContra(tipo));
+//	}
 
 	public Efecto atacar(AlgoMon algoMon) throws AtaqueAgotado {
 		this.efecto = new EfectoMultiple();
@@ -64,7 +64,7 @@ public abstract class Ataque {
 			throw new AtaqueAgotado("No quedan más usos para este ataque!");
 		}
 
-		this.efecto.agregarEfecto(new QuitarVida(this.calcularDanio(algoMon)));
+		this.efecto.agregarEfecto(new QuitarVida(this.calcularDaño(algoMon)));
 
 		this.usosRestantes--;
 		return this.efecto;
