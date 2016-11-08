@@ -16,10 +16,10 @@ public class AlgoMonBuilderTest {
 		assertTrue( algomon.getNombre().equals("Bulbasaur") );
 		assertEquals( 140, algomon.getVida(), 0 );
 
-		assertTrue( algomon instanceof AlgoMonPlanta );
-		assertTrue( algomon.ataque1().getNombre().equals("Chupavidas") );
-		assertTrue( algomon.ataque2().getNombre().equals("Látigo cepa") );
-		assertTrue( algomon.ataque3().getNombre().equals("Ataque Rápido") );
+		assertTrue( algomon.getTipo() instanceof Planta );
+		assertTrue( algomon.contieneAtaque("Chupavidas") );
+		assertTrue( algomon.contieneAtaque("Látigo cepa") );
+		assertTrue( algomon.contieneAtaque("Ataque rápido") );
 
 	}
 
@@ -31,10 +31,10 @@ public class AlgoMonBuilderTest {
 		assertTrue( algomon.getNombre().equals("Chansey") );
 		assertEquals( 130, algomon.getVida(), 0 );
 
-		assertTrue( algomon instanceof AlgoMonNormal );
-		assertTrue( algomon.ataque1().getNombre().equals("Canto") );
-		assertTrue( algomon.ataque2().getNombre().equals("Látigo cepa") );
-		assertTrue( algomon.ataque3().getNombre().equals("Ataque Rápido") );
+		assertTrue( algomon.getTipo() instanceof Normal );
+		assertTrue( algomon.contieneAtaque("Canto") );
+		assertTrue( algomon.contieneAtaque("Látigo cepa") );
+		assertTrue( algomon.contieneAtaque("Ataque rápido") );
 
 	}
 
@@ -46,10 +46,10 @@ public class AlgoMonBuilderTest {
 		assertTrue( algomon.getNombre().equals("Charmander") );
 		assertEquals( 170, algomon.getVida(), 0 );
 
-		assertTrue( algomon instanceof AlgoMonFuego );
-		assertTrue( algomon.ataque1().getNombre().equals("Brasas") );
-		assertTrue( algomon.ataque2().getNombre().equals("Fogonazo") );
-		assertTrue( algomon.ataque3().getNombre().equals("Ataque Rápido") );
+		assertTrue( algomon.getTipo() instanceof Fuego );
+		assertTrue( algomon.contieneAtaque("Brasas") );
+		assertTrue( algomon.contieneAtaque("Fogonazo") );
+		assertTrue( algomon.contieneAtaque("Ataque rápido") );
 
 	}
 
@@ -61,10 +61,10 @@ public class AlgoMonBuilderTest {
 		assertTrue( algomon.getNombre().equals("Jigglypuff") );
 		assertEquals( 130, algomon.getVida(), 0 );
 
-		assertTrue( algomon instanceof AlgoMonNormal );
-		assertTrue( algomon.ataque1().getNombre().equals("Canto") );
-		assertTrue( algomon.ataque2().getNombre().equals("Burbuja") );
-		assertTrue( algomon.ataque3().getNombre().equals("Ataque Rápido") );
+		assertTrue( algomon.getTipo() instanceof Normal );
+		assertTrue( algomon.contieneAtaque("Canto") );
+		assertTrue( algomon.contieneAtaque("Burbuja") );
+		assertTrue( algomon.contieneAtaque("Ataque rápido") );
 
 	}
 
@@ -76,10 +76,10 @@ public class AlgoMonBuilderTest {
 		assertTrue( algomon.getNombre().equals("Rattata") );
 		assertEquals( 170, algomon.getVida(), 0 );
 
-		assertTrue( algomon instanceof AlgoMonNormal );
-		assertTrue( algomon.ataque1().getNombre().equals("Fogonazo") );
-		assertTrue( algomon.ataque2().getNombre().equals("Burbuja") );
-		assertTrue( algomon.ataque3().getNombre().equals("Ataque Rápido") );
+		assertTrue( algomon.getTipo() instanceof Normal );
+		assertTrue( algomon.contieneAtaque("Fogonazo") );
+		assertTrue( algomon.contieneAtaque("Burbuja") );
+		assertTrue( algomon.contieneAtaque("Ataque rápido") );
 
 	}
 
@@ -91,10 +91,10 @@ public class AlgoMonBuilderTest {
 		assertTrue( algomon.getNombre().equals("Squirtle") );
 		assertEquals( 150, algomon.getVida(), 0 );
 
-		assertTrue( algomon instanceof AlgoMonAgua );
-		assertTrue( algomon.ataque1().getNombre().equals("Burbuja") );
-		assertTrue( algomon.ataque2().getNombre().equals("Cañón de agua") );
-		assertTrue( algomon.ataque3().getNombre().equals("Ataque Rápido") );
+		assertTrue( algomon.getTipo() instanceof Agua );
+		assertTrue( algomon.contieneAtaque("Burbuja") );
+		assertTrue( algomon.contieneAtaque("Cañón de agua") );
+		assertTrue( algomon.contieneAtaque("Ataque rápido") );
 
 	}
 

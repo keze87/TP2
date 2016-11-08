@@ -55,12 +55,12 @@ public class AlgoMon {
 	public void ataque(String nombreAtaque, AlgoMon contrincante) {
 		try {
 
-			if(this.estado.puedeRealizarAccion()) {
+			if (this.estado.puedeRealizarAccion()) {
 				contrincante.recibirAtaque(this.ataques.get(nombreAtaque));
 				this.estado.accionRealizada();
 			}
 
-		} catch(NullPointerException e) {
+		} catch (NullPointerException e) {
 			throw new AlgoMonNoTieneAtaque(this.nombre + " no puede usar " + nombreAtaque + "!");
 		}
 	}
@@ -70,11 +70,11 @@ public class AlgoMon {
 	 * @param ataque ataque recibido de otro algoMon.
 	 */
 	public void recibirAtaque(Ataque ataque) {
-		//this.estado.setVida(estado.getVida() - ataque.aplicarAtaque(this));
 
 		Efecto efectoDelAtaque;
 
 		efectoDelAtaque = ataque.atacar(this);
+
 		this.estado = efectoDelAtaque.aplicar(this.estado);
 
 	}
@@ -95,16 +95,10 @@ public class AlgoMon {
 		return this.tipo;
 	}
 
-	public Ataque ataque1() {
-		return this.ataques.get(0);
-	}
+	public boolean contieneAtaque(String nombreAtaque) {
 
-	public Ataque ataque2() {
-		return this.ataques.get(1);
-	}
+		return this.ataques.containsKey(nombreAtaque);
 
-	public Ataque ataque3() {
-		return this.ataques.get(2);
 	}
 
 }
