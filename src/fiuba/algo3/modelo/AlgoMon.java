@@ -1,6 +1,7 @@
 package src.fiuba.algo3.modelo;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import src.fiuba.algo3.modelo.ataques.Ataque;
@@ -16,12 +17,12 @@ public class AlgoMon {
 	protected Map<String, Ataque> ataques;
 	protected Estado estado;
 
-	public AlgoMon(String nombre, int vidaMaxima, Ataque ataque1, Ataque ataque2, Ataque ataque3) {
+	public AlgoMon(String nombre, int vidaMaxima, List<Ataque> ataques) {
 
 		this.nombre = nombre;
 		this.vidaMaxima = vidaMaxima;
 		this.ataques = new HashMap<String, Ataque>();
-		this.agregarAtaques(ataque1, ataque2, ataque3);
+		this.agregarAtaques(ataques);
 		this.estado = new EstadoNormal(vidaMaxima);
 
 	}
@@ -32,10 +33,14 @@ public class AlgoMon {
 	}
 
 	/* Agrega los ataques al diccionario de ataques. */
-	private void agregarAtaques(Ataque ataque1, Ataque ataque2, Ataque ataque3) {
-		this.ataques.put(ataque1.getNombre(), ataque1);
-		this.ataques.put(ataque2.getNombre(), ataque2);
-		this.ataques.put(ataque3.getNombre(), ataque3);
+	private void agregarAtaques(List<Ataque> ataques) {
+
+		for (Ataque ataque : ataques) {
+
+			this.ataques.put(ataque.getNombre(), ataque);
+
+		}
+
 	}
 
 	/**

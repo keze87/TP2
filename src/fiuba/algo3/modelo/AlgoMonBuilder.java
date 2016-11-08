@@ -1,12 +1,13 @@
 package src.fiuba.algo3.modelo;
+
+import java.util.ArrayList;
+import java.util.List;
 import src.fiuba.algo3.modelo.ataques.Ataque;
 import src.fiuba.algo3.modelo.ataques.AtaqueBuilder;
 
 public class AlgoMonBuilder {
 
-	private Ataque ataque1;
-	private Ataque ataque2;
-	private Ataque ataque3;
+	private List<Ataque> ataques = new ArrayList<>();
 	private String nombre = "";
 	private int vida = 0;
 
@@ -14,8 +15,8 @@ public class AlgoMonBuilder {
 
 		AlgoMonBuilder builder = new AlgoMonBuilder();
 
-		builder.nombre("Bulbasaur").vida(140).ataque1(AtaqueBuilder.crearChupavidas()).
-		ataque2(AtaqueBuilder.crearLatigoCepa()).ataque3(AtaqueBuilder.crearAtaqueRapido());
+		builder.nombre("Bulbasaur").vida(140).ataque(AtaqueBuilder.crearChupavidas()).
+		ataque(AtaqueBuilder.crearLatigoCepa()).ataque(AtaqueBuilder.crearAtaqueRapido());
 
 		return builder.crearTipoPlanta();
 
@@ -24,8 +25,8 @@ public class AlgoMonBuilder {
 
 		AlgoMonBuilder builder = new AlgoMonBuilder();
 
-		builder.nombre("Chansey").vida(130).ataque1(AtaqueBuilder.crearCanto()).
-		ataque2(AtaqueBuilder.crearLatigoCepa()).ataque3(AtaqueBuilder.crearAtaqueRapido());
+		builder.nombre("Chansey").vida(130).ataque(AtaqueBuilder.crearCanto()).
+		ataque(AtaqueBuilder.crearLatigoCepa()).ataque(AtaqueBuilder.crearAtaqueRapido());
 
 		return builder.crearTipoNormal();
 
@@ -34,8 +35,8 @@ public class AlgoMonBuilder {
 
 		AlgoMonBuilder builder = new AlgoMonBuilder();
 
-		builder.nombre("Charmander").vida(170).ataque1(AtaqueBuilder.crearBrasas()).
-		ataque2(AtaqueBuilder.crearFogonazo()).ataque3(AtaqueBuilder.crearAtaqueRapido());
+		builder.nombre("Charmander").vida(170).ataque(AtaqueBuilder.crearBrasas()).
+		ataque(AtaqueBuilder.crearFogonazo()).ataque(AtaqueBuilder.crearAtaqueRapido());
 
 		return builder.crearTipoFuego();
 
@@ -44,8 +45,8 @@ public class AlgoMonBuilder {
 
 		AlgoMonBuilder builder = new AlgoMonBuilder();
 
-		builder.nombre("Jigglypuff").vida(130).ataque1(AtaqueBuilder.crearCanto()).
-		ataque2(AtaqueBuilder.crearBurbuja()).ataque3(AtaqueBuilder.crearAtaqueRapido());
+		builder.nombre("Jigglypuff").vida(130).ataque(AtaqueBuilder.crearCanto()).
+		ataque(AtaqueBuilder.crearBurbuja()).ataque(AtaqueBuilder.crearAtaqueRapido());
 
 		return builder.crearTipoNormal();
 
@@ -56,8 +57,8 @@ public class AlgoMonBuilder {
 
 		AlgoMonBuilder builder = new AlgoMonBuilder();
 
-		builder.nombre("Rattata").vida(170).ataque1(AtaqueBuilder.crearFogonazo()).
-		ataque2(AtaqueBuilder.crearBurbuja()).ataque3(AtaqueBuilder.crearAtaqueRapido());
+		builder.nombre("Rattata").vida(170).ataque(AtaqueBuilder.crearFogonazo()).
+		ataque(AtaqueBuilder.crearBurbuja()).ataque(AtaqueBuilder.crearAtaqueRapido());
 
 		return builder.crearTipoNormal();
 
@@ -67,32 +68,16 @@ public class AlgoMonBuilder {
 
 		AlgoMonBuilder builder = new AlgoMonBuilder();
 
-		builder.nombre("Squirtle").vida(150).ataque1(AtaqueBuilder.crearBurbuja()).
-		ataque2(AtaqueBuilder.crearCanionDeAgua()).ataque3(AtaqueBuilder.crearAtaqueRapido());
+		builder.nombre("Squirtle").vida(150).ataque(AtaqueBuilder.crearBurbuja()).
+		ataque(AtaqueBuilder.crearCanionDeAgua()).ataque(AtaqueBuilder.crearAtaqueRapido());
 
 		return builder.crearTipoAgua();
 
 	}
 
-	public AlgoMonBuilder ataque1(Ataque ataque) {
+	public AlgoMonBuilder ataque(Ataque ataque) {
 
-		this.ataque1 = ataque;
-
-		return this;
-
-	}
-
-	public AlgoMonBuilder ataque2(Ataque ataque) {
-
-		this.ataque2 = ataque;
-
-		return this;
-
-	}
-
-	public AlgoMonBuilder ataque3(Ataque ataque) {
-
-		this.ataque3 = ataque;
+		this.ataques.add(ataque);
 
 		return this;
 
@@ -116,25 +101,25 @@ public class AlgoMonBuilder {
 
 	public AlgoMon crearTipoAgua() {
 
-		return new AlgoMonAgua(nombre, vida, ataque1, ataque2, ataque3);
+		return new AlgoMonAgua(nombre, vida, ataques);
 
 	}
 
 	public AlgoMon crearTipoFuego() {
 
-		return new AlgoMonFuego(nombre, vida, ataque1, ataque2, ataque3);
+		return new AlgoMonFuego(nombre, vida, ataques);
 
 	}
 
 	public AlgoMon crearTipoNormal() {
 
-		return new AlgoMonNormal(nombre, vida, ataque1, ataque2, ataque3);
+		return new AlgoMonNormal(nombre, vida, ataques);
 
 	}
 
 	public AlgoMon crearTipoPlanta() {
 
-		return new AlgoMonPlanta(nombre, vida, ataque1, ataque2, ataque3);
+		return new AlgoMonPlanta(nombre, vida, ataques);
 
 	}
 
