@@ -1,7 +1,7 @@
 package src.fiuba.algo3.modelo;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import src.fiuba.algo3.modelo.ataques.Ataque;
 import src.fiuba.algo3.modelo.efectos.Efecto;
@@ -13,27 +13,29 @@ public class AlgoMon {
 	protected String nombre;
 	protected int vidaMaxima;
 	protected Tipo tipo;
-	protected List<Ataque> ataques;
+	protected Map<String, Ataque> ataques;
 	protected Estado estado;
 
 	public AlgoMon(String nombre, int vidaMaxima, Ataque ataque1, Ataque ataque2, Ataque ataque3) {
 
 		this.nombre = nombre;
 		this.vidaMaxima = vidaMaxima;
-		this.ataques = new ArrayList<Ataque>();
+		this.ataques = new HashMap<String, Ataque>();
 		this.agregarAtaques(ataque1, ataque2, ataque3);
 		this.estado = new EstadoNormal(vidaMaxima);
 
 	}
+
+	/* Devuelve el estado del algoMon. */
 	public Estado getEstado() {
 		return estado;
 	}
 
-	/* Agrega los ataques a la colección de ataques. */
+	/* Agrega los ataques al diccionario de ataques. */
 	private void agregarAtaques(Ataque ataque1, Ataque ataque2, Ataque ataque3) {
-		this.ataques.add(0, ataque1);
-		this.ataques.add(1, ataque2);
-		this.ataques.add(2, ataque3);
+		this.ataques.put(ataque1.getNombre(), ataque1);
+		this.ataques.put(ataque2.getNombre(), ataque2);
+		this.ataques.put(ataque3.getNombre(), ataque3);
 	}
 
 	/**
@@ -45,38 +47,22 @@ public class AlgoMon {
 	}
 
 	/**
-	 * Ataca a otro algoMon con el ataque seleccionado.
-	 * @param contrincante algoMon al cual se desea atacar.
+	 * Ataca a un algoMon con el ataque seleccionado. Si el algoMon atacante
+	 * no conoce el ataque, lanza una excepción.
+	 * @param nombreAtaque nombre del ataque.
+	 * @param contrincante algoMon a atacar.
 	 */
-	private void ataque(int numeroAtaque, AlgoMon contrincante) {
-		if(estado.puedeRealizarAccion()) {
-			contrincante.recibirAtaque(this.ataques.get(numeroAtaque));
-			estado.accionRealizada();
+	public void ataque(String nombreAtaque, AlgoMon contrincante) {
+		try {
+
+			if(this.estado.puedeRealizarAccion()) {
+				contrincante.recibirAtaque(this.ataques.get(nombreAtaque));
+				this.estado.accionRealizada();
+			}
+
+		} catch(NullPointerException e) {
+			throw new AlgoMonNoTieneAtaque(this.nombre + " no puede usar " + nombreAtaque + "!");
 		}
-	}
-
-	/**
-	 * Ataca a un algoMon con el primer ataque.
-	 * @param contrincante algoMon a atacar.
-	 */
-	public void ataque1(AlgoMon contrincante) {
-		this.ataque(0, contrincante);
-	}
-
-	/**
-	 * Ataca a un algoMon con el segundo ataque.
-	 * @param contrincante algoMon a atacar.
-	 */
-	public void ataque2(AlgoMon contrincante) {
-		this.ataque(1, contrincante);
-	}
-
-	/**
-	 * Ataca a un algoMon con el tercer ataque.
-	 * @param contrincante algoMon a atacar.
-	 */
-	public void ataque3(AlgoMon contrincante) {
-		this.ataque(2, contrincante);
 	}
 
 	/**
@@ -93,12 +79,16 @@ public class AlgoMon {
 
 	}
 
-	public String nombre() {
-		return nombre;
+	public String getNombre() {
+		return this.nombre;
+	}
+
+	public double getVidaMaxima() {
+		return this.vidaMaxima;
 	}
 
 	public double getVida() {
-		return estado.getVida();
+		return this.estado.getVida();
 	}
 
 	public Tipo getTipo() {

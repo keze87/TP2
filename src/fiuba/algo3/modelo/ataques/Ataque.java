@@ -28,14 +28,14 @@ public abstract class Ataque {
 	 * @param algoMon algoMon a atacar.
 	 * @return el daño provocado por el ataque.
 	 */
-	public double aplicarAtaque(AlgoMon algoMon) {
-		if(this.usosRestantes == 0) {
-			throw new AtaqueAgotado("No quedan más usos para este ataque!");
-		}
-
-		this.usosRestantes--;
-		return this.calcularDaño(algoMon);
-	}
+//	public double aplicarAtaque(AlgoMon algoMon) {
+//		if(this.usosRestantes == 0) {
+//			throw new AtaqueAgotado("No quedan más usos para este ataque!");
+//		}
+//
+//		this.usosRestantes--;
+//		return this.calcularDaño(algoMon);
+//	}
 
 	/**
 	 * Calcula el daño provocado a un algoMon dado.
@@ -46,10 +46,8 @@ public abstract class Ataque {
 		return Math.floor(this.potencia * this.tipo.getMultiplicadorContra(algoMon.getTipo()));
 	}
 
-	public String nombre() {
-
+	public String getNombre() {
 		return nombre;
-
 	}
 
 //	public double calcularDanioContraElTipo(Tipo tipo) {
