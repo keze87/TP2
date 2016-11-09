@@ -15,5 +15,5 @@ public abstract class EstadoAlterado extends Estado {
 		estadoAnterior.setVida(super.getVida());
 		return estadoAnterior;
 	}
-
+	
 }

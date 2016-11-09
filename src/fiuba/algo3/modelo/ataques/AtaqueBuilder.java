@@ -12,34 +12,47 @@ public class AtaqueBuilder {
 	private int potencia;
 	private int usosMaximos;
 	private Efecto efectoBase;
+	private Efecto efectoAtacante;
 
+	private AtaqueBuilder(String nombre, int potencia, int usosMaximos, Efecto efectoBase, Efecto efectoAtacante) {
+
+		this.nombre = nombre;
+		this.potencia = potencia;
+		this.usosMaximos = usosMaximos;
+		this.efectoBase = efectoBase;
+		this.efectoAtacante = efectoAtacante;
+
+	}
+	
 	private AtaqueBuilder(String nombre, int potencia, int usosMaximos, Efecto efectoBase) {
 
 		this.nombre = nombre;
 		this.potencia = potencia;
 		this.usosMaximos = usosMaximos;
 		this.efectoBase = efectoBase;
+		this.efectoAtacante = new SinEfecto();
+		
 
 	}
 
 	/* Crea un ataque de tipo fuego con los valores actuales de los atributos. */
 	private Ataque crearAtaqueFuego() {
-		return new AtaqueFuego(this.nombre, this.potencia, this.usosMaximos, this.efectoBase);
+		return new AtaqueFuego(this.nombre, this.potencia, this.usosMaximos, this.efectoBase, this.efectoAtacante);
 	}
 
 	/* Crea un ataque de tipo agua con los valores actuales de los atributos. */
 	private Ataque crearAtaqueAgua() {
-		return new AtaqueAgua(this.nombre, this.potencia, this.usosMaximos, this.efectoBase);
+		return new AtaqueAgua(this.nombre, this.potencia, this.usosMaximos, this.efectoBase, this.efectoAtacante);
 	}
 
 	/* Crea un ataque de tipo planta con los valores actuales de los atributos. */
 	private Ataque crearAtaquePlanta() {
-		return new AtaquePlanta(this.nombre, this.potencia, this.usosMaximos, this.efectoBase);
+		return new AtaquePlanta(this.nombre, this.potencia, this.usosMaximos, this.efectoBase, this.efectoAtacante);
 	}
 
 	/* Crea un ataque de tipo normal con los valores actuales de los atributos. */
 	private Ataque crearAtaqueNormal() {
-		return new AtaqueNormal(this.nombre, this.potencia, this.usosMaximos, this.efectoBase);
+		return new AtaqueNormal(this.nombre, this.potencia, this.usosMaximos, this.efectoBase, this.efectoAtacante);
 	}
 
 	/* Crea y devuelve una nueva instancia de Ataque correspondiente a Ataque Rápido. */
@@ -72,7 +85,7 @@ public class AtaqueBuilder {
 
 	/* Crea y devuelve una nueva instancia de Ataque correspondiente a Chupavidas. */
 	public static Ataque crearChupavidas() {
-		AtaqueBuilder builder = new AtaqueBuilder("Chupavidas", 15, 8, new Vampiro());
+		AtaqueBuilder builder = new AtaqueBuilder("Chupavidas", 15, 8,new SinEfecto(),new Vampiro());
 
 		return builder.crearAtaquePlanta();
 	}

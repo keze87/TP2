@@ -6,6 +6,7 @@ import java.util.Map;
 
 import src.fiuba.algo3.modelo.ataques.Ataque;
 import src.fiuba.algo3.modelo.efectos.Efecto;
+import src.fiuba.algo3.modelo.elementos.Elemento;
 import src.fiuba.algo3.modelo.estados.Estado;
 import src.fiuba.algo3.modelo.estados.EstadoNormal;
 
@@ -57,11 +58,12 @@ public class AlgoMon {
 	 * @param nombreAtaque nombre del ataque.
 	 * @param contrincante algoMon a atacar.
 	 */
-	public void ataque(String nombreAtaque, AlgoMon contrincante) {
+	public void ataque(String nombreAtaque, AlgoMon contrincante) throws AlgoMonNoTieneAtaque{
 		try {
 
 			if (this.estado.puedeRealizarAccion()) {
-				contrincante.recibirAtaque(this.ataques.get(nombreAtaque));
+				//contrincante.recibirAtaque(this.ataques.get(nombreAtaque));
+				this.recibirEfecto(this.ataques.get(nombreAtaque).atacar(contrincante));
 				this.estado.accionRealizada();
 			}
 
@@ -74,14 +76,15 @@ public class AlgoMon {
 	 * Aplica el daño resultante de recibir un ataque.
 	 * @param ataque ataque recibido de otro algoMon.
 	 */
-	public void recibirAtaque(Ataque ataque) {
-
-		Efecto efectoDelAtaque;
-
-		efectoDelAtaque = ataque.atacar(this);
-
-		this.estado = efectoDelAtaque.aplicar(this.estado);
-
+//	public void recibirAtaque(Ataque ataque) {
+//
+	//	this.recibirEfecto(ataque.atacar(this));
+//		
+//	}
+	public void recibirElemento(Elemento elemento){
+		if(this.estado.puedeRealizarAccion())
+		elemento.aplicar(this);
+		this.estado.accionRealizada();
 	}
 
 	public String getNombre() {
@@ -104,6 +107,10 @@ public class AlgoMon {
 
 		return this.ataques.containsKey(nombreAtaque);
 
+	}
+
+	public void recibirEfecto(Efecto efecto) {
+		this.estado=efecto.aplicar(this.estado);
 	}
 
 }

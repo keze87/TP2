@@ -13,14 +13,15 @@ public abstract class Ataque {
 	protected int usosRestantes;
 	protected Tipo tipo;
 	protected EfectoMultiple efecto;
-	protected Efecto efectoBase;
+	protected Efecto efectoBaseAlgoMonAtacado,efectoAlgoMonAtacante;
 
-	public Ataque(String nombre, int poder, int usosTotales, Efecto efectoBase) {
+	public Ataque(String nombre, int poder, int usosTotales, Efecto efectoBaseAtacado, Efecto efectoAtacante) {
 		this.nombre = nombre;
 		this.potencia = poder;
 		this.usosTotales = usosTotales;
 		this.usosRestantes = usosTotales;
-		this.efectoBase = efectoBase;
+		this.efectoBaseAlgoMonAtacado = efectoBaseAtacado;
+		this.efectoAlgoMonAtacante= efectoAtacante;
 	}
 
 	/**
@@ -53,18 +54,21 @@ public abstract class Ataque {
 //	public double calcularDanioContraElTipo(Tipo tipo) {
 //		return Math.floor(this.potencia * this.tipo.getMultiplicadorContra(tipo));
 //	}
-
+//Ataca a un algomon y devuelve el efecto sobre el atacante
 	public Efecto atacar(AlgoMon algoMon) throws AtaqueAgotado {
+		double vidaQuitada=this.calcularDaño(algoMon);
 		this.efecto = new EfectoMultiple();
-		this.efecto.agregarEfecto(this.efectoBase);
+		this.efecto.agregarEfecto(this.efectoBaseAlgoMonAtacado);
+		this.efectoAlgoMonAtacante.setVidaQuitadaAlOponente(vidaQuitada);
 
 		if(this.usosRestantes == 0) {
 			throw new AtaqueAgotado("No quedan más usos para este ataque!");
 		}
 
-		this.efecto.agregarEfecto(new QuitarVida(this.calcularDaño(algoMon)));
-
+		this.efecto.agregarEfecto(new QuitarVida(vidaQuitada));
+		
+		algoMon.recibirEfecto(efecto);
 		this.usosRestantes--;
-		return this.efecto;
+		return this.efectoAlgoMonAtacante;
 	}
 }
