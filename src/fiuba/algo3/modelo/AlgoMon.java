@@ -25,20 +25,29 @@ public class AlgoMon {
 		this.estado = new EstadoNormal(vidaMaxima);
 	}
 
+	/* Devuelve el nombre del algoMon. */
+	public String getNombre() {
+		return this.nombre;
+	}
+
+	/* Devuelve la vida máxima del algoMon. */
+	public double getVidaMaxima() {
+		return this.estado.getVidaMaxima();
+	}
+
+	/* Devuelve la vida actual del algoMon. */
+	public double getVida() {
+		return this.estado.getVida();
+	}
+
+	/* Devuelve el tipo del algoMon. */
+	public Tipo getTipo() {
+		return this.tipo;
+	}
+
 	/* Devuelve el estado del algoMon. */
 	public Estado getEstado() {
 		return estado;
-	}
-
-	/* Agrega los ataques al diccionario de ataques. */
-	private void agregarAtaques(List<Ataque> ataques) {
-
-		for (Ataque ataque : ataques) {
-
-			this.ataques.put(ataque.getNombre(), ataque);
-
-		}
-
 	}
 
 	/**
@@ -55,7 +64,7 @@ public class AlgoMon {
 	 * @param nombreAtaque nombre del ataque.
 	 * @param contrincante algoMon a atacar.
 	 */
-	public void ataque(String nombreAtaque, AlgoMon contrincante) throws AlgoMonNoTieneAtaque{
+	public void ataque(String nombreAtaque, AlgoMon contrincante) throws AlgoMonNoTieneAtaque {
 		try {
 
 			if (this.estado.puedeRealizarAccion()) {
@@ -73,11 +82,6 @@ public class AlgoMon {
 	 * Aplica el daño resultante de recibir un ataque.
 	 * @param ataque ataque recibido de otro algoMon.
 	 */
-	//	public void recibirAtaque(Ataque ataque) {
-	//
-	//	this.recibirEfecto(ataque.atacar(this));
-	//
-	//	}
 	public void recibirElemento(Elemento elemento){
 		if(this.estado.puedeRealizarAccion()) {
 			elemento.aplicar(this);
@@ -85,30 +89,28 @@ public class AlgoMon {
 		this.estado.accionRealizada();
 	}
 
-	public String getNombre() {
-		return this.nombre;
-	}
-
-	public double getVidaMaxima() {
-		return this.estado.getVidaMaxima();
-	}
-
-	public double getVida() {
-		return this.estado.getVida();
-	}
-
-	public Tipo getTipo() {
-		return this.tipo;
-	}
-
+	/**
+	 * Determina si el algoMon tiene un ataque dado.
+	 * @param nombreAtaque nombre del ataque.
+	 * @return true si tiene el ataque, sino false.
+	 */
 	public boolean contieneAtaque(String nombreAtaque) {
-
 		return this.ataques.containsKey(nombreAtaque);
-
 	}
 
+	/**
+	 * Aplica un efecto al estado del algoMon.
+	 * @param efecto efecto a aplicar.
+	 */
 	public void recibirEfecto(Efecto efecto) {
-		this.estado=efecto.aplicar(this.estado);
+		this.estado = efecto.aplicar(this.estado);
+	}
+
+	/* Agrega los ataques al diccionario de ataques. */
+	private void agregarAtaques(List<Ataque> ataques) {
+		for (Ataque ataque : ataques) {
+			this.ataques.put(ataque.getNombre(), ataque);
+		}
 	}
 
 }
