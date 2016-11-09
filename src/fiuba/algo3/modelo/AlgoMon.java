@@ -12,7 +12,6 @@ import src.fiuba.algo3.modelo.tipo.*;
 public class AlgoMon {
 
 	protected String nombre;
-	protected int vidaMaxima;
 	protected Tipo tipo;
 	protected Map<String, Ataque> ataques;
 	protected Estado estado;
@@ -20,7 +19,6 @@ public class AlgoMon {
 	public AlgoMon(String nombre, int vidaMaxima, List<Ataque> ataques, Tipo tipo) {
 
 		this.nombre = nombre;
-		this.vidaMaxima = vidaMaxima;
 		this.ataques = new HashMap<String, Ataque>();
 		this.agregarAtaques(ataques);
 		this.estado = new EstadoNormal(vidaMaxima);
@@ -93,7 +91,7 @@ public class AlgoMon {
 	}
 
 	public double getVidaMaxima() {
-		return this.vidaMaxima;
+		return this.estado.getVidaMaxima();
 	}
 
 	public double getVida() {

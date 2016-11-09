@@ -4,6 +4,7 @@ public final class EstadoNormal extends Estado {
 
 	public EstadoNormal(double d) {
 		super.setVida(d);
+		super.setVidaMaxima(d);
 	}
 
 	@Override

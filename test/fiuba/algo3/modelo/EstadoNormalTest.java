@@ -29,10 +29,14 @@ public class EstadoNormalTest {
 	@Test
 	public void testAumentarVida() {
 		estado = new EstadoNormal(170);
-		estado.aumentarVida(10);
 
-		assertEquals(180, estado.getVida(), 0.01);
-		assertEquals(180,estado.getVida(),0.01);
+		estado.aumentarVida(10);
+		assertEquals(170, estado.getVida(), 0.01);
+
+		estado.quitarVida(20);
+		assertEquals(150,estado.getVida(),0.01);
+		estado.aumentarVida(10);
+		assertEquals(160, estado.getVida(), 0.01);
 	}
 
 	@Test
