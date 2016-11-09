@@ -3,11 +3,13 @@ package src.fiuba.algo3.modelo;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import src.fiuba.algo3.modelo.ataques.Ataque;
 import src.fiuba.algo3.modelo.efectos.Efecto;
 import src.fiuba.algo3.modelo.elementos.Elemento;
-import src.fiuba.algo3.modelo.estados.*;
-import src.fiuba.algo3.modelo.tipo.*;
+import src.fiuba.algo3.modelo.estados.Estado;
+import src.fiuba.algo3.modelo.estados.EstadoNormal;
+import src.fiuba.algo3.modelo.tipo.Tipo;
 
 public class AlgoMon {
 
@@ -16,14 +18,11 @@ public class AlgoMon {
 	protected Map<String, Ataque> ataques;
 	protected Estado estado;
 
-	public AlgoMon(String nombre, int vidaMaxima, List<Ataque> ataques, Tipo tipo) {
-
+	public AlgoMon(String nombre, int vidaMaxima, List<Ataque> ataques) {
 		this.nombre = nombre;
 		this.ataques = new HashMap<String, Ataque>();
 		this.agregarAtaques(ataques);
 		this.estado = new EstadoNormal(vidaMaxima);
-		this.tipo = tipo;
-
 	}
 
 	/* Devuelve el estado del algoMon. */
