@@ -3,6 +3,7 @@ package test.fiuba.algo3.modelo;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import src.fiuba.algo3.modelo.*;
+import src.fiuba.algo3.modelo.tipo.*;
 
 public class AlgoMonBuilderTest {
 

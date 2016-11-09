@@ -4,11 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import src.fiuba.algo3.modelo.Agua;
-import src.fiuba.algo3.modelo.Fuego;
-import src.fiuba.algo3.modelo.Normal;
-import src.fiuba.algo3.modelo.Planta;
-import src.fiuba.algo3.modelo.Tipo;
+import  src.fiuba.algo3.modelo.tipo.*;
 
 public class TipoTests {
 

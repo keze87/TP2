@@ -1,25 +1,25 @@
-package src.fiuba.algo3.modelo;
+package src.fiuba.algo3.modelo.tipo;
 
-public class Agua implements Tipo {
+public class Normal implements Tipo {
 
 	@Override
 	public float getMultiplicadorContra(Tipo tipo) {
-		return tipo.getMultiplicadorContra(this);
+		return 1f;
 	}
 
 	@Override
 	public float getMultiplicadorContra(Fuego tipo) {
-		return 0.5f;
+		return 1f;
 	}
 
 	@Override
 	public float getMultiplicadorContra(Agua tipo) {
-		return 0.5f;
+		return 1f;
 	}
 
 	@Override
 	public float getMultiplicadorContra(Planta tipo) {
-		return 2f;
+		return 1f;
 	}
 
 	@Override

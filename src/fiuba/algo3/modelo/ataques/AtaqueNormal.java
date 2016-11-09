@@ -1,6 +1,6 @@
 package src.fiuba.algo3.modelo.ataques;
 
-import src.fiuba.algo3.modelo.Normal;
+import src.fiuba.algo3.modelo.tipo.Normal;
 import src.fiuba.algo3.modelo.efectos.Efecto;
 
 public class AtaqueNormal extends Ataque {

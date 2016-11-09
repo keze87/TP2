@@ -1,6 +1,6 @@
 package src.fiuba.algo3.modelo.ataques;
 
-import src.fiuba.algo3.modelo.Agua;
+import src.fiuba.algo3.modelo.tipo.Agua;
 import src.fiuba.algo3.modelo.efectos.Efecto;
 
 public class AtaqueAgua extends Ataque {

@@ -3,12 +3,11 @@ package src.fiuba.algo3.modelo;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import src.fiuba.algo3.modelo.ataques.Ataque;
 import src.fiuba.algo3.modelo.efectos.Efecto;
 import src.fiuba.algo3.modelo.elementos.Elemento;
-import src.fiuba.algo3.modelo.estados.Estado;
-import src.fiuba.algo3.modelo.estados.EstadoNormal;
+import src.fiuba.algo3.modelo.estados.*;
+import src.fiuba.algo3.modelo.tipo.*;
 
 public class AlgoMon {
 
@@ -18,13 +17,14 @@ public class AlgoMon {
 	protected Map<String, Ataque> ataques;
 	protected Estado estado;
 
-	public AlgoMon(String nombre, int vidaMaxima, List<Ataque> ataques) {
+	public AlgoMon(String nombre, int vidaMaxima, List<Ataque> ataques, Tipo tipo) {
 
 		this.nombre = nombre;
 		this.vidaMaxima = vidaMaxima;
 		this.ataques = new HashMap<String, Ataque>();
 		this.agregarAtaques(ataques);
 		this.estado = new EstadoNormal(vidaMaxima);
+		this.tipo = tipo;
 
 	}
 
@@ -76,14 +76,15 @@ public class AlgoMon {
 	 * Aplica el daño resultante de recibir un ataque.
 	 * @param ataque ataque recibido de otro algoMon.
 	 */
-//	public void recibirAtaque(Ataque ataque) {
-//
+	//	public void recibirAtaque(Ataque ataque) {
+	//
 	//	this.recibirEfecto(ataque.atacar(this));
-//		
-//	}
+	//
+	//	}
 	public void recibirElemento(Elemento elemento){
-		if(this.estado.puedeRealizarAccion())
-		elemento.aplicar(this);
+		if(this.estado.puedeRealizarAccion()) {
+			elemento.aplicar(this);
+		}
 		this.estado.accionRealizada();
 	}
 

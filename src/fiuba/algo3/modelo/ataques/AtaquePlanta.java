@@ -1,7 +1,7 @@
 package src.fiuba.algo3.modelo.ataques;
 
-import src.fiuba.algo3.modelo.Planta;
 import src.fiuba.algo3.modelo.efectos.Efecto;
+import src.fiuba.algo3.modelo.tipo.Planta;
 
 public class AtaquePlanta extends Ataque {
 

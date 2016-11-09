@@ -1,4 +1,4 @@
-package src.fiuba.algo3.modelo;
+package src.fiuba.algo3.modelo.tipo;
 
 public interface Tipo {
 	/**

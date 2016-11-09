@@ -1,6 +1,6 @@
 package src.fiuba.algo3.modelo.ataques;
 
-import src.fiuba.algo3.modelo.Fuego;
+import src.fiuba.algo3.modelo.tipo.Fuego;
 import src.fiuba.algo3.modelo.efectos.Efecto;
 
 
