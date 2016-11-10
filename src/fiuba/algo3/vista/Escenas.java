@@ -1,7 +1,8 @@
 package src.fiuba.algo3.vista;
 
 import javafx.animation.FadeTransition;
-import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -30,6 +31,13 @@ public class Escenas {
 				BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER,
 				BackgroundSize.DEFAULT);
 
+		// Lista de botones
+		VBox botones = new VBox(20);
+		Button unJugador = new Boton("Un jugador");
+		Button dosJugadores = new Boton("Dos jugadores");
+		Button cheat = new Boton("Cheat Code");
+		Button salir = new Boton("Salir");
+
 		//Logo
 		Image imagenLogo = new Image("file:src/fiuba/algo3/vista/Imagenes/Logo.png");
 		ImageView logo = new ImageView(imagenLogo);
@@ -40,14 +48,16 @@ public class Escenas {
 		ft.setCycleCount(1);
 		ft.setAutoReverse(false);
 		ft.play();
+		ft.setOnFinished(
+				new EventHandler<ActionEvent>() {
 
-		// Lista de botones
-		VBox botones = new VBox(20);
-		Button unJugador = new Boton("Un jugador");
-		Button dosJugadores = new Boton("Dos jugadores");
-		Button cheat = new Boton("Cheat Code");
-		Button salir = new Boton("Salir");
-		botones.getChildren().addAll(unJugador, dosJugadores, cheat, salir);
+					@Override
+					public void handle(ActionEvent event) {
+						botones.getChildren().addAll(unJugador, dosJugadores, cheat, salir);
+						primaryStage.show();
+					}
+				}
+				);
 
 		listaLateral.setTop(logo);
 		listaLateral.setBottom(botones);
