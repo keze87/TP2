@@ -58,6 +58,6 @@ public abstract class Ataque {
 
 	/* Determina si el ataque tiene usos restantes. */
 	private boolean quedanUsos() {
-		return this.usosRestantes == 0;
+		return this.usosRestantes > 0;
 	}
 }

@@ -17,22 +17,21 @@ public class QuemadoTest {
 
 	@Test
 	public void testPuedeRealizarAccionSiempreTrue() {
-		quemado = new Quemado(estadoAnterior);
-		assertTrue(quemado.puedeRealizarAccion());
+		this.quemado = new Quemado(this.estadoAnterior);
+		assertTrue(this.quemado.puedeRealizarAccion());
 	}
 
 	@Test
 	public void testAccionRealizadaQuitaVida() {
-		quemado = new Quemado(estadoAnterior);
-		quemado.accionRealizada();
-		assertEquals(153, quemado.getVida(), 0.01);
+		this.quemado = new Quemado(this.estadoAnterior);
+		this.quemado.accionRealizada();
+		assertEquals(this.estadoAnterior.getVidaMaxima() - 17, this.quemado.getVida(), 0.01);
 	}
-
 
 	@Test
 	public void testVolverEstadoAnterior() {
-		quemado = new Quemado(estadoAnterior);
-		assertSame(estadoAnterior, quemado.volverEstadoAnterior());
+		this.quemado = new Quemado(this.estadoAnterior);
+		assertSame(this.estadoAnterior, this.quemado.volverEstadoAnterior());
 	}
 
 }
