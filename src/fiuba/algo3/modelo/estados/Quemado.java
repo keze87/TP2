@@ -3,8 +3,9 @@ package src.fiuba.algo3.modelo.estados;
 public final class Quemado extends EstadoAlterado {
 
 	public Quemado(Estado estadoAnterior) {
-		this.setEstadoAnterior(estadoAnterior);
-		this.setVida(estadoAnterior.getVida());
+		this.estadoAnterior = estadoAnterior;
+		this.vida = estadoAnterior.getVida();
+		this.vidaMaxima = estadoAnterior.getVidaMaxima();
 	}
 
 	@Override
@@ -15,7 +16,7 @@ public final class Quemado extends EstadoAlterado {
 	@Override
 	public void accionRealizada() {
 		this.getEstadoAnterior().accionRealizada();
-		this.quitarVida(this.getVida() * 0.10);
+		this.quitarVida(this.vidaMaxima * 0.10);
 	}
 
 }

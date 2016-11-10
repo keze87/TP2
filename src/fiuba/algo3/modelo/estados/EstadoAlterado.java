@@ -1,7 +1,7 @@
 package src.fiuba.algo3.modelo.estados;
 
 public abstract class EstadoAlterado extends Estado {
-	private Estado estadoAnterior;
+	protected Estado estadoAnterior;
 
 	protected Estado getEstadoAnterior() {
 		return estadoAnterior;
@@ -15,5 +15,5 @@ public abstract class EstadoAlterado extends Estado {
 		estadoAnterior.setVida(super.getVida());
 		return estadoAnterior;
 	}
-	
+
 }

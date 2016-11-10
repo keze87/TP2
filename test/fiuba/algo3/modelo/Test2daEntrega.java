@@ -1,6 +1,7 @@
 package test.fiuba.algo3.modelo;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 import org.junit.Test;
 
@@ -110,10 +111,78 @@ public class Test2daEntrega {
 		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
 		AlgoMon rattata = AlgoMonBuilder.crearRattata();
 		AlgoMon bulbasaur = AlgoMonBuilder.crearBulbasaur();
+		AlgoMon squirtle = AlgoMonBuilder.crearSquirtle();
 
 		charmander.ataque("Fogonazo", bulbasaur);
 		assertEquals(bulbasaur.getVidaMaxima() - 4, bulbasaur.getVida(), 0.0001D);
 
+		bulbasaur.ataque("Ataque rápido", charmander);
+		assertEquals(bulbasaur.getVidaMaxima() - 18, bulbasaur.getVida(), 0.0001D);
+
+		bulbasaur.ataque("Ataque rápido", charmander);
+		assertEquals(bulbasaur.getVidaMaxima() - 32, bulbasaur.getVida(), 0.0001D);
+
+		bulbasaur.ataque("Ataque rápido", charmander);
+		assertEquals(bulbasaur.getVidaMaxima() - 46, bulbasaur.getVida(), 0.0001D);
+
+		bulbasaur.ataque("Ataque rápido", charmander);
+		assertEquals(bulbasaur.getVidaMaxima() - 60, bulbasaur.getVida(), 0.0001D);
+
+		bulbasaur.ataque("Ataque rápido", charmander);
+		assertEquals(bulbasaur.getVidaMaxima() - 74, bulbasaur.getVida(), 0.0001D);
+
+		bulbasaur.ataque("Ataque rápido", charmander);
+		assertEquals(bulbasaur.getVidaMaxima() - 88, bulbasaur.getVida(), 0.0001D);
+
+		bulbasaur.ataque("Ataque rápido", charmander);
+		assertEquals(bulbasaur.getVidaMaxima() - 102, bulbasaur.getVida(), 0.0001D);
+
+		bulbasaur.ataque("Ataque rápido", charmander);
+		assertEquals(bulbasaur.getVidaMaxima() - 116, bulbasaur.getVida(), 0.0001D);
+
+		bulbasaur.ataque("Ataque rápido", charmander);
+		assertEquals(bulbasaur.getVidaMaxima() - 130, bulbasaur.getVida(), 0.0001D);
+
+		bulbasaur.ataque("Ataque rápido", charmander);
+		assertEquals(bulbasaur.getVidaMaxima() - 140, bulbasaur.getVida(), 0.0001D);
+
+		assertFalse(bulbasaur.estaVivo());
+
+
+		rattata.ataque("Fogonazo", squirtle);
+		assertEquals(squirtle.getVidaMaxima() - 1, squirtle.getVida(), 0.0001D);
+
+		squirtle.ataque("Burbuja", rattata);
+		assertEquals(squirtle.getVidaMaxima() - 16, squirtle.getVida(), 0.0001D);
+
+		squirtle.ataque("Burbuja", rattata);
+		assertEquals(squirtle.getVidaMaxima() - 31, squirtle.getVida(), 0.0001D);
+
+		squirtle.ataque("Burbuja", rattata);
+		assertEquals(squirtle.getVidaMaxima() - 46, squirtle.getVida(), 0.0001D);
+
+		squirtle.ataque("Burbuja", rattata);
+		assertEquals(squirtle.getVidaMaxima() - 61, squirtle.getVida(), 0.0001D);
+
+		squirtle.ataque("Burbuja", rattata);
+		assertEquals(squirtle.getVidaMaxima() - 76, squirtle.getVida(), 0.0001D);
+
+		squirtle.ataque("Burbuja", rattata);
+		assertEquals(squirtle.getVidaMaxima() - 91, squirtle.getVida(), 0.0001D);
+
+		squirtle.ataque("Burbuja", rattata);
+		assertEquals(squirtle.getVidaMaxima() - 106, squirtle.getVida(), 0.0001D);
+
+		squirtle.ataque("Burbuja", rattata);
+		assertEquals(squirtle.getVidaMaxima() - 121, squirtle.getVida(), 0.0001D);
+
+		squirtle.ataque("Burbuja", rattata);
+		assertEquals(squirtle.getVidaMaxima() - 136, squirtle.getVida(), 0.0001D);
+
+		squirtle.ataque("Burbuja", rattata);
+		assertEquals(squirtle.getVidaMaxima() - 150, squirtle.getVida(), 0.0001D);
+
+		assertFalse(squirtle.estaVivo());
 	}
 
 }

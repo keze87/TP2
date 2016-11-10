@@ -1,6 +1,6 @@
 package test.fiuba.algo3.modelo;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
@@ -13,6 +13,7 @@ import src.fiuba.algo3.modelo.estados.EstadoNormal;
 
 public class EfectoMultipleTest {
 	private EfectoMultiple efecto;
+
 	@Test
 	public void testAplicar() {
 		efecto= new EfectoMultiple();
@@ -23,11 +24,10 @@ public class EfectoMultipleTest {
 		efecto.agregarEfecto(new Quemar());
 		nuevoEstado = efecto.aplicar(estado);
 		nuevoEstado.accionRealizada();
-		
-		assertEquals(63,nuevoEstado.getVida(),0.01);
-		
-		
+
+		assertEquals(53,nuevoEstado.getVida(),0.01);
 	}
+
 	@Test
 	public void testAplicarSinEfecto() {
 		efecto= new EfectoMultiple();
@@ -38,10 +38,8 @@ public class EfectoMultipleTest {
 		estado.accionRealizada();
 		estado = efecto.aplicar(estado);
 		estado.accionRealizada();
-		
+
 		assertEquals(120,estado.getVida(),0.01);
-		
-		
 	}
 
 }

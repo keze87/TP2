@@ -4,8 +4,9 @@ public final class Dormido extends EstadoAlterado {
 	private int turnosRestantes;
 
 	public Dormido(Estado estadoAnterior) {
-		this.setEstadoAnterior(estadoAnterior);
-		this.setVida(estadoAnterior.getVida());
+		this.estadoAnterior = estadoAnterior;
+		this.vida = estadoAnterior.getVida();
+		this.vidaMaxima = estadoAnterior.getVidaMaxima();
 		this.turnosRestantes = 3;
 	}
 
