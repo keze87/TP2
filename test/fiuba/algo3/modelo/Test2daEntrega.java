@@ -53,11 +53,11 @@ public class Test2daEntrega {
 		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
 
 		charmander.ataque("Brasas", bulbasaur);
-		assertEquals(bulbasaur.getVidaMaxima() - 32 , bulbasaur.getVida(), 0.0001D);
+		assertEquals(bulbasaur.getVidaMaxima() - 32, bulbasaur.getVida(), 0.0001D);
 
 		bulbasaur.ataque("Chupavidas", charmander);
 		assertEquals(charmander.getVidaMaxima() - 7, charmander.getVida(), 0.0001D);
-		assertEquals(bulbasaur.getVida() , (bulbasaur.getVidaMaxima() - 32) + 2, 0.0001D);
+		assertEquals(bulbasaur.getVida(), (bulbasaur.getVidaMaxima() - 32) + 2, 0.0001D);
 	}
 
 	@Test
@@ -66,14 +66,14 @@ public class Test2daEntrega {
 		AlgoMon squirtle = AlgoMonBuilder.crearSquirtle();
 
 		squirtle.ataque("Burbuja", bulbasaur);
-		assertEquals(bulbasaur.getVidaMaxima() - 5 , bulbasaur.getVida(), 0.0001D);
+		assertEquals(bulbasaur.getVidaMaxima() - 5, bulbasaur.getVida(), 0.0001D);
 
 		squirtle.ataque("Cañón de agua", bulbasaur);
-		assertEquals(bulbasaur.getVidaMaxima() - 15 , bulbasaur.getVida(), 0.0001D);
+		assertEquals(bulbasaur.getVidaMaxima() - 15, bulbasaur.getVida(), 0.0001D);
 
 		bulbasaur.ataque("Chupavidas", squirtle);
 		assertEquals(squirtle.getVidaMaxima() - 30, squirtle.getVida(), 0.0001D);
-		assertEquals(bulbasaur.getVida() , (bulbasaur.getVidaMaxima() - 15) + 9, 0.0001D);
+		assertEquals(bulbasaur.getVida(), (bulbasaur.getVidaMaxima() - 15) + 9, 0.0001D);
 	}
 
 	@Test
@@ -84,17 +84,17 @@ public class Test2daEntrega {
 		AlgoMon chansey = AlgoMonBuilder.crearChansey();
 
 		ratata.ataque("Ataque rápido", bulbasaur);
-		assertEquals(bulbasaur.getVida() ,bulbasaur.getVidaMaxima() - 10, 0.0001D);
+		assertEquals(bulbasaur.getVida(), bulbasaur.getVidaMaxima() - 10, 0.0001D);
 
 		chansey.ataque("Ataque rápido", bulbasaur);
-		assertEquals(bulbasaur.getVida() ,bulbasaur.getVidaMaxima() - 20, 0.0001D);
+		assertEquals(bulbasaur.getVida(), bulbasaur.getVidaMaxima() - 20, 0.0001D);
 
 		jigglypuff.ataque("Ataque rápido", bulbasaur);
-		assertEquals(bulbasaur.getVida() ,bulbasaur.getVidaMaxima() - 30, 0.0001D);
+		assertEquals(bulbasaur.getVida(), bulbasaur.getVidaMaxima() - 30, 0.0001D);
 
 		bulbasaur.ataque("Chupavidas", ratata);
-		assertEquals(ratata.getVida() ,ratata.getVidaMaxima() - 15, 0.0001D);
-		assertEquals(bulbasaur.getVida() , (bulbasaur.getVidaMaxima() - 30) + 4, 0.0001D);
+		assertEquals(ratata.getVida(), ratata.getVidaMaxima() - 15, 0.0001D);
+		assertEquals(bulbasaur.getVida(), (bulbasaur.getVidaMaxima() - 30) + 4, 0.0001D);
 
 		bulbasaur.ataque("Chupavidas", chansey);
 		assertEquals(chansey.getVida() ,chansey.getVidaMaxima() - 15, 0.0001D);
@@ -107,6 +107,12 @@ public class Test2daEntrega {
 
 	@Test
 	public void test05AlgoMonQuemadoPierde10PorcientoDeSuVidaMaximaPorTurno() {
+		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
+		AlgoMon rattata = AlgoMonBuilder.crearRattata();
+		AlgoMon bulbasaur = AlgoMonBuilder.crearBulbasaur();
+
+		charmander.ataque("Fogonazo", bulbasaur);
+		assertEquals(bulbasaur.getVidaMaxima() - 4, bulbasaur.getVida(), 0.0001D);
 
 	}
 
