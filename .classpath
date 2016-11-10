@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry excluding="build/**|libs/**|test/fiuba/algo3/modelo/AtaqueTest.java" kind="src" path=""/>
+	<classpathentry excluding="build/**|libs/**" kind="src" path=""/>
 	<classpathentry kind="lib" path="libs/analysis/ant.jar"/>
 	<classpathentry kind="lib" path="libs/analysis/asm.jar"/>
 	<classpathentry kind="lib" path="libs/analysis/dom4j.jar"/>
