@@ -8,7 +8,7 @@ public abstract class Estado {
 
 		if ( vidaMaxima >= (vida + cantidad) ) {
 
-			vida += cantidad;
+			vida += Math.floor(cantidad);
 
 		} else {
 
