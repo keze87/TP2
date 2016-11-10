@@ -87,6 +87,7 @@ public class ElementosTest {
 		charmander.ataque("Brasas", squirtle);
 		assertEquals((squirtle.getVidaMaxima() - 80), squirtle.getVida(), 0.0001D);
 
+		// ??? Esto está mal.
 		charmander = AlgoMonBuilder.crearCharmander();
 
 		charmander.ataque("Brasas", squirtle);

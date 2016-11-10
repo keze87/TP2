@@ -65,7 +65,7 @@ public class AtaqueBuilder {
 
 	/* Crea y devuelve una nueva instancia de Ataque correspondiente a Chupavidas. */
 	public static Ataque crearChupavidas() {
-		AtaqueBuilder builder = new AtaqueBuilder("Chupavidas", 15, 8,new SinEfecto(),new Vampiro());
+		AtaqueBuilder builder = new AtaqueBuilder("Chupavidas", 15, 8, new SinEfecto(), new Vampiro());
 
 		return builder.crearAtaquePlanta();
 	}
