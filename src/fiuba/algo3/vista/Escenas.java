@@ -3,6 +3,8 @@ package src.fiuba.algo3.vista;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -13,7 +15,7 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -32,18 +34,23 @@ public class Escenas {
 				BackgroundSize.DEFAULT);
 
 		// Lista de botones
-		VBox botones = new VBox(20);
+		HBox botones = new HBox(20);
 		Button unJugador = new Boton("Un jugador");
 		Button dosJugadores = new Boton("Dos jugadores");
 		Button cheat = new Boton("Cheat Code");
 		Button salir = new Boton("Salir");
+		botones.setPadding(new Insets(40));
+		botones.setAlignment(Pos.CENTER);
 
 		//al pulsar en salir sale del juego
 		salirDelJuego(salir);
 
 		//Logo
 		Image imagenLogo = new Image("file:src/fiuba/algo3/vista/Imagenes/Logo.png");
-		ImageView logo = new ImageView(imagenLogo);
+		ImageView logoView = new ImageView(imagenLogo);
+		HBox logo = new HBox(logoView);
+		logo.setPadding(new Insets(20));
+		logo.setAlignment(Pos.CENTER);
 
 		FadeTransition ft = new FadeTransition(Duration.millis(3000), logo);
 		ft.setFromValue(0);
@@ -83,7 +90,5 @@ public class Escenas {
 		});
 
 	}
-
-
 
 }
