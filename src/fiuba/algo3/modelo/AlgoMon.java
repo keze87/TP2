@@ -114,4 +114,10 @@ public class AlgoMon {
 		}
 	}
 
+	public void recibirAtaque(Ataque ataque) {
+
+		this.recibirEfecto(ataque.atacar(this));
+
+	}
+
 }
