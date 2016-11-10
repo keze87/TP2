@@ -24,6 +24,116 @@ import javafx.util.Duration;
 
 public class Escenas {
 
+	private static String ruta = "file:src/fiuba/algo3/vista/Imagenes/";
+
+	public static void Introduccion(Stage primaryStage) {
+
+		StackPane layout = new StackPane();
+		HBox fila = new HBox();
+		HBox fila2 = new HBox();
+		Image algomonImagen;
+		ImageView algomon;
+		ImageView question;
+		ImageView nope = new ImageView(new Image(ruta + "Nope.png"));
+		FadeTransition ft = new FadeTransition(Duration.millis(3000), fila);
+		FadeTransition ft2 = new FadeTransition(Duration.millis(1000), layout);
+		FadeTransition ft3 = new FadeTransition(Duration.millis(3000), layout);
+
+		fila.setAlignment(Pos.CENTER);
+		fila2.setAlignment(Pos.CENTER);
+
+		algomonImagen = new Image(ruta + "Pikachu.gif");
+
+		algomon = new ImageView(algomonImagen);
+		algomon.setFitHeight(algomonImagen.getHeight() * 1.5);
+		algomon.setFitWidth(algomonImagen.getWidth() * 1.5);
+		algomon.setPreserveRatio(true);
+
+		question = new ImageView(
+				new Image(ruta + "Question.png"));
+		question.setFitHeight(algomon.getFitHeight());
+		question.setFitWidth(algomon.getFitWidth());
+		question.setPreserveRatio(true);
+
+		ft.setFromValue(0);
+		ft.setToValue(1);
+		ft.setCycleCount(1);
+		ft.setAutoReverse(false);
+		ft.play();
+		ft.setOnFinished(
+				new EventHandler<ActionEvent>() {
+
+					@Override
+					public void handle(ActionEvent event) {
+
+						layout.getChildren().add(nope);
+
+						ft2.play();
+
+					}
+				}
+				);
+
+		ft2.setFromValue(1);
+		ft2.setToValue(0);
+		ft2.setCycleCount(1);
+		ft2.setAutoReverse(false);
+		ft2.setOnFinished(
+				new EventHandler<ActionEvent>() {
+
+					@Override
+					public void handle(ActionEvent event) {
+
+						algomon.setImage(new Image(ruta + "Gengar.gif"));
+						fila2.getChildren().addAll(algomon, question);
+						layout.getChildren().clear();
+						layout.getChildren().add(fila2);
+
+						ft3.play();
+
+					}
+				}
+				);
+
+		ft3.setFromValue(0);
+		ft3.setToValue(1);
+		ft3.setCycleCount(1);
+		ft3.setAutoReverse(false);
+		ft3.setOnFinished(
+				new EventHandler<ActionEvent>() {
+
+					@Override
+					public void handle(ActionEvent event) {
+
+						layout.getChildren().add(nope);
+
+					}
+				}
+				);
+
+		fila.getChildren().addAll(algomon, question);
+
+		layout.getChildren().add(fila);
+
+		Scene intro = new Scene(layout, 1024, 768, Color.BLACK);
+
+		intro.setOnKeyPressed(
+				new EventHandler<KeyEvent>() {
+
+					@Override
+					public void handle(KeyEvent event) {
+
+						Escenas.MenuPrincipal(primaryStage); // Al presionar tecla, avanza
+
+					}
+				}
+				);
+
+		primaryStage.setScene(intro);
+		primaryStage.show();
+
+	}
+
 	public static void MenuPrincipal(Stage primaryStage) {
 
 		BorderPane layout = new BorderPane();
@@ -31,7 +141,7 @@ public class Escenas {
 		BarraMenu barraMenu = new BarraMenu();
 
 		// Imagen de fondo
-		Image imagenFondo = new Image("file:src/fiuba/algo3/vista/Imagenes/Fondo.png");
+		Image imagenFondo = new Image(ruta + "Fondo.png");
 		BackgroundImage fondo = new BackgroundImage(imagenFondo,
 				BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER,
 				BackgroundSize.DEFAULT);
@@ -49,7 +159,7 @@ public class Escenas {
 		salirDelJuego(salir);
 
 		//Logo
-		Image imagenLogo = new Image("file:src/fiuba/algo3/vista/Imagenes/Logo.png");
+		Image imagenLogo = new Image(ruta +"Logo.png");
 		ImageView logoView = new ImageView(imagenLogo);
 		HBox logo = new HBox(logoView);
 		logo.setPadding(new Insets(20));
@@ -92,66 +202,6 @@ public class Escenas {
 			}
 
 		});
-
-	}
-
-	public static void Introduccion(Stage primaryStage) {
-
-		StackPane layout = new StackPane();
-		HBox fila = new HBox();
-		fila.setAlignment(Pos.CENTER);
-
-		Image algomonImagen = new Image("file:src/fiuba/algo3/vista/Imagenes/Pikachu.gif");
-
-		ImageView algomon = new ImageView(algomonImagen);
-		algomon.setFitHeight(algomonImagen.getHeight() * 1.5);
-		algomon.setFitWidth(algomonImagen.getWidth() * 1.5);
-		algomon.setPreserveRatio(true);
-
-		ImageView question = new ImageView(
-				new Image ("file:src/fiuba/algo3/vista/Imagenes/Question.png"));
-		question.setFitHeight(algomon.getFitHeight());
-		question.setFitWidth(algomon.getFitWidth());
-		question.setPreserveRatio(true);
-
-		FadeTransition ft = new FadeTransition(Duration.millis(3000), fila);
-		ft.setFromValue(0);
-		ft.setToValue(1);
-		ft.setCycleCount(1);
-		ft.setAutoReverse(false);
-		ft.play();
-		ft.setOnFinished(
-				new EventHandler<ActionEvent>() {
-
-					@Override
-					public void handle(ActionEvent event) {
-
-						//Faltan muchas cosas
-
-					}
-				}
-				);
-
-		fila.getChildren().addAll(algomon, question);
-
-		layout.getChildren().add(fila);
-
-		Scene intro = new Scene(layout, 1024, 768, Color.BLACK);
-
-		intro.setOnKeyPressed(
-				new EventHandler<KeyEvent>() {
-
-					@Override
-					public void handle(KeyEvent event) {
-
-						Escenas.MenuPrincipal(primaryStage); // Al presionar tecla, avanza
-
-					}
-				}
-				);
-
-		primaryStage.setScene(intro);
-		primaryStage.show();
 
 	}
 
