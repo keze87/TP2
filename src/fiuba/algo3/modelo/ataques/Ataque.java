@@ -4,6 +4,7 @@ import src.fiuba.algo3.modelo.AlgoMon;
 import src.fiuba.algo3.modelo.efectos.Efecto;
 import src.fiuba.algo3.modelo.efectos.EfectoMultiple;
 import src.fiuba.algo3.modelo.efectos.QuitarVida;
+import src.fiuba.algo3.modelo.excepciones.AtaqueAgotado;
 import src.fiuba.algo3.modelo.tipo.Tipo;
 
 public abstract class Ataque {

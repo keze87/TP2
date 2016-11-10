@@ -9,11 +9,12 @@ import src.fiuba.algo3.modelo.AlgoMonBuilder;
 import src.fiuba.algo3.modelo.elementos.Pocion;
 import src.fiuba.algo3.modelo.elementos.SuperPocion;
 import src.fiuba.algo3.modelo.elementos.Vitamina;
+import src.fiuba.algo3.modelo.excepciones.VidaCompleta;
 
 public class ElementosTest {
 
 	@Test
-	public void testPocionAumenta20PuntosDeVida(){
+	public void test01PocionAumenta20PuntosDeVida() {
 		AlgoMon bulbasaur = AlgoMonBuilder.crearBulbasaur();
 		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
 		AlgoMon squirtle = AlgoMonBuilder.crearSquirtle();
@@ -32,27 +33,24 @@ public class ElementosTest {
 		charmander.recibirElemento(pocion);
 
 		assertEquals((charmander.getVidaMaxima() - 40) + 20, charmander.getVida(), 0.0001D);
-
 	}
 
 
 	@Test
-	public void testSuperPocionAumenta40PuntosDeVida(){
+	public void test02SuperPocionAumenta40PuntosDeVida(){
 		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
 		AlgoMon squirtle = AlgoMonBuilder.crearSquirtle();
 		SuperPocion superPocion = new SuperPocion();
 
 		squirtle.ataque("Cañón de agua", charmander);
-		assertEquals(charmander.getVidaMaxima() - 40 ,charmander.getVida(), 0.0001D);
+		assertEquals(charmander.getVidaMaxima() - 40 , charmander.getVida(), 0.0001D);
 
 		charmander.recibirElemento(superPocion);
-		assertEquals(charmander.getVidaMaxima() ,charmander.getVida(), 0.0001D);
-
-
+		assertEquals(charmander.getVidaMaxima() , charmander.getVida(), 0.0001D);
 	}
 
 	@Test
-	public void testVitaminaAumentaPotenciaEn2DeTodosLosAtaques(){
+	public void test03VitaminaAumentaPotenciaEn2DeTodosLosAtaques(){
 		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
 		AlgoMon squirtle = AlgoMonBuilder.crearSquirtle();
 		Vitamina vitamina = new Vitamina();
@@ -96,4 +94,19 @@ public class ElementosTest {
 		assertEquals((squirtle.getVidaMaxima() - 96), squirtle.getVida(), 0.0001D);
 
 	}
+
+	@Test(expected = VidaCompleta.class)
+	public void test04UsarPocionEnAlgoMonConVidaIgualAVidaMaximaLanzaExcepcion() {
+		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
+
+		charmander.recibirElemento(new Pocion());
+	}
+
+	@Test(expected = VidaCompleta.class)
+	public void tes05UsarSuperPocionEnAlgoMonConVidaIgualAVidaMaximaLanzaExcepcion() {
+		AlgoMon rattata = AlgoMonBuilder.crearRattata();
+
+		rattata.recibirElemento(new SuperPocion());
+	}
+
 }

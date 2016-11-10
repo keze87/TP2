@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import src.fiuba.algo3.modelo.AlgoMon;
 import src.fiuba.algo3.modelo.AlgoMonBuilder;
-import src.fiuba.algo3.modelo.ataques.AtaqueAgotado;
+import src.fiuba.algo3.modelo.excepciones.AtaqueAgotado;
 
 public class AlgoMonTest {
 

@@ -107,6 +107,11 @@ public class AlgoMon {
 		return this.ataques.containsKey(nombreAtaque);
 	}
 
+	/* Devuelve true o false según si la vida es igual a la vida máxima. */
+	public boolean tieneVidaCompleta() {
+		return this.estado.getVida() == this.estado.getVidaMaxima();
+	}
+
 	/* Agrega los ataques al diccionario de ataques. */
 	private void agregarAtaques(List<Ataque> ataques) {
 		for (Ataque ataque : ataques) {
