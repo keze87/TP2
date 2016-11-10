@@ -9,8 +9,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 
 		primaryStage.setTitle("Algomon");
-		primaryStage.setScene(Escenas.MenuPrincipal(primaryStage));
-		primaryStage.show();
+		Escenas.Introduccion(primaryStage);
 
 	}
 

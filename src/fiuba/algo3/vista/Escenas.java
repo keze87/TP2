@@ -21,7 +21,7 @@ import javafx.util.Duration;
 
 public class Escenas {
 
-	public static Scene MenuPrincipal(Stage primaryStage) {
+	public static void MenuPrincipal(Stage primaryStage) {
 
 		BorderPane layout = new BorderPane();
 		BorderPane listaCentral = new BorderPane();
@@ -75,7 +75,8 @@ public class Escenas {
 		layout.setTop(barraMenu);
 		layout.setBackground(new Background(fondo));
 
-		return new Scene(layout, 1024, 768);
+		primaryStage.setScene(new Scene(layout, 1024, 768));
+		primaryStage.show();
 
 	}
 
@@ -88,6 +89,12 @@ public class Escenas {
 			}
 
 		});
+
+	}
+
+	public static void Introduccion(Stage primaryStage) {
+
+		Escenas.MenuPrincipal(primaryStage); //Desactivo la introduccion
 
 	}
 
