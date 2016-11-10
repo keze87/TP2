@@ -1,58 +1,51 @@
 package src.fiuba.algo3.modelo.estados;
 
 public abstract class Estado {
-	private double vida;
-	private double vidaMaxima;
+	protected double vida;
+	protected double vidaMaxima;
 
-	public void aumentarVida(double cantidad) {
-
-		if ( vidaMaxima >= (vida + cantidad) ) {
-
-			vida += Math.floor(cantidad);
-
-		} else {
-
-			vida = vidaMaxima;
-
-		}
+	public Estado() {
 
 	}
 
-	public void quitarVida(double cantidad) {
-
-		if ( 0 <= (vida - cantidad) ) {
-
-			vida -= cantidad;
-
-		} else {
-
-			vida = 0;
-
-		}
-
+	public Estado(double vidaMaxima) {
+		this.vidaMaxima = vidaMaxima;
+		this.vida = vidaMaxima;
 	}
 
 	public double getVida() {
-		return vida;
+		return this.vida;
 	}
 
-	public void setVida(double cantidad) {
-		vida = cantidad;
+	public double getVidaMaxima() {
+		return this.vidaMaxima;
 	}
 
 	public boolean estaVivo() {
-		return vida > 0;
+		return this.vida > 0;
+	}
+
+	public void aumentarVida(double cantidad) {
+		this.vida = Math.floor(this.vida + cantidad);
+
+		if(this.vida > this.vidaMaxima) {
+			this.vida = this.vidaMaxima;
+		}
+	}
+
+	public void quitarVida(double cantidad) {
+		this.vida -= cantidad;
+
+		if(this.vida < 0) {
+			this.vida = 0;
+		}
+	}
+
+	protected void setVida(double cantidad) {
+		this.vida = cantidad;
 	}
 
 	public abstract boolean puedeRealizarAccion();
 	public abstract void accionRealizada();
-
-	public double getVidaMaxima() {
-		return vidaMaxima;
-	}
-
-	public void setVidaMaxima(double cantidad) {
-		vidaMaxima = cantidad;
-	}
 
 }

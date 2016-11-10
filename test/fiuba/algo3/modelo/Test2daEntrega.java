@@ -106,7 +106,7 @@ public class Test2daEntrega {
 	}
 
 	@Test
-	public void test05AlgoMonQuemadoPierde10PorCientoDeSuVidaMaximaPorTurno() {
+	public void test05AlgoMonQuemadoPierde10PorcientoDeSuVidaMaximaPorTurno() {
 
 	}
 

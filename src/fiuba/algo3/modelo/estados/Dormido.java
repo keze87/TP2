@@ -4,24 +4,24 @@ public final class Dormido extends EstadoAlterado {
 	private int turnosRestantes;
 
 	public Dormido(Estado estadoAnterior) {
-		super.setEstadoAnterior(estadoAnterior);
-		super.setVida(estadoAnterior.getVida());
-		turnosRestantes = 3;
+		this.setEstadoAnterior(estadoAnterior);
+		this.setVida(estadoAnterior.getVida());
+		this.turnosRestantes = 3;
 	}
 
 	@Override
 	public boolean puedeRealizarAccion() {
-		return turnosRestantes == 0 && super.getEstadoAnterior().puedeRealizarAccion();
+		return this.turnosRestantes == 0 && this.getEstadoAnterior().puedeRealizarAccion();
 	}
 
 	@Override
 	public void accionRealizada() {
-		super.getEstadoAnterior().accionRealizada();
-		turnosRestantes--;
+		this.getEstadoAnterior().accionRealizada();
+		this.turnosRestantes--;
 	}
 
 	public int getTurnosRestantesDormido() {
-		return turnosRestantes;
+		return this.turnosRestantes;
 	}
 
 }
