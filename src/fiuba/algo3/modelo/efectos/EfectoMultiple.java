@@ -20,7 +20,7 @@ public final class EfectoMultiple extends Efecto {
 	public Estado aplicar(Estado estado) {
 		Estado estadoFinal = estado;
 		for(Efecto efecto : efectos){
-			estadoFinal = efecto.aplicar(estado);
+			estadoFinal = efecto.aplicar(estadoFinal);
 		}
 		return estadoFinal;
 	}

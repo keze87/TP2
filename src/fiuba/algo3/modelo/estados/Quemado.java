@@ -15,7 +15,7 @@ public final class Quemado extends EstadoAlterado {
 	@Override
 	public void accionRealizada() {
 		super.getEstadoAnterior().accionRealizada();
-		super.quitarVida(super.getVidaMaxima() * 0.10);
+		super.quitarVida(super.getVida() * 0.10);
 	}
 
 }
