@@ -22,11 +22,11 @@ public class Escenas {
 	public static Scene MenuPrincipal(Stage primaryStage) {
 
 		BorderPane layout = new BorderPane();
-		BorderPane listaLateral = new BorderPane();
+		BorderPane listaCentral = new BorderPane();
 		BarraMenu barraMenu = new BarraMenu();
 
 		// Imagen de fondo
-		Image imagenFondo = new Image("file:src/fiuba/algo3/vista/Imagenes/Grass.png");
+		Image imagenFondo = new Image("file:src/fiuba/algo3/vista/Imagenes/Fondo.png");
 		BackgroundImage fondo = new BackgroundImage(imagenFondo,
 				BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER,
 				BackgroundSize.DEFAULT);
@@ -62,9 +62,9 @@ public class Escenas {
 				}
 				);
 
-		listaLateral.setTop(logo);
-		listaLateral.setBottom(botones);
-		layout.setLeft(listaLateral);
+		listaCentral.setTop(logo);
+		listaCentral.setBottom(botones);
+		layout.setCenter(listaCentral);
 		layout.setTop(barraMenu);
 		layout.setBackground(new Background(fondo));
 
