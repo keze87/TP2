@@ -68,7 +68,6 @@ public class AlgoMon {
 		try {
 
 			if (this.estado.puedeRealizarAccion()) {
-				//contrincante.recibirAtaque(this.ataques.get(nombreAtaque));
 				this.recibirEfecto(this.ataques.get(nombreAtaque).atacar(contrincante));
 				this.estado.accionRealizada();
 			}
