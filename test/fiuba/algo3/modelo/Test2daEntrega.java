@@ -105,4 +105,9 @@ public class Test2daEntrega {
 		assertEquals(bulbasaur.getVida(), (bulbasaur.getVidaMaxima() - 30) + 12, 0.0001D);
 	}
 
+	@Test
+	public void test05AlgoMonQuemadoPierde10PorCientoDeSuVidaMaximaPorTurno() {
+
+	}
+
 }

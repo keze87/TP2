@@ -69,8 +69,9 @@ public class AlgoMon {
 
 			if (this.estado.puedeRealizarAccion()) {
 				this.recibirEfecto(this.ataques.get(nombreAtaque).atacar(contrincante));
-				this.estado.accionRealizada();
 			}
+
+			this.estado.accionRealizada();
 
 		} catch (NullPointerException e) {
 			throw new AlgoMonNoTieneAtaque(this.nombre + " no puede usar " + nombreAtaque + "!");
