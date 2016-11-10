@@ -6,9 +6,9 @@ public interface Tipo {
 	 * @param tipo tipo del AlgoMon.
 	 * @return el valor del multiplicador.
 	 */
-	public float getMultiplicadorContra(Tipo tipo);
-	public float getMultiplicadorContra(Fuego tipo);
-	public float getMultiplicadorContra(Agua tipo);
-	public float getMultiplicadorContra(Planta tipo);
-	public float getMultiplicadorContra(Normal tipo);
+	public EfectividadTipo getMultiplicadorContra(Tipo tipo);
+	public EfectividadTipo getMultiplicadorContra(Fuego tipo);
+	public EfectividadTipo getMultiplicadorContra(Agua tipo);
+	public EfectividadTipo getMultiplicadorContra(Planta tipo);
+	public EfectividadTipo getMultiplicadorContra(Normal tipo);
 }

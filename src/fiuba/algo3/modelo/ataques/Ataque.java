@@ -53,7 +53,7 @@ public abstract class Ataque {
 	 * @return el daño calculado.
 	 */
 	private double calcularDaño(AlgoMon algoMon) {
-		return Math.floor(this.potencia * this.tipo.getMultiplicadorContra(algoMon.getTipo()));
+		return Math.floor(this.potencia * this.tipo.getMultiplicadorContra(algoMon.getTipo()).getValor());
 	}
 
 	/* Determina si el ataque tiene usos restantes. */

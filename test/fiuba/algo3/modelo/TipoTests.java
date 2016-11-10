@@ -4,7 +4,12 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import  src.fiuba.algo3.modelo.tipo.*;
+import src.fiuba.algo3.modelo.tipo.Agua;
+import src.fiuba.algo3.modelo.tipo.EfectividadTipo;
+import src.fiuba.algo3.modelo.tipo.Fuego;
+import src.fiuba.algo3.modelo.tipo.Normal;
+import src.fiuba.algo3.modelo.tipo.Planta;
+import src.fiuba.algo3.modelo.tipo.Tipo;
 
 public class TipoTests {
 
@@ -16,10 +21,10 @@ public class TipoTests {
 		Tipo planta = new Planta();
 		Tipo normal = new Normal();
 
-		assertEquals(0.5f, fuego.getMultiplicadorContra(otroFuego), 0.0001D);
-		assertEquals(0.5f, fuego.getMultiplicadorContra(agua), 0.0001D);
-		assertEquals(2f, fuego.getMultiplicadorContra(planta), 0.0001D);
-		assertEquals(1f, fuego.getMultiplicadorContra(normal), 0.0001D);
+		assertEquals(EfectividadTipo.POCOEFECTIVO, fuego.getMultiplicadorContra(otroFuego));
+		assertEquals(EfectividadTipo.POCOEFECTIVO, fuego.getMultiplicadorContra(agua));
+		assertEquals(EfectividadTipo.SUPEREFECTIVO, fuego.getMultiplicadorContra(planta));
+		assertEquals(EfectividadTipo.NORMAL, fuego.getMultiplicadorContra(normal));
 	}
 
 	@Test
@@ -31,10 +36,10 @@ public class TipoTests {
 		Tipo normal = new Normal();
 
 
-		assertEquals(2f, agua.getMultiplicadorContra(fuego), 0.0001D);
-		assertEquals(0.5f, agua.getMultiplicadorContra(otroAgua), 0.0001D);
-		assertEquals(0.5f, agua.getMultiplicadorContra(planta), 0.0001D);
-		assertEquals(1f, agua.getMultiplicadorContra(normal), 0.0001D);
+		assertEquals(EfectividadTipo.SUPEREFECTIVO, agua.getMultiplicadorContra(fuego));
+		assertEquals(EfectividadTipo.POCOEFECTIVO, agua.getMultiplicadorContra(otroAgua));
+		assertEquals(EfectividadTipo.POCOEFECTIVO, agua.getMultiplicadorContra(planta));
+		assertEquals(EfectividadTipo.NORMAL, agua.getMultiplicadorContra(normal));
 	}
 
 	@Test
@@ -45,10 +50,10 @@ public class TipoTests {
 		Tipo otroPlanta = new Planta();
 		Tipo normal = new Normal();
 
-		assertEquals(0.5f, planta.getMultiplicadorContra(fuego), 0.0001D);
-		assertEquals(2f, planta.getMultiplicadorContra(agua), 0.0001D);
-		assertEquals(0.5f, planta.getMultiplicadorContra(otroPlanta), 0.0001D);
-		assertEquals(1f, planta.getMultiplicadorContra(normal), 0.0001D);
+		assertEquals(EfectividadTipo.POCOEFECTIVO, planta.getMultiplicadorContra(fuego));
+		assertEquals(EfectividadTipo.SUPEREFECTIVO, planta.getMultiplicadorContra(agua));
+		assertEquals(EfectividadTipo.POCOEFECTIVO, planta.getMultiplicadorContra(otroPlanta));
+		assertEquals(EfectividadTipo.NORMAL, planta.getMultiplicadorContra(normal));
 	}
 
 	@Test
@@ -59,10 +64,10 @@ public class TipoTests {
 		Tipo normal = new Normal();
 		Tipo otroNormal = new Normal();
 
-		assertEquals(1f, normal.getMultiplicadorContra(fuego), 0.0001D);
-		assertEquals(1f, normal.getMultiplicadorContra(agua), 0.0001D);
-		assertEquals(1f, normal.getMultiplicadorContra(planta), 0.0001D);
-		assertEquals(1f, normal.getMultiplicadorContra(otroNormal), 0.0001D);
+		assertEquals(EfectividadTipo.NORMAL, normal.getMultiplicadorContra(fuego));
+		assertEquals(EfectividadTipo.NORMAL, normal.getMultiplicadorContra(agua));
+		assertEquals(EfectividadTipo.NORMAL, normal.getMultiplicadorContra(planta));
+		assertEquals(EfectividadTipo.NORMAL, normal.getMultiplicadorContra(otroNormal));
 	}
 
 }

@@ -3,28 +3,28 @@ package src.fiuba.algo3.modelo.tipo;
 public class Normal implements Tipo {
 
 	@Override
-	public float getMultiplicadorContra(Tipo tipo) {
-		return 1f;
+	public EfectividadTipo getMultiplicadorContra(Tipo tipo) {
+		return EfectividadTipo.NORMAL;
 	}
 
 	@Override
-	public float getMultiplicadorContra(Fuego tipo) {
-		return 1f;
+	public EfectividadTipo getMultiplicadorContra(Fuego tipo) {
+		return EfectividadTipo.NORMAL;
 	}
 
 	@Override
-	public float getMultiplicadorContra(Agua tipo) {
-		return 1f;
+	public EfectividadTipo getMultiplicadorContra(Agua tipo) {
+		return EfectividadTipo.NORMAL;
 	}
 
 	@Override
-	public float getMultiplicadorContra(Planta tipo) {
-		return 1f;
+	public EfectividadTipo getMultiplicadorContra(Planta tipo) {
+		return EfectividadTipo.NORMAL;
 	}
 
 	@Override
-	public float getMultiplicadorContra(Normal tipo) {
-		return 1f;
+	public EfectividadTipo getMultiplicadorContra(Normal tipo) {
+		return EfectividadTipo.NORMAL;
 	}
 
 }
