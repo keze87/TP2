@@ -38,6 +38,9 @@ public class Escenas {
 		Button cheat = new Boton("Cheat Code");
 		Button salir = new Boton("Salir");
 
+		//al pulsar en salir sale del juego
+		salirDelJuego(salir);
+
 		//Logo
 		Image imagenLogo = new Image("file:src/fiuba/algo3/vista/Imagenes/Logo.png");
 		ImageView logo = new ImageView(imagenLogo);
@@ -68,5 +71,19 @@ public class Escenas {
 		return new Scene(layout, 1024, 768);
 
 	}
+
+	private static void salirDelJuego(Button salir) {
+		salir.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent arg0) {
+				System.exit(0);
+			}
+
+		});
+
+	}
+
+
 
 }
