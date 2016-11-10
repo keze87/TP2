@@ -79,6 +79,14 @@ public class AlgoMon {
 	}
 
 	/**
+	 * Aplica un efecto al estado del algoMon.
+	 * @param efecto efecto a aplicar.
+	 */
+	public void recibirEfecto(Efecto efecto) {
+		this.estado = efecto.aplicar(this.estado);
+	}
+
+	/**
 	 * Aplica el daño resultante de recibir un ataque.
 	 * @param ataque ataque recibido de otro algoMon.
 	 */
@@ -86,6 +94,7 @@ public class AlgoMon {
 		if(this.estado.puedeRealizarAccion()) {
 			elemento.aplicar(this);
 		}
+
 		this.estado.accionRealizada();
 	}
 
@@ -96,14 +105,6 @@ public class AlgoMon {
 	 */
 	public boolean contieneAtaque(String nombreAtaque) {
 		return this.ataques.containsKey(nombreAtaque);
-	}
-
-	/**
-	 * Aplica un efecto al estado del algoMon.
-	 * @param efecto efecto a aplicar.
-	 */
-	public void recibirEfecto(Efecto efecto) {
-		this.estado = efecto.aplicar(this.estado);
 	}
 
 	/* Agrega los ataques al diccionario de ataques. */

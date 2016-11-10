@@ -23,7 +23,7 @@ public class AtaqueBuilder {
 		this.efectoAtacante = efectoAtacante;
 
 	}
-	
+
 	private AtaqueBuilder(String nombre, int potencia, int usosMaximos, Efecto efectoBase) {
 
 		this.nombre = nombre;
@@ -31,28 +31,8 @@ public class AtaqueBuilder {
 		this.usosMaximos = usosMaximos;
 		this.efectoBase = efectoBase;
 		this.efectoAtacante = new SinEfecto();
-		
 
-	}
 
-	/* Crea un ataque de tipo fuego con los valores actuales de los atributos. */
-	private Ataque crearAtaqueFuego() {
-		return new AtaqueFuego(this.nombre, this.potencia, this.usosMaximos, this.efectoBase, this.efectoAtacante);
-	}
-
-	/* Crea un ataque de tipo agua con los valores actuales de los atributos. */
-	private Ataque crearAtaqueAgua() {
-		return new AtaqueAgua(this.nombre, this.potencia, this.usosMaximos, this.efectoBase, this.efectoAtacante);
-	}
-
-	/* Crea un ataque de tipo planta con los valores actuales de los atributos. */
-	private Ataque crearAtaquePlanta() {
-		return new AtaquePlanta(this.nombre, this.potencia, this.usosMaximos, this.efectoBase, this.efectoAtacante);
-	}
-
-	/* Crea un ataque de tipo normal con los valores actuales de los atributos. */
-	private Ataque crearAtaqueNormal() {
-		return new AtaqueNormal(this.nombre, this.potencia, this.usosMaximos, this.efectoBase, this.efectoAtacante);
 	}
 
 	/* Crea y devuelve una nueva instancia de Ataque correspondiente a Ataque Rápido. */
@@ -109,6 +89,26 @@ public class AtaqueBuilder {
 		AtaqueBuilder builder = new AtaqueBuilder("Fogonazo", 2, 4, new Quemar());
 
 		return builder.crearAtaqueFuego();
+	}
+
+	/* Crea un ataque de tipo fuego con los valores actuales de los atributos. */
+	private Ataque crearAtaqueFuego() {
+		return new AtaqueFuego(this.nombre, this.potencia, this.usosMaximos, this.efectoBase, this.efectoAtacante);
+	}
+
+	/* Crea un ataque de tipo agua con los valores actuales de los atributos. */
+	private Ataque crearAtaqueAgua() {
+		return new AtaqueAgua(this.nombre, this.potencia, this.usosMaximos, this.efectoBase, this.efectoAtacante);
+	}
+
+	/* Crea un ataque de tipo planta con los valores actuales de los atributos. */
+	private Ataque crearAtaquePlanta() {
+		return new AtaquePlanta(this.nombre, this.potencia, this.usosMaximos, this.efectoBase, this.efectoAtacante);
+	}
+
+	/* Crea un ataque de tipo normal con los valores actuales de los atributos. */
+	private Ataque crearAtaqueNormal() {
+		return new AtaqueNormal(this.nombre, this.potencia, this.usosMaximos, this.efectoBase, this.efectoAtacante);
 	}
 
 }
