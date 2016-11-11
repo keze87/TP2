@@ -1,7 +1,5 @@
 package src.fiuba.algo3.vista;
 
-import java.io.File;
-
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -20,8 +18,6 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -165,13 +161,9 @@ public class Escenas {
 
 						Escenas.MenuPrincipal(primaryStage); // Al presionar tecla, avanza
 
-						Media sonido = new Media(new File("src/fiuba/algo3/vista/Sonidos/Pokemon_Opening.mp3").toURI().toString());
-						MediaPlayer mediaPlayer = new MediaPlayer(sonido);
-						mediaPlayer.play();
 					}
 				}
 				);
-
 
 		primaryStage.setScene(intro);
 		primaryStage.show();
