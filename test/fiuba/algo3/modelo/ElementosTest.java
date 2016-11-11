@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import src.fiuba.algo3.modelo.AlgoMon;
 import src.fiuba.algo3.modelo.AlgoMonBuilder;
+import src.fiuba.algo3.modelo.ataques.NombreAtaque;
 import src.fiuba.algo3.modelo.elementos.Pocion;
 import src.fiuba.algo3.modelo.elementos.SuperPocion;
 import src.fiuba.algo3.modelo.elementos.Vitamina;
@@ -21,14 +22,14 @@ public class ElementosTest {
 		AlgoMon squirtle = AlgoMonBuilder.crearSquirtle();
 		Pocion pocion = new Pocion();
 
-		charmander.atacar("Brasas", bulbasaur);
+		charmander.atacar(NombreAtaque.BRASAS, bulbasaur);
 		assertEquals(bulbasaur.getVidaMaxima() - 32, bulbasaur.getVida(), 0.0001D);
 
 		bulbasaur.recibirElemento(pocion);
 
 		assertEquals((bulbasaur.getVidaMaxima() - 32) + 20, bulbasaur.getVida(), 0.0001D);
 
-		squirtle.atacar("Cañón de agua", charmander);
+		squirtle.atacar(NombreAtaque.CAÑONDEAGUA, charmander);
 		assertEquals(charmander.getVidaMaxima() - 40, charmander.getVida(), 0.0001D);
 
 		charmander.recibirElemento(pocion);
@@ -42,7 +43,7 @@ public class ElementosTest {
 		AlgoMon squirtle = AlgoMonBuilder.crearSquirtle();
 		SuperPocion superPocion = new SuperPocion();
 
-		squirtle.atacar("Cañón de agua", charmander);
+		squirtle.atacar(NombreAtaque.CAÑONDEAGUA, charmander);
 		assertEquals(charmander.getVidaMaxima() - 40 , charmander.getVida(), 0.0001D);
 
 		charmander.recibirElemento(superPocion);
@@ -61,7 +62,7 @@ public class ElementosTest {
 
 		try{
 			while(true){
-				charmander.atacar("Brasas", squirtle);
+				charmander.atacar(NombreAtaque.BRASAS, squirtle);
 				contador++;
 			}
 
@@ -73,7 +74,7 @@ public class ElementosTest {
 
 		try{
 			while(true){
-				charmander.atacar("Fogonazo", squirtle);
+				charmander.atacar(NombreAtaque.FOGONAZO, squirtle);
 				contador++;
 			}
 
@@ -85,7 +86,7 @@ public class ElementosTest {
 
 		try{
 			while(true){
-				charmander.atacar("Ataque rápido", otroCharmander);
+				charmander.atacar(NombreAtaque.ATAQUERAPIDO, otroCharmander);
 				contador++;
 			}
 

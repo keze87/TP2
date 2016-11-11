@@ -8,13 +8,13 @@ import src.fiuba.algo3.modelo.efectos.Vampiro;
 
 public class AtaqueBuilder {
 
-	private String nombre;
+	private NombreAtaque nombre;
 	private int potencia;
 	private int usosMaximos;
 	private Efecto efectoBase;
 	private Efecto efectoAtacante;
 
-	private AtaqueBuilder(String nombre, int potencia, int usosMaximos, Efecto efectoBase, Efecto efectoAtacante) {
+	private AtaqueBuilder(NombreAtaque nombre, int potencia, int usosMaximos, Efecto efectoBase, Efecto efectoAtacante) {
 
 		this.nombre = nombre;
 		this.potencia = potencia;
@@ -24,7 +24,7 @@ public class AtaqueBuilder {
 
 	}
 
-	private AtaqueBuilder(String nombre, int potencia, int usosMaximos, Efecto efectoBase) {
+	private AtaqueBuilder(NombreAtaque nombre, int potencia, int usosMaximos, Efecto efectoBase) {
 
 		this.nombre = nombre;
 		this.potencia = potencia;
@@ -37,56 +37,56 @@ public class AtaqueBuilder {
 
 	/* Crea y devuelve una nueva instancia de Ataque correspondiente a Ataque Rápido. */
 	public static Ataque crearAtaqueRapido() {
-		AtaqueBuilder builder = new AtaqueBuilder("Ataque rápido", 10, 16, new SinEfecto());
+		AtaqueBuilder builder = new AtaqueBuilder(NombreAtaque.ATAQUERAPIDO, 10, 16, new SinEfecto());
 
 		return builder.crearAtaqueNormal();
 	}
 
 	/* Crea y devuelve una nueva instancia de Ataque correspondiente a Canto. */
 	public static Ataque crearCanto() {
-		AtaqueBuilder builder = new AtaqueBuilder("Canto", 0, 6, new Dormir());
+		AtaqueBuilder builder = new AtaqueBuilder(NombreAtaque.CANTO, 0, 6, new Dormir());
 
 		return builder.crearAtaqueNormal();
 	}
 
 	/* Crea y devuelve una nueva instancia de Ataque correspondiente a Burbuja. */
 	public static Ataque crearBurbuja() {
-		AtaqueBuilder builder = new AtaqueBuilder("Burbuja", 10, 15, new SinEfecto());
+		AtaqueBuilder builder = new AtaqueBuilder(NombreAtaque.BURBUJA, 10, 15, new SinEfecto());
 
 		return builder.crearAtaqueAgua();
 	}
 
 	/* Crea y devuelve una nueva instancia de Ataque correspondiente a Cañón de agua. */
 	public static Ataque crearCanionDeAgua() {
-		AtaqueBuilder builder = new AtaqueBuilder("Cañón de agua", 20, 8, new SinEfecto());
+		AtaqueBuilder builder = new AtaqueBuilder(NombreAtaque.CAÑONDEAGUA, 20, 8, new SinEfecto());
 
 		return builder.crearAtaqueAgua();
 	}
 
 	/* Crea y devuelve una nueva instancia de Ataque correspondiente a Chupavidas. */
 	public static Ataque crearChupavidas() {
-		AtaqueBuilder builder = new AtaqueBuilder("Chupavidas", 15, 8, new SinEfecto(), new Vampiro());
+		AtaqueBuilder builder = new AtaqueBuilder(NombreAtaque.CHUPAVIDAS, 15, 8, new SinEfecto(), new Vampiro());
 
 		return builder.crearAtaquePlanta();
 	}
 
 	/* Crea y devuelve una nueva instancia de Ataque correspondiente a Látigo cepa. */
 	public static Ataque crearLatigoCepa() {
-		AtaqueBuilder builder = new AtaqueBuilder("Látigo cepa", 15, 10, new SinEfecto());
+		AtaqueBuilder builder = new AtaqueBuilder(NombreAtaque.LATIGOCEPA, 15, 10, new SinEfecto());
 
 		return builder.crearAtaquePlanta();
 	}
 
 	/* Crea y devuelve una nueva instancia de Ataque correspondiente a Brasas. */
 	public static Ataque crearBrasas() {
-		AtaqueBuilder builder = new AtaqueBuilder("Brasas", 16, 10, new SinEfecto());
+		AtaqueBuilder builder = new AtaqueBuilder(NombreAtaque.BRASAS, 16, 10, new SinEfecto());
 
 		return builder.crearAtaqueFuego();
 	}
 
 	/* Crea y devuelve una nueva instancia de Ataque correspondiente a Fogonazo. */
 	public static Ataque crearFogonazo() {
-		AtaqueBuilder builder = new AtaqueBuilder("Fogonazo", 2, 4, new Quemar());
+		AtaqueBuilder builder = new AtaqueBuilder(NombreAtaque.FOGONAZO, 2, 4, new Quemar());
 
 		return builder.crearAtaqueFuego();
 	}

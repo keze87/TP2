@@ -3,6 +3,7 @@ package test.fiuba.algo3.modelo;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import src.fiuba.algo3.modelo.*;
+import src.fiuba.algo3.modelo.ataques.NombreAtaque;
 import src.fiuba.algo3.modelo.tipo.*;
 
 public class AlgoMonBuilderTest {
@@ -18,9 +19,9 @@ public class AlgoMonBuilderTest {
 		assertEquals( 140, algomon.getVida(), 0 );
 
 		assertTrue( algomon.getTipo() instanceof Planta );
-		assertTrue( algomon.contieneAtaque("Chupavidas") );
-		assertTrue( algomon.contieneAtaque("Látigo cepa") );
-		assertTrue( algomon.contieneAtaque("Ataque rápido") );
+		assertTrue( algomon.contieneAtaque(NombreAtaque.CHUPAVIDAS) );
+		assertTrue( algomon.contieneAtaque(NombreAtaque.LATIGOCEPA) );
+		assertTrue( algomon.contieneAtaque(NombreAtaque.ATAQUERAPIDO) );
 
 	}
 
@@ -34,8 +35,8 @@ public class AlgoMonBuilderTest {
 
 		assertTrue( algomon.getTipo() instanceof Normal );
 		assertTrue( algomon.contieneAtaque("Canto") );
-		assertTrue( algomon.contieneAtaque("Látigo cepa") );
-		assertTrue( algomon.contieneAtaque("Ataque rápido") );
+		assertTrue( algomon.contieneAtaque(NombreAtaque.LATIGOCEPA) );
+		assertTrue( algomon.contieneAtaque(NombreAtaque.ATAQUERAPIDO) );
 
 	}
 
@@ -49,8 +50,8 @@ public class AlgoMonBuilderTest {
 
 		assertTrue( algomon.getTipo() instanceof Fuego );
 		assertTrue( algomon.contieneAtaque("Brasas") );
-		assertTrue( algomon.contieneAtaque("Fogonazo") );
-		assertTrue( algomon.contieneAtaque("Ataque rápido") );
+		assertTrue( algomon.contieneAtaque(NombreAtaque.FOGONAZO) );
+		assertTrue( algomon.contieneAtaque(NombreAtaque.ATAQUERAPIDO) );
 
 	}
 
@@ -63,9 +64,9 @@ public class AlgoMonBuilderTest {
 		assertEquals( 130, algomon.getVida(), 0 );
 
 		assertTrue( algomon.getTipo() instanceof Normal );
-		assertTrue( algomon.contieneAtaque("Canto") );
-		assertTrue( algomon.contieneAtaque("Burbuja") );
-		assertTrue( algomon.contieneAtaque("Ataque rápido") );
+		assertTrue( algomon.contieneAtaque(NombreAtaque.CANTO) );
+		assertTrue( algomon.contieneAtaque(NombreAtaque.BURBUJA) );
+		assertTrue( algomon.contieneAtaque(NombreAtaque.ATAQUERAPIDO) );
 
 	}
 
@@ -78,9 +79,9 @@ public class AlgoMonBuilderTest {
 		assertEquals( 170, algomon.getVida(), 0 );
 
 		assertTrue( algomon.getTipo() instanceof Normal );
-		assertTrue( algomon.contieneAtaque("Fogonazo") );
-		assertTrue( algomon.contieneAtaque("Burbuja") );
-		assertTrue( algomon.contieneAtaque("Ataque rápido") );
+		assertTrue( algomon.contieneAtaque(NombreAtaque.FOGONAZO) );
+		assertTrue( algomon.contieneAtaque(NombreAtaque.BURBUJA) );
+		assertTrue( algomon.contieneAtaque(NombreAtaque.ATAQUERAPIDO) );
 
 	}
 
@@ -93,9 +94,9 @@ public class AlgoMonBuilderTest {
 		assertEquals( 150, algomon.getVida(), 0 );
 
 		assertTrue( algomon.getTipo() instanceof Agua );
-		assertTrue( algomon.contieneAtaque("Burbuja") );
-		assertTrue( algomon.contieneAtaque("Cañón de agua") );
-		assertTrue( algomon.contieneAtaque("Ataque rápido") );
+		assertTrue( algomon.contieneAtaque(NombreAtaque.BURBUJA) );
+		assertTrue( algomon.contieneAtaque(NombreAtaque.CAÑONDEAGUA) );
+		assertTrue( algomon.contieneAtaque(NombreAtaque.ATAQUERAPIDO) );
 
 	}
 
