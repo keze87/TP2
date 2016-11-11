@@ -7,7 +7,7 @@ public final class Restaurar extends Efecto {
 
 	@Override
 	public Estado aplicar(Estado estado) {
-		return new EstadoNormal(estado.getVida());
+		return new EstadoNormal(estado.getVidaMaxima(), estado.getVida());
 	}
 
 }

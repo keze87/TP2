@@ -45,7 +45,6 @@ public class EstadoNormalTest {
 		estado.quitarVida(10);
 
 		assertEquals(160, estado.getVida(), 0.01);
-		assertEquals(160,estado.getVida(),0.01);
 	}
 
 	@Test

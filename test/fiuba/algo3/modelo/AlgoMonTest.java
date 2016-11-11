@@ -1,6 +1,8 @@
 package test.fiuba.algo3.modelo;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -283,6 +285,32 @@ public class AlgoMonTest {
 		charmander.atacar("Fogonazo", rattata);
 		charmander.atacar("Fogonazo", rattata);
 
+	}
+
+	@Test
+	public void test12AlgoMonConVidaMenorOIgualACeroEstaMuerto() {
+		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
+		AlgoMon bulbasaur = AlgoMonBuilder.crearBulbasaur();
+
+		charmander.atacar("Brasas", bulbasaur);
+		assertEquals(bulbasaur.getVidaMaxima() - 32, bulbasaur.getVida(), 0.0001D);
+		assertTrue(bulbasaur.estaVivo());
+
+		charmander.atacar("Brasas", bulbasaur);
+		assertEquals(bulbasaur.getVidaMaxima() - 64, bulbasaur.getVida(), 0.0001D);
+		assertTrue(bulbasaur.estaVivo());
+
+		charmander.atacar("Brasas", bulbasaur);
+		assertEquals(bulbasaur.getVidaMaxima() - 96, bulbasaur.getVida(), 0.0001D);
+		assertTrue(bulbasaur.estaVivo());
+
+		charmander.atacar("Brasas", bulbasaur);
+		assertEquals(bulbasaur.getVidaMaxima() - 128, bulbasaur.getVida(), 0.0001D);
+		assertTrue(bulbasaur.estaVivo());
+
+		charmander.atacar("Brasas", bulbasaur);
+		assertEquals(bulbasaur.getVidaMaxima() - 140, bulbasaur.getVida(), 0.0001D);
+		assertFalse(bulbasaur.estaVivo());
 	}
 
 }

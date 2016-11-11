@@ -6,6 +6,11 @@ public final class EstadoNormal extends Estado {
 		super(vidaMaxima);
 	}
 
+	public EstadoNormal(double vidaMaxima, double vida) {
+		this.vidaMaxima = vidaMaxima;
+		this.vida = vida;
+	}
+
 	@Override
 	public boolean puedeRealizarAccion() {
 		return true;

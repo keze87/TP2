@@ -1,12 +1,15 @@
 package test.fiuba.algo3.modelo;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
 import src.fiuba.algo3.modelo.AlgoMon;
 import src.fiuba.algo3.modelo.AlgoMonBuilder;
+import src.fiuba.algo3.modelo.elementos.Elemento;
 import src.fiuba.algo3.modelo.elementos.Pocion;
+import src.fiuba.algo3.modelo.elementos.Restaurador;
 import src.fiuba.algo3.modelo.elementos.SuperPocion;
 import src.fiuba.algo3.modelo.elementos.Vitamina;
 import src.fiuba.algo3.modelo.excepciones.AtaqueAgotado;
@@ -107,6 +110,57 @@ public class ElementosTest {
 		AlgoMon rattata = AlgoMonBuilder.crearRattata();
 
 		rattata.recibirElemento(new SuperPocion());
+	}
+
+	@Test
+	public void test06UsarRestauradorEnAlgoMonDormidoLoDespierta() {
+		AlgoMon jigglypuff = AlgoMonBuilder.crearJigglypuff();
+		AlgoMon rattata = AlgoMonBuilder.crearRattata();
+		Elemento restaurador = new Restaurador();
+
+		jigglypuff.atacar("Canto", rattata);
+
+		rattata.atacar("Ataque rápido", jigglypuff);
+		assertTrue(jigglypuff.tieneVidaCompleta());
+
+		rattata.recibirElemento(restaurador);
+		rattata.atacar("Ataque rápido", jigglypuff);
+		assertEquals(jigglypuff.getVidaMaxima() - 10, jigglypuff.getVida(), 0.0001D);
+	}
+
+	@Test
+	public void test07UsarRestauradorEnAlgoMonQuemadoAnulaLaQuemadura() {
+		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
+		AlgoMon rattata = AlgoMonBuilder.crearRattata();
+		Elemento restaurador = new Restaurador();
+
+		charmander.atacar("Fogonazo", rattata);
+
+		rattata.atacar("Ataque rápido", charmander);
+		assertEquals(rattata.getVidaMaxima() - 19, rattata.getVida(), 0.0001D);
+
+		rattata.recibirElemento(restaurador);
+		rattata.atacar("Ataque rápido", charmander);
+		assertEquals(rattata.getVidaMaxima() - 19, rattata.getVida(), 0.0001D);
+	}
+
+	@Test
+	public void test08UsarRestauradorEnAlgoMonDormidoYQuemado() {
+		AlgoMon jigglypuff = AlgoMonBuilder.crearJigglypuff();
+		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
+		AlgoMon rattata = AlgoMonBuilder.crearRattata();
+		Elemento restaurador = new Restaurador();
+
+		jigglypuff.atacar("Canto", rattata);
+		charmander.atacar("Fogonazo", rattata);
+		rattata.atacar("Ataque rápido", jigglypuff);
+		assertTrue(jigglypuff.tieneVidaCompleta());
+		assertEquals(rattata.getVidaMaxima() - 19, rattata.getVida(), 0.0001D);
+
+		rattata.recibirElemento(restaurador);
+		rattata.atacar("Ataque rápido", jigglypuff);
+		assertEquals(jigglypuff.getVidaMaxima() - 10, jigglypuff.getVida(), 0.0001);
+		assertEquals(rattata.getVidaMaxima() - 19, rattata.getVida(), 0.0001D);
 	}
 
 }
