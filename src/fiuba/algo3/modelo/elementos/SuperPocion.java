@@ -5,7 +5,7 @@ import src.fiuba.algo3.modelo.efectos.AumentarVida;
 import src.fiuba.algo3.modelo.excepciones.VidaCompleta;
 
 public final class SuperPocion extends Elemento {
-	private static int vidaAumentada=40;
+	private static int vidaAumentada = 40;
 	public static int getVidaAumentada() {
 		return vidaAumentada;
 	}
