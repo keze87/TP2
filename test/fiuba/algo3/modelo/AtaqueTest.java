@@ -36,12 +36,6 @@ public class AtaqueTest {
 		assertEquals(chansey.getVidaMaxima() - 10, chansey.getVida(), 0.0001D);
 		assertEquals(rattata.getVidaMaxima() - 10, rattata.getVida(), 0.0001D);
 	}
-	@Test
-	public void test01DanioAtaqueRapidoConAtacar() {
-		Ataque ataque = AtaqueBuilder.crearAtaqueRapido();
-		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
-		assertEquals(160, ataque.atacar(charmander).aplicar(charmander.getEstado()).getVida(), 0.0001D);//aca funciona
-	}
 
 	@Test
 	public void test02DanioCanto() {
