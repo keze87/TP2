@@ -7,11 +7,8 @@ import org.junit.Test;
 
 import src.fiuba.algo3.modelo.AlgoMon;
 import src.fiuba.algo3.modelo.AlgoMonBuilder;
-<<<<<<< HEAD
-import src.fiuba.algo3.modelo.elementos.Elemento;
-=======
 import src.fiuba.algo3.modelo.ataques.NombreAtaque;
->>>>>>> 29d82e1c558c7ab8928fa9aebd14b00f9da8ec0b
+import src.fiuba.algo3.modelo.elementos.Elemento;
 import src.fiuba.algo3.modelo.elementos.Pocion;
 import src.fiuba.algo3.modelo.elementos.Restaurador;
 import src.fiuba.algo3.modelo.elementos.SuperPocion;
@@ -122,13 +119,13 @@ public class ElementosTest {
 		AlgoMon rattata = AlgoMonBuilder.crearRattata();
 		Elemento restaurador = new Restaurador();
 
-		jigglypuff.atacar("Canto", rattata);
+		jigglypuff.atacar(NombreAtaque.CANTO, rattata);
 
-		rattata.atacar("Ataque rápido", jigglypuff);
+		rattata.atacar(NombreAtaque.ATAQUERAPIDO, jigglypuff);
 		assertTrue(jigglypuff.tieneVidaCompleta());
 
 		rattata.recibirElemento(restaurador);
-		rattata.atacar("Ataque rápido", jigglypuff);
+		rattata.atacar(NombreAtaque.ATAQUERAPIDO, jigglypuff);
 		assertEquals(jigglypuff.getVidaMaxima() - 10, jigglypuff.getVida(), 0.0001D);
 	}
 
@@ -138,13 +135,13 @@ public class ElementosTest {
 		AlgoMon rattata = AlgoMonBuilder.crearRattata();
 		Elemento restaurador = new Restaurador();
 
-		charmander.atacar("Fogonazo", rattata);
+		charmander.atacar(NombreAtaque.FOGONAZO, rattata);
 
-		rattata.atacar("Ataque rápido", charmander);
+		rattata.atacar(NombreAtaque.ATAQUERAPIDO, charmander);
 		assertEquals(rattata.getVidaMaxima() - 19, rattata.getVida(), 0.0001D);
 
 		rattata.recibirElemento(restaurador);
-		rattata.atacar("Ataque rápido", charmander);
+		rattata.atacar(NombreAtaque.ATAQUERAPIDO, charmander);
 		assertEquals(rattata.getVidaMaxima() - 19, rattata.getVida(), 0.0001D);
 	}
 
@@ -155,14 +152,14 @@ public class ElementosTest {
 		AlgoMon rattata = AlgoMonBuilder.crearRattata();
 		Elemento restaurador = new Restaurador();
 
-		jigglypuff.atacar("Canto", rattata);
-		charmander.atacar("Fogonazo", rattata);
-		rattata.atacar("Ataque rápido", jigglypuff);
+		jigglypuff.atacar(NombreAtaque.CANTO, rattata);
+		charmander.atacar(NombreAtaque.FOGONAZO, rattata);
+		rattata.atacar(NombreAtaque.ATAQUERAPIDO, jigglypuff);
 		assertTrue(jigglypuff.tieneVidaCompleta());
 		assertEquals(rattata.getVidaMaxima() - 19, rattata.getVida(), 0.0001D);
 
 		rattata.recibirElemento(restaurador);
-		rattata.atacar("Ataque rápido", jigglypuff);
+		rattata.atacar(NombreAtaque.ATAQUERAPIDO, jigglypuff);
 		assertEquals(jigglypuff.getVidaMaxima() - 10, jigglypuff.getVida(), 0.0001);
 		assertEquals(rattata.getVidaMaxima() - 19, rattata.getVida(), 0.0001D);
 	}

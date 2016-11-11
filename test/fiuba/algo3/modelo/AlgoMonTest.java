@@ -293,23 +293,23 @@ public class AlgoMonTest {
 		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
 		AlgoMon bulbasaur = AlgoMonBuilder.crearBulbasaur();
 
-		charmander.atacar("Brasas", bulbasaur);
+		charmander.atacar(NombreAtaque.BRASAS, bulbasaur);
 		assertEquals(bulbasaur.getVidaMaxima() - 32, bulbasaur.getVida(), 0.0001D);
 		assertTrue(bulbasaur.estaVivo());
 
-		charmander.atacar("Brasas", bulbasaur);
+		charmander.atacar(NombreAtaque.BRASAS, bulbasaur);
 		assertEquals(bulbasaur.getVidaMaxima() - 64, bulbasaur.getVida(), 0.0001D);
 		assertTrue(bulbasaur.estaVivo());
 
-		charmander.atacar("Brasas", bulbasaur);
+		charmander.atacar(NombreAtaque.BRASAS, bulbasaur);
 		assertEquals(bulbasaur.getVidaMaxima() - 96, bulbasaur.getVida(), 0.0001D);
 		assertTrue(bulbasaur.estaVivo());
 
-		charmander.atacar("Brasas", bulbasaur);
+		charmander.atacar(NombreAtaque.BRASAS, bulbasaur);
 		assertEquals(bulbasaur.getVidaMaxima() - 128, bulbasaur.getVida(), 0.0001D);
 		assertTrue(bulbasaur.estaVivo());
 
-		charmander.atacar("Brasas", bulbasaur);
+		charmander.atacar(NombreAtaque.BRASAS, bulbasaur);
 		assertEquals(bulbasaur.getVidaMaxima() - 140, bulbasaur.getVida(), 0.0001D);
 		assertFalse(bulbasaur.estaVivo());
 	}
