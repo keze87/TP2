@@ -1,11 +1,11 @@
 package src.fiuba.algo3.modelo.elementos;
 
-import src.fiuba.algo3.modelo.efectos.SinEfecto;
+import src.fiuba.algo3.modelo.efectos.RestaurarAtaques;
 
 public final class Vitamina extends Elemento {
 
 	public Vitamina(){
-		this.setEfecto(new SinEfecto());
+		this.efecto = new RestaurarAtaques(2);
 	}
 
 }

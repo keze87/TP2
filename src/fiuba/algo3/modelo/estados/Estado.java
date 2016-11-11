@@ -13,18 +13,27 @@ public abstract class Estado {
 		this.vida = vidaMaxima;
 	}
 
+	/* Devuelve el valor de la vida.*/
 	public double getVida() {
 		return this.vida;
 	}
 
+	/* Devuelve el valor de la vida máxima. */
 	public double getVidaMaxima() {
 		return this.vidaMaxima;
 	}
 
+	/* Determina si el estado corresponde a estar vivo.
+	 * Si está vivo devuelve true, sino false.
+	 */
 	public boolean estaVivo() {
 		return this.vida > 0;
 	}
 
+	/**
+	 * Aumenta la vida en una cantidad dada.
+	 * @param cantidad cantidad de vida a aumentar.
+	 */
 	public void aumentarVida(double cantidad) {
 		this.vida = Math.floor(this.vida + cantidad);
 
@@ -33,6 +42,10 @@ public abstract class Estado {
 		}
 	}
 
+	/**
+	 * Disminuye la vida en una cantidad dada.
+	 * @param cantidad cantidad de vida a disminuir.
+	 */
 	public void quitarVida(double cantidad) {
 		this.vida -= cantidad;
 
@@ -41,11 +54,20 @@ public abstract class Estado {
 		}
 	}
 
+	/**
+	 * Establece el valor de la vida.
+	 * @param cantidad cantidad de vida.
+	 */
 	protected void setVida(double cantidad) {
 		this.vida = cantidad;
 	}
 
+	/* Determina si es posible atacar. Si se puede atacar
+	 * devuelve true, sino false.
+	 */
 	public abstract boolean puedeRealizarAccion();
+
+	/* Actualiza el estado luego de haber atacado. */
 	public abstract void accionRealizada();
 
 }

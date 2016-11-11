@@ -5,6 +5,7 @@ import src.fiuba.algo3.modelo.efectos.Restaurar;
 public final class Restaurador extends Elemento {
 
 	public Restaurador() {
-		this.setEfecto(new Restaurar());
+		this.efecto = new Restaurar();
 	}
+
 }

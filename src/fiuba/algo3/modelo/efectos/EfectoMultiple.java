@@ -12,6 +12,10 @@ public final class EfectoMultiple extends Efecto {
 		efectos = new ArrayList<Efecto>();
 	}
 
+	/**
+	 * Agrega un efecto a la lista de efectos.
+	 * @param efecto efecto a agregar.
+	 */
 	public void agregarEfecto(Efecto efecto){
 		this.efectos.add(efecto);
 	}

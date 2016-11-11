@@ -6,8 +6,8 @@ import src.fiuba.algo3.modelo.excepciones.VidaCompleta;
 
 public final class Pocion extends Elemento {
 
-	public Pocion(){
-		this.setEfecto(new AumentarVida(20));
+	public Pocion() {
+		this.efecto = new AumentarVida(20);
 	}
 
 	@Override

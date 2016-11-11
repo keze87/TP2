@@ -21,6 +21,8 @@ public final class Dormido extends EstadoAlterado {
 		this.turnosRestantes--;
 	}
 
+	/* Devuelve la cantidad de turnos para los que el estado corresponde
+	 * a estar dormido. */
 	public int getTurnosRestantesDormido() {
 		return this.turnosRestantes;
 	}

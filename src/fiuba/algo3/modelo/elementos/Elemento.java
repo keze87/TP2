@@ -5,13 +5,14 @@ import src.fiuba.algo3.modelo.efectos.Efecto;
 
 public abstract class Elemento {
 
-	private Efecto efecto;
+	protected Efecto efecto;
 
-	public void aplicar(AlgoMon algomon) {
-		algomon.recibirEfecto(this.efecto);
+	/**
+	 * Aplica el elemento a un algoMon.
+	 * @param algoMon algoMon al que se le aplica el efecto.
+	 */
+	public void aplicar(AlgoMon algoMon) {
+		algoMon.recibirEfecto(this.efecto);
 	}
 
-	protected void setEfecto(Efecto efecto) {
-		this.efecto = efecto;
-	}
 }
