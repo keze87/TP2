@@ -92,10 +92,7 @@ public class AlgoMon {
 	 * @param ataque ataque recibido de otro algoMon.
 	 */
 	public void recibirElemento(Elemento elemento){
-		if(this.estado.puedeRealizarAccion()) {
-			elemento.aplicar(this);
-		}
-
+		elemento.aplicar(this);
 		this.estado.accionRealizada();
 	}
 
