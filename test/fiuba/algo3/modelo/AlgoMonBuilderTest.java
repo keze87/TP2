@@ -34,7 +34,7 @@ public class AlgoMonBuilderTest {
 		assertEquals( 130, algomon.getVida(), 0 );
 
 		assertTrue( algomon.getTipo() instanceof Normal );
-		assertTrue( algomon.contieneAtaque("Canto") );
+		assertTrue( algomon.contieneAtaque(NombreAtaque.CANTO) );
 		assertTrue( algomon.contieneAtaque(NombreAtaque.LATIGOCEPA) );
 		assertTrue( algomon.contieneAtaque(NombreAtaque.ATAQUERAPIDO) );
 
@@ -49,7 +49,7 @@ public class AlgoMonBuilderTest {
 		assertEquals( 170, algomon.getVida(), 0 );
 
 		assertTrue( algomon.getTipo() instanceof Fuego );
-		assertTrue( algomon.contieneAtaque("Brasas") );
+		assertTrue( algomon.contieneAtaque(NombreAtaque.BRASAS) );
 		assertTrue( algomon.contieneAtaque(NombreAtaque.FOGONAZO) );
 		assertTrue( algomon.contieneAtaque(NombreAtaque.ATAQUERAPIDO) );
 
