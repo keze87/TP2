@@ -33,11 +33,11 @@ public class Escenas {
 		HBox fila2 = new HBox();
 		Image algomonImagen;
 		ImageView algomon;
-		ImageView question;
+		ImageView question = new ImageView(new Image(ruta + "Question.png"));
+		ImageView yup = new ImageView(new Image(ruta + "Yup.png"));
 		ImageView nope = new ImageView(new Image(ruta + "Nope.png"));
-		FadeTransition ft = new FadeTransition(Duration.millis(3000), fila);
-		FadeTransition ft2 = new FadeTransition(Duration.millis(1000), layout);
-		FadeTransition ft3 = new FadeTransition(Duration.millis(3000), layout);
+		FadeTransition aparecer = new FadeTransition(Duration.millis(3000), layout);
+		FadeTransition desvanecer = new FadeTransition(Duration.millis(2000), layout);
 
 		fila.setAlignment(Pos.CENTER);
 		fila2.setAlignment(Pos.CENTER);
@@ -49,18 +49,16 @@ public class Escenas {
 		algomon.setFitWidth(algomonImagen.getWidth() * 1.5);
 		algomon.setPreserveRatio(true);
 
-		question = new ImageView(
-				new Image(ruta + "Question.png"));
+		yup.setFitHeight(algomonImagen.getHeight());
+		yup.setFitWidth(algomonImagen.getWidth());
+		yup.setOpacity(0);
+
 		question.setFitHeight(algomon.getFitHeight());
 		question.setFitWidth(algomon.getFitWidth());
 		question.setPreserveRatio(true);
 
-		ft.setFromValue(0);
-		ft.setToValue(1);
-		ft.setCycleCount(1);
-		ft.setAutoReverse(false);
-		ft.play();
-		ft.setOnFinished(
+		aparecer.setFromValue(0); aparecer.setToValue(1); aparecer.setCycleCount(1); aparecer.setAutoReverse(false);
+		aparecer.setOnFinished(
 				new EventHandler<ActionEvent>() {
 
 					@Override
@@ -68,17 +66,15 @@ public class Escenas {
 
 						layout.getChildren().add(nope);
 
-						ft2.play();
+						desvanecer.play();
 
 					}
 				}
 				);
+		aparecer.play();
 
-		ft2.setFromValue(1);
-		ft2.setToValue(0);
-		ft2.setCycleCount(1);
-		ft2.setAutoReverse(false);
-		ft2.setOnFinished(
+		desvanecer.setFromValue(1); desvanecer.setToValue(0); desvanecer.setCycleCount(1); desvanecer.setAutoReverse(false);
+		desvanecer.setOnFinished(
 				new EventHandler<ActionEvent>() {
 
 					@Override
@@ -89,23 +85,52 @@ public class Escenas {
 						layout.getChildren().clear();
 						layout.getChildren().add(fila2);
 
-						ft3.play();
+						aparecer.setOnFinished(
+								new EventHandler<ActionEvent>() {
 
-					}
-				}
-				);
+									@Override
+									public void handle(ActionEvent event) {
 
-		ft3.setFromValue(0);
-		ft3.setToValue(1);
-		ft3.setCycleCount(1);
-		ft3.setAutoReverse(false);
-		ft3.setOnFinished(
-				new EventHandler<ActionEvent>() {
+										layout.getChildren().add(nope);
 
-					@Override
-					public void handle(ActionEvent event) {
+										desvanecer.setOnFinished(
+												new EventHandler<ActionEvent>() {
 
-						layout.getChildren().add(nope);
+													@Override
+													public void handle(ActionEvent event) {
+
+														algomon.setImage(new Image(ruta + "Rattata.gif"));
+														fila2.getChildren().clear();
+														fila2.getChildren().addAll(algomon, question, yup);
+														layout.getChildren().clear();
+														layout.getChildren().add(fila2);
+
+														aparecer.setOnFinished(
+																new EventHandler<ActionEvent>() {
+
+																	@Override
+																	public void handle(ActionEvent event) {
+
+																		yup.setOpacity(100);
+
+																		// Faltan cosas
+																		//desvanecer.play();
+
+																	}
+																}
+																);
+														aparecer.play();
+													}
+												}
+												);
+
+										desvanecer.play();
+
+									}
+								}
+								);
+
+						aparecer.play();
 
 					}
 				}
