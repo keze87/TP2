@@ -7,12 +7,11 @@ public abstract class Elemento {
 
 	private Efecto efecto;
 
-	public void aplicar(AlgoMon algomon){
+	public void aplicar(AlgoMon algomon) {
 		algomon.recibirEfecto(this.efecto);
 	}
 
 	protected void setEfecto(Efecto efecto) {
 		this.efecto = efecto;
 	}
-
 }
