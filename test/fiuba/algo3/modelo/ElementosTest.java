@@ -9,6 +9,7 @@ import src.fiuba.algo3.modelo.AlgoMonBuilder;
 import src.fiuba.algo3.modelo.elementos.Pocion;
 import src.fiuba.algo3.modelo.elementos.SuperPocion;
 import src.fiuba.algo3.modelo.elementos.Vitamina;
+import src.fiuba.algo3.modelo.excepciones.AtaqueAgotado;
 import src.fiuba.algo3.modelo.excepciones.VidaCompleta;
 
 public class ElementosTest {
@@ -50,51 +51,46 @@ public class ElementosTest {
 	}
 
 	@Test
-	public void test03VitaminaAumentaPotenciaEn2DeTodosLosAtaques(){
+	public void test03VitaminaAumentaEn2LaCantidadDeTodosLosAtaques(){
 		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
 		AlgoMon squirtle = AlgoMonBuilder.crearSquirtle();
+		AlgoMon otroCharmander = AlgoMonBuilder.crearCharmander();
 		Vitamina vitamina = new Vitamina();
 
 		charmander.recibirElemento(vitamina);
+		int contador = 1;
+		
+		try{
+			while(true){
+				charmander.ataque("Brasas", squirtle);
+				contador++;
+			}
 
-		charmander.ataque("Brasas", squirtle);
-		assertEquals((squirtle.getVidaMaxima() - 8), squirtle.getVida(), 0.0001D);
+		} catch(AtaqueAgotado e) {
+			assertEquals(13, contador);
+		}
 
-		charmander.ataque("Brasas", squirtle);
-		assertEquals((squirtle.getVidaMaxima() - 16), squirtle.getVida(), 0.0001D);
+		contador = 1;
+		try{
+			while(true){
+				charmander.ataque("Fogonazo", squirtle);
+				contador++;
+			}
 
-		charmander.ataque("Brasas", squirtle);
-		assertEquals((squirtle.getVidaMaxima() - 24), squirtle.getVida(), 0.0001D);
+		} catch(AtaqueAgotado e) {
+			assertEquals(7, contador);
+		}
 
-		charmander.ataque("Brasas", squirtle);
-		assertEquals((squirtle.getVidaMaxima() - 32), squirtle.getVida(), 0.0001D);
+		contador = 1;
+		try{
+			while(true){
+				charmander.ataque("Ataque rápido", otroCharmander);
+				contador++;
+			}
 
-		charmander.ataque("Brasas", squirtle);
-		assertEquals((squirtle.getVidaMaxima() - 40), squirtle.getVida(), 0.0001D);
-
-		charmander.ataque("Brasas", squirtle);
-		assertEquals((squirtle.getVidaMaxima() - 48), squirtle.getVida(), 0.0001D);
-
-		charmander.ataque("Brasas", squirtle);
-		assertEquals((squirtle.getVidaMaxima() - 56), squirtle.getVida(), 0.0001D);
-
-		charmander.ataque("Brasas", squirtle);
-		assertEquals((squirtle.getVidaMaxima() - 64), squirtle.getVida(), 0.0001D);
-
-		charmander.ataque("Brasas", squirtle);
-		assertEquals((squirtle.getVidaMaxima() - 72), squirtle.getVida(), 0.0001D);
-
-		charmander.ataque("Brasas", squirtle);
-		assertEquals((squirtle.getVidaMaxima() - 80), squirtle.getVida(), 0.0001D);
-
-		// ??? Esto está mal.
-		charmander = AlgoMonBuilder.crearCharmander();
-
-		charmander.ataque("Brasas", squirtle);
-		assertEquals((squirtle.getVidaMaxima() - 88), squirtle.getVida(), 0.0001D);
-
-		charmander.ataque("Brasas", squirtle);
-		assertEquals((squirtle.getVidaMaxima() - 96), squirtle.getVida(), 0.0001D);
+		} catch(AtaqueAgotado e) {
+			assertEquals(19, contador);
+		}
 
 	}
 
