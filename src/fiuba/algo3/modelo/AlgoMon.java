@@ -120,4 +120,11 @@ public class AlgoMon {
 		}
 	}
 
+	public void aumentarCantidadAtaquesDisponibles(int cant) {
+		for (Ataque ataque : ataques.values()) {
+			ataque.aumentarCantidad(cant);
+		}
+		
+	}
+
 }

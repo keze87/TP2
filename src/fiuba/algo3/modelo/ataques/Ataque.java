@@ -61,4 +61,8 @@ public abstract class Ataque {
 	private boolean quedanUsos() {
 		return this.usosRestantes > 0;
 	}
+
+	public void aumentarCantidad(int cant) {
+		this.usosRestantes+=cant;
+	}
 }
