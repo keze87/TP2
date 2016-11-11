@@ -30,17 +30,15 @@ public class Escenas {
 
 		StackPane layout = new StackPane();
 		HBox fila = new HBox();
-		HBox fila2 = new HBox();
 		Image algomonImagen;
 		ImageView algomon;
-		ImageView question = new ImageView(new Image(ruta + "Question.png"));
-		ImageView yup = new ImageView(new Image(ruta + "Yup.png"));
-		ImageView nope = new ImageView(new Image(ruta + "Nope.png"));
+		ImageView question = new ImageView(ruta + "Question.png");
+		ImageView yup = new ImageView(ruta + "Yup.png");
+		ImageView nope = new ImageView(ruta + "Nope.png");
 		FadeTransition aparecer = new FadeTransition(Duration.millis(3000), layout);
 		FadeTransition desvanecer = new FadeTransition(Duration.millis(2000), layout);
 
 		fila.setAlignment(Pos.CENTER);
-		fila2.setAlignment(Pos.CENTER);
 
 		algomonImagen = new Image(ruta + "Pikachu.gif");
 
@@ -51,6 +49,7 @@ public class Escenas {
 
 		yup.setFitHeight(algomonImagen.getHeight());
 		yup.setFitWidth(algomonImagen.getWidth());
+		yup.setPreserveRatio(true);
 		yup.setOpacity(0);
 
 		question.setFitHeight(algomon.getFitHeight());
@@ -81,9 +80,10 @@ public class Escenas {
 					public void handle(ActionEvent event) {
 
 						algomon.setImage(new Image(ruta + "Gengar.gif"));
-						fila2.getChildren().addAll(algomon, question);
+						fila.getChildren().clear();
+						fila.getChildren().addAll(algomon, question);
 						layout.getChildren().clear();
-						layout.getChildren().add(fila2);
+						layout.getChildren().add(fila);
 
 						aparecer.setOnFinished(
 								new EventHandler<ActionEvent>() {
@@ -100,10 +100,10 @@ public class Escenas {
 													public void handle(ActionEvent event) {
 
 														algomon.setImage(new Image(ruta + "Rattata.gif"));
-														fila2.getChildren().clear();
-														fila2.getChildren().addAll(algomon, question, yup);
+														fila.getChildren().clear();
+														fila.getChildren().addAll(algomon, question, yup);
 														layout.getChildren().clear();
-														layout.getChildren().add(fila2);
+														layout.getChildren().add(fila);
 
 														aparecer.setOnFinished(
 																new EventHandler<ActionEvent>() {
@@ -113,8 +113,19 @@ public class Escenas {
 
 																		yup.setOpacity(100);
 
-																		// Faltan cosas
-																		//desvanecer.play();
+																		desvanecer.setDelay(Duration.millis(1000));
+																		desvanecer.setOnFinished(
+																				new EventHandler<ActionEvent>() {
+
+																					@Override
+																					public void handle(ActionEvent event) {
+
+																						Escenas.IntroduccionParte2(primaryStage);
+
+																					}
+																				}
+																				);
+																		desvanecer.play();
 
 																	}
 																}
@@ -155,6 +166,66 @@ public class Escenas {
 				);
 
 		primaryStage.setScene(intro);
+		primaryStage.show();
+
+	}
+
+	protected static void IntroduccionParte2(Stage primaryStage) {
+
+		StackPane layoutConImagenNegra = new StackPane();
+		BorderPane layout = new BorderPane();
+		Scene intro2 = new Scene(layoutConImagenNegra, 1024, 768, Color.web("e5a001"));
+
+		ImageView rattata = new ImageView(ruta + "RattataMR.png");
+		HBox rattataBox = new HBox(rattata);
+		rattataBox.setPadding(new Insets(20));
+		rattataBox.setAlignment(Pos.CENTER);
+		rattata.setFitHeight(400);
+		rattata.setFitWidth(400);
+		rattata.setPreserveRatio(true);
+
+		ImageView negro = new ImageView(new Image(ruta + "Negro.png"));
+		FadeTransition desvanecer = new FadeTransition(Duration.millis(3000), negro);
+		FadeTransition aparecer = new FadeTransition(Duration.millis(2000), negro);
+
+		negro.setFitWidth(4000);
+		negro.setFitHeight(4000);
+
+		desvanecer.setFromValue(0); desvanecer.setToValue(1); desvanecer.setCycleCount(1); desvanecer.setAutoReverse(false);
+		aparecer.setFromValue(1); aparecer.setToValue(0); aparecer.setCycleCount(1); aparecer.setAutoReverse(false);
+
+		aparecer.setOnFinished(
+				new EventHandler<ActionEvent>() {
+
+					@Override
+					public void handle(ActionEvent event) {
+
+						layout.setCenter(rattataBox);
+
+						desvanecer.setDelay(Duration.seconds(4));
+						desvanecer.setOnFinished(
+								new EventHandler<ActionEvent>() {
+
+									@Override
+									public void handle(ActionEvent event) {
+
+										Escenas.MenuPrincipal(primaryStage);
+
+									}
+
+								}
+								);
+						desvanecer.play();
+
+					}
+				}
+				);
+
+		aparecer.play();
+
+		layoutConImagenNegra.getChildren().addAll(layout, negro);
+
+		primaryStage.setScene(intro2);
 		primaryStage.show();
 
 	}
