@@ -1,13 +1,19 @@
 package src.fiuba.algo3.modelo.estados;
 
 public final class Dormido extends EstadoAlterado {
+	private static int turnosDormido = 3;
+	
+	public static int getTurnosDormido() {
+		return turnosDormido;
+	}
+
 	private int turnosRestantes;
 
 	public Dormido(Estado estadoAnterior) {
 		this.estadoAnterior = estadoAnterior;
 		this.vida = estadoAnterior.getVida();
 		this.vidaMaxima = estadoAnterior.getVidaMaxima();
-		this.turnosRestantes = 3;
+		this.turnosRestantes = Dormido.getTurnosDormido();
 	}
 
 	@Override
@@ -26,5 +32,6 @@ public final class Dormido extends EstadoAlterado {
 	public int getTurnosRestantesDormido() {
 		return this.turnosRestantes;
 	}
+
 
 }

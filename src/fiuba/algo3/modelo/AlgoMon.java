@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import src.fiuba.algo3.modelo.ataques.Ataque;
+import src.fiuba.algo3.modelo.ataques.NombreAtaque;
 import src.fiuba.algo3.modelo.efectos.Efecto;
 import src.fiuba.algo3.modelo.elementos.Elemento;
 import src.fiuba.algo3.modelo.estados.Estado;
@@ -16,12 +17,12 @@ public class AlgoMon {
 
 	protected String nombre;
 	protected Tipo tipo;
-	protected Map<String, Ataque> ataques;
+	protected Map<NombreAtaque, Ataque> ataques;
 	protected Estado estado;
 
 	public AlgoMon(String nombre, int vidaMaxima, List<Ataque> ataques) {
 		this.nombre = nombre;
-		this.ataques = new HashMap<String, Ataque>();
+		this.ataques = new HashMap<NombreAtaque, Ataque>();
 		this.agregarAtaques(ataques);
 		this.estado = new EstadoNormal(vidaMaxima);
 	}
@@ -65,7 +66,7 @@ public class AlgoMon {
 	 * @param nombreAtaque nombre del ataque.
 	 * @param contrincante algoMon a atacar.
 	 */
-	public void atacar(String nombreAtaque, AlgoMon contrincante) throws AlgoMonNoTieneAtaque {
+	public void atacar(NombreAtaque nombreAtaque, AlgoMon contrincante) throws AlgoMonNoTieneAtaque {
 		try {
 
 			if (this.estado.puedeRealizarAccion()) {
@@ -75,7 +76,7 @@ public class AlgoMon {
 			this.estado.accionRealizada();
 
 		} catch (NullPointerException e) {
-			throw new AlgoMonNoTieneAtaque(this.nombre + " no puede usar " + nombreAtaque + "!");
+			throw new AlgoMonNoTieneAtaque(this.nombre + " no puede usar " + nombreAtaque.toString() + "!");
 		}
 	}
 
@@ -101,7 +102,7 @@ public class AlgoMon {
 	 * @param nombreAtaque nombre del ataque.
 	 * @return true si tiene el ataque, sino false.
 	 */
-	public boolean contieneAtaque(String nombreAtaque) {
+	public boolean contieneAtaque(NombreAtaque nombreAtaque) {
 		return this.ataques.containsKey(nombreAtaque);
 	}
 
@@ -115,6 +116,13 @@ public class AlgoMon {
 		for (Ataque ataque : ataques) {
 			this.ataques.put(ataque.getNombre(), ataque);
 		}
+	}
+
+	public void aumentarCantidadAtaquesDisponibles(int cant) {
+		for (Ataque ataque : ataques.values()) {
+			ataque.aumentarCantidad(cant);
+		}
+		
 	}
 
 }

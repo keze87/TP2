@@ -5,9 +5,14 @@ import src.fiuba.algo3.modelo.efectos.AumentarVida;
 import src.fiuba.algo3.modelo.excepciones.VidaCompleta;
 
 public final class Pocion extends Elemento {
+	private static int vidaAumentada=20;
+	
+	public static int getVidaAumentada() {
+		return vidaAumentada;
+	}
 
 	public Pocion() {
-		this.efecto = new AumentarVida(20);
+		this.efecto = new AumentarVida(Pocion.getVidaAumentada());
 	}
 
 	@Override

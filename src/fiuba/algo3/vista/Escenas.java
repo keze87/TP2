@@ -70,9 +70,13 @@ public class Escenas {
 					}
 				}
 				);
+
 		aparecer.play();
 
-		desvanecer.setFromValue(1); desvanecer.setToValue(0); desvanecer.setCycleCount(1); desvanecer.setAutoReverse(false);
+		desvanecer.setFromValue(1);
+		desvanecer.setToValue(0);
+		desvanecer.setCycleCount(1);
+		desvanecer.setAutoReverse(false);
 		desvanecer.setOnFinished(
 				new EventHandler<ActionEvent>() {
 

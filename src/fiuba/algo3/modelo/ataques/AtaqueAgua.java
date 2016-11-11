@@ -5,7 +5,7 @@ import src.fiuba.algo3.modelo.efectos.Efecto;
 
 public class AtaqueAgua extends Ataque {
 
-	public AtaqueAgua(String nombre, int poder, int usosTotales, Efecto efectoBase, Efecto efectoAtacante) {
+	public AtaqueAgua(NombreAtaque nombre, int poder, int usosTotales, Efecto efectoBase, Efecto efectoAtacante) {
 		super(nombre, poder, usosTotales, efectoBase, efectoAtacante);
 		this.tipo = new Agua();
 	}

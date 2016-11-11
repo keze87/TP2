@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import src.fiuba.algo3.modelo.AlgoMon;
 import src.fiuba.algo3.modelo.AlgoMonBuilder;
+import src.fiuba.algo3.modelo.ataques.NombreAtaque;
 import src.fiuba.algo3.modelo.excepciones.AtaqueAgotado;
 
 public class AlgoMonTest {
@@ -20,10 +21,10 @@ public class AlgoMonTest {
 
 		assertEquals(charmander.getVidaMaxima(), charmander.getVida(), 0.0001D);
 
-		squirtle.atacar("Burbuja", charmander);
+		squirtle.atacar(NombreAtaque.BURBUJA, charmander);
 		assertEquals(charmander.getVidaMaxima() - 20, charmander.getVida(), 0.0001D);
 
-		squirtle.atacar("Cañón de agua", charmander);
+		squirtle.atacar(NombreAtaque.CAÑONDEAGUA, charmander);
 		assertEquals(charmander.getVidaMaxima() - 60, charmander.getVida(), 0.0001D);
 
 	}
@@ -36,10 +37,10 @@ public class AlgoMonTest {
 
 		assertEquals(bulbasaur.getVidaMaxima(), bulbasaur.getVida(), 0.0001D);
 
-		squirtle.atacar("Burbuja", bulbasaur);
+		squirtle.atacar(NombreAtaque.BURBUJA, bulbasaur);
 		assertEquals(bulbasaur.getVidaMaxima() - 5, bulbasaur.getVida(), 0.0001D);
 
-		squirtle.atacar("Cañón de agua", bulbasaur);
+		squirtle.atacar(NombreAtaque.CAÑONDEAGUA, bulbasaur);
 		assertEquals(bulbasaur.getVidaMaxima() - 15, bulbasaur.getVida(), 0.0001D);
 
 	}
@@ -52,22 +53,22 @@ public class AlgoMonTest {
 		AlgoMon chansey = AlgoMonBuilder.crearChansey();
 		AlgoMon rattata = AlgoMonBuilder.crearRattata();
 
-		squirtle.atacar("Burbuja", jigglypuff);
+		squirtle.atacar(NombreAtaque.BURBUJA, jigglypuff);
 		assertEquals(jigglypuff.getVidaMaxima() - 10, jigglypuff.getVida(), 0.0001D);
 
-		squirtle.atacar("Burbuja", chansey);
+		squirtle.atacar(NombreAtaque.BURBUJA, chansey);
 		assertEquals(chansey.getVidaMaxima() - 10, chansey.getVida(), 0.0001D);
 
-		squirtle.atacar("Burbuja", rattata);
+		squirtle.atacar(NombreAtaque.BURBUJA, rattata);
 		assertEquals(rattata.getVidaMaxima() - 10, rattata.getVida(), 0.0001D);
 
-		squirtle.atacar("Cañón de agua", jigglypuff);
+		squirtle.atacar(NombreAtaque.CAÑONDEAGUA, jigglypuff);
 		assertEquals(jigglypuff.getVidaMaxima() - 30, jigglypuff.getVida(), 0.0001D);
 
-		squirtle.atacar("Cañón de agua", chansey);
+		squirtle.atacar(NombreAtaque.CAÑONDEAGUA, chansey);
 		assertEquals(chansey.getVidaMaxima() - 30, chansey.getVida(), 0.0001D);
 
-		squirtle.atacar("Cañón de agua", rattata);
+		squirtle.atacar(NombreAtaque.CAÑONDEAGUA, rattata);
 		assertEquals(rattata.getVidaMaxima() - 30, rattata.getVida(), 0.0001D);
 
 	}
@@ -79,10 +80,10 @@ public class AlgoMonTest {
 		AlgoMon chansey = AlgoMonBuilder.crearChansey();
 		AlgoMon squirtle = AlgoMonBuilder.crearSquirtle();
 
-		bulbasaur.atacar("Látigo cepa", squirtle);
+		bulbasaur.atacar(NombreAtaque.LATIGOCEPA, squirtle);
 		assertEquals(squirtle.getVidaMaxima() - 30, squirtle.getVida(), 0.0001D);
 
-		chansey.atacar("Látigo cepa", squirtle);
+		chansey.atacar(NombreAtaque.LATIGOCEPA, squirtle);
 		assertEquals(squirtle.getVidaMaxima() - 60, squirtle.getVida(), 0.0001D);
 
 	}
@@ -94,10 +95,10 @@ public class AlgoMonTest {
 		AlgoMon chansey = AlgoMonBuilder.crearChansey();
 		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
 
-		bulbasaur.atacar("Látigo cepa", charmander);
+		bulbasaur.atacar(NombreAtaque.LATIGOCEPA, charmander);
 		assertEquals(charmander.getVidaMaxima() - 7, charmander.getVida(), 0.0001D);
 
-		chansey.atacar("Látigo cepa", charmander);
+		chansey.atacar(NombreAtaque.LATIGOCEPA, charmander);
 		assertEquals(charmander.getVidaMaxima() - 14, charmander.getVida(), 0.0001D);
 	}
 
@@ -110,22 +111,22 @@ public class AlgoMonTest {
 		AlgoMon otroChansey = AlgoMonBuilder.crearChansey();
 		AlgoMon rattata = AlgoMonBuilder.crearRattata();
 
-		bulbasaur.atacar("Látigo cepa", jigglypuff);
+		bulbasaur.atacar(NombreAtaque.LATIGOCEPA, jigglypuff);
 		assertEquals(jigglypuff.getVidaMaxima() - 15, jigglypuff.getVida(), 0.0001D);
 
-		bulbasaur.atacar("Látigo cepa", otroChansey);
+		bulbasaur.atacar(NombreAtaque.LATIGOCEPA, otroChansey);
 		assertEquals(otroChansey.getVidaMaxima() - 15, otroChansey.getVida(), 0.0001D);
 
-		bulbasaur.atacar("Látigo cepa", rattata);
+		bulbasaur.atacar(NombreAtaque.LATIGOCEPA, rattata);
 		assertEquals(rattata.getVidaMaxima() - 15, rattata.getVida(), 0.0001D);
 
-		chansey.atacar("Látigo cepa", jigglypuff);
+		chansey.atacar(NombreAtaque.LATIGOCEPA, jigglypuff);
 		assertEquals(jigglypuff.getVidaMaxima() - 30, jigglypuff.getVida(), 0.0001D);
 
-		chansey.atacar("Látigo cepa", otroChansey);
+		chansey.atacar(NombreAtaque.LATIGOCEPA, otroChansey);
 		assertEquals(otroChansey.getVidaMaxima() - 30, otroChansey.getVida(), 0.0001D);
 
-		chansey.atacar("Látigo cepa", rattata);
+		chansey.atacar(NombreAtaque.LATIGOCEPA, rattata);
 		assertEquals(rattata.getVidaMaxima() - 30, rattata.getVida(), 0.0001D);
 
 	}
@@ -136,7 +137,7 @@ public class AlgoMonTest {
 		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
 		AlgoMon bulbasaur = AlgoMonBuilder.crearBulbasaur();
 
-		charmander.atacar("Brasas", bulbasaur);
+		charmander.atacar(NombreAtaque.BRASAS, bulbasaur);
 		assertEquals(bulbasaur.getVidaMaxima() - 32, bulbasaur.getVida(), 0.0001D);
 
 	}
@@ -147,7 +148,7 @@ public class AlgoMonTest {
 		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
 		AlgoMon squirtle = AlgoMonBuilder.crearSquirtle();
 
-		charmander.atacar("Brasas", squirtle);
+		charmander.atacar(NombreAtaque.BRASAS, squirtle);
 		assertEquals(squirtle.getVidaMaxima() - 8, squirtle.getVida(), 0.0001D);
 
 	}
@@ -160,13 +161,13 @@ public class AlgoMonTest {
 		AlgoMon chansey = AlgoMonBuilder.crearChansey();
 		AlgoMon rattata = AlgoMonBuilder.crearRattata();
 
-		charmander.atacar("Brasas", jigglypuff);
+		charmander.atacar(NombreAtaque.BRASAS, jigglypuff);
 		assertEquals(jigglypuff.getVidaMaxima() - 16, jigglypuff.getVida(), 0.0001D);
 
-		charmander.atacar("Brasas", chansey);
+		charmander.atacar(NombreAtaque.BRASAS, chansey);
 		assertEquals(chansey.getVidaMaxima() - 16, chansey.getVida(), 0.0001D);
 
-		charmander.atacar("Brasas", rattata);
+		charmander.atacar(NombreAtaque.BRASAS, rattata);
 		assertEquals(rattata.getVidaMaxima() - 16, rattata.getVida(), 0.0001D);
 
 	}
@@ -181,94 +182,94 @@ public class AlgoMonTest {
 		AlgoMon chansey = AlgoMonBuilder.crearChansey();
 		AlgoMon rattata = AlgoMonBuilder.crearRattata();
 
-		charmander.atacar("Ataque rápido", squirtle);
+		charmander.atacar(NombreAtaque.ATAQUERAPIDO, squirtle);
 		assertEquals(squirtle.getVidaMaxima() - 10, squirtle.getVida(), 0.0001D);
 
-		charmander.atacar("Ataque rápido", bulbasaur);
+		charmander.atacar(NombreAtaque.ATAQUERAPIDO, bulbasaur);
 		assertEquals(bulbasaur.getVidaMaxima() - 10, bulbasaur.getVida(), 0.0001D);
 
-		charmander.atacar("Ataque rápido", jigglypuff);
+		charmander.atacar(NombreAtaque.ATAQUERAPIDO, jigglypuff);
 		assertEquals(jigglypuff.getVidaMaxima() - 10, jigglypuff.getVida(), 0.0001D);
 
-		charmander.atacar("Ataque rápido", chansey);
+		charmander.atacar(NombreAtaque.ATAQUERAPIDO, chansey);
 		assertEquals(chansey.getVidaMaxima() - 10, chansey.getVida(), 0.0001D);
 
-		charmander.atacar("Ataque rápido", rattata);
+		charmander.atacar(NombreAtaque.ATAQUERAPIDO, rattata);
 		assertEquals(rattata.getVidaMaxima() - 10, rattata.getVida(), 0.0001D);
 
-		squirtle.atacar("Ataque rápido", charmander);
+		squirtle.atacar(NombreAtaque.ATAQUERAPIDO, charmander);
 		assertEquals(charmander.getVidaMaxima() - 10, charmander.getVida(), 0.0001D);
 
-		squirtle.atacar("Ataque rápido", bulbasaur);
+		squirtle.atacar(NombreAtaque.ATAQUERAPIDO, bulbasaur);
 		assertEquals(bulbasaur.getVidaMaxima() - 20, bulbasaur.getVida(), 0.0001D);
 
-		squirtle.atacar("Ataque rápido", jigglypuff);
+		squirtle.atacar(NombreAtaque.ATAQUERAPIDO, jigglypuff);
 		assertEquals(jigglypuff.getVidaMaxima() - 20, jigglypuff.getVida(), 0.0001D);
 
-		squirtle.atacar("Ataque rápido", chansey);
+		squirtle.atacar(NombreAtaque.ATAQUERAPIDO, chansey);
 		assertEquals(chansey.getVidaMaxima() - 20, chansey.getVida(), 0.0001D);
 
-		squirtle.atacar("Ataque rápido", rattata);
+		squirtle.atacar(NombreAtaque.ATAQUERAPIDO, rattata);
 		assertEquals(rattata.getVidaMaxima() - 20, rattata.getVida(), 0.0001D);
 
-		bulbasaur.atacar("Ataque rápido", charmander);
+		bulbasaur.atacar(NombreAtaque.ATAQUERAPIDO, charmander);
 		assertEquals(charmander.getVidaMaxima() - 20, charmander.getVida(), 0.0001D);
 
-		bulbasaur.atacar("Ataque rápido", squirtle);
+		bulbasaur.atacar(NombreAtaque.ATAQUERAPIDO, squirtle);
 		assertEquals(squirtle.getVidaMaxima() - 20, squirtle.getVida(), 0.0001D);
 
-		bulbasaur.atacar("Ataque rápido", jigglypuff);
+		bulbasaur.atacar(NombreAtaque.ATAQUERAPIDO, jigglypuff);
 		assertEquals(jigglypuff.getVidaMaxima() - 30, jigglypuff.getVida(), 0.0001D);
 
-		bulbasaur.atacar("Ataque rápido", chansey);
+		bulbasaur.atacar(NombreAtaque.ATAQUERAPIDO, chansey);
 		assertEquals(chansey.getVidaMaxima() - 30, chansey.getVida(), 0.0001D);
 
-		bulbasaur.atacar("Ataque rápido", rattata);
+		bulbasaur.atacar(NombreAtaque.ATAQUERAPIDO, rattata);
 		assertEquals(rattata.getVidaMaxima() - 30, rattata.getVida(), 0.0001D);
 
-		jigglypuff.atacar("Ataque rápido", charmander);
+		jigglypuff.atacar(NombreAtaque.ATAQUERAPIDO, charmander);
 		assertEquals(charmander.getVidaMaxima() - 30, charmander.getVida(), 0.0001D);
 
-		jigglypuff.atacar("Ataque rápido", squirtle);
+		jigglypuff.atacar(NombreAtaque.ATAQUERAPIDO, squirtle);
 		assertEquals(squirtle.getVidaMaxima() - 30, squirtle.getVida(), 0.0001D);
 
-		jigglypuff.atacar("Ataque rápido", bulbasaur);
+		jigglypuff.atacar(NombreAtaque.ATAQUERAPIDO, bulbasaur);
 		assertEquals(bulbasaur.getVidaMaxima() - 30, bulbasaur.getVida(), 0.0001D);
 
-		jigglypuff.atacar("Ataque rápido", chansey);
+		jigglypuff.atacar(NombreAtaque.ATAQUERAPIDO, chansey);
 		assertEquals(chansey.getVidaMaxima() - 40, chansey.getVida(), 0.0001D);
 
-		jigglypuff.atacar("Ataque rápido", rattata);
+		jigglypuff.atacar(NombreAtaque.ATAQUERAPIDO, rattata);
 		assertEquals(rattata.getVidaMaxima() - 40, rattata.getVida(), 0.0001D);
 
-		chansey.atacar("Ataque rápido", charmander);
+		chansey.atacar(NombreAtaque.ATAQUERAPIDO, charmander);
 		assertEquals(charmander.getVidaMaxima() - 40, charmander.getVida(), 0.0001D);
 
-		chansey.atacar("Ataque rápido", squirtle);
+		chansey.atacar(NombreAtaque.ATAQUERAPIDO, squirtle);
 		assertEquals(squirtle.getVidaMaxima() - 40, squirtle.getVida(), 0.0001D);
 
-		chansey.atacar("Ataque rápido", bulbasaur);
+		chansey.atacar(NombreAtaque.ATAQUERAPIDO, bulbasaur);
 		assertEquals(bulbasaur.getVidaMaxima() - 40, bulbasaur.getVida(), 0.0001D);
 
-		chansey.atacar("Ataque rápido", jigglypuff);
+		chansey.atacar(NombreAtaque.ATAQUERAPIDO, jigglypuff);
 		assertEquals(jigglypuff.getVidaMaxima() - 40, jigglypuff.getVida(), 0.0001D);
 
-		chansey.atacar("Ataque rápido", rattata);
+		chansey.atacar(NombreAtaque.ATAQUERAPIDO, rattata);
 		assertEquals(rattata.getVidaMaxima() - 50, rattata.getVida(), 0.0001D);
 
-		rattata.atacar("Ataque rápido", charmander);
+		rattata.atacar(NombreAtaque.ATAQUERAPIDO, charmander);
 		assertEquals(charmander.getVidaMaxima() - 50, charmander.getVida(), 0.0001D);
 
-		rattata.atacar("Ataque rápido", squirtle);
+		rattata.atacar(NombreAtaque.ATAQUERAPIDO, squirtle);
 		assertEquals(squirtle.getVidaMaxima() - 50, squirtle.getVida(), 0.0001D);
 
-		rattata.atacar("Ataque rápido", bulbasaur);
+		rattata.atacar(NombreAtaque.ATAQUERAPIDO, bulbasaur);
 		assertEquals(bulbasaur.getVidaMaxima() - 50, bulbasaur.getVida(), 0.0001D);
 
-		rattata.atacar("Ataque rápido", jigglypuff);
+		rattata.atacar(NombreAtaque.ATAQUERAPIDO, jigglypuff);
 		assertEquals(jigglypuff.getVidaMaxima() - 50, jigglypuff.getVida(), 0.0001D);
 
-		rattata.atacar("Ataque rápido", chansey);
+		rattata.atacar(NombreAtaque.ATAQUERAPIDO, chansey);
 		assertEquals(chansey.getVidaMaxima() - 50, chansey.getVida(), 0.0001D);
 
 	}
@@ -279,11 +280,11 @@ public class AlgoMonTest {
 		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
 		AlgoMon rattata = AlgoMonBuilder.crearRattata();
 
-		charmander.atacar("Fogonazo", rattata);
-		charmander.atacar("Fogonazo", rattata);
-		charmander.atacar("Fogonazo", rattata);
-		charmander.atacar("Fogonazo", rattata);
-		charmander.atacar("Fogonazo", rattata);
+		charmander.atacar(NombreAtaque.FOGONAZO, rattata);
+		charmander.atacar(NombreAtaque.FOGONAZO, rattata);
+		charmander.atacar(NombreAtaque.FOGONAZO, rattata);
+		charmander.atacar(NombreAtaque.FOGONAZO, rattata);
+		charmander.atacar(NombreAtaque.FOGONAZO, rattata);
 
 	}
 

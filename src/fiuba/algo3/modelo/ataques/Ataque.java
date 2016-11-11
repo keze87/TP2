@@ -8,7 +8,7 @@ import src.fiuba.algo3.modelo.excepciones.AtaqueAgotado;
 import src.fiuba.algo3.modelo.tipo.Tipo;
 
 public abstract class Ataque {
-	protected String nombre;
+	protected NombreAtaque nombre;
 	protected int potencia;
 	protected int usosTotales;
 	protected int usosRestantes;
@@ -16,7 +16,7 @@ public abstract class Ataque {
 	protected EfectoMultiple efecto;
 	protected Efecto efectoBaseAlgoMonAtacado,efectoAlgoMonAtacante;
 
-	public Ataque(String nombre, int poder, int usosTotales, Efecto efectoBaseAtacado, Efecto efectoAtacante) {
+	public Ataque(NombreAtaque nombre, int poder, int usosTotales, Efecto efectoBaseAtacado, Efecto efectoAtacante) {
 		this.nombre = nombre;
 		this.potencia = poder;
 		this.usosTotales = usosTotales;
@@ -26,7 +26,7 @@ public abstract class Ataque {
 	}
 
 	/* Devuelve el nombre del ataque. */
-	public String getNombre() {
+	public NombreAtaque getNombre() {
 		return nombre;
 	}
 
@@ -60,5 +60,9 @@ public abstract class Ataque {
 	/* Determina si el ataque tiene usos restantes. */
 	private boolean quedanUsos() {
 		return this.usosRestantes > 0;
+	}
+
+	public void aumentarCantidad(int cant) {
+		this.usosRestantes+=cant;
 	}
 }
