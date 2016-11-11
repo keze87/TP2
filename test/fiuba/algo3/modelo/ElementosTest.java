@@ -58,10 +58,8 @@ public class ElementosTest {
 		Vitamina vitamina = new Vitamina();
 
 		charmander.recibirElemento(vitamina);
-
 		int contador = 1;
-		charmander.recibirElemento(vitamina);
-
+		
 		try{
 			while(true){
 				charmander.ataque("Brasas", squirtle);
