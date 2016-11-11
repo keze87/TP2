@@ -64,7 +64,7 @@ public class AlgoMon {
 	 * @param nombreAtaque nombre del ataque.
 	 * @param contrincante algoMon a atacar.
 	 */
-	public void ataque(String nombreAtaque, AlgoMon contrincante) throws AlgoMonNoTieneAtaque {
+	public void atacar(String nombreAtaque, AlgoMon contrincante) throws AlgoMonNoTieneAtaque {
 		try {
 
 			if (this.estado.puedeRealizarAccion()) {

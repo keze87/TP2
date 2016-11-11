@@ -21,18 +21,17 @@ public class ElementosTest {
 		AlgoMon squirtle = AlgoMonBuilder.crearSquirtle();
 		Pocion pocion = new Pocion();
 
-		charmander.ataque("Brasas", bulbasaur);
+		charmander.atacar("Brasas", bulbasaur);
 		assertEquals(bulbasaur.getVidaMaxima() - 32, bulbasaur.getVida(), 0.0001D);
 
 		bulbasaur.recibirElemento(pocion);
 
 		assertEquals((bulbasaur.getVidaMaxima() - 32) + 20, bulbasaur.getVida(), 0.0001D);
 
-		squirtle.ataque("Cañón de agua", charmander);
+		squirtle.atacar("Cañón de agua", charmander);
 		assertEquals(charmander.getVidaMaxima() - 40, charmander.getVida(), 0.0001D);
 
 		charmander.recibirElemento(pocion);
-
 		assertEquals((charmander.getVidaMaxima() - 40) + 20, charmander.getVida(), 0.0001D);
 	}
 
@@ -43,7 +42,7 @@ public class ElementosTest {
 		AlgoMon squirtle = AlgoMonBuilder.crearSquirtle();
 		SuperPocion superPocion = new SuperPocion();
 
-		squirtle.ataque("Cañón de agua", charmander);
+		squirtle.atacar("Cañón de agua", charmander);
 		assertEquals(charmander.getVidaMaxima() - 40 , charmander.getVida(), 0.0001D);
 
 		charmander.recibirElemento(superPocion);
@@ -58,38 +57,40 @@ public class ElementosTest {
 		Vitamina vitamina = new Vitamina();
 
 		charmander.recibirElemento(vitamina);
-		int contador = 1;
-		
+		int contador = 0;
+
 		try{
 			while(true){
-				charmander.ataque("Brasas", squirtle);
+				charmander.atacar("Brasas", squirtle);
 				contador++;
 			}
 
 		} catch(AtaqueAgotado e) {
-			assertEquals(13, contador);
+			assertEquals(12, contador);
 		}
 
-		contador = 1;
+		contador = 0;
+
 		try{
 			while(true){
-				charmander.ataque("Fogonazo", squirtle);
+				charmander.atacar("Fogonazo", squirtle);
 				contador++;
 			}
 
 		} catch(AtaqueAgotado e) {
-			assertEquals(7, contador);
+			assertEquals(6, contador);
 		}
 
-		contador = 1;
+		contador = 0;
+
 		try{
 			while(true){
-				charmander.ataque("Ataque rápido", otroCharmander);
+				charmander.atacar("Ataque rápido", otroCharmander);
 				contador++;
 			}
 
 		} catch(AtaqueAgotado e) {
-			assertEquals(19, contador);
+			assertEquals(18, contador);
 		}
 
 	}
