@@ -97,7 +97,7 @@ public class AlgoMonBuilder {
 	 * @param vida vida máxima del algoMon a crear.
 	 * @return this.
 	 */
-	private AlgoMonBuilder setVida(int vida) {
+	private AlgoMonBuilder setVida(double vida) {
 		this.vida = vida;
 		return this;
 	}
