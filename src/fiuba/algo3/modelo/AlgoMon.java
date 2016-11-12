@@ -20,7 +20,7 @@ public class AlgoMon {
 	protected Map<NombreAtaque, Ataque> ataques;
 	protected Estado estado;
 
-	public AlgoMon(String nombre, int vidaMaxima, List<Ataque> ataques) {
+	public AlgoMon(String nombre, double vidaMaxima, List<Ataque> ataques) {
 		this.nombre = nombre;
 		this.ataques = new HashMap<NombreAtaque, Ataque>();
 		this.agregarAtaques(ataques);

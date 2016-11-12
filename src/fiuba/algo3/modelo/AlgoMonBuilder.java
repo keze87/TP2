@@ -10,7 +10,7 @@ public class AlgoMonBuilder {
 
 	private List<Ataque> ataques = new ArrayList<>();
 	private String nombre = "";
-	private int vida = 0;
+	private double vida = 0;
 
 	/* Devuelve un nuevo algoMon con los atributos de Charmander. */
 	public static AlgoMon crearCharmander() {

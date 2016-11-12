@@ -7,7 +7,7 @@ import src.fiuba.algo3.modelo.tipo.Agua;
 
 public class AlgoMonAgua extends AlgoMon {
 
-	public AlgoMonAgua(String nombre, int vidaMaxima, List<Ataque> ataques) {
+	public AlgoMonAgua(String nombre, double vidaMaxima, List<Ataque> ataques) {
 		super(nombre, vidaMaxima, ataques);
 		this.tipo = new Agua();
 	}
