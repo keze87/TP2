@@ -40,17 +40,20 @@ public abstract class Ataque {
 		
 		return this.obtenerEfectoAtacante(vidaQuitada);
 	}
+	
 	/*Crea el efecto que se aplicara al algomon atacado*/
 	private void crearEfectoAtacado(double vidaQuitada){
 		this.efecto = new EfectoMultiple();
 		this.efecto.agregarEfecto(this.efectoBaseAlgoMonAtacado);
 		this.efecto.agregarEfecto(new QuitarVida(vidaQuitada));
 	}
+	
 	/*Devuelve el efecto que se aplicara al algomon atacante*/
 	private Efecto obtenerEfectoAtacante(double vidaQuitada){
 		this.efectoAlgoMonAtacante.setVidaQuitadaAlOponente(vidaQuitada);
 		return efectoAlgoMonAtacante;
 	}
+	
 	/**
 	 * Calcula el daño provocado a un algoMon dado.
 	 * @param algoMon algoMon a atacar.
@@ -72,6 +75,7 @@ public abstract class Ataque {
 		}
 
 	}
+	
 	/*Aumenta la cantidad de usos del ataque*/
 	public void aumentarCantidad(int cant) {
 		this.usosRestantes+=cant;

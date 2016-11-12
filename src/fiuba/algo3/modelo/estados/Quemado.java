@@ -2,6 +2,7 @@ package src.fiuba.algo3.modelo.estados;
 
 public final class Quemado extends EstadoAlterado {
 	private static double porcentajeVidaQuitada=0.10;
+	
 	public static double getPorcentajeVidaQuitada() {
 		return porcentajeVidaQuitada;
 	}
