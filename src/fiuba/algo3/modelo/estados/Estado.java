@@ -61,6 +61,10 @@ public abstract class Estado {
 	protected void setVida(double cantidad) {
 		this.vida = cantidad;
 	}
+	/* Devuelve true o false según si la vida es igual a la vida máxima. */
+	public boolean tieneVidaCompleta() {
+		return this.getVida() == this.getVidaMaxima();
+	}
 
 	/* Determina si es posible atacar. Si se puede atacar
 	 * devuelve true, sino false.

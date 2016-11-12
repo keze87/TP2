@@ -108,7 +108,7 @@ public class AlgoMon {
 
 	/* Devuelve true o false según si la vida es igual a la vida máxima. */
 	public boolean tieneVidaCompleta() {
-		return this.estado.getVida() == this.estado.getVidaMaxima();
+		return this.estado.tieneVidaCompleta();
 	}
 
 	/* Agrega los ataques al diccionario de ataques. */
