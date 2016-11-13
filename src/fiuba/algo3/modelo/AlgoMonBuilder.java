@@ -9,14 +9,14 @@ import src.fiuba.algo3.modelo.ataques.AtaqueBuilder;
 public class AlgoMonBuilder {
 
 	private List<Ataque> ataques = new ArrayList<>();
-	private String nombre = "";
+	private NombreAlgoMon nombre;
 	private double vida = 0;
 
 	/* Devuelve un nuevo algoMon con los atributos de Charmander. */
 	public static AlgoMon crearCharmander() {
 		AlgoMonBuilder builder = new AlgoMonBuilder();
 
-		builder.setNombre("Charmander").setVida(170).agregarAtaque(AtaqueBuilder.crearBrasas()).
+		builder.setNombre(NombreAlgoMon.Charmander).setVida(170).agregarAtaque(AtaqueBuilder.crearBrasas()).
 		agregarAtaque(AtaqueBuilder.crearFogonazo()).agregarAtaque(AtaqueBuilder.crearAtaqueRapido());
 
 		return builder.crearTipoFuego();
@@ -26,7 +26,7 @@ public class AlgoMonBuilder {
 	public static AlgoMon crearSquirtle() {
 		AlgoMonBuilder builder = new AlgoMonBuilder();
 
-		builder.setNombre("Squirtle").setVida(150).agregarAtaque(AtaqueBuilder.crearBurbuja()).
+		builder.setNombre(NombreAlgoMon.Squirtle).setVida(150).agregarAtaque(AtaqueBuilder.crearBurbuja()).
 		agregarAtaque(AtaqueBuilder.crearCanionDeAgua()).agregarAtaque(AtaqueBuilder.crearAtaqueRapido());
 
 		return builder.crearTipoAgua();
@@ -36,7 +36,7 @@ public class AlgoMonBuilder {
 	public static AlgoMon crearBulbasaur() {
 		AlgoMonBuilder builder = new AlgoMonBuilder();
 
-		builder.setNombre("Bulbasaur").setVida(140).agregarAtaque(AtaqueBuilder.crearChupavidas()).
+		builder.setNombre(NombreAlgoMon.Bulbasaur).setVida(140).agregarAtaque(AtaqueBuilder.crearChupavidas()).
 		agregarAtaque(AtaqueBuilder.crearLatigoCepa()).agregarAtaque(AtaqueBuilder.crearAtaqueRapido());
 
 		return builder.crearTipoPlanta();
@@ -46,7 +46,7 @@ public class AlgoMonBuilder {
 	public static AlgoMon crearJigglypuff() {
 		AlgoMonBuilder builder = new AlgoMonBuilder();
 
-		builder.setNombre("Jigglypuff").setVida(130).agregarAtaque(AtaqueBuilder.crearCanto()).
+		builder.setNombre(NombreAlgoMon.Jigglypuff).setVida(130).agregarAtaque(AtaqueBuilder.crearCanto()).
 		agregarAtaque(AtaqueBuilder.crearBurbuja()).agregarAtaque(AtaqueBuilder.crearAtaqueRapido());
 
 		return builder.crearTipoNormal();
@@ -56,7 +56,7 @@ public class AlgoMonBuilder {
 	public static AlgoMon crearChansey() {
 		AlgoMonBuilder builder = new AlgoMonBuilder();
 
-		builder.setNombre("Chansey").setVida(130).agregarAtaque(AtaqueBuilder.crearCanto()).
+		builder.setNombre(NombreAlgoMon.Chansey).setVida(130).agregarAtaque(AtaqueBuilder.crearCanto()).
 		agregarAtaque(AtaqueBuilder.crearLatigoCepa()).agregarAtaque(AtaqueBuilder.crearAtaqueRapido());
 
 		return builder.crearTipoNormal();
@@ -66,7 +66,7 @@ public class AlgoMonBuilder {
 	public static AlgoMon crearRattata() {
 		AlgoMonBuilder builder = new AlgoMonBuilder();
 
-		builder.setNombre("Rattata").setVida(170).agregarAtaque(AtaqueBuilder.crearFogonazo()).
+		builder.setNombre(NombreAlgoMon.Rattata).setVida(170).agregarAtaque(AtaqueBuilder.crearFogonazo()).
 		agregarAtaque(AtaqueBuilder.crearBurbuja()).agregarAtaque(AtaqueBuilder.crearAtaqueRapido());
 
 		return builder.crearTipoNormal();
@@ -87,7 +87,7 @@ public class AlgoMonBuilder {
 	 * @param nombre nombre del algoMon a crear.
 	 * @return this.
 	 */
-	private AlgoMonBuilder setNombre(String nombre) {
+	private AlgoMonBuilder setNombre(NombreAlgoMon nombre) {
 		this.nombre = nombre;
 		return this;
 	}

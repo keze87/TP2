@@ -15,12 +15,12 @@ import src.fiuba.algo3.modelo.tipo.Tipo;
 
 public class AlgoMon {
 
-	protected String nombre;
+	protected NombreAlgoMon nombre;
 	protected Tipo tipo;
 	protected Map<NombreAtaque, Ataque> ataques;
 	protected Estado estado;
 
-	public AlgoMon(String nombre, double vidaMaxima, List<Ataque> ataques) {
+	public AlgoMon(NombreAlgoMon nombre, double vidaMaxima, List<Ataque> ataques) {
 		this.nombre = nombre;
 		this.ataques = new HashMap<NombreAtaque, Ataque>();
 		this.agregarAtaques(ataques);
@@ -29,7 +29,11 @@ public class AlgoMon {
 
 	/* Devuelve el nombre del algoMon. */
 	public String getNombre() {
-		return this.nombre;
+		return this.nombre.toString();
+	}
+	
+	public boolean seLlama(NombreAlgoMon nombre){
+		return this.nombre==nombre;
 	}
 
 	/* Devuelve la vida máxima del algoMon. */

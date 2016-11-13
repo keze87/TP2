@@ -7,7 +7,7 @@ import src.fiuba.algo3.modelo.tipo.Normal;
 
 public class AlgoMonNormal extends AlgoMon {
 
-	public AlgoMonNormal(String nombre, double vidaMaxima, List<Ataque> ataques) {
+	public AlgoMonNormal(NombreAlgoMon nombre, double vidaMaxima, List<Ataque> ataques) {
 		super(nombre, vidaMaxima, ataques);
 		this.tipo = new Normal();
 	}
