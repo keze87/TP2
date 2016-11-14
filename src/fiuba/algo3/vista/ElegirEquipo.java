@@ -24,13 +24,15 @@ public abstract class ElegirEquipo extends EscenaJuegoAlgoMon {
 		VBox botonera = new VBox(20);
 		HBox filaSuperior = new HBox(20);
 		HBox filaInferior = new HBox(20);
+		HBox filaEquipo = new HBox(20);
+		DisplayEquipo display = new DisplayEquipo(this.jugador);
 
-		filaSuperior.getChildren().add(new BotonElegirAlgoMon("Charmander", this.jugador));
-		filaSuperior.getChildren().add(new BotonElegirAlgoMon("Squirtle", this.jugador));
-		filaSuperior.getChildren().add(new BotonElegirAlgoMon("Bulbasaur", this.jugador));
-		filaInferior.getChildren().add(new BotonElegirAlgoMon("Jigglypuff", this.jugador));
-		filaInferior.getChildren().add(new BotonElegirAlgoMon("Chansey", this.jugador));
-		filaInferior.getChildren().add(new BotonElegirAlgoMon("Rattata", this.jugador));
+		filaSuperior.getChildren().add(new BotonElegirAlgoMon("Charmander", this.jugador, display));
+		filaSuperior.getChildren().add(new BotonElegirAlgoMon("Squirtle", this.jugador, display));
+		filaSuperior.getChildren().add(new BotonElegirAlgoMon("Bulbasaur", this.jugador, display));
+		filaInferior.getChildren().add(new BotonElegirAlgoMon("Jigglypuff", this.jugador, display));
+		filaInferior.getChildren().add(new BotonElegirAlgoMon("Chansey", this.jugador, display));
+		filaInferior.getChildren().add(new BotonElegirAlgoMon("Rattata", this.jugador, display));
 
 		this.finalizarSeleccion = new Button("Listo");
 		this.finalizarSeleccion.getStyleClass().add("boton-listo");
@@ -38,9 +40,15 @@ public abstract class ElegirEquipo extends EscenaJuegoAlgoMon {
 
 		filaSuperior.setAlignment(Pos.CENTER);
 		filaInferior.setAlignment(Pos.CENTER);
+		filaEquipo.setAlignment(Pos.CENTER);
+
+		filaEquipo.getChildren().add(display);
+		filaEquipo.getChildren().add(this.finalizarSeleccion);
+
 		botonera.getChildren().add(filaSuperior);
 		botonera.getChildren().add(filaInferior);
-		botonera.getChildren().add(this.finalizarSeleccion);
+		botonera.getChildren().add(filaEquipo);
+		//botonera.getChildren().add(this.finalizarSeleccion);
 		botonera.setAlignment(Pos.CENTER);
 
 		layout.setCenter(botonera);

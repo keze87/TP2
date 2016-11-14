@@ -42,7 +42,7 @@
 .boton-listo {
   -fx-background-color: linear-gradient( from 0.0% 0.0% to 100.0% 100.0%, rgb(64,175,64) 0.0, rgb(79,224,79) 100.0);
   -fx-text-fill: white;
-  -fx-padding: 10px;
+  -fx-padding: 20px 50px;
   -fx-border-style: solid;
   -fx-border-width: 1px;
   -fx-border-radius: 4px;
@@ -51,4 +51,8 @@
 
 .boton-listo:hover {
 	-fx-cursor: hand;
+}
+
+.boton-equipo {
+	-fx-background-color: rgba(255, 255, 255, 0.3);
 }

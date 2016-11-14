@@ -18,10 +18,12 @@ public class BotonElegirAlgoMon extends Button {
 
 	private AlgoMon algoMon;
 	private Jugador jugador;
+	private DisplayEquipo display;
 
-	public BotonElegirAlgoMon(String nombreAlgoMon, Jugador jugador) {
+	public BotonElegirAlgoMon(String nombreAlgoMon, Jugador jugador, DisplayEquipo display) {
 		this.algoMon = this.crearAlgoMon(nombreAlgoMon);
 		this.jugador = jugador;
+		this.display = display;
 		this.agregarContenido();
 		this.establecerAccion();
 		this.getStyleClass().add("boton-elegir-algoMon");
@@ -67,6 +69,8 @@ public class BotonElegirAlgoMon extends Button {
 						Consola.mostrarMensaje("No se puede agregar a " + algoMon.getNombre() + ". " + e.getMessage());
 					}
 				}
+
+				display.actualizar();
 			}
 
 		});

@@ -30,7 +30,12 @@ public class Jugador {
 		this.equipo.remove(algoMon);
 	}
 
+	public List<AlgoMon> getEquipo() {
+		return this.equipo;
+	}
+
 	private boolean equipoEstaCompleto() {
 		return this.equipo.size() == Jugador.capacidadEquipo;
 	}
+
 }
