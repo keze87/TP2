@@ -6,7 +6,6 @@ import javafx.scene.control.MenuBar;
 public class BarraMenu extends MenuBar {
 
 	public BarraMenu() {
-
 		super();
 
 		final Menu menu1 = new Menu("Archivo");
@@ -14,7 +13,6 @@ public class BarraMenu extends MenuBar {
 		final Menu menu3 = new Menu("Ayuda");
 
 		this.getMenus().addAll(menu1, menu2, menu3);
-
 	}
 
 }

@@ -1,0 +1,54 @@
+.consola {
+	-fx-border-width: 3px;
+	-fx-border-style: solid; 
+	-fx-border-color: rgb(54,148,223);
+	-fx-border-radius: 10px;	
+}
+
+.consola .content {		
+	-fx-font-weight: bold;
+	-fx-text-fill: rgb(255,255,255);
+}
+
+.root { 
+	-fx-focus-color: transparent;
+}
+
+.boton-elegir-algoMon { 
+  -fx-padding: 0 24px;
+  -fx-font-size: 14px;
+  -fx-text-fill: white;
+  -fx-background-color: #247edd;
+  -fx-border-style: solid;
+  -fx-border-width: 1px;
+  -fx-border-radius: 4px;
+  -fx-font-weight: bold; 
+}
+
+.boton-elegir-algoMon:before {
+  -fx-background-color: transparent;
+}
+
+.boton-elegir-algoMon:hover { 
+	-fx-background-color: #1a74d3;
+	-fx-cursor: hand; 
+}
+
+.boton-elegir-algoMon:pressed {
+  -fx-background-color: #1f71c8;
+  -fx-border-color: #113f70 #154c86 #1c65b2;
+}
+
+.boton-listo {
+  -fx-background-color: linear-gradient( from 0.0% 0.0% to 100.0% 100.0%, rgb(64,175,64) 0.0, rgb(79,224,79) 100.0);
+  -fx-text-fill: white;
+  -fx-padding: 10px;
+  -fx-border-style: solid;
+  -fx-border-width: 1px;
+  -fx-border-radius: 4px;
+  -fx-font-weight: bold; 
+}
+
+.boton-listo:hover {
+	-fx-cursor: hand;
+}
