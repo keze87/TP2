@@ -24,7 +24,14 @@ public class ElegirEquipoJugador1 extends ElegirEquipo {
 
 			@Override
 			public void handle(ActionEvent arg0) {
-				stage.setScene(new ElegirEquipoJugador2(stage, juego));
+				if(!jugador.equipoEstaCompleto()) {
+					Consola.mostrarMensaje("El equipo no está completo!");
+				}
+
+				else {
+					jugador.listoParaPelear();
+					stage.setScene(new ElegirEquipoJugador2(stage, juego));
+				}
 			}
 
 		});

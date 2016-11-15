@@ -1,5 +1,6 @@
 package test.fiuba.algo3.modelo;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -8,6 +9,7 @@ import org.junit.Test;
 import src.fiuba.algo3.modelo.AlgoMon;
 import src.fiuba.algo3.modelo.AlgoMonBuilder;
 import src.fiuba.algo3.modelo.Jugador;
+import src.fiuba.algo3.modelo.ataques.NombreAtaque;
 import src.fiuba.algo3.modelo.excepciones.EquipoCompleto;
 
 public class JugadorTest {
@@ -55,6 +57,33 @@ public class JugadorTest {
 
 		jugador.sacarAlgoMonDelEquipo(charmander);
 		assertFalse(jugador.tieneAlgoMonEnEquipo(charmander));
+	}
+
+	@Test
+	public void test04AtacarConAlgoMonActivo() {
+		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
+		AlgoMon squirtle = AlgoMonBuilder.crearSquirtle();
+		AlgoMon bulbasaur = AlgoMonBuilder.crearBulbasaur();
+		Jugador jugador1 = new Jugador();
+
+		jugador1.agregarAlgoMonAlEquipo(charmander);
+		jugador1.agregarAlgoMonAlEquipo(squirtle);
+		jugador1.agregarAlgoMonAlEquipo(bulbasaur);
+		jugador1.listoParaPelear();
+
+		AlgoMon jigglypuff = AlgoMonBuilder.crearJigglypuff();
+		AlgoMon chansey = AlgoMonBuilder.crearChansey();
+		AlgoMon rattata = AlgoMonBuilder.crearRattata();
+		Jugador jugador2 = new Jugador();
+
+		jugador2.agregarAlgoMonAlEquipo(jigglypuff);
+		jugador2.agregarAlgoMonAlEquipo(chansey);
+		jugador2.agregarAlgoMonAlEquipo(rattata);
+		jugador2.listoParaPelear();
+
+		jugador1.atacarConAlgoMonActivo(NombreAtaque.BRASAS, jugador2.getAlgoMonActivo());
+		assertEquals(jugador2.getAlgoMonActivo().getVidaMaxima() - 16, jugador2.getAlgoMonActivo().getVida(), 0.0001D);
+
 	}
 
 }
