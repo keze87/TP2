@@ -1,5 +1,7 @@
 package src.fiuba.algo3.vista;
 
+import java.io.File;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -8,6 +10,8 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import src.fiuba.algo3.modelo.Juego;
 
@@ -23,6 +27,10 @@ public class MenuPrincipal extends EscenaJuegoAlgoMon {
 
 		HBox botonera = new HBox(20);
 
+		Media sonido = new Media(new File("src/fiuba/algo3/vista/Sonidos/Pokemon_Opening.mp3").toURI().toString());
+		MediaPlayer mediaPlayer = new MediaPlayer(sonido);
+		mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+
 		Image imagenLogo = new Image(ruta + "Logo.png");
 		ImageView logoView = new ImageView(imagenLogo);
 		HBox logo = new HBox(logoView);
@@ -31,6 +39,16 @@ public class MenuPrincipal extends EscenaJuegoAlgoMon {
 		Button dosJugadores = new BotonMenuPrincipal("Dos jugadores");
 		Button cheatCode = new BotonMenuPrincipal("Cheat code");
 		Button salir = new BotonMenuPrincipal("Salir");
+
+		mediaPlayer.play();
+
+		salir.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent arg0) {
+				System.exit(0);
+
+			}
+		});
 
 		dosJugadores.setOnAction(new EventHandler<ActionEvent>() {
 
