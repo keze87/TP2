@@ -9,11 +9,11 @@ public class Programa extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
+		primaryStage.setFullScreen(true);
 		Scene menuPrincipal = new MenuPrincipal(primaryStage, new Juego());
 
 		primaryStage.setTitle("AlgoMon");
 		primaryStage.setScene(menuPrincipal);
-		primaryStage.setFullScreen(true);
 		primaryStage.show();
 	}
 

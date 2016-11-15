@@ -31,7 +31,7 @@ public abstract class EscenaJuegoAlgoMon extends Scene {
 	}
 
 	protected void agregarElementos() {
-		this.layout.setTop(new BarraMenu());
+		this.layout.setTop(new BarraMenu(stage));
 		this.layout.setBottom(Consola.getConsola());
 	}
 
