@@ -1,6 +1,8 @@
 package src.fiuba.algo3.vista;
 
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
 
 public final class Consola {
@@ -34,8 +36,19 @@ public final class Consola {
 		consola.setText(mensaje);
 	}
 
-	/* Devuelve la consola. */
-	public static TextArea getConsola() {
-		return consola;
+	/* Borra el contenido de la consola. */
+	public static void limpiar() {
+		consola.clear();
 	}
+
+	/* Agrega la consola a un contenedor. */
+	public static void agregarAContenedor(BorderPane contenedor) {
+		contenedor.setBottom(consola);
+	}
+
+	/* Agrega la consola a un contenedor. */
+	public static void agregarAContenedor(StackPane contenedor) {
+		contenedor.getChildren().add(consola);
+	}
+
 }
