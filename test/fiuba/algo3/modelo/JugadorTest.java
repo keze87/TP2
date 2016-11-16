@@ -11,8 +11,11 @@ import src.fiuba.algo3.modelo.AlgoMonBuilder;
 import src.fiuba.algo3.modelo.Jugador;
 import src.fiuba.algo3.modelo.ataques.NombreAtaque;
 import src.fiuba.algo3.modelo.elementos.SuperPocion;
+import src.fiuba.algo3.modelo.excepciones.AlgoMonNoExiste;
+import src.fiuba.algo3.modelo.excepciones.AlgoMonYaEstaActivo;
 import src.fiuba.algo3.modelo.excepciones.AtaqueAgotado;
 import src.fiuba.algo3.modelo.excepciones.EquipoCompleto;
+import src.fiuba.algo3.modelo.excepciones.StockAgotado;
 
 public class JugadorTest {
 
@@ -277,6 +280,231 @@ public class JugadorTest {
 		jugador1.atacarConAlgoMonActivo(NombreAtaque.ATAQUERAPIDO, jugador2.getAlgoMonActivo());
 
 		assertEquals(jugador2.getAlgoMonActivo().getVidaMaxima() - 80, jugador2.getAlgoMonActivo().getVida(), 0.0001D);
+	}
+
+	@Test(expected = StockAgotado.class)
+	public void test10UsarPocionCuandoNoHayPocionesRestantesLanzaExcepcion() {
+		AlgoMon squirtle = AlgoMonBuilder.crearSquirtle();
+		AlgoMon bulbasaur = AlgoMonBuilder.crearBulbasaur();
+		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
+		Jugador jugador1 = new Jugador();
+
+		jugador1.agregarAlgoMonAlEquipo(squirtle);
+		jugador1.agregarAlgoMonAlEquipo(bulbasaur);
+		jugador1.agregarAlgoMonAlEquipo(charmander);
+		jugador1.listoParaPelear();
+
+		AlgoMon jigglypuff = AlgoMonBuilder.crearJigglypuff();
+		AlgoMon chansey = AlgoMonBuilder.crearChansey();
+		AlgoMon rattata = AlgoMonBuilder.crearRattata();
+		Jugador jugador2 = new Jugador();
+
+		jugador2.agregarAlgoMonAlEquipo(jigglypuff);
+		jugador2.agregarAlgoMonAlEquipo(chansey);
+		jugador2.agregarAlgoMonAlEquipo(rattata);
+		jugador2.listoParaPelear();
+
+		jugador1.atacarConAlgoMonActivo(NombreAtaque.CAÑONDEAGUA, jugador2.getAlgoMonActivo());
+		jugador2.usarPocion();
+
+		jugador1.atacarConAlgoMonActivo(NombreAtaque.CAÑONDEAGUA, jugador2.getAlgoMonActivo());
+		jugador2.usarPocion();
+
+		jugador1.atacarConAlgoMonActivo(NombreAtaque.CAÑONDEAGUA, jugador2.getAlgoMonActivo());
+		jugador2.usarPocion();
+
+		jugador1.atacarConAlgoMonActivo(NombreAtaque.CAÑONDEAGUA, jugador2.getAlgoMonActivo());
+		jugador2.usarPocion();
+
+		assertTrue(jugador2.getAlgoMonActivo().tieneVidaCompleta());
+
+		jugador1.atacarConAlgoMonActivo(NombreAtaque.CAÑONDEAGUA, jugador2.getAlgoMonActivo());
+
+		assertEquals(jugador2.getAlgoMonActivo().getVidaMaxima() - 20, jugador2.getAlgoMonActivo().getVida(), 0.0001D);
+
+		jugador2.usarPocion();
+	}
+
+	@Test(expected = StockAgotado.class)
+	public void test11UsarSuperPocionCuandoNoHaySuperPocionesRestantesLanzaExcepcion() {
+		AlgoMon squirtle = AlgoMonBuilder.crearSquirtle();
+		AlgoMon bulbasaur = AlgoMonBuilder.crearBulbasaur();
+		AlgoMon jigglypuff = AlgoMonBuilder.crearJigglypuff();
+		Jugador jugador1 = new Jugador();
+
+		jugador1.agregarAlgoMonAlEquipo(squirtle);
+		jugador1.agregarAlgoMonAlEquipo(bulbasaur);
+		jugador1.agregarAlgoMonAlEquipo(jigglypuff);
+		jugador1.listoParaPelear();
+
+		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
+		AlgoMon chansey = AlgoMonBuilder.crearChansey();
+		AlgoMon rattata = AlgoMonBuilder.crearRattata();
+		Jugador jugador2 = new Jugador();
+
+		jugador2.agregarAlgoMonAlEquipo(charmander);
+		jugador2.agregarAlgoMonAlEquipo(chansey);
+		jugador2.agregarAlgoMonAlEquipo(rattata);
+		jugador2.listoParaPelear();
+
+		jugador1.atacarConAlgoMonActivo(NombreAtaque.CAÑONDEAGUA, jugador2.getAlgoMonActivo());
+		jugador2.usarSuperPocion();
+
+		jugador1.atacarConAlgoMonActivo(NombreAtaque.CAÑONDEAGUA, jugador2.getAlgoMonActivo());
+		jugador2.usarSuperPocion();
+
+		jugador1.atacarConAlgoMonActivo(NombreAtaque.CAÑONDEAGUA, jugador2.getAlgoMonActivo());
+		jugador2.usarSuperPocion();
+
+		jugador1.atacarConAlgoMonActivo(NombreAtaque.CAÑONDEAGUA, jugador2.getAlgoMonActivo());
+		jugador2.usarSuperPocion();
+
+		assertTrue(jugador2.getAlgoMonActivo().tieneVidaCompleta());
+
+		jugador1.atacarConAlgoMonActivo(NombreAtaque.CAÑONDEAGUA, jugador2.getAlgoMonActivo());
+
+		assertEquals(jugador2.getAlgoMonActivo().getVidaMaxima() - 20, jugador2.getAlgoMonActivo().getVida(), 0.0001D);
+
+		jugador2.usarSuperPocion();
+	}
+
+	@Test
+	public void test11UsarRestauradorCuandoNoHayRestauradoresRestantesLanzaExcepcion() {
+		AlgoMon squirtle = AlgoMonBuilder.crearSquirtle();
+		AlgoMon bulbasaur = AlgoMonBuilder.crearBulbasaur();
+		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
+		Jugador jugador1 = new Jugador();
+
+		jugador1.agregarAlgoMonAlEquipo(squirtle);
+		jugador1.agregarAlgoMonAlEquipo(bulbasaur);
+		jugador1.agregarAlgoMonAlEquipo(charmander);
+		jugador1.listoParaPelear();
+
+		AlgoMon jigglypuff = AlgoMonBuilder.crearJigglypuff();
+		AlgoMon chansey = AlgoMonBuilder.crearChansey();
+		AlgoMon rattata = AlgoMonBuilder.crearRattata();
+		Jugador jugador2 = new Jugador();
+
+		jugador2.agregarAlgoMonAlEquipo(jigglypuff);
+		jugador2.agregarAlgoMonAlEquipo(chansey);
+		jugador2.agregarAlgoMonAlEquipo(rattata);
+		jugador2.listoParaPelear();
+
+		int usosRestaurador = 0;
+
+		try {
+			while(true) {
+				jugador2.atacarConAlgoMonActivo(NombreAtaque.CANTO, jugador1.getAlgoMonActivo());
+				jugador1.usarRestaurador();
+				usosRestaurador++;
+			}
+		} catch(StockAgotado e) {
+			assertEquals(3, usosRestaurador, 0.0001D);
+		}
+	}
+
+	@Test(expected = StockAgotado.class)
+	public void test13UsarVitaminaCuandoNoHayVitaminasRestantesLanzaExcepcion() {
+		AlgoMon bulbasaur = AlgoMonBuilder.crearBulbasaur();
+		AlgoMon squirtle = AlgoMonBuilder.crearSquirtle();
+		AlgoMon jigglypuff = AlgoMonBuilder.crearJigglypuff();
+		Jugador jugador1 = new Jugador();
+
+		jugador1.agregarAlgoMonAlEquipo(bulbasaur);
+		jugador1.agregarAlgoMonAlEquipo(squirtle);
+		jugador1.agregarAlgoMonAlEquipo(jigglypuff);
+		jugador1.listoParaPelear();
+
+		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
+		AlgoMon chansey = AlgoMonBuilder.crearChansey();
+		AlgoMon rattata = AlgoMonBuilder.crearRattata();
+		Jugador jugador2 = new Jugador();
+
+		jugador2.agregarAlgoMonAlEquipo(charmander);
+		jugador2.agregarAlgoMonAlEquipo(chansey);
+		jugador2.agregarAlgoMonAlEquipo(rattata);
+		jugador2.listoParaPelear();
+
+		try {
+			while(true) {
+				jugador1.atacarConAlgoMonActivo(NombreAtaque.LATIGOCEPA, jugador2.getAlgoMonActivo());
+			}
+		} catch(AtaqueAgotado e) {
+			assertEquals(jugador2.getAlgoMonActivo().getVidaMaxima() - 70, jugador2.getAlgoMonActivo().getVida(), 0.0001D);
+			jugador2.usarSuperPocion();
+			jugador2.usarSuperPocion();
+		}
+
+		jugador1.usarVitamina();
+		jugador1.usarVitamina();
+		jugador1.usarVitamina();
+		jugador1.usarVitamina();
+		jugador1.usarVitamina();
+
+		try {
+			while(true) {
+				jugador1.atacarConAlgoMonActivo(NombreAtaque.LATIGOCEPA, jugador2.getAlgoMonActivo());
+			}
+		} catch(AtaqueAgotado e) {
+			assertEquals(jugador2.getAlgoMonActivo().getVidaMaxima() - 70, jugador2.getAlgoMonActivo().getVida(), 0.0001D);
+		}
+
+		jugador1.usarVitamina();
+	}
+
+	@Test
+	public void test14CambiarAlgoMonActivoPorOtroAlgoMonQueEstaEnElEquipo() {
+		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
+		AlgoMon squirtle = AlgoMonBuilder.crearSquirtle();
+		AlgoMon bulbasaur = AlgoMonBuilder.crearBulbasaur();
+		Jugador jugador1 = new Jugador();
+
+		jugador1.agregarAlgoMonAlEquipo(charmander);
+		jugador1.agregarAlgoMonAlEquipo(squirtle);
+		jugador1.agregarAlgoMonAlEquipo(bulbasaur);
+		jugador1.listoParaPelear();
+
+		assertEquals("Charmander", jugador1.getAlgoMonActivo().getNombre());
+
+		jugador1.cambiarAlgoMonActivo(squirtle);
+
+		assertEquals("Squirtle", jugador1.getAlgoMonActivo().getNombre());
+
+		jugador1.cambiarAlgoMonActivo(bulbasaur);
+
+		assertEquals("Bulbasaur", jugador1.getAlgoMonActivo().getNombre());
+	}
+
+	@Test(expected = AlgoMonNoExiste.class)
+	public void test15CambiarAlgoMonActivoPorOtroAlgoMonQueNoEstaEnElEquipoLanzaExcepcion() {
+		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
+		AlgoMon squirtle = AlgoMonBuilder.crearSquirtle();
+		AlgoMon bulbasaur = AlgoMonBuilder.crearBulbasaur();
+		Jugador jugador1 = new Jugador();
+
+		jugador1.agregarAlgoMonAlEquipo(charmander);
+		jugador1.agregarAlgoMonAlEquipo(squirtle);
+		jugador1.agregarAlgoMonAlEquipo(bulbasaur);
+		jugador1.listoParaPelear();
+
+		AlgoMon jigglypuff = AlgoMonBuilder.crearJigglypuff();
+
+		jugador1.cambiarAlgoMonActivo(jigglypuff);
+	}
+
+	@Test(expected = AlgoMonYaEstaActivo.class)
+	public void test16CambiarAlgoMonActivoPorElMismoLanzaExcepcion() {
+		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
+		AlgoMon squirtle = AlgoMonBuilder.crearSquirtle();
+		AlgoMon bulbasaur = AlgoMonBuilder.crearBulbasaur();
+		Jugador jugador1 = new Jugador();
+
+		jugador1.agregarAlgoMonAlEquipo(charmander);
+		jugador1.agregarAlgoMonAlEquipo(squirtle);
+		jugador1.agregarAlgoMonAlEquipo(bulbasaur);
+		jugador1.listoParaPelear();
+
+		jugador1.cambiarAlgoMonActivo(charmander);
 	}
 
 //	@Test(expected = NoHayAlgoMonActivo.class)

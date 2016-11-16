@@ -35,7 +35,7 @@ public class BotonElegirAlgoMon extends Button {
 
 			return (AlgoMon) metodo.invoke(null);
 		} catch(Exception e) {
-			throw new AlgoMonNoExiste();
+			throw new AlgoMonNoExiste(nombreAlgoMon + " no existe!");
 		}
 	}
 
