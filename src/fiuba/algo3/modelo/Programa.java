@@ -2,6 +2,7 @@ package src.fiuba.algo3.modelo;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
 import src.fiuba.algo3.vista.MenuPrincipal;
 
@@ -14,6 +15,7 @@ public class Programa extends Application {
 
 		primaryStage.setTitle("AlgoMon");
 		primaryStage.setScene(menuPrincipal);
+		primaryStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
 		primaryStage.show();
 	}
 
