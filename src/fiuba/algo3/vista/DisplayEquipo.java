@@ -14,6 +14,7 @@ public class DisplayEquipo extends HBox {
 
 	private Jugador jugador;
 	private List<Button> botones;
+	private static int cantidadBotones = 3;
 
 	public DisplayEquipo(Jugador jugador) {
 		super(20);
@@ -22,29 +23,40 @@ public class DisplayEquipo extends HBox {
 		this.agregarBotonesVacios();
 	}
 
+	/* Actualiza el display con las imágenes de los algoMon que
+	 * componene el equipo del jugador.
+	 */
 	public void actualizar() {
-		for(Button boton : this.botones) {
-			boton.setGraphic(null);
-		}
+		this.borrarImagenes();
 
 		List<AlgoMon> equipo = this.jugador.getEquipo();
 
 		for(int i = 0; i < equipo.size(); i++) {
-			Image imagenAlgoMon = new Image(EscenaJuegoAlgoMon.ruta + equipo.get(i).getNombre() + ".gif");
+			String nombreImagen = equipo.get(i).getNombre() + ".gif";
+
+			Image imagenAlgoMon = new Image(EscenaJuegoAlgoMon.ruta + nombreImagen);
 
 			this.botones.get(i).setGraphic(new ImageView(imagenAlgoMon));
 		}
 
 	}
 
+	/* Agrega los botones al display. */
 	private void agregarBotonesVacios() {
-		for(int i = 0; i < 3; i++) {
+		for(int i = 0; i < DisplayEquipo.cantidadBotones; i++) {
 			Button boton = new Button();
 
 			boton.setMinSize(100f, 80f);
 			boton.getStyleClass().add("boton-equipo");
 			this.botones.add(boton);
 			this.getChildren().add(boton);
+		}
+	}
+
+	/* Borra las imágenes de los botones. */
+	private void borrarImagenes() {
+		for(Button boton : this.botones) {
+			boton.setGraphic(null);
 		}
 	}
 

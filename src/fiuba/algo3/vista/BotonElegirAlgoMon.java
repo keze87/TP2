@@ -29,6 +29,9 @@ public class BotonElegirAlgoMon extends Button {
 		this.getStyleClass().add("boton-elegir-algoMon");
 	}
 
+	/* Crea y devuelve un algoMon a partir de su nombre. Si el algoMon no existe lanza una
+	 * excepción.
+	 */
 	private AlgoMon crearAlgoMon(String nombreAlgoMon) {
 		try {
 			Method metodo = AlgoMonBuilder.class.getMethod("crear" + nombreAlgoMon);
@@ -39,6 +42,7 @@ public class BotonElegirAlgoMon extends Button {
 		}
 	}
 
+	/* Agrega el contenido del botón. */
 	private void agregarContenido() {
 		this.setPadding(new Insets(20f));
 		this.setMinWidth(180f);
@@ -50,6 +54,7 @@ public class BotonElegirAlgoMon extends Button {
 		this.setGraphic(new ImageView(imagenAlgoMon));
 	}
 
+	/* Establece la acción a realizar cuando se hace click sobre el botón. */
 	private void establecerAccion() {
 		this.setOnAction(new EventHandler<ActionEvent>() {
 

@@ -3,6 +3,7 @@ package src.fiuba.algo3.vista;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import src.fiuba.algo3.modelo.Juego;
@@ -31,14 +32,16 @@ public abstract class ElegirEquipo extends EscenaJuegoAlgoMon {
 		this.finalizarSeleccion.getStyleClass().add("boton-listo");
 		this.setAccionFinalizarSeleccion();
 
-		filaSuperior.getChildren().add(new BotonElegirAlgoMon("Charmander", this.jugador, display));
-		filaSuperior.getChildren().add(new BotonElegirAlgoMon("Squirtle", this.jugador, display));
-		filaSuperior.getChildren().add(new BotonElegirAlgoMon("Bulbasaur", this.jugador, display));
+		agregarBotonAContenedor(this.crearBotonSeleccionAlgoMon("Charmander", display), filaSuperior);
+		agregarBotonAContenedor(this.crearBotonSeleccionAlgoMon("Squirtle", display), filaSuperior);
+		agregarBotonAContenedor(this.crearBotonSeleccionAlgoMon("Bulbasaur", display), filaSuperior);
+
 		filaSuperior.setAlignment(Pos.CENTER);
 
-		filaInferior.getChildren().add(new BotonElegirAlgoMon("Jigglypuff", this.jugador, display));
-		filaInferior.getChildren().add(new BotonElegirAlgoMon("Chansey", this.jugador, display));
-		filaInferior.getChildren().add(new BotonElegirAlgoMon("Rattata", this.jugador, display));
+		agregarBotonAContenedor(this.crearBotonSeleccionAlgoMon("Jigglypuff", display), filaInferior);
+		agregarBotonAContenedor(this.crearBotonSeleccionAlgoMon("Chansey", display), filaInferior);
+		agregarBotonAContenedor(this.crearBotonSeleccionAlgoMon("Rattata", display), filaInferior);
+
 		filaInferior.setAlignment(Pos.CENTER);
 
 		filaEquipo.getChildren().add(display);
@@ -55,6 +58,17 @@ public abstract class ElegirEquipo extends EscenaJuegoAlgoMon {
 		this.setRoot(layout);
 	}
 
+	/* Crea y devuelve un botón para elegir un algoMon dado. */
+	private Button crearBotonSeleccionAlgoMon(String nombreAlgoMon, DisplayEquipo display) {
+		return new BotonElegirAlgoMon(nombreAlgoMon, this.jugador, display);
+	}
+
+	/* Agrega un botón a un contenedor. */
+	private void agregarBotonAContenedor(Button boton, Pane contenedor) {
+		contenedor.getChildren().add(boton);
+	}
+
+	/* Establece la acción a realizar cuando se termina de armar el equipo. */
 	protected abstract void setAccionFinalizarSeleccion();
 
 }

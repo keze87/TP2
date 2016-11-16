@@ -30,11 +30,13 @@ public abstract class EscenaJuegoAlgoMon extends Scene {
 		this.agregarElementos();
 	}
 
+	/* Agrega los elementos correspondientes a la escena. */
 	protected void agregarElementos() {
 		this.layout.setTop(new BarraMenu(stage));
 		this.layout.setBottom(Consola.getConsola());
 	}
 
+	/* Crea y establece la imagen de fondo para la escena. */
 	private void crearFondo(String nombreImagenFondo) {
 		Image imagenFondo = new Image(EscenaJuegoAlgoMon.ruta + nombreImagenFondo);
 

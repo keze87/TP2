@@ -1,4 +1,4 @@
-package src.fiuba.algo3.vista;
+package src.fiuba.algo3.modelo.excepciones;
 
 public class EquipoIncompleto extends RuntimeException {
 

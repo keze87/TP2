@@ -30,8 +30,6 @@ public class BarraMenu extends MenuBar {
 		this.getMenus().addAll(menuArchivo, menuOpciones, menuVista, menuAyuda);
 	}
 
-
-
 	private void eventoPantallaNormal(MenuItem pantallaNormal, Stage stage, MenuItem pantallaCompleta) {
 		pantallaNormal.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -53,8 +51,6 @@ public class BarraMenu extends MenuBar {
 			}
 		});
 	}
-
-
 
 	/*Establece si los menus items pantallaCompleta, pantallaNormal estaran
 	activados/desactivados en la primera scena*/

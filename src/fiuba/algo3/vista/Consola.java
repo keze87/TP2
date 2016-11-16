@@ -19,18 +19,22 @@ public final class Consola {
 		consola.getStyleClass().add("consola");
 	}
 
+	/* Muestra la consola y su contenido en la pantalla. */
 	public static void mostrarConsola() {
 		consola.setVisible(true);
 	}
 
+	/* Oculta la consola. */
 	public static void esconderConsola() {
 		consola.setVisible(false);
 	}
 
+	/* Muestra un mensaje por la consola. */
 	public static void mostrarMensaje(String mensaje) {
 		consola.setText(mensaje);
 	}
 
+	/* Devuelve la consola. */
 	public static TextArea getConsola() {
 		return consola;
 	}
