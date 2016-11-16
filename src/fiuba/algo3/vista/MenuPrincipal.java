@@ -55,7 +55,6 @@ public class MenuPrincipal extends EscenaJuegoAlgoMon {
 			@Override
 			public void handle(ActionEvent event) {
 				stage.setScene(new ElegirEquipoJugador1(stage, juego));
-				stage.setFullScreen(true);
 			}
 
 		});
