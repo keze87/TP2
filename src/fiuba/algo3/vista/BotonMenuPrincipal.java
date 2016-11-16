@@ -6,7 +6,7 @@ import javafx.scene.text.Font;
 
 public class BotonMenuPrincipal extends Button {
 
-	private String cssFormat = "-fx-background-image: url('file:src/fiuba/algo3/vista/imagenes/boton1.png');"
+	private String cssFormat = "-fx-background-image: url('file:src/fiuba/algo3/vista/Imagenes/boton1.png');"
 			+ "-fx-background-size: 200px;"
 			+ "-fx-background-repeat: no-repeat;"
 			+ "-fx-background-position: 90%;";

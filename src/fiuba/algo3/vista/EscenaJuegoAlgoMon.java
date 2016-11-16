@@ -18,10 +18,10 @@ public abstract class EscenaJuegoAlgoMon extends Scene {
 	protected BorderPane layout;
 	protected Background fondo;
 	protected Juego juego;
-	protected static String ruta = "file:src/fiuba/algo3/vista/imagenes/";
+	protected static String ruta = "file:src/fiuba/algo3/vista/Imagenes/";
 
 	public EscenaJuegoAlgoMon(Stage stage, String nombreImagenFondo, Juego juego) {
-		super(new Pane(), 500, 400);
+		super(new Pane(), 1024, 768);
 		this.getStylesheets().add(EscenaJuegoAlgoMon.ruta + "../estilos.css");
 		this.stage = stage;
 		this.layout = new BorderPane();

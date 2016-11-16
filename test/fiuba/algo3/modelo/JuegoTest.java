@@ -77,7 +77,7 @@ public class JuegoTest {
 		assertEquals(juego.getJugadorActivo().getAlgoMonActivo().getVidaMaxima() - 20, juego.getJugadorActivo().getAlgoMonActivo().getVida(), 0.0001D);
 		assertEquals("Jigglypuff", juego.getJugadorActivo().getAlgoMonActivo().getNombre());
 
-		juego.jugadorActivoUsaElemento(NombreElemento.POCION);
+		//juego.jugadorActivoUsaElemento(NombreElemento.POCION); //TODO
 
 		assertEquals("Jigglypuff", juego.getContrincante().getAlgoMonActivo().getNombre());
 		assertTrue(juego.getContrincante().getAlgoMonActivo().tieneVidaCompleta());

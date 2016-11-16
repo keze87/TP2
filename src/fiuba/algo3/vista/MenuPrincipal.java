@@ -2,6 +2,7 @@ package src.fiuba.algo3.vista;
 
 import java.io.File;
 
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -13,6 +14,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import src.fiuba.algo3.modelo.Juego;
 
 public class MenuPrincipal extends EscenaJuegoAlgoMon {
@@ -59,7 +61,22 @@ public class MenuPrincipal extends EscenaJuegoAlgoMon {
 
 		});
 
-		botonera.getChildren().addAll(unJugador, dosJugadores, cheatCode, salir);
+		FadeTransition transicion = new FadeTransition(Duration.millis(3000), logo);
+		transicion.setFromValue(0);
+		transicion.setToValue(1);
+		transicion.setCycleCount(1);
+		transicion.setAutoReverse(false);
+		transicion.play();
+		transicion.setOnFinished(
+				new EventHandler<ActionEvent>() {
+
+					@Override
+					public void handle(ActionEvent event) {
+						botonera.getChildren().addAll(unJugador, dosJugadores, cheatCode, salir);
+					}
+				}
+				);
+
 		botonera.setPadding(new Insets(50f));
 		botonera.setAlignment(Pos.CENTER);
 
