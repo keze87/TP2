@@ -29,7 +29,6 @@ public class IntroduccionParte2 extends EscenaJuegoAlgoMon {
 		StackPane layoutConImagenNegra = new StackPane();
 		BorderPane layout = new BorderPane();
 
-		//Scene intro2 = new Scene(layoutConImagenNegra, 1024, 768, Color.web("e5a001"));
 		this.setFill(Color.web("e5a001"));
 		this.setRoot(layoutConImagenNegra);
 

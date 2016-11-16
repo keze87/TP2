@@ -4,6 +4,7 @@ import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -22,6 +23,32 @@ public class Introduccion extends EscenaJuegoAlgoMon {
 
 	}
 
+	private FadeTransition animacionAparecer(Node layout) {
+
+		FadeTransition aparecer = new FadeTransition(Duration.millis(3000), layout);
+
+		aparecer.setFromValue(0);
+		aparecer.setToValue(1);
+		aparecer.setCycleCount(1);
+		aparecer.setAutoReverse(false);
+
+		return aparecer;
+
+	}
+
+	private FadeTransition animacionDesvanecer(Node layout) {
+
+		FadeTransition desvanecer = new FadeTransition(Duration.millis(2000), layout);
+
+		desvanecer.setFromValue(1);
+		desvanecer.setToValue(0);
+		desvanecer.setCycleCount(1);
+		desvanecer.setAutoReverse(false);
+
+		return desvanecer;
+
+	}
+
 	@Override
 	protected void agregarElementos() {
 
@@ -32,8 +59,6 @@ public class Introduccion extends EscenaJuegoAlgoMon {
 		ImageView question = new ImageView(ruta + "Question.png");
 		ImageView yup = new ImageView(ruta + "Yup.png");
 		ImageView nope = new ImageView(ruta + "Nope.png");
-		FadeTransition aparecer = new FadeTransition(Duration.millis(3000), layout);
-		FadeTransition desvanecer = new FadeTransition(Duration.millis(2000), layout);
 
 		fila.setAlignment(Pos.CENTER);
 
@@ -53,8 +78,16 @@ public class Introduccion extends EscenaJuegoAlgoMon {
 		question.setFitWidth(algomon.getFitWidth());
 		question.setPreserveRatio(true);
 
-		aparecer.setFromValue(0); aparecer.setToValue(1); aparecer.setCycleCount(1); aparecer.setAutoReverse(false);
-		aparecer.setOnFinished(
+		FadeTransition aparecerPikachuYAlFinalAgregarCruz = this.animacionAparecer(layout);
+		FadeTransition desvanecerYAgregarGengar = this.animacionDesvanecer(layout);
+
+		FadeTransition aparecerYAlFinalAgregarCruzYCambiarARattata = this.animacionAparecer(layout);
+		FadeTransition desvanecerYAgregarRattata = this.animacionDesvanecer(layout);
+
+		FadeTransition aparecerYAlFinalAgregarTick = this.animacionAparecer(layout);
+		FadeTransition desvanecerYCambiarAParte2 = this.animacionDesvanecer(layout);
+
+		aparecerPikachuYAlFinalAgregarCruz.setOnFinished(
 				new EventHandler<ActionEvent>() {
 
 					@Override
@@ -62,15 +95,13 @@ public class Introduccion extends EscenaJuegoAlgoMon {
 
 						layout.getChildren().add(nope);
 
-						desvanecer.play();
+						desvanecerYAgregarGengar.play();
 
 					}
 				}
 				);
-		aparecer.play();
 
-		desvanecer.setFromValue(1); desvanecer.setToValue(0); desvanecer.setCycleCount(1); desvanecer.setAutoReverse(false);
-		desvanecer.setOnFinished(
+		desvanecerYAgregarGengar.setOnFinished(
 				new EventHandler<ActionEvent>() {
 
 					@Override
@@ -82,73 +113,79 @@ public class Introduccion extends EscenaJuegoAlgoMon {
 						layout.getChildren().clear();
 						layout.getChildren().add(fila);
 
-						aparecer.setOnFinished(
-								new EventHandler<ActionEvent>() {
+						aparecerYAlFinalAgregarCruzYCambiarARattata.play();
 
-									@Override
-									public void handle(ActionEvent event) {
+					}
 
-										layout.getChildren().add(nope);
+				}
+				);
 
-										desvanecer.setOnFinished(
-												new EventHandler<ActionEvent>() {
+		aparecerYAlFinalAgregarCruzYCambiarARattata.setOnFinished(
+				new EventHandler<ActionEvent>() {
 
-													@Override
-													public void handle(ActionEvent event) {
+					@Override
+					public void handle(ActionEvent event) {
 
-														algomon.setImage(new Image(ruta + "Rattata.gif"));
-														fila.getChildren().clear();
-														fila.getChildren().addAll(algomon, question, yup);
-														layout.getChildren().clear();
-														layout.getChildren().add(fila);
+						layout.getChildren().add(nope);
 
-														aparecer.setOnFinished(
-																new EventHandler<ActionEvent>() {
-
-																	@Override
-																	public void handle(ActionEvent event) {
-
-																		yup.setOpacity(100);
-
-																		desvanecer.setDelay(Duration.millis(1000));
-																		desvanecer.setOnFinished(
-																				new EventHandler<ActionEvent>() {
-
-																					@Override
-																					public void handle(ActionEvent event) {
-
-																						stage.setScene(new IntroduccionParte2(stage, new Juego()));
-
-																					}
-																				}
-																				);
-																		desvanecer.play();
-
-																	}
-																}
-																);
-														aparecer.play();
-													}
-												}
-												);
-
-										desvanecer.play();
-
-									}
-								}
-								);
-
-						aparecer.play();
+						desvanecerYAgregarRattata.play();
 
 					}
 				}
 				);
 
+		desvanecerYAgregarRattata.setOnFinished(
+				new EventHandler<ActionEvent>() {
+
+					@Override
+					public void handle(ActionEvent event) {
+
+						algomon.setImage(new Image(ruta + "Rattata.gif"));
+						fila.getChildren().clear();
+						fila.getChildren().addAll(algomon, question, yup);
+						layout.getChildren().clear();
+						layout.getChildren().add(fila);
+
+						aparecerYAlFinalAgregarTick.play();
+
+					}
+
+				}
+				);
+
+		aparecerYAlFinalAgregarTick.setOnFinished(
+				new EventHandler<ActionEvent>() {
+
+					@Override
+					public void handle(ActionEvent event) {
+
+						yup.setOpacity(100);
+
+						desvanecerYCambiarAParte2.play();
+
+					}
+				}
+				);
+
+		desvanecerYCambiarAParte2.setDelay(Duration.millis(1000));
+		desvanecerYCambiarAParte2.setOnFinished(
+				new EventHandler<ActionEvent>() {
+
+					@Override
+					public void handle(ActionEvent event) {
+
+						stage.setScene(new IntroduccionParte2(stage, new Juego()));
+
+					}
+
+				}
+				);
+
+
 		fila.getChildren().addAll(algomon, question);
 
 		layout.getChildren().add(fila);
 
-		//Scene intro = new Scene(layout, 1024, 768, Color.BLACK);
 		this.setFill(Color.BLACK);
 		this.setRoot(layout);
 
@@ -158,13 +195,20 @@ public class Introduccion extends EscenaJuegoAlgoMon {
 					@Override
 					public void handle(KeyEvent event) {
 
+						aparecerPikachuYAlFinalAgregarCruz.stop();
+						desvanecerYAgregarGengar.stop();
+						aparecerYAlFinalAgregarCruzYCambiarARattata.stop();
+						desvanecerYAgregarRattata.stop();
+						aparecerYAlFinalAgregarTick.stop();
+						desvanecerYCambiarAParte2.stop();
+
 						stage.setScene(new MenuPrincipal(stage, new Juego())); // Al presionar tecla, avanza
-						aparecer.stop();
-						desvanecer.stop();
 
 					}
 				}
 				);
+
+		aparecerPikachuYAlFinalAgregarCruz.play();
 
 	}
 
