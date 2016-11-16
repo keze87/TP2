@@ -4,16 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import src.fiuba.algo3.modelo.ataques.NombreAtaque;
+import src.fiuba.algo3.modelo.elementos.Elemento;
 import src.fiuba.algo3.modelo.excepciones.EquipoCompleto;
+import src.fiuba.algo3.modelo.excepciones.NoHayAlgoMonActivo;
 
 public class Jugador {
 
 	private static int capacidadEquipo = 3;
 	private List<AlgoMon> equipo;
 	private AlgoMon algoMonActivo;
+	private Mochila mochila;
 
 	public Jugador() {
 		this.equipo = new ArrayList<AlgoMon>();
+		this.mochila = new Mochila();
 	}
 
 	public boolean tieneAlgoMonEnEquipo(AlgoMon algoMon) {
@@ -22,7 +26,7 @@ public class Jugador {
 
 	public void agregarAlgoMonAlEquipo(AlgoMon algoMon) {
 		if(this.equipoEstaCompleto()) {
-			throw new EquipoCompleto("El equipo est� completo!");
+			throw new EquipoCompleto("El equipo está completo!");
 		}
 
 		this.equipo.add(algoMon);
@@ -45,11 +49,35 @@ public class Jugador {
 	}
 
 	public AlgoMon getAlgoMonActivo() {
-		return this.algoMonActivo;
+		try {
+			return this.algoMonActivo;
+		} catch(NullPointerException e) {
+			throw new NoHayAlgoMonActivo("No hay un algoMon activo!");
+		}
 	}
 
 	public void atacarConAlgoMonActivo(NombreAtaque nombreAtaque, AlgoMon algoMon) {
-		this.algoMonActivo.atacar(nombreAtaque, algoMon);
+		this.getAlgoMonActivo().atacar(nombreAtaque, algoMon);
+	}
+
+	public void usarPocion() {
+		this.usarElemento(this.mochila.getPocion());
+	}
+
+	public void usarSuperPocion() {
+		this.usarElemento(this.mochila.getSuperPocion());
+	}
+
+	public void usarRestaurador() {
+		this.usarElemento(this.mochila.getRestaurador());
+	}
+
+	public void usarVitamina() {
+		this.usarElemento(this.mochila.getVitamina());
+	}
+
+	private void usarElemento(Elemento elemento) {
+		this.getAlgoMonActivo().recibirElemento(elemento);
 	}
 
 }

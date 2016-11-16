@@ -31,10 +31,6 @@ public class AlgoMon {
 	public String getNombre() {
 		return this.nombre.toString();
 	}
-	
-	public boolean seLlama(NombreAlgoMon nombre){
-		return this.nombre==nombre;
-	}
 
 	/* Devuelve la vida máxima del algoMon. */
 	public double getVidaMaxima() {
@@ -126,7 +122,7 @@ public class AlgoMon {
 		for (Ataque ataque : ataques.values()) {
 			ataque.aumentarCantidad(cant);
 		}
-		
+
 	}
 
 }
