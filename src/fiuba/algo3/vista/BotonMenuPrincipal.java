@@ -11,7 +11,7 @@ public class BotonMenuPrincipal extends Button {
 			+ "-fx-background-repeat: no-repeat;"
 			+ "-fx-background-position: 90%;";
 
-	public BotonMenuPrincipal(String texto/*, un Handler*/) {
+	public BotonMenuPrincipal(String texto) {
 
 		super(texto);
 		this.setMinSize(200, 58);

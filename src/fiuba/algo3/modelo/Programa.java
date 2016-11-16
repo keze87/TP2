@@ -4,17 +4,18 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
-import src.fiuba.algo3.vista.MenuPrincipal;
+import src.fiuba.algo3.vista.Introduccion;
 
 public class Programa extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
-		primaryStage.setFullScreen(true);
-		Scene menuPrincipal = new MenuPrincipal(primaryStage, new Juego());
+		primaryStage.setFullScreen(false);
+		//Scene menuPrincipal = new MenuPrincipal(primaryStage, new Juego());
+		Scene introduccion = new Introduccion(primaryStage, new Juego());
 
 		primaryStage.setTitle("AlgoMon");
-		primaryStage.setScene(menuPrincipal);
+		primaryStage.setScene(introduccion);
 		primaryStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
 		primaryStage.show();
 	}

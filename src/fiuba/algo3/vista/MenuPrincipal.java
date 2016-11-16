@@ -32,6 +32,7 @@ public class MenuPrincipal extends EscenaJuegoAlgoMon {
 		Media sonido = new Media(new File("src/fiuba/algo3/vista/Sonidos/Pokemon_Opening.mp3").toURI().toString());
 		MediaPlayer mediaPlayer = new MediaPlayer(sonido);
 		mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+		mediaPlayer.play();
 
 		Image imagenLogo = new Image(ruta + "Logo.png");
 		ImageView logoView = new ImageView(imagenLogo);
@@ -41,8 +42,6 @@ public class MenuPrincipal extends EscenaJuegoAlgoMon {
 		Button dosJugadores = new BotonMenuPrincipal("Dos jugadores");
 		Button cheatCode = new BotonMenuPrincipal("Cheat code");
 		Button salir = new BotonMenuPrincipal("Salir");
-
-		mediaPlayer.play();
 
 		salir.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -62,11 +61,8 @@ public class MenuPrincipal extends EscenaJuegoAlgoMon {
 		});
 
 		FadeTransition transicion = new FadeTransition(Duration.millis(3000), logo);
-		transicion.setFromValue(0);
-		transicion.setToValue(1);
-		transicion.setCycleCount(1);
-		transicion.setAutoReverse(false);
-		transicion.play();
+		transicion.setFromValue(0); transicion.setToValue(1); transicion.setCycleCount(1);
+		transicion.setAutoReverse(false); transicion.play();
 		transicion.setOnFinished(
 				new EventHandler<ActionEvent>() {
 
@@ -86,6 +82,7 @@ public class MenuPrincipal extends EscenaJuegoAlgoMon {
 		layout.setCenter(logo);
 		layout.setBottom(botonera);
 		layout.setBackground(this.fondo);
+
 		this.setRoot(layout);
 	}
 

@@ -15,7 +15,7 @@ public abstract class ElegirEquipo extends EscenaJuegoAlgoMon {
 	protected Jugador jugador;
 
 	public ElegirEquipo(Stage stage, Juego juego) {
-		super(stage, "Fondo.png", juego);
+		super(stage, "FondoElegirEquipo.png", juego);
 	}
 
 	@Override
