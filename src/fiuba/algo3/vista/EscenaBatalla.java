@@ -1,16 +1,18 @@
 package src.fiuba.algo3.vista;
 
 import javafx.geometry.HPos;
-import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import src.fiuba.algo3.modelo.AlgoMon;
 import src.fiuba.algo3.modelo.Juego;
 
 public class EscenaBatalla extends EscenaJuegoAlgoMon {
+
+	private GridPane layoutBatalla;
 
 	public EscenaBatalla(Stage stage, Juego juego) {
 		super(stage, "FondoElegirEquipo.png", juego);
@@ -19,10 +21,10 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 	@Override
 	protected void agregarElementos() {
 		this.juego.inicializar();
+		this.layoutBatalla = new GridPane();
 
-		VBox displayAlgoMonActivo = this.crearDisplayAlgoMon(juego.getJugadorActivo().getAlgoMonActivo());
-		VBox displayAlgoMonContrincante = this.crearDisplayAlgoMon(juego.getContrincante().getAlgoMonActivo());
-		GridPane layoutBatalla = new GridPane();
+		DisplayAlgoMon displayAlgoMonActivo = new DisplayAlgoMon(juego.getJugadorActivo().getAlgoMonActivo());
+		DisplayAlgoMon displayAlgoMonContrincante = new DisplayAlgoMon(juego.getContrincante().getAlgoMonActivo());
 
 		ColumnConstraints columna = new ColumnConstraints();
 		columna.setPercentWidth(50f);
@@ -30,34 +32,35 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 		RowConstraints fila = new RowConstraints();
 		fila.setPercentHeight(50f);
 
-		layoutBatalla.add(displayAlgoMonContrincante, 0, 0);
-		layoutBatalla.add(displayAlgoMonActivo, 1, 1);
+		this.layoutBatalla.add(displayAlgoMonContrincante, 0, 0);
+		this.layoutBatalla.add(displayAlgoMonActivo, 1, 1);
 
-		layoutBatalla.setGridLinesVisible(true);
-		layoutBatalla.getColumnConstraints().add(columna);
-		layoutBatalla.getColumnConstraints().add(columna);
-		layoutBatalla.getRowConstraints().add(fila);
-		layoutBatalla.getRowConstraints().add(fila);
+		this.actualizarImagenAlgoMon(this.juego.getJugadorActivo().getAlgoMonActivo(), 0, 1);
+		this.actualizarImagenAlgoMon(this.juego.getContrincante().getAlgoMonActivo(), 1, 0);
+
+		this.layoutBatalla.setGridLinesVisible(true);
+		this.layoutBatalla.getColumnConstraints().add(columna);
+		this.layoutBatalla.getColumnConstraints().add(columna);
+		this.layoutBatalla.getRowConstraints().add(fila);
+		this.layoutBatalla.getRowConstraints().add(fila);
 
 		GridPane.setHalignment(displayAlgoMonContrincante, HPos.RIGHT);
 		GridPane.setHalignment(displayAlgoMonActivo, HPos.LEFT);
 
 		super.agregarElementos();
-		this.layout.setCenter(layoutBatalla);
+		this.layout.setCenter(this.layoutBatalla);
 		this.layout.setBackground(this.fondo);
 		this.setRoot(this.layout);
 	}
 
-	private VBox crearDisplayAlgoMon(AlgoMon algoMon) {
-		VBox display = new VBox();
-		Label nombre = new Label(algoMon.getNombre());
-		Label vida = new Label((int)algoMon.getVida() + "/" + (int)algoMon.getVidaMaxima() + " HP");
+	private void actualizarImagenAlgoMon(AlgoMon algoMon, int columna, int fila) {
+		Image imagenAlgoMon = new Image(EscenaJuegoAlgoMon.ruta + algoMon.getNombre() + ".gif");
+		ImageView imagen = new ImageView(imagenAlgoMon);
 
-		display.getChildren().add(nombre);
-		display.getChildren().add(vida);
-		display.getStyleClass().add("display-algoMon");
-		display.setMaxSize(100f, 80f);
-		return display;
+		imagen.setScaleX(5f);
+		imagen.setScaleY(5f);
+		this.layoutBatalla.add(imagen, columna, fila);
+		GridPane.setHalignment(imagen, HPos.CENTER);
 	}
 
 }
