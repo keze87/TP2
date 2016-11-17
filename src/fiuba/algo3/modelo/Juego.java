@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import src.fiuba.algo3.modelo.ataques.NombreAtaque;
+import src.fiuba.algo3.modelo.elementos.NombreElemento;
 
 public class Juego {
 
@@ -37,6 +38,12 @@ public class Juego {
 	public void jugadorActivoAtaca(NombreAtaque nombreAtaque) {
 		this.getJugadorActivo().atacarConAlgoMonActivo(nombreAtaque, this.getContrincante().getAlgoMonActivo());
 		this.finTurno();
+	}
+
+	public void jugadorActivoUsaElemento(NombreElemento nombreElemento) {
+		this.getJugadorActivo().usarElemento(nombreElemento);
+		this.finTurno();
+
 	}
 
 	private void finTurno() {

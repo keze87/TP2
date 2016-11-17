@@ -5,6 +5,7 @@ import java.util.List;
 
 import src.fiuba.algo3.modelo.ataques.NombreAtaque;
 import src.fiuba.algo3.modelo.elementos.Elemento;
+import src.fiuba.algo3.modelo.elementos.NombreElemento;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonNoExiste;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonYaEstaActivo;
 import src.fiuba.algo3.modelo.excepciones.EquipoCompleto;
@@ -86,24 +87,9 @@ public class Jugador {
 		this.algoMonActivo = algoMon;
 	}
 
-	/* Usa una poción sobre el algoMon activo. */
-	public void usarPocion() {
-		this.usarElemento(this.mochila.getPocion());
-	}
-
-	/* Usa una superpoción sobre el algoMon activo. */
-	public void usarSuperPocion() {
-		this.usarElemento(this.mochila.getSuperPocion());
-	}
-
-	/* Usa un restaurador sobre el algoMon activo. */
-	public void usarRestaurador() {
-		this.usarElemento(this.mochila.getRestaurador());
-	}
-
-	/* Usa una vitamina sobre el algoMon activo. */
-	public void usarVitamina() {
-		this.usarElemento(this.mochila.getVitamina());
+	/* Usa el elemento cuyo nombre es recibirdo por parámetro sobre el algoMon activo. */
+	public void usarElemento(NombreElemento nombreElemento) {
+		this.usarElemento(this.mochila.getElemento(nombreElemento));
 	}
 
 	/* Usa el elemento recibirdo por parámetro sobre el algoMon activo. */

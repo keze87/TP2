@@ -10,6 +10,7 @@ import src.fiuba.algo3.modelo.AlgoMon;
 import src.fiuba.algo3.modelo.AlgoMonBuilder;
 import src.fiuba.algo3.modelo.Jugador;
 import src.fiuba.algo3.modelo.ataques.NombreAtaque;
+import src.fiuba.algo3.modelo.elementos.NombreElemento;
 import src.fiuba.algo3.modelo.elementos.SuperPocion;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonNoExiste;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonYaEstaActivo;
@@ -117,7 +118,7 @@ public class JugadorTest {
 		jugador1.atacarConAlgoMonActivo(NombreAtaque.ATAQUERAPIDO, jugador2.getAlgoMonActivo());
 		assertEquals(jugador2.getAlgoMonActivo().getVidaMaxima() - 20, jugador2.getAlgoMonActivo().getVida(), 0.0001D);
 
-		jugador2.usarPocion();
+		jugador2.usarElemento(NombreElemento.POCION);
 		assertEquals(jugador2.getAlgoMonActivo().getVidaMaxima(), jugador2.getAlgoMonActivo().getVida(), 0.0001D);
 	}
 
@@ -149,7 +150,7 @@ public class JugadorTest {
 		jugador1.atacarConAlgoMonActivo(NombreAtaque.ATAQUERAPIDO, jugador2.getAlgoMonActivo());
 		assertEquals(jugador2.getAlgoMonActivo().getVidaMaxima() - 40, jugador2.getAlgoMonActivo().getVida(), 0.0001D);
 
-		jugador2.usarSuperPocion();
+		jugador2.usarElemento(NombreElemento.SUPERPOCION);
 		assertEquals(jugador2.getAlgoMonActivo().getVidaMaxima(), jugador2.getAlgoMonActivo().getVida(), 0.0001D);
 	}
 
@@ -179,7 +180,7 @@ public class JugadorTest {
 		jugador2.atacarConAlgoMonActivo(NombreAtaque.ATAQUERAPIDO, jugador1.getAlgoMonActivo());
 		assertEquals(jugador2.getAlgoMonActivo().getVidaMaxima() - 15, jugador2.getAlgoMonActivo().getVida(), 0.0001D);
 
-		jugador2.usarRestaurador();
+		jugador2.usarElemento(NombreElemento.RESTAURADOR);;
 		jugador2.atacarConAlgoMonActivo(NombreAtaque.ATAQUERAPIDO, jugador1.getAlgoMonActivo());
 		assertEquals(jugador2.getAlgoMonActivo().getVidaMaxima() - 15, jugador2.getAlgoMonActivo().getVida(), 0.0001D);
 	}
@@ -210,7 +211,7 @@ public class JugadorTest {
 		jugador1.atacarConAlgoMonActivo(NombreAtaque.ATAQUERAPIDO, jugador2.getAlgoMonActivo());
 		assertEquals(jugador2.getAlgoMonActivo().getVidaMaxima(), jugador2.getAlgoMonActivo().getVida(), 0.0001D);
 
-		jugador1.usarRestaurador();
+		jugador1.usarElemento(NombreElemento.RESTAURADOR);;
 		jugador1.atacarConAlgoMonActivo(NombreAtaque.ATAQUERAPIDO, jugador2.getAlgoMonActivo());
 		assertEquals(jugador2.getAlgoMonActivo().getVidaMaxima() - 10, jugador2.getAlgoMonActivo().getVida(), 0.0001D);
 	}
@@ -270,7 +271,7 @@ public class JugadorTest {
 		}
 
 		assertEquals(jugador2.getAlgoMonActivo().getVidaMaxima(), jugador2.getAlgoMonActivo().getVida(), 0.0001D);
-		jugador1.usarVitamina();
+		jugador1.usarElemento(NombreElemento.VITAMINA);;
 
 		jugador1.atacarConAlgoMonActivo(NombreAtaque.CHUPAVIDAS, jugador2.getAlgoMonActivo());
 		jugador1.atacarConAlgoMonActivo(NombreAtaque.LATIGOCEPA, jugador2.getAlgoMonActivo());
@@ -305,16 +306,16 @@ public class JugadorTest {
 		jugador2.listoParaPelear();
 
 		jugador1.atacarConAlgoMonActivo(NombreAtaque.CAÑONDEAGUA, jugador2.getAlgoMonActivo());
-		jugador2.usarPocion();
+		jugador2.usarElemento(NombreElemento.POCION);
 
 		jugador1.atacarConAlgoMonActivo(NombreAtaque.CAÑONDEAGUA, jugador2.getAlgoMonActivo());
-		jugador2.usarPocion();
+		jugador2.usarElemento(NombreElemento.POCION);
 
 		jugador1.atacarConAlgoMonActivo(NombreAtaque.CAÑONDEAGUA, jugador2.getAlgoMonActivo());
-		jugador2.usarPocion();
+		jugador2.usarElemento(NombreElemento.POCION);
 
 		jugador1.atacarConAlgoMonActivo(NombreAtaque.CAÑONDEAGUA, jugador2.getAlgoMonActivo());
-		jugador2.usarPocion();
+		jugador2.usarElemento(NombreElemento.POCION);
 
 		assertTrue(jugador2.getAlgoMonActivo().tieneVidaCompleta());
 
@@ -322,7 +323,7 @@ public class JugadorTest {
 
 		assertEquals(jugador2.getAlgoMonActivo().getVidaMaxima() - 20, jugador2.getAlgoMonActivo().getVida(), 0.0001D);
 
-		jugador2.usarPocion();
+		jugador2.usarElemento(NombreElemento.POCION);
 	}
 
 	@Test(expected = StockAgotado.class)
@@ -348,16 +349,16 @@ public class JugadorTest {
 		jugador2.listoParaPelear();
 
 		jugador1.atacarConAlgoMonActivo(NombreAtaque.CAÑONDEAGUA, jugador2.getAlgoMonActivo());
-		jugador2.usarSuperPocion();
+		jugador2.usarElemento(NombreElemento.SUPERPOCION);
 
 		jugador1.atacarConAlgoMonActivo(NombreAtaque.CAÑONDEAGUA, jugador2.getAlgoMonActivo());
-		jugador2.usarSuperPocion();
+		jugador2.usarElemento(NombreElemento.SUPERPOCION);
 
 		jugador1.atacarConAlgoMonActivo(NombreAtaque.CAÑONDEAGUA, jugador2.getAlgoMonActivo());
-		jugador2.usarSuperPocion();
+		jugador2.usarElemento(NombreElemento.SUPERPOCION);
 
 		jugador1.atacarConAlgoMonActivo(NombreAtaque.CAÑONDEAGUA, jugador2.getAlgoMonActivo());
-		jugador2.usarSuperPocion();
+		jugador2.usarElemento(NombreElemento.SUPERPOCION);
 
 		assertTrue(jugador2.getAlgoMonActivo().tieneVidaCompleta());
 
@@ -365,7 +366,7 @@ public class JugadorTest {
 
 		assertEquals(jugador2.getAlgoMonActivo().getVidaMaxima() - 20, jugador2.getAlgoMonActivo().getVida(), 0.0001D);
 
-		jugador2.usarSuperPocion();
+		jugador2.usarElemento(NombreElemento.SUPERPOCION);
 	}
 
 	@Test
@@ -395,7 +396,7 @@ public class JugadorTest {
 		try {
 			while(true) {
 				jugador2.atacarConAlgoMonActivo(NombreAtaque.CANTO, jugador1.getAlgoMonActivo());
-				jugador1.usarRestaurador();
+				jugador1.usarElemento(NombreElemento.RESTAURADOR);;
 				usosRestaurador++;
 			}
 		} catch(StockAgotado e) {
@@ -431,15 +432,15 @@ public class JugadorTest {
 			}
 		} catch(AtaqueAgotado e) {
 			assertEquals(jugador2.getAlgoMonActivo().getVidaMaxima() - 70, jugador2.getAlgoMonActivo().getVida(), 0.0001D);
-			jugador2.usarSuperPocion();
-			jugador2.usarSuperPocion();
+			jugador2.usarElemento(NombreElemento.SUPERPOCION);
+			jugador2.usarElemento(NombreElemento.SUPERPOCION);
 		}
 
-		jugador1.usarVitamina();
-		jugador1.usarVitamina();
-		jugador1.usarVitamina();
-		jugador1.usarVitamina();
-		jugador1.usarVitamina();
+		jugador1.usarElemento(NombreElemento.VITAMINA);;
+		jugador1.usarElemento(NombreElemento.VITAMINA);;
+		jugador1.usarElemento(NombreElemento.VITAMINA);;
+		jugador1.usarElemento(NombreElemento.VITAMINA);;
+		jugador1.usarElemento(NombreElemento.VITAMINA);;
 
 		try {
 			while(true) {
@@ -449,7 +450,7 @@ public class JugadorTest {
 			assertEquals(jugador2.getAlgoMonActivo().getVidaMaxima() - 70, jugador2.getAlgoMonActivo().getVida(), 0.0001D);
 		}
 
-		jugador1.usarVitamina();
+		jugador1.usarElemento(NombreElemento.VITAMINA);;
 	}
 
 	@Test

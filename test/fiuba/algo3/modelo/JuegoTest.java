@@ -10,6 +10,7 @@ import src.fiuba.algo3.modelo.AlgoMonBuilder;
 import src.fiuba.algo3.modelo.Juego;
 import src.fiuba.algo3.modelo.Jugador;
 import src.fiuba.algo3.modelo.ataques.NombreAtaque;
+import src.fiuba.algo3.modelo.elementos.NombreElemento;
 
 public class JuegoTest {
 
@@ -74,10 +75,10 @@ public class JuegoTest {
 		jugador2.listoParaPelear();
 
 		juego.jugadorActivoAtaca(NombreAtaque.BRASAS);
-		assertEquals(juego.getJugadorActivo().getAlgoMonActivo().getVidaMaxima() - 20, juego.getJugadorActivo().getAlgoMonActivo().getVida(), 0.0001D);
+		assertEquals(juego.getJugadorActivo().getAlgoMonActivo().getVidaMaxima() - 16, juego.getJugadorActivo().getAlgoMonActivo().getVida(), 0.0001D);
 		assertEquals("Jigglypuff", juego.getJugadorActivo().getAlgoMonActivo().getNombre());
 
-		//juego.jugadorActivoUsaElemento(NombreElemento.POCION); //TODO
+		juego.jugadorActivoUsaElemento(NombreElemento.POCION); //TODO
 
 		assertEquals("Jigglypuff", juego.getContrincante().getAlgoMonActivo().getNombre());
 		assertTrue(juego.getContrincante().getAlgoMonActivo().tieneVidaCompleta());
@@ -111,6 +112,11 @@ public class JuegoTest {
 		juego.jugadorActivoAtaca(NombreAtaque.ATAQUERAPIDO);
 
 		assertTrue(juego.getJugadorActivo().getAlgoMonActivo().tieneVidaCompleta());
+	}
+
+	@Test
+	public void test04CambiarAlgoMonActivoCambiaElTurnoDelJuego() {
+
 	}
 
 }

@@ -1,6 +1,10 @@
 package src.fiuba.algo3.modelo;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import src.fiuba.algo3.modelo.elementos.Elemento;
+import src.fiuba.algo3.modelo.elementos.NombreElemento;
 import src.fiuba.algo3.modelo.elementos.StockElemento;
 import src.fiuba.algo3.modelo.elementos.StockPociones;
 import src.fiuba.algo3.modelo.elementos.StockRestauradores;
@@ -9,35 +13,17 @@ import src.fiuba.algo3.modelo.elementos.StockVitaminas;
 
 public class Mochila {
 
-	private StockElemento pociones;
-	private StockElemento superPociones;
-	private StockElemento restauradores;
-	private StockElemento vitaminas;
+	private Map<NombreElemento, StockElemento> elementos;
 
 	public Mochila() {
-		this.pociones = new StockPociones();
-		this.superPociones = new StockSuperPociones();
-		this.restauradores = new StockRestauradores();
-		this.vitaminas = new StockVitaminas();
+		this.elementos = new HashMap<NombreElemento, StockElemento>();
+		this.elementos.put(NombreElemento.POCION, new StockPociones());
+		this.elementos.put(NombreElemento.SUPERPOCION, new StockSuperPociones());
+		this.elementos.put(NombreElemento.RESTAURADOR, new StockRestauradores());
+		this.elementos.put(NombreElemento.VITAMINA, new StockVitaminas());
 	}
 
-	/* Devuelve una poción del stock de pociones. */
-	public Elemento getPocion() {
-		return this.pociones.getElemento();
-	}
-
-	/* Devuelve una superpoción del stock de superpociones. */
-	public Elemento getSuperPocion() {
-		return this.superPociones.getElemento();
-	}
-
-	/* Devuelve un restaurador del stock de restauradores. */
-	public Elemento getRestaurador() {
-		return this.restauradores.getElemento();
-	}
-
-	/* Devuelve una vitamina del stock de vitamina, */
-	public Elemento getVitamina() {
-		return this.vitaminas.getElemento();
+	public Elemento getElemento(NombreElemento nombreElemento) {
+		return this.elementos.get(nombreElemento).getElemento();
 	}
 }
