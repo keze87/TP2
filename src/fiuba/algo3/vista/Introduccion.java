@@ -23,32 +23,6 @@ public class Introduccion extends EscenaJuegoAlgoMon {
 
 	}
 
-	private FadeTransition animacionAparecer(Node layout) {
-
-		FadeTransition aparecer = new FadeTransition(Duration.millis(3000), layout);
-
-		aparecer.setFromValue(0);
-		aparecer.setToValue(1);
-		aparecer.setCycleCount(1);
-		aparecer.setAutoReverse(false);
-
-		return aparecer;
-
-	}
-
-	private FadeTransition animacionDesvanecer(Node layout) {
-
-		FadeTransition desvanecer = new FadeTransition(Duration.millis(2000), layout);
-
-		desvanecer.setFromValue(1);
-		desvanecer.setToValue(0);
-		desvanecer.setCycleCount(1);
-		desvanecer.setAutoReverse(false);
-
-		return desvanecer;
-
-	}
-
 	@Override
 	protected void agregarElementos() {
 
@@ -78,14 +52,14 @@ public class Introduccion extends EscenaJuegoAlgoMon {
 		question.setFitWidth(algomon.getFitWidth());
 		question.setPreserveRatio(true);
 
-		FadeTransition aparecerPikachuYAlFinalAgregarCruz = this.animacionAparecer(layout);
-		FadeTransition desvanecerYAgregarGengar = this.animacionDesvanecer(layout);
+		FadeTransition aparecerPikachuYAlFinalAgregarCruz = Animaciones.animacionAparecer(layout);
+		FadeTransition desvanecerYAgregarGengar = Animaciones.animacionDesvanecer(layout);
 
-		FadeTransition aparecerYAlFinalAgregarCruzYCambiarARattata = this.animacionAparecer(layout);
-		FadeTransition desvanecerYAgregarRattata = this.animacionDesvanecer(layout);
+		FadeTransition aparecerYAlFinalAgregarCruzYCambiarARattata = Animaciones.animacionAparecer(layout);
+		FadeTransition desvanecerYAgregarRattata = Animaciones.animacionDesvanecer(layout);
 
-		FadeTransition aparecerYAlFinalAgregarTick = this.animacionAparecer(layout);
-		FadeTransition desvanecerYCambiarAParte2 = this.animacionDesvanecer(layout);
+		FadeTransition aparecerYAlFinalAgregarTick = Animaciones.animacionAparecer(layout);
+		FadeTransition desvanecerYCambiarAParte2 = Animaciones.animacionDesvanecer(layout);
 
 		aparecerPikachuYAlFinalAgregarCruz.setOnFinished(
 				new EventHandler<ActionEvent>() {

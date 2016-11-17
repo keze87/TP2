@@ -3,6 +3,8 @@ package src.fiuba.algo3.vista;
 import java.io.File;
 
 import javafx.animation.FadeTransition;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -46,6 +48,7 @@ public class MenuPrincipal extends EscenaJuegoAlgoMon {
 		salir.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent arg0) {
+
 				System.exit(0);
 
 			}
@@ -60,9 +63,7 @@ public class MenuPrincipal extends EscenaJuegoAlgoMon {
 
 		});
 
-		FadeTransition transicion = new FadeTransition(Duration.millis(3000), logo);
-		transicion.setFromValue(0); transicion.setToValue(1); transicion.setCycleCount(1);
-		transicion.setAutoReverse(false); transicion.play();
+		FadeTransition transicion = Animaciones.animacionAparecer(logo);
 		transicion.setOnFinished(
 				new EventHandler<ActionEvent>() {
 
@@ -73,13 +74,20 @@ public class MenuPrincipal extends EscenaJuegoAlgoMon {
 				}
 				);
 
+		transicion.play();
+
 		botonera.setPadding(new Insets(50f));
 		botonera.setAlignment(Pos.CENTER);
 
 		logo.setPadding(new Insets(20));
 		logo.setAlignment(Pos.TOP_CENTER);
 
-		layout.setCenter(logo);
+		Timeline timeline = new Timeline(new KeyFrame(
+				Duration.millis(250),
+				ae -> layout.setCenter(logo)));
+
+		timeline.play();
+
 		layout.setBottom(botonera);
 		layout.setBackground(this.fondo);
 

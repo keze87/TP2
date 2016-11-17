@@ -1,11 +1,12 @@
 package src.fiuba.algo3.vista;
 
 import javafx.animation.FadeTransition;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -26,11 +27,15 @@ public class IntroduccionParte2 extends EscenaJuegoAlgoMon {
 	@Override
 	protected void agregarElementos() {
 
-		StackPane layoutConImagenNegra = new StackPane();
+		StackPane layoutConImagenColor = new StackPane();
 		BorderPane layout = new BorderPane();
 
-		this.setFill(Color.web("e5a001"));
-		this.setRoot(layoutConImagenNegra);
+		this.setFill(Color.BLACK);
+		this.setRoot(layoutConImagenColor);
+
+		ImageView color = new ImageView(ruta + "Naranja.png");
+		color.setFitWidth(4000);
+		color.setFitHeight(4000);
 
 		ImageView rattata = new ImageView(ruta + "RattataMR.png");
 		HBox rattataBox = new HBox(rattata);
@@ -40,23 +45,14 @@ public class IntroduccionParte2 extends EscenaJuegoAlgoMon {
 		rattata.setFitWidth(400);
 		rattata.setPreserveRatio(true);
 
-		ImageView negro = new ImageView(new Image(ruta + "Negro.png"));
-		FadeTransition desvanecer = new FadeTransition(Duration.millis(3000), negro);
-		FadeTransition aparecer = new FadeTransition(Duration.millis(2000), negro);
-
-		negro.setFitWidth(4000);
-		negro.setFitHeight(4000);
-
-		desvanecer.setFromValue(0); desvanecer.setToValue(1); desvanecer.setCycleCount(1); desvanecer.setAutoReverse(false);
-		aparecer.setFromValue(1); aparecer.setToValue(0); aparecer.setCycleCount(1); aparecer.setAutoReverse(false);
+		FadeTransition desvanecer = Animaciones.animacionDesvanecer(layoutConImagenColor);
+		FadeTransition aparecer = Animaciones.animacionAparecer(layoutConImagenColor);
 
 		aparecer.setOnFinished(
 				new EventHandler<ActionEvent>() {
 
 					@Override
 					public void handle(ActionEvent event) {
-
-						layout.setCenter(rattataBox);
 
 						desvanecer.play();
 
@@ -79,8 +75,13 @@ public class IntroduccionParte2 extends EscenaJuegoAlgoMon {
 				);
 
 		aparecer.play();
+		layout.setCenter(rattataBox);
 
-		layoutConImagenNegra.getChildren().addAll(layout, negro);
+		Timeline timeline = new Timeline(new KeyFrame(
+				Duration.millis(250),
+				ae -> layoutConImagenColor.getChildren().addAll(color, layout)));
+
+		timeline.play();
 
 	}
 
