@@ -181,7 +181,6 @@ public class Introduccion extends EscenaJuegoAlgoMon {
 				}
 				);
 
-
 		fila.getChildren().addAll(algomon, question);
 
 		layout.getChildren().add(fila);

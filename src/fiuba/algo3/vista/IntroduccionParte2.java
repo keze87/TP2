@@ -58,22 +58,23 @@ public class IntroduccionParte2 extends EscenaJuegoAlgoMon {
 
 						layout.setCenter(rattataBox);
 
-						desvanecer.setDelay(Duration.seconds(4));
-						desvanecer.setOnFinished(
-								new EventHandler<ActionEvent>() {
-
-									@Override
-									public void handle(ActionEvent event) {
-
-										stage.setScene(new MenuPrincipal(stage, new Juego()));
-
-									}
-
-								}
-								);
 						desvanecer.play();
 
 					}
+				}
+				);
+
+		desvanecer.setDelay(Duration.seconds(4));
+		desvanecer.setOnFinished(
+				new EventHandler<ActionEvent>() {
+
+					@Override
+					public void handle(ActionEvent event) {
+
+						stage.setScene(new MenuPrincipal(stage, new Juego()));
+
+					}
+
 				}
 				);
 
