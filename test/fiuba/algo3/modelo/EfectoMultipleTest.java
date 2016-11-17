@@ -15,7 +15,7 @@ public class EfectoMultipleTest {
 	private EfectoMultiple efecto;
 
 	@Test
-	public void testAplicar() {
+	public void testAplicarQuitarVidaYQuemadoAplicaAmbos() {
 		efecto= new EfectoMultiple();
 		EstadoNormal estado = new EstadoNormal(170);
 		Estado nuevoEstado;
@@ -25,21 +25,19 @@ public class EfectoMultipleTest {
 		nuevoEstado = efecto.aplicar(estado);
 		nuevoEstado.accionRealizada();
 
-		assertEquals(53,nuevoEstado.getVida(),0.01);
+		assertEquals(estado.getVidaMaxima()-100-17,nuevoEstado.getVida(),0.01);
 	}
 
 	@Test
-	public void testAplicarSinEfecto() {
+	public void testAplicarSinEfectoYQuitarVidaSoloQuitaVida() {
 		efecto= new EfectoMultiple();
 		Estado estado = new EstadoNormal(140);
 		efecto.agregarEfecto(new SinEfecto());
 		efecto.agregarEfecto(new QuitarVida(10));
 		estado = efecto.aplicar(estado);
 		estado.accionRealizada();
-		estado = efecto.aplicar(estado);
-		estado.accionRealizada();
 
-		assertEquals(120,estado.getVida(),0.01);
+		assertEquals(estado.getVidaMaxima()-10,estado.getVida(),0.01);
 	}
 
 }
