@@ -1,7 +1,10 @@
 package test.fiuba.algo3.modelo;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertTrue;
+
+import java.util.List;
 
 import org.junit.Test;
 
@@ -26,7 +29,6 @@ public class JuegoTest {
 		jugador1.agregarAlgoMonAlEquipo(charmander);
 		jugador1.agregarAlgoMonAlEquipo(squirtle);
 		jugador1.agregarAlgoMonAlEquipo(bulbasaur);
-		jugador1.listoParaPelear();
 
 		AlgoMon jigglypuff = AlgoMonBuilder.crearJigglypuff();
 		AlgoMon chansey = AlgoMonBuilder.crearChansey();
@@ -36,18 +38,22 @@ public class JuegoTest {
 		jugador2.agregarAlgoMonAlEquipo(jigglypuff);
 		jugador2.agregarAlgoMonAlEquipo(chansey);
 		jugador2.agregarAlgoMonAlEquipo(rattata);
-		jugador2.listoParaPelear();
 
-		String nombreAlgoMonActivoJugadorActivoInicial = juego.getJugadorActivo().getAlgoMonActivo().getNombre();
-		String nombreAlgoMonActivoContrincanteInicial = juego.getContrincante().getAlgoMonActivo().getNombre();
+		juego.inicializar();
 
-		assertEquals(nombreAlgoMonActivoJugadorActivoInicial, juego.getJugadorActivo().getAlgoMonActivo().getNombre());
+		Jugador jugadorActivoInicial = juego.getJugadorActivo();
+
 		juego.jugadorActivoAtaca(NombreAtaque.ATAQUERAPIDO);
-		assertEquals(juego.getJugadorActivo().getAlgoMonActivo().getVidaMaxima() - 10, juego.getJugadorActivo().getAlgoMonActivo().getVida(), 0.0001D);
 
-		assertEquals(nombreAlgoMonActivoContrincanteInicial, juego.getJugadorActivo().getAlgoMonActivo().getNombre());
+		Jugador jugadorActivoActual = juego.getJugadorActivo();
+
+		assertNotSame(jugadorActivoActual, jugadorActivoInicial);
+
 		juego.jugadorActivoAtaca(NombreAtaque.ATAQUERAPIDO);
-		assertEquals(juego.getJugadorActivo().getAlgoMonActivo().getVidaMaxima() - 10, juego.getJugadorActivo().getAlgoMonActivo().getVida(), 0.0001D);
+
+		jugadorActivoActual = juego.getJugadorActivo();
+
+		assertEquals(jugadorActivoActual, jugadorActivoInicial);
 	}
 
 	@Test
@@ -62,7 +68,6 @@ public class JuegoTest {
 		jugador1.agregarAlgoMonAlEquipo(charmander);
 		jugador1.agregarAlgoMonAlEquipo(squirtle);
 		jugador1.agregarAlgoMonAlEquipo(bulbasaur);
-		jugador1.listoParaPelear();
 
 		AlgoMon jigglypuff = AlgoMonBuilder.crearJigglypuff();
 		AlgoMon chansey = AlgoMonBuilder.crearChansey();
@@ -72,20 +77,25 @@ public class JuegoTest {
 		jugador2.agregarAlgoMonAlEquipo(jigglypuff);
 		jugador2.agregarAlgoMonAlEquipo(chansey);
 		jugador2.agregarAlgoMonAlEquipo(rattata);
-		jugador2.listoParaPelear();
+		juego.inicializar();
 
-		juego.jugadorActivoAtaca(NombreAtaque.BRASAS);
-		assertEquals(juego.getJugadorActivo().getAlgoMonActivo().getVidaMaxima() - 16, juego.getJugadorActivo().getAlgoMonActivo().getVida(), 0.0001D);
-		assertEquals("Jigglypuff", juego.getJugadorActivo().getAlgoMonActivo().getNombre());
+		Jugador jugadorActivoInicial = juego.getJugadorActivo();
 
-		juego.jugadorActivoUsaElemento(NombreElemento.POCION); //TODO
+		juego.jugadorActivoAtaca(NombreAtaque.ATAQUERAPIDO);
 
-		assertEquals("Jigglypuff", juego.getContrincante().getAlgoMonActivo().getNombre());
-		assertTrue(juego.getContrincante().getAlgoMonActivo().tieneVidaCompleta());
+		Jugador jugadorActivoActual = juego.getJugadorActivo();
+
+		assertNotSame(jugadorActivoActual, jugadorActivoInicial);
+
+		juego.jugadorActivoUsaElemento(NombreElemento.POCION);
+
+		jugadorActivoActual = juego.getJugadorActivo();
+
+		assertEquals(jugadorActivoActual, jugadorActivoInicial);
 	}
 
 	@Test
-	public void test03JugadorAtacaConAlgoMonActivoDormidoYElAlgoMonActivoDelContrincanteNoRecibeDaño() {
+	public void test03JugadorAtacaConAlgoMonActivoDormidoYElAlgoMonActivoDelContrincanteNoRecibeDañoDuranteElTurno() {
 		Juego juego = new Juego();
 
 		AlgoMon jigglypuff = AlgoMonBuilder.crearJigglypuff();
@@ -96,17 +106,17 @@ public class JuegoTest {
 		jugador1.agregarAlgoMonAlEquipo(jigglypuff);
 		jugador1.agregarAlgoMonAlEquipo(chansey);
 		jugador1.agregarAlgoMonAlEquipo(rattata);
-		jugador1.listoParaPelear();
 
-		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
+		AlgoMon otroJigglypuff = AlgoMonBuilder.crearJigglypuff();
 		AlgoMon squirtle = AlgoMonBuilder.crearSquirtle();
 		AlgoMon bulbasaur = AlgoMonBuilder.crearBulbasaur();
 		Jugador jugador2 = juego.getJugador2();
 
-		jugador2.agregarAlgoMonAlEquipo(charmander);
+		jugador2.agregarAlgoMonAlEquipo(otroJigglypuff);
 		jugador2.agregarAlgoMonAlEquipo(squirtle);
 		jugador2.agregarAlgoMonAlEquipo(bulbasaur);
-		jugador2.listoParaPelear();
+
+		juego.inicializar();
 
 		juego.jugadorActivoAtaca(NombreAtaque.CANTO);
 		juego.jugadorActivoAtaca(NombreAtaque.ATAQUERAPIDO);
@@ -116,7 +126,62 @@ public class JuegoTest {
 
 	@Test
 	public void test04CambiarAlgoMonActivoCambiaElTurnoDelJuego() {
+		Juego juego = new Juego();
 
+		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
+		AlgoMon squirtle = AlgoMonBuilder.crearSquirtle();
+		AlgoMon bulbasaur = AlgoMonBuilder.crearBulbasaur();
+		Jugador jugador1 = juego.getJugador1();
+
+		jugador1.agregarAlgoMonAlEquipo(charmander);
+		jugador1.agregarAlgoMonAlEquipo(squirtle);
+		jugador1.agregarAlgoMonAlEquipo(bulbasaur);
+
+		AlgoMon jigglypuff = AlgoMonBuilder.crearJigglypuff();
+		AlgoMon chansey = AlgoMonBuilder.crearChansey();
+		AlgoMon rattata = AlgoMonBuilder.crearRattata();
+		Jugador jugador2 = juego.getJugador2();
+
+		jugador2.agregarAlgoMonAlEquipo(jigglypuff);
+		jugador2.agregarAlgoMonAlEquipo(chansey);
+		jugador2.agregarAlgoMonAlEquipo(rattata);
+
+		juego.inicializar();
+
+		Jugador jugadorActivoInicial = juego.getJugadorActivo();
+
+		List<AlgoMon> algoMonInactivosJugadorActivo = juego.getAlgoMonInactivosJugadorActivo();
+
+		juego.cambiarAlgoMonActivoJugadorActivo(algoMonInactivosJugadorActivo.get(0));
+
+		Jugador jugadorActivoActual = juego.getJugadorActivo();
+
+		assertNotSame(jugadorActivoActual, jugadorActivoInicial);
 	}
+
+//	@Test(expected = JuegoTerminado.class)
+//	public void test05SiUnJugadorSeQuedaSinAlgoMonesVivosTerminaElJuego() {
+//		Juego juego = new Juego();
+//
+//		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
+//		AlgoMon squirtle = AlgoMonBuilder.crearSquirtle();
+//		AlgoMon bulbasaur = AlgoMonBuilder.crearBulbasaur();
+//		Jugador jugador1 = juego.getJugador1();
+//
+//		jugador1.agregarAlgoMonAlEquipo(charmander);
+//		jugador1.agregarAlgoMonAlEquipo(squirtle);
+//		jugador1.agregarAlgoMonAlEquipo(bulbasaur);
+//
+//		AlgoMon jigglypuff = AlgoMonBuilder.crearJigglypuff();
+//		AlgoMon chansey = AlgoMonBuilder.crearChansey();
+//		AlgoMon rattata = AlgoMonBuilder.crearRattata();
+//		Jugador jugador2 = juego.getJugador2();
+//
+//		jugador2.agregarAlgoMonAlEquipo(jigglypuff);
+//		jugador2.agregarAlgoMonAlEquipo(chansey);
+//		jugador2.agregarAlgoMonAlEquipo(rattata);
+//
+//		juego.inicializar();
+//	}
 
 }

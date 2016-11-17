@@ -51,6 +51,7 @@ public abstract class Estado {
 
 		if(this.vida < 0) {
 			this.vida = 0;
+			//throw new AlgoMonActivoEstaMuerto("El algoMon murió!");
 		}
 	}
 

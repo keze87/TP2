@@ -10,6 +10,7 @@ import src.fiuba.algo3.modelo.excepciones.AlgoMonNoExiste;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonYaEstaActivo;
 import src.fiuba.algo3.modelo.excepciones.EquipoCompleto;
 import src.fiuba.algo3.modelo.excepciones.NoHayAlgoMonActivo;
+import test.fiuba.algo3.modelo.AlgoMonMuerto;
 
 public class Jugador {
 
@@ -57,6 +58,17 @@ public class Jugador {
 		this.algoMonActivo = this.equipo.get(0);
 	}
 
+	/* Determina si el jugador tiene algún algoMon vivo. */
+	public boolean puedeSeguirJugando() {
+		boolean hayAlgoMonVivos = true;
+
+		for(AlgoMon algoMon : this.equipo) {
+			hayAlgoMonVivos &= algoMon.estaVivo();
+		}
+
+		return hayAlgoMonVivos;
+	}
+
 	/* Devuelve el algoMon activo. */
 	public AlgoMon getAlgoMonActivo() {
 		try {
@@ -84,7 +96,19 @@ public class Jugador {
 			throw new AlgoMonYaEstaActivo(algoMon.getNombre() + " ya es el algoMon activo!");
 		}
 
+		else if(!algoMon.estaVivo()) {
+			throw new AlgoMonMuerto(algoMon.getNombre() + " está muerto. No se puede cambiar!");
+		}
+
 		this.algoMonActivo = algoMon;
+	}
+
+	/* Devuelve una lista con los algoMonInactivos. */
+	public List<AlgoMon> getAlgoMonInactivos() {
+		List<AlgoMon> algoMonInactivos = new ArrayList<AlgoMon>(this.equipo);
+
+		algoMonInactivos.remove(this.algoMonActivo);
+		return algoMonInactivos;
 	}
 
 	/* Usa el elemento cuyo nombre es recibirdo por parámetro sobre el algoMon activo. */

@@ -1,6 +1,6 @@
 package src.fiuba.algo3.vista;
 
-import javafx.scene.canvas.Canvas;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import src.fiuba.algo3.modelo.Juego;
 
@@ -8,18 +8,19 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 
 	public EscenaBatalla(Stage stage, Juego juego) {
 		super(stage, "", juego);
+		this.juego.inicializar();
 	}
 
 	@Override
 	protected void agregarElementos() {
-		Canvas canvas = new Canvas();
+		GridPane layoutBatalla = new GridPane();
 
-		this.layout.setCenter(canvas);
+		layoutBatalla.setGridLinesVisible(true);
+		layoutBatalla.setMinSize(500, 500);
 
 		super.agregarElementos();
-		this.setRoot(layout);
+		this.layout.setCenter(layoutBatalla);
+		this.setRoot(this.layout);
 	}
-
-
 
 }

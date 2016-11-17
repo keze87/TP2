@@ -508,6 +508,31 @@ public class JugadorTest {
 		jugador1.cambiarAlgoMonActivo(charmander);
 	}
 
+	// TODO: intentar cambiar algoMon activo por otro algoMon muerto lanza excepción.
+	@Test(expected = AlgoMonMuerto.class)
+	public void test17CambiarAlgoMonActivoPorAlgoMonMuertoLanzaExcepcion() {
+		AlgoMon squirtle = AlgoMonBuilder.crearSquirtle();
+		AlgoMon bulbasaur = AlgoMonBuilder.crearBulbasaur();
+		AlgoMon jigglypuff = AlgoMonBuilder.crearJigglypuff();
+		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
+		Jugador jugador1 = new Jugador();
+
+		jugador1.agregarAlgoMonAlEquipo(squirtle);
+		jugador1.agregarAlgoMonAlEquipo(bulbasaur);
+		jugador1.agregarAlgoMonAlEquipo(jigglypuff);
+		jugador1.listoParaPelear();
+
+		charmander.atacar(NombreAtaque.BRASAS, bulbasaur);
+		charmander.atacar(NombreAtaque.BRASAS, bulbasaur);
+		charmander.atacar(NombreAtaque.BRASAS, bulbasaur);
+		charmander.atacar(NombreAtaque.BRASAS, bulbasaur);
+		charmander.atacar(NombreAtaque.BRASAS, bulbasaur);
+
+		assertFalse(bulbasaur.estaVivo());
+
+		jugador1.cambiarAlgoMonActivo(bulbasaur);
+	}
+
 //	@Test(expected = NoHayAlgoMonActivo.class)
 //	public void test09AtacarSinEstablecerElAlgoMonActivoLanzaExcepcion() {
 //		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
