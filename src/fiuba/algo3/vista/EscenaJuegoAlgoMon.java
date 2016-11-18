@@ -24,6 +24,8 @@ public abstract class EscenaJuegoAlgoMon extends Scene {
 		super(new Pane(), 1024, 768);
 		this.getStylesheets().add(EscenaJuegoAlgoMon.ruta + "../estilos.css");
 		this.stage = stage;
+		this.stage.setFullScreen(true);
+		this.stage.setMaximized(true);
 		this.layout = new BorderPane();
 		this.juego = juego;
 		this.crearFondo(nombreImagenFondo);
@@ -33,8 +35,6 @@ public abstract class EscenaJuegoAlgoMon extends Scene {
 	/* Agrega los elementos correspondientes a la escena. */
 	protected void agregarElementos() {
 		this.layout.setTop(new BarraMenu(stage));
-		Consola.agregarAContenedor(this.layout);
-		Consola.limpiar();
 	}
 
 	/* Crea y establece la imagen de fondo para la escena. */

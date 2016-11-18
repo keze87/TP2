@@ -2,7 +2,8 @@ package src.fiuba.algo3.vista;
 
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.text.Font;
 
 public final class Consola {
@@ -46,9 +47,9 @@ public final class Consola {
 		contenedor.setBottom(consola);
 	}
 
-	/* Agrega la consola a un contenedor. */
-	public static void agregarAContenedor(StackPane contenedor) {
+	public static void agregarAContendedor(HBox contenedor) {
 		contenedor.getChildren().add(consola);
+		HBox.setHgrow(consola, Priority.ALWAYS);
 	}
 
 }

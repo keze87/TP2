@@ -55,6 +55,8 @@ public abstract class ElegirEquipo extends EscenaJuegoAlgoMon {
 
 		layout.setCenter(botonera);
 		layout.setBackground(this.fondo);
+		Consola.agregarAContenedor(this.layout);
+		Consola.limpiar();
 		this.setRoot(layout);
 	}
 

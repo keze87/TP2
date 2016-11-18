@@ -9,10 +9,11 @@ public class Programa extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
-		Scene introduccion = new Introduccion(primaryStage, new Juego());
-		//Scene introduccion = new ElegirEquipoJugador1(primaryStage, new Juego());
+		//Scene introduccion = new Introduccion(primaryStage, new Juego());
+		Scene introduccion = new ElegirEquipoJugador1(primaryStage, new Juego());
 
-		primaryStage.setFullScreen(false);
+		primaryStage.setMaximized(true);
+		primaryStage.setFullScreen(true);
 		primaryStage.setFullScreenExitKeyCombination(null);
 		primaryStage.setFullScreenExitHint("");
 

@@ -3,6 +3,7 @@
 	-fx-border-style: solid;
 	-fx-border-color: rgb(54,148,223);
 	-fx-border-radius: 10px;
+	-fx-background-color: rgba(255, 255, 255, 1);
 }
 
 .consola .content {
@@ -61,7 +62,7 @@
 }
 
 .display-algoMon {
-	-fx-background-color: rgba(255, 255, 255, 0.5);
+	-fx-background-color: rgba(255, 255, 255, 1);
 	-fx-border-style: solid;
 	-fx-border-width: 1px;
   	-fx-border-radius: 4px;
@@ -73,6 +74,11 @@
 	-fx-border-style: solid;
 	-fx-border-width: 1px;
 	-fx-cursor: hand;
+}
+
+.texto-display-algoMon {
+	-fx-font-size: 14px;
+	-fx-font-weight: bold;
 }
 
 .batalla {
