@@ -1,6 +1,7 @@
 package src.fiuba.algo3.vista;
 
 import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -21,7 +22,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 	private HBox contenedorInferior;
 
 	public EscenaBatalla(Stage stage, Juego juego) {
-		super(stage, "FondoBatalla.png", juego);
+		super(stage, "", juego);
 	}
 
 	@Override
@@ -54,7 +55,8 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 
 		this.layout.setCenter(this.layoutBatalla);
 		this.layout.setBottom(this.contenedorInferior);
-		this.layout.setBackground(this.fondo);
+		this.layout.getCenter().getStyleClass().add("contenedor-central-batalla");
+		this.layout.getBottom().getStyleClass().add("contenedor-inferior-batalla");
 
 		this.setRoot(this.layout);
 	}
@@ -71,7 +73,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 
 	private void agregarDisplaysAlgoMon() {
 		this.displayAlgoMonActivo = new DisplayAlgoMon(juego.getJugadorActivo().getAlgoMonActivo());
-		this.displayAlgoMonContrincante = new DisplayAlgoMon(juego.getJugadorActivo().getAlgoMonActivo());
+		this.displayAlgoMonContrincante = new DisplayAlgoMon(juego.getContrincante().getAlgoMonActivo());
 
 		this.layoutBatalla.add(this.displayAlgoMonContrincante, 0, 0);
 		this.layoutBatalla.add(this.displayAlgoMonActivo, 1, 1);
@@ -83,23 +85,39 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 	private void agregarDisplayAcciones() {
 		GridPane botoneraAcciones = new GridPane();
 
+		botoneraAcciones.setPrefWidth(500f);
+
 		Button botonAtacar = new Button("Atacar");
 		Button botonMochila = new Button("Mochila");
 		Button botonCambiar = new Button("Cambiar");
 
-		botoneraAcciones.getStyleClass().add("consola");
-		botonAtacar.getStyleClass().add("boton-elegir-algoMon");
-		botonMochila.getStyleClass().add("boton-elegir-algoMon");
-		botonCambiar.getStyleClass().add("boton-elegir-algoMon");
-		//botonAtacar.setPadding(new Insets(20f));
-
 		botoneraAcciones.add(botonAtacar, 0, 0);
 		botoneraAcciones.add(botonMochila, 1, 0);
 		botoneraAcciones.add(botonCambiar, 0, 1);
-		botoneraAcciones.setHgap(10f);
-		botoneraAcciones.setVgap(10f);
 
-		HBox.setHgrow(botoneraAcciones, Priority.ALWAYS);
+		botonAtacar.setMaxWidth(Double.MAX_VALUE);
+		botonAtacar.setMaxHeight(Double.MAX_VALUE);
+		botonMochila.setMaxWidth(Double.MAX_VALUE);
+		botonMochila.setMaxHeight(Double.MAX_VALUE);
+		botonCambiar.setMaxWidth(Double.MAX_VALUE);
+		botonCambiar.setMaxHeight(Double.MAX_VALUE);
+
+		botonAtacar.setPadding(new Insets(15f));
+		botonMochila.setPadding(new Insets(15f));
+		botonCambiar.setPadding(new Insets(15f));
+
+		botonAtacar.getStyleClass().add("boton-elegir-algoMon");
+		botonMochila.getStyleClass().add("boton-elegir-algoMon");
+		botonCambiar.getStyleClass().add("boton-elegir-algoMon");
+
+		GridPane.setHgrow(botonAtacar, Priority.ALWAYS);
+		GridPane.setHgrow(botonMochila, Priority.ALWAYS);
+		GridPane.setHgrow(botonCambiar, Priority.ALWAYS);
+
+		GridPane.setVgrow(botonAtacar, Priority.ALWAYS);
+		GridPane.setVgrow(botonMochila, Priority.ALWAYS);
+		GridPane.setVgrow(botonCambiar, Priority.ALWAYS);
+
 		this.contenedorInferior.getChildren().add(botoneraAcciones);
 	}
 

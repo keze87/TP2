@@ -1,8 +1,7 @@
 .consola {
 	-fx-border-width: 3px;
 	-fx-border-style: solid;
-	-fx-border-color: rgb(54,148,223);
-	-fx-border-radius: 10px;
+	-fx-border-color: rgb(54,148,223);	
 	-fx-background-color: rgba(255, 255, 255, 1);
 }
 
@@ -22,7 +21,7 @@
   -fx-background-color: #247edd;
   -fx-border-style: solid;
   -fx-border-width: 1px;
-  -fx-border-radius: 4px;
+  /*-fx-border-radius: 4px;*/
   -fx-font-weight: bold;
 }
 
@@ -88,4 +87,14 @@
 
 .intro2 {
 	-fx-background-color: rgb(229, 160, 1);
+}
+
+.contenedor-central-batalla {
+	-fx-background-image: url("Imagenes/FondoBatalla.png");
+	-fx-background-size: stretch;
+	-fx-background-repeat: no-repeat;
+}
+
+.contenedor-inferior-batalla {
+	-fx-background-color: linear-gradient(to right, rgba(30,100,117,1) 0%, rgba(13,51,61,1) 100%);
 }
