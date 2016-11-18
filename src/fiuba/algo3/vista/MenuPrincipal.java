@@ -19,7 +19,6 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import src.fiuba.algo3.modelo.Juego;
 
-@SuppressWarnings("unused")
 public class MenuPrincipal extends EscenaJuegoAlgoMon {
 
 	public MenuPrincipal(Stage stage, Juego juego) {
