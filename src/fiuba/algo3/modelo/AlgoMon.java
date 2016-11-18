@@ -124,5 +124,9 @@ public class AlgoMon {
 		}
 
 	}
+	
+	public void esperar(){
+		this.estado.accionRealizada();
+	}
 
 }

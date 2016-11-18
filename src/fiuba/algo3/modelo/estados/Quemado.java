@@ -6,6 +6,9 @@ public final class Quemado extends EstadoAlterado {
 	public static double getPorcentajeVidaQuitada() {
 		return porcentajeVidaQuitada;
 	}
+	public static double getVidaQuitada(double vidaMaxima) {
+		return vidaMaxima * Quemado.getPorcentajeVidaQuitada();
+	}
 
 	public Quemado(Estado estadoAnterior) {
 		this.estadoAnterior = estadoAnterior;

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<accessrules>
+			<accessrule kind="accessible" pattern="javafx/**"/>
+		</accessrules>
+	</classpathentry>
 	<classpathentry excluding="build/**|libs/**" kind="src" path=""/>
 	<classpathentry kind="lib" path="libs/analysis/ant.jar"/>
 	<classpathentry kind="lib" path="libs/analysis/asm.jar"/>
@@ -36,10 +41,5 @@
 	<classpathentry kind="lib" path="libs/oro-jar-2.0.8.jar"/>
 	<classpathentry kind="lib" path="libs/servlet-api-2.5-jar-6.1.14.jar"/>
 	<classpathentry kind="lib" path="libs/slf4j-api-jar-1.7.5.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
-		<accessrules>
-			<accessrule kind="accessible" pattern="javafx/**"/>
-		</accessrules>
-	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

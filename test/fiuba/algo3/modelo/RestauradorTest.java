@@ -23,7 +23,7 @@ public class RestauradorTest {
 		algomon.recibirEfecto(new Quemar());
 		algomon.atacar(NombreAtaque.ATAQUERAPIDO, otroAlgomon);
 		vidaAnterior=algomon.getVida();
-		assertEquals(algomon.getVidaMaxima()-algomon.getVidaMaxima()*Quemado.getPorcentajeVidaQuitada(),vidaAnterior,0.01);
+		assertEquals(algomon.getVidaMaxima()-Quemado.getVidaQuitada(algomon.getVidaMaxima()),vidaAnterior,0.01);
 		restaurador.aplicar(algomon);
 		algomon.atacar(NombreAtaque.ATAQUERAPIDO, otroAlgomon);
 		assertEquals(vidaAnterior,algomon.getVida(),0.01);
@@ -34,7 +34,6 @@ public class RestauradorTest {
 		AlgoMon algomon = AlgoMonBuilder.crearCharmander();
 		AlgoMon otroAlgomon = AlgoMonBuilder.crearCharmander();
 		restaurador = new Restaurador();
-		
 		algomon.recibirEfecto(new Dormir());
 		algomon.atacar(NombreAtaque.ATAQUERAPIDO, otroAlgomon);
 		assertEquals(otroAlgomon.getVida(),otroAlgomon.getVidaMaxima(),0.01);
@@ -42,6 +41,21 @@ public class RestauradorTest {
 		restaurador.aplicar(algomon);
 		algomon.atacar(NombreAtaque.ATAQUERAPIDO, otroAlgomon);
 		assertEquals(otroAlgomon.getVidaMaxima()-10,otroAlgomon.getVida(),0.01);
+	}
+	
+	@Test
+	public void testAplicarSobreQuemadoYDormidoDejaDeEstarlo() {
+		AlgoMon algomon = AlgoMonBuilder.crearCharmander();
+		AlgoMon otroAlgomon = AlgoMonBuilder.crearCharmander();
+		restaurador = new Restaurador();
+		algomon.recibirEfecto(new Dormir());
+		algomon.recibirEfecto(new Quemar());
+		algomon.atacar(NombreAtaque.ATAQUERAPIDO, otroAlgomon);
+		assertEquals(otroAlgomon.getVida(),otroAlgomon.getVidaMaxima(),0.01);
+		restaurador.aplicar(algomon);
+		algomon.atacar(NombreAtaque.ATAQUERAPIDO, otroAlgomon);
+		assertEquals(otroAlgomon.getVidaMaxima()-10,otroAlgomon.getVida(),0.01);
+		assertEquals(algomon.getVidaMaxima()-Quemado.getVidaQuitada(algomon.getVidaMaxima()),algomon.getVida(),0.01);
 	}
 
 }

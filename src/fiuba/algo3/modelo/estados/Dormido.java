@@ -23,7 +23,10 @@ public final class Dormido extends EstadoAlterado {
 
 	@Override
 	public void accionRealizada() {
+		double vidaAnterior;
+		vidaAnterior=this.getEstadoAnterior().vida;
 		this.getEstadoAnterior().accionRealizada();
+		this.quitarVida(vidaAnterior-this.getEstadoAnterior().getVida());
 		this.turnosRestantes--;
 	}
 
