@@ -1,20 +1,20 @@
 .consola {
 	-fx-border-width: 3px;
-	-fx-border-style: solid; 
+	-fx-border-style: solid;
 	-fx-border-color: rgb(54,148,223);
-	-fx-border-radius: 10px;	
+	-fx-border-radius: 10px;
 }
 
-.consola .content {		
+.consola .content {
 	-fx-font-weight: bold;
 	-fx-text-fill: rgb(255,255,255);
 }
 
-.root { 
+.root {
 	-fx-focus-color: transparent;
 }
 
-.boton-elegir-algoMon { 
+.boton-elegir-algoMon {
   -fx-padding: 0 24px;
   -fx-font-size: 14px;
   -fx-text-fill: white;
@@ -22,16 +22,16 @@
   -fx-border-style: solid;
   -fx-border-width: 1px;
   -fx-border-radius: 4px;
-  -fx-font-weight: bold; 
+  -fx-font-weight: bold;
 }
 
 .boton-elegir-algoMon:before {
   -fx-background-color: transparent;
 }
 
-.boton-elegir-algoMon:hover { 
+.boton-elegir-algoMon:hover {
 	-fx-background-color: #1a74d3;
-	-fx-cursor: hand; 
+	-fx-cursor: hand;
 }
 
 .boton-elegir-algoMon:pressed {
@@ -46,7 +46,7 @@
   -fx-border-style: solid;
   -fx-border-width: 1px;
   -fx-border-radius: 4px;
-  -fx-font-weight: bold; 
+  -fx-font-weight: bold;
 }
 
 .boton-listo:hover {
@@ -73,4 +73,9 @@
 	-fx-border-style: solid;
 	-fx-border-width: 1px;
 	-fx-cursor: hand;
+}
+
+.batalla {
+	-fx-background-image: url("Imagenes/FondoBatalla.png");
+	-fx-background-repeat: repeat-x;
 }

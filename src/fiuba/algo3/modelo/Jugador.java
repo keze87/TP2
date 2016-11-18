@@ -10,7 +10,6 @@ import src.fiuba.algo3.modelo.excepciones.AlgoMonNoExiste;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonYaEstaActivo;
 import src.fiuba.algo3.modelo.excepciones.EquipoCompleto;
 import src.fiuba.algo3.modelo.excepciones.NoHayAlgoMonActivo;
-import test.fiuba.algo3.modelo.AlgoMonMuerto;
 
 public class Jugador {
 
@@ -97,7 +96,7 @@ public class Jugador {
 		}
 
 		else if(!algoMon.estaVivo()) {
-			throw new AlgoMonMuerto(algoMon.getNombre() + " está muerto. No se puede cambiar!");
+			//throw new AlgoMonMuerto(algoMon.getNombre() + " está muerto. No se puede cambiar!");
 		}
 
 		this.algoMonActivo = algoMon;
