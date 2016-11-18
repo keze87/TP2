@@ -80,4 +80,8 @@ public abstract class Ataque {
 	public void aumentarCantidad(int cant) {
 		this.usosRestantes+=cant;
 	}
+	
+	public int getCantidadDeUsosRestantes(){
+		return this.usosRestantes;
+	}
 }

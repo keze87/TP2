@@ -4,11 +4,20 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class VampiroTest {
+import src.fiuba.algo3.modelo.efectos.Vampiro;
+import src.fiuba.algo3.modelo.estados.Estado;
+import src.fiuba.algo3.modelo.estados.EstadoNormal;
 
+public class VampiroTest {
+	private Vampiro vampiro;
 	@Test
-	public void testAplicar() {
-		fail("Not yet implemented");
+	public void testAplicarSobreEstadoAtacanteLeAumentaLaVidaUn30PorcientoDeLaVidaQuitadaAlAtacado() {
+		vampiro= new Vampiro();
+		Estado estadoAtacante = new EstadoNormal(170);
+		estadoAtacante.quitarVida(30);
+		vampiro.setVidaQuitadaAlOponente(100);
+		vampiro.aplicar(estadoAtacante);
+		assertEquals(estadoAtacante.getVidaMaxima(),estadoAtacante.getVida(),0.01);
 	}
 
 }

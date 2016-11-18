@@ -129,4 +129,8 @@ public class AlgoMon {
 		this.estado.accionRealizada();
 	}
 
+	public int getCantidadDeUsosRestantes(NombreAtaque nombre) {
+		return this.ataques.get(nombre).getCantidadDeUsosRestantes();
+	}
+
 }

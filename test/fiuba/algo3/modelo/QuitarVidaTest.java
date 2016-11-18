@@ -11,7 +11,7 @@ public class QuitarVidaTest {
 	private QuitarVida quitarVida;
 
 	@Test
-	public void testAplicar() {
+	public void testAplicarQuitaVida() {
 		this.quitarVida= new QuitarVida(150);
 
 		EstadoNormal estado = new EstadoNormal(170);
