@@ -79,3 +79,7 @@
 	-fx-background-image: url("Imagenes/FondoBatalla.png");
 	-fx-background-repeat: repeat-x;
 }
+
+.intro2 {
+	-fx-background-color: rgb(229, 160, 1);
+}

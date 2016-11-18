@@ -10,6 +10,7 @@ import javafx.geometry.Pos;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -30,12 +31,11 @@ public class IntroduccionParte2 extends EscenaJuegoAlgoMon {
 		StackPane layoutConImagenColor = new StackPane();
 		BorderPane layout = new BorderPane();
 
+		Pane color = new Pane();
+		color.getStyleClass().add("intro2");
+
 		this.setFill(Color.BLACK);
 		this.setRoot(layoutConImagenColor);
-
-		ImageView color = new ImageView(ruta + "Naranja.png");
-		color.setFitWidth(4000);
-		color.setFitHeight(4000);
 
 		ImageView rattata = new ImageView(ruta + "RattataMR.png");
 		HBox rattataBox = new HBox(rattata);
