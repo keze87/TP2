@@ -36,6 +36,10 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 		super(stage, juego);
 	}
 
+	private enum PosAlgomon {
+		FRENTE, ESPALDA;
+	}
+
 	@Override
 	protected void agregarElementos() {
 		super.agregarElementos();
@@ -45,8 +49,8 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 		this.botoneraAcciones = new BotoneraAcciones();
 		this.crearBotonVolver();
 
-		this.actualizarImagenAlgoMon(this.juego.getJugadorActivo().getAlgoMonActivo(), 0, 1);
-		this.actualizarImagenAlgoMon(this.juego.getContrincante().getAlgoMonActivo(), 1, 0);
+		this.actualizarImagenAlgoMon(this.juego.getJugadorActivo().getAlgoMonActivo(), PosAlgomon.ESPALDA);
+		this.actualizarImagenAlgoMon(this.juego.getContrincante().getAlgoMonActivo(), PosAlgomon.FRENTE);
 
 		Consola.agregarAContendedor(this.contenedorInferior);
 
@@ -73,11 +77,38 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 		this.setRoot(this.layout);
 	}
 
-	private void actualizarImagenAlgoMon(AlgoMon algoMon, int columna, int fila) {
-		ImageView imagen = ContenedorImagenes.getImageView(algoMon.getNombre());
+	private void actualizarImagenAlgoMon(AlgoMon algoMon, PosAlgomon posAlgomon) {
 
-		imagen.setScaleX(3);
-		imagen.setScaleY(3);
+		String nombreImagen;
+		int size;
+		int columna;
+		int fila;
+
+		if (posAlgomon == PosAlgomon.FRENTE) {
+
+			nombreImagen = algoMon.getNombre();
+
+			size = 2;
+
+			columna = 1;
+			fila = 0;
+
+		} else {
+
+			nombreImagen = algoMon.getNombre() + "_espalda";
+
+			size = 3;
+
+			columna = 0;
+			fila = 1;
+
+		}
+
+		ImageView imagen = ContenedorImagenes.getImageView(nombreImagen);
+
+		imagen.setScaleX(size);
+		imagen.setScaleY(size);
+
 		this.layoutBatalla.add(imagen, columna, fila);
 		GridPane.setHalignment(imagen, HPos.CENTER);
 	}
