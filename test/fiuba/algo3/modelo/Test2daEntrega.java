@@ -9,7 +9,7 @@ import src.fiuba.algo3.modelo.AlgoMon;
 import src.fiuba.algo3.modelo.AlgoMonBuilder;
 import src.fiuba.algo3.modelo.ataques.NombreAtaque;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonDormidoNoPuedeAtacar;
-import src.fiuba.algo3.modelo.excepciones.AlgoMonRecibeQuemadura;
+import src.fiuba.algo3.modelo.excepciones.AlgoMonRecibeDañoQuemadura;
 
 
 public class Test2daEntrega {
@@ -119,31 +119,31 @@ public class Test2daEntrega {
 		charmander.atacar(NombreAtaque.FOGONAZO, bulbasaur);
 		assertEquals(bulbasaur.getVidaMaxima() - 4, bulbasaur.getVida(), 0.0001D);
 
-		try{bulbasaur.atacar(NombreAtaque.ATAQUERAPIDO, charmander);}catch(AlgoMonRecibeQuemadura e){}
+		try{bulbasaur.atacar(NombreAtaque.ATAQUERAPIDO, charmander);}catch(AlgoMonRecibeDañoQuemadura e){}
 		assertEquals(bulbasaur.getVidaMaxima() - 18, bulbasaur.getVida(), 0.0001D);
 
-		try{bulbasaur.atacar(NombreAtaque.ATAQUERAPIDO, charmander);}catch(AlgoMonRecibeQuemadura e){}
+		try{bulbasaur.atacar(NombreAtaque.ATAQUERAPIDO, charmander);}catch(AlgoMonRecibeDañoQuemadura e){}
 		assertEquals(bulbasaur.getVidaMaxima() - 32, bulbasaur.getVida(), 0.0001D);
 
-		try{bulbasaur.atacar(NombreAtaque.ATAQUERAPIDO, charmander);}catch(AlgoMonRecibeQuemadura e){}
+		try{bulbasaur.atacar(NombreAtaque.ATAQUERAPIDO, charmander);}catch(AlgoMonRecibeDañoQuemadura e){}
 		assertEquals(bulbasaur.getVidaMaxima() - 46, bulbasaur.getVida(), 0.0001D);
 
-		try{bulbasaur.atacar(NombreAtaque.ATAQUERAPIDO, charmander);}catch(AlgoMonRecibeQuemadura e){}
+		try{bulbasaur.atacar(NombreAtaque.ATAQUERAPIDO, charmander);}catch(AlgoMonRecibeDañoQuemadura e){}
 		assertEquals(bulbasaur.getVidaMaxima() - 60, bulbasaur.getVida(), 0.0001D);
 
-		try{bulbasaur.atacar(NombreAtaque.ATAQUERAPIDO, charmander);}catch(AlgoMonRecibeQuemadura e){}
+		try{bulbasaur.atacar(NombreAtaque.ATAQUERAPIDO, charmander);}catch(AlgoMonRecibeDañoQuemadura e){}
 		assertEquals(bulbasaur.getVidaMaxima() - 74, bulbasaur.getVida(), 0.0001D);
 
-		try{bulbasaur.atacar(NombreAtaque.ATAQUERAPIDO, charmander);}catch(AlgoMonRecibeQuemadura e){}
+		try{bulbasaur.atacar(NombreAtaque.ATAQUERAPIDO, charmander);}catch(AlgoMonRecibeDañoQuemadura e){}
 		assertEquals(bulbasaur.getVidaMaxima() - 88, bulbasaur.getVida(), 0.0001D);
 
-		try{bulbasaur.atacar(NombreAtaque.ATAQUERAPIDO, charmander);}catch(AlgoMonRecibeQuemadura e){}
+		try{bulbasaur.atacar(NombreAtaque.ATAQUERAPIDO, charmander);}catch(AlgoMonRecibeDañoQuemadura e){}
 		assertEquals(bulbasaur.getVidaMaxima() - 102, bulbasaur.getVida(), 0.0001D);
 
-		try{bulbasaur.atacar(NombreAtaque.ATAQUERAPIDO, charmander);}catch(AlgoMonRecibeQuemadura e){}
+		try{bulbasaur.atacar(NombreAtaque.ATAQUERAPIDO, charmander);}catch(AlgoMonRecibeDañoQuemadura e){}
 		assertEquals(bulbasaur.getVidaMaxima() - 116, bulbasaur.getVida(), 0.0001D);
 
-		try{bulbasaur.atacar(NombreAtaque.ATAQUERAPIDO, charmander);}catch(AlgoMonRecibeQuemadura e){}
+		try{bulbasaur.atacar(NombreAtaque.ATAQUERAPIDO, charmander);}catch(AlgoMonRecibeDañoQuemadura e){}
 		assertEquals(bulbasaur.getVidaMaxima() - 130, bulbasaur.getVida(), 0.0001D);
 
 		try{bulbasaur.atacar(NombreAtaque.ATAQUERAPIDO, charmander);}catch(RuntimeException e){}
@@ -155,32 +155,32 @@ public class Test2daEntrega {
 		rattata.atacar(NombreAtaque.FOGONAZO, squirtle);
 		assertEquals(squirtle.getVidaMaxima() - 1, squirtle.getVida(), 0.0001D);
 
-		try{squirtle.atacar(NombreAtaque.BURBUJA, rattata);}catch(AlgoMonRecibeQuemadura e){}
+		try{squirtle.atacar(NombreAtaque.BURBUJA, rattata);}catch(AlgoMonRecibeDañoQuemadura e){}
 
 		assertEquals(squirtle.getVidaMaxima() - 16, squirtle.getVida(), 0.0001D);
 
-		try{squirtle.atacar(NombreAtaque.BURBUJA, rattata);}catch(AlgoMonRecibeQuemadura e){}
+		try{squirtle.atacar(NombreAtaque.BURBUJA, rattata);}catch(AlgoMonRecibeDañoQuemadura e){}
 		assertEquals(squirtle.getVidaMaxima() - 31, squirtle.getVida(), 0.0001D);
 
-		try{squirtle.atacar(NombreAtaque.BURBUJA, rattata);}catch(AlgoMonRecibeQuemadura e){}
+		try{squirtle.atacar(NombreAtaque.BURBUJA, rattata);}catch(AlgoMonRecibeDañoQuemadura e){}
 		assertEquals(squirtle.getVidaMaxima() - 46, squirtle.getVida(), 0.0001D);
 
-		try{squirtle.atacar(NombreAtaque.BURBUJA, rattata);}catch(AlgoMonRecibeQuemadura e){}
+		try{squirtle.atacar(NombreAtaque.BURBUJA, rattata);}catch(AlgoMonRecibeDañoQuemadura e){}
 		assertEquals(squirtle.getVidaMaxima() - 61, squirtle.getVida(), 0.0001D);
 
-		try{squirtle.atacar(NombreAtaque.BURBUJA, rattata);}catch(AlgoMonRecibeQuemadura e){}
+		try{squirtle.atacar(NombreAtaque.BURBUJA, rattata);}catch(AlgoMonRecibeDañoQuemadura e){}
 		assertEquals(squirtle.getVidaMaxima() - 76, squirtle.getVida(), 0.0001D);
 
-		try{squirtle.atacar(NombreAtaque.BURBUJA, rattata);}catch(AlgoMonRecibeQuemadura e){}
+		try{squirtle.atacar(NombreAtaque.BURBUJA, rattata);}catch(AlgoMonRecibeDañoQuemadura e){}
 		assertEquals(squirtle.getVidaMaxima() - 91, squirtle.getVida(), 0.0001D);
 		
-		try{squirtle.atacar(NombreAtaque.BURBUJA, rattata);}catch(AlgoMonRecibeQuemadura e){}
+		try{squirtle.atacar(NombreAtaque.BURBUJA, rattata);}catch(AlgoMonRecibeDañoQuemadura e){}
 		assertEquals(squirtle.getVidaMaxima() - 106, squirtle.getVida(), 0.0001D);
 
-		try{squirtle.atacar(NombreAtaque.BURBUJA, rattata);}catch(AlgoMonRecibeQuemadura e){}
+		try{squirtle.atacar(NombreAtaque.BURBUJA, rattata);}catch(AlgoMonRecibeDañoQuemadura e){}
 		assertEquals(squirtle.getVidaMaxima() - 121, squirtle.getVida(), 0.0001D);
 
-		try{squirtle.atacar(NombreAtaque.BURBUJA, rattata);}catch(AlgoMonRecibeQuemadura e){}
+		try{squirtle.atacar(NombreAtaque.BURBUJA, rattata);}catch(AlgoMonRecibeDañoQuemadura e){}
 		assertEquals(squirtle.getVidaMaxima() - 136, squirtle.getVida(), 0.0001D);
 
 		try{squirtle.atacar(NombreAtaque.BURBUJA, rattata);}catch(RuntimeException e){}

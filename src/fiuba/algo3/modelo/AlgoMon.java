@@ -14,7 +14,7 @@ import src.fiuba.algo3.modelo.estados.EstadoNormal;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonActivoMurio;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonDormidoNoPuedeAtacar;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonNoTieneAtaque;
-import src.fiuba.algo3.modelo.excepciones.AlgoMonRecibeQuemadura;
+import src.fiuba.algo3.modelo.excepciones.AlgoMonRecibeDañoQuemadura;
 import src.fiuba.algo3.modelo.tipo.Tipo;
 
 public class AlgoMon {
@@ -86,8 +86,8 @@ public class AlgoMon {
 
 		} catch(NullPointerException e) {
 			throw new AlgoMonNoTieneAtaque(this.nombre + " no puede usar " + nombreAtaque.toString() + "!");
-		} catch(AlgoMonRecibeQuemadura e) {
-			throw new AlgoMonRecibeQuemadura("¡" + this.nombre + " recibe daño de la quemadura!");
+		} catch(AlgoMonRecibeDañoQuemadura e) {
+			throw new AlgoMonRecibeDañoQuemadura("¡" + this.nombre + " recibe daño de la quemadura!");
 		} catch(AlgoMonActivoMurio e) {
 			throw new AlgoMonActivoMurio("¡" + this.nombre + " murió a causa de su quemadura!");
 		}
@@ -103,10 +103,6 @@ public class AlgoMon {
 		} catch(AlgoMonActivoMurio e) {
 			throw new AlgoMonActivoMurio("¡" + this.nombre + " murió!");
 		}
-
-		//		if(!this.estado.puedeRealizarAccion() && this.estado) {
-		//			throw new AlgoMonSeDurmio("¡" + this.getNombre() + " se quedó dormido!");
-		//		}
 	}
 
 	/**

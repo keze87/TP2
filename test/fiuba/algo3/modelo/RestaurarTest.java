@@ -10,7 +10,7 @@ import src.fiuba.algo3.modelo.estados.Dormido;
 import src.fiuba.algo3.modelo.estados.Estado;
 import src.fiuba.algo3.modelo.estados.EstadoNormal;
 import src.fiuba.algo3.modelo.estados.Quemado;
-import src.fiuba.algo3.modelo.excepciones.AlgoMonRecibeQuemadura;
+import src.fiuba.algo3.modelo.excepciones.AlgoMonRecibeDañoQuemadura;
 
 public class RestaurarTest {
 	private Efecto restaurar;
@@ -19,7 +19,7 @@ public class RestaurarTest {
 	public void testAplicarAQuemadoVuelveANormal() {
 		restaurar= new Restaurar();
 		Estado estado = new Quemado(new EstadoNormal(170));
-		try{estado.accionRealizada();}catch(AlgoMonRecibeQuemadura e){}
+		try{estado.accionRealizada();}catch(AlgoMonRecibeDañoQuemadura e){}
 		double vidaDespuesDeUnaAccionRealizada=estado.getVidaMaxima()-Quemado.getVidaQuitada(estado.getVidaMaxima());
 		assertEquals(vidaDespuesDeUnaAccionRealizada,estado.getVida(),0.01);
 		estado = restaurar.aplicar(estado);
@@ -43,7 +43,7 @@ public class RestaurarTest {
 		Estado estado = new Dormido(new Quemado(new EstadoNormal(170)));
 		double vidaDespuesDeUnaAccionRealizada=estado.getVidaMaxima()-Quemado.getVidaQuitada(estado.getVidaMaxima());
 		assertFalse(estado.puedeRealizarAccion());
-		try{estado.accionRealizada();}catch(AlgoMonRecibeQuemadura e){}
+		try{estado.accionRealizada();}catch(AlgoMonRecibeDañoQuemadura e){}
 		assertEquals(vidaDespuesDeUnaAccionRealizada,estado.getVida(),0.01);
 		estado = restaurar.aplicar(estado);
 		assertTrue(estado.puedeRealizarAccion());

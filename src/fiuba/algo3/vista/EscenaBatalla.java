@@ -18,7 +18,7 @@ import src.fiuba.algo3.modelo.ataques.NombreAtaque;
 import src.fiuba.algo3.modelo.elementos.NombreElemento;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonActivoMurio;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonDormidoNoPuedeAtacar;
-import src.fiuba.algo3.modelo.excepciones.AlgoMonRecibeQuemadura;
+import src.fiuba.algo3.modelo.excepciones.AlgoMonRecibeDañoQuemadura;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonSeDurmio;
 import src.fiuba.algo3.modelo.excepciones.AtaqueAgotado;
 import src.fiuba.algo3.modelo.excepciones.VidaCompleta;
@@ -166,7 +166,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 
 					} catch(AtaqueAgotado | AlgoMonDormidoNoPuedeAtacar e) {
 						Consola.mostrarMensaje(e.getMessage());
-					} catch(AlgoMonSeDurmio | AlgoMonRecibeQuemadura e) {
+					} catch(AlgoMonSeDurmio | AlgoMonRecibeDañoQuemadura e) {
 						Consola.encolarMensaje(e.getMessage());
 					} catch(AlgoMonActivoMurio e) {
 						Consola.encolarMensaje(e.getMessage());
@@ -193,10 +193,6 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 			this.juego.getJugadorActivo().atacar(this.botoneraAcciones);
 
 		}
-<<<<<<< HEAD
-=======
-
->>>>>>> 44dbe5563604942ae6c8695ca27571b324ed839f
 	}
 
 	private void mostrarBotoneraMochila() {

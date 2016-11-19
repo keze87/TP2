@@ -8,7 +8,7 @@ import src.fiuba.algo3.modelo.efectos.Quemar;
 import src.fiuba.algo3.modelo.estados.Estado;
 import src.fiuba.algo3.modelo.estados.EstadoNormal;
 import src.fiuba.algo3.modelo.estados.Quemado;
-import src.fiuba.algo3.modelo.excepciones.AlgoMonRecibeQuemadura;
+import src.fiuba.algo3.modelo.excepciones.AlgoMonRecibeDañoQuemadura;
 
 public class QuemarTest {
 	private Quemar quemar;
@@ -21,7 +21,7 @@ public class QuemarTest {
 		Estado nuevoEstado;
 
 		nuevoEstado = this.quemar.aplicar(estado);
-		try{nuevoEstado.accionRealizada();} catch(AlgoMonRecibeQuemadura e){}
+		try{nuevoEstado.accionRealizada();} catch(AlgoMonRecibeDañoQuemadura e){}
 		assertEquals(estado.getVidaMaxima()-Quemado.getVidaQuitada(estado.getVidaMaxima()), nuevoEstado.getVida(), 0.01);
 	}
 
