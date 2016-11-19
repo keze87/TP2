@@ -6,6 +6,7 @@ import java.util.Random;
 
 import src.fiuba.algo3.modelo.ataques.NombreAtaque;
 import src.fiuba.algo3.modelo.elementos.NombreElemento;
+import src.fiuba.algo3.modelo.excepciones.JuegoTerminado;
 
 public class Juego {
 
@@ -61,6 +62,11 @@ public class Juego {
 
 	public void jugadorActivoUsaElemento(NombreElemento nombreElemento) {
 		this.getJugadorActivo().usarElemento(nombreElemento);
+		this.finTurno();
+	}
+	
+	public void jugadorActivoSaltaTurno() {
+		this.getJugadorActivo().saltarTurno();
 		this.finTurno();
 	}
 

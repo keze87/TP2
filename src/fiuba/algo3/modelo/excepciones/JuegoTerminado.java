@@ -1,4 +1,4 @@
-package src.fiuba.algo3.modelo;
+package src.fiuba.algo3.modelo.excepciones;
 
 public class JuegoTerminado extends RuntimeException {
 
