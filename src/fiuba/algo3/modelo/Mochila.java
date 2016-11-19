@@ -26,4 +26,5 @@ public class Mochila {
 	public Elemento getElemento(NombreElemento nombreElemento) {
 		return this.elementos.get(nombreElemento).getElemento();
 	}
+
 }

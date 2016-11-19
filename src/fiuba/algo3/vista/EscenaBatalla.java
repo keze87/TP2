@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import src.fiuba.algo3.modelo.AlgoMon;
 import src.fiuba.algo3.modelo.Juego;
 import src.fiuba.algo3.modelo.ataques.NombreAtaque;
+import src.fiuba.algo3.modelo.elementos.NombreElemento;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonActivoMurio;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonDormidoNoPuedeAtacar;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonRecibeDañoQuemadura;
@@ -102,6 +103,16 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 		});
 
 		Button botonMochila = new Button("Mochila");
+
+		botonMochila.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent arg0) {
+				mostrarBotoneraMochila();
+			}
+
+		});
+
 		Button botonCambiar = new Button("Cambiar");
 
 		this.botoneraAcciones.borrarBotones();
@@ -170,6 +181,20 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 			});
 
 			this.botoneraAcciones.add(boton);
+		}
+	}
+
+	private void mostrarBotoneraMochila() {
+		NombreElemento[] nombresElementos = NombreElemento.values();
+
+		this.botoneraAcciones.borrarBotones();
+
+		for(NombreElemento nombreElemento : nombresElementos) {
+			Button boton = new Button(nombreElemento.getNombre());
+
+			boton.setGraphic(ContenedorImagenes.getImageView(nombreElemento.getNombre()));
+
+			botoneraAcciones.add(boton);
 		}
 	}
 
