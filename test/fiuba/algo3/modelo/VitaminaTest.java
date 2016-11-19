@@ -1,6 +1,6 @@
 package test.fiuba.algo3.modelo;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
@@ -15,10 +15,10 @@ public class VitaminaTest {
 	public void testAplicarAumentaCantidadAtaquesDisponibles() {
 		vitamina = new Vitamina();
 		AlgoMon algomon = AlgoMonBuilder.crearCharmander();
-		int usosAntesVitamina=algomon.getCantidadDeUsosRestantes(NombreAtaque.ATAQUERAPIDO);
+		int usosAntesVitamina=algomon.getUsosRestantesAtaque(NombreAtaque.ATAQUERAPIDO);
 		vitamina.aplicar(algomon);
 		assertEquals(usosAntesVitamina+Vitamina.getCantAtaquesRestaurados(),
-				algomon.getCantidadDeUsosRestantes(NombreAtaque.ATAQUERAPIDO));
+				algomon.getUsosRestantesAtaque(NombreAtaque.ATAQUERAPIDO));
 	}
 
 }

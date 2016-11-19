@@ -92,9 +92,9 @@ public class ElementosTest {
 
 		try{
 			while(true){
-				
+
 				charmander.atacar(NombreAtaque.ATAQUERAPIDO, otroCharmander);
-				otroCharmander.recibirEfecto(new AumentarVida(10));				
+				otroCharmander.recibirEfecto(new AumentarVida(10));
 				contador++;
 			}
 
@@ -208,7 +208,7 @@ public class ElementosTest {
 
 		try{
 			while(true){
-				
+
 				squirtle.atacar(NombreAtaque.ATAQUERAPIDO, tercerBulbasaur);
 				tercerBulbasaur.recibirEfecto(new AumentarVida(10));
 				contador++;

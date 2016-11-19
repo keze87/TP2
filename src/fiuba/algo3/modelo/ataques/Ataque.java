@@ -73,7 +73,6 @@ public abstract class Ataque {
 		if(!quedanUsos()) {
 			throw new AtaqueAgotado("¡No quedan más usos para este ataque!");
 		}
-
 	}
 
 	/*Aumenta la cantidad de usos del ataque*/
