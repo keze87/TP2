@@ -132,18 +132,10 @@ public class AlgoMon {
 		return this.estado.tieneVidaCompleta();
 	}
 
-	/* Agrega los ataques al diccionario de ataques. */
-	private void agregarAtaques(List<Ataque> ataques) {
-		for (Ataque ataque : ataques) {
-			this.ataques.put(ataque.getNombre(), ataque);
-		}
-	}
-
 	public void aumentarCantidadAtaquesDisponibles(int cantidad) {
 		for (Ataque ataque : ataques.values()) {
 			ataque.aumentarCantidad(cantidad);
 		}
-
 	}
 
 	public int getCantidadDeUsosRestantes(NombreAtaque nombre) {
@@ -157,5 +149,21 @@ public class AlgoMon {
 	public List<NombreAtaque> getNombresAtaques() {
 		return new ArrayList<NombreAtaque>(this.ataques.keySet());
 	}
+
+	public int getUsosRestantesAtaque(NombreAtaque nombreAtaque) {
+		return this.ataques.get(nombreAtaque).getUsosRestantes();
+	}
+
+	public int getUsosTotalesAtaque(NombreAtaque nombreAtaque) {
+		return this.ataques.get(nombreAtaque).getUsosTotales();
+	}
+
+	/* Agrega los ataques al diccionario de ataques. */
+	private void agregarAtaques(List<Ataque> ataques) {
+		for (Ataque ataque : ataques) {
+			this.ataques.put(ataque.getNombre(), ataque);
+		}
+	}
+
 
 }

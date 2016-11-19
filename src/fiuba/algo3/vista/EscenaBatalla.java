@@ -149,9 +149,9 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 			String textoBoton = nombreAtaqueActual.toString();
 
 			textoBoton += " - ";
-			textoBoton += this.juego.getJugadorActivo().getAlgoMonActivo().getAtaque(nombreAtaqueActual).getUsosRestantes();
+			textoBoton += this.juego.getJugadorActivo().getAlgoMonActivo().getUsosRestantesAtaque(nombreAtaqueActual);
 			textoBoton += "/";
-			textoBoton += this.juego.getJugadorActivo().getAlgoMonActivo().getAtaque(nombreAtaqueActual).getUsosTotales();
+			textoBoton += this.juego.getJugadorActivo().getAlgoMonActivo().getUsosTotalesAtaque(nombreAtaqueActual);
 
 			Button botonAtaque = new Button(textoBoton);
 
@@ -186,16 +186,13 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 			this.botoneraAcciones.add(botonAtaque);
 		}
 
-<<<<<<< HEAD
 		this.botoneraAcciones.add(this.botonVolver);
-=======
+
 		if (this.juego.getJugadorActivo().esComputadora()) {
 
 			this.juego.getJugadorActivo().atacar(this.botoneraAcciones);
 
 		}
-
->>>>>>> bf620f7e32f1a7a9d833d93c1a267cf2557cb3be
 	}
 
 	private void mostrarBotoneraMochila() {
