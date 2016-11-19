@@ -45,6 +45,8 @@ public abstract class EscenaJuegoAlgoMon extends Scene {
 				BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
 
 		this.fondo = new Background(fondo);
+
+		//this.fondo = ContenedorImagenes.getBackground(nombreImagenFondo);
 	}
 
 }

@@ -6,8 +6,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import src.fiuba.algo3.modelo.AlgoMon;
 import src.fiuba.algo3.modelo.AlgoMonBuilder;
 import src.fiuba.algo3.modelo.Jugador;
@@ -47,11 +45,8 @@ public class BotonElegirAlgoMon extends Button {
 		this.setPadding(new Insets(20f));
 		this.setMinWidth(180f);
 		this.setMinHeight(100f);
-		this.setText(algoMon.getNombre() + "\n" + (int) algoMon.getVidaMaxima() + " HP");
-
-		Image imagenAlgoMon = new Image(EscenaJuegoAlgoMon.ruta + this.algoMon.getNombre() + ".gif");
-
-		this.setGraphic(new ImageView(imagenAlgoMon));
+		this.setText(this.algoMon.getNombre() + "\n" + (int) this.algoMon.getVidaMaxima() + " HP");
+		this.setGraphic(ContenedorImagenes.getImageView(this.algoMon.getNombre()));
 	}
 
 	/* Establece la acción a realizar cuando se hace click sobre el botón. */
