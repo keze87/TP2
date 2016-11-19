@@ -3,6 +3,7 @@ package src.fiuba.algo3.modelo;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.scene.control.Button;
 import src.fiuba.algo3.modelo.ataques.NombreAtaque;
 import src.fiuba.algo3.modelo.elementos.Elemento;
 import src.fiuba.algo3.modelo.elementos.NombreElemento;
@@ -13,7 +14,7 @@ import src.fiuba.algo3.modelo.excepciones.NoHayAlgoMonActivo;
 
 public class Jugador {
 
-	private static int capacidadEquipo = 3;
+	protected int capacidadEquipo = 3;
 	private List<AlgoMon> equipo;
 	private AlgoMon algoMonActivo;
 	private Mochila mochila;
@@ -49,7 +50,7 @@ public class Jugador {
 
 	/* Determina si el equipo está lleno. */
 	public boolean equipoEstaCompleto() {
-		return this.equipo.size() == Jugador.capacidadEquipo;
+		return this.equipo.size() == this.capacidadEquipo;
 	}
 
 	/* Asigna el primer algoMon del equipo como algoMon activo. */
@@ -120,5 +121,12 @@ public class Jugador {
 	private void usarElemento(Elemento elemento) {
 		this.getAlgoMonActivo().recibirElemento(elemento);
 	}
+
+	public boolean esComputadora() {
+		return false;
+	}
+
+	//Tengo que hacer una interfaz
+	public void jugar(Button botonAtacar, Button botonMochila) {}
 
 }

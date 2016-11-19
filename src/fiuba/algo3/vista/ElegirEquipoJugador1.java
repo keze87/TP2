@@ -7,8 +7,11 @@ import src.fiuba.algo3.modelo.Juego;
 
 public class ElegirEquipoJugador1 extends ElegirEquipo {
 
-	public ElegirEquipoJugador1(Stage stage, Juego juego) {
+	private int jugadores;
+
+	public ElegirEquipoJugador1(Stage stage, Juego juego, int jugadores) {
 		super(stage, juego);
+		this.jugadores = jugadores;
 		Consola.mostrarMensaje("Jugador 1: elije 3 algoMon.");
 	}
 
@@ -28,9 +31,11 @@ public class ElegirEquipoJugador1 extends ElegirEquipo {
 					Consola.mostrarMensaje("El equipo no está completo!");
 				}
 
-				else {
-					jugador.listoParaPelear();
+				if (jugadores == 2) {
 					stage.setScene(new ElegirEquipoJugador2(stage, juego));
+				} else {
+					juego.crearComputadora();
+					stage.setScene(new EscenaBatalla(stage, juego));
 				}
 			}
 

@@ -54,11 +54,20 @@ public class MenuPrincipal extends EscenaJuegoAlgoMon {
 			}
 		});
 
+		unJugador.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				stage.setScene(new ElegirEquipoJugador1(stage, juego, 1));
+			}
+
+		});
+
 		dosJugadores.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
 			public void handle(ActionEvent event) {
-				stage.setScene(new ElegirEquipoJugador1(stage, juego));
+				stage.setScene(new ElegirEquipoJugador1(stage, juego, 2));
 			}
 
 		});

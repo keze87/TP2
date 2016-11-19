@@ -6,5 +6,6 @@ public enum NombreAlgoMon {
 	Bulbasaur,
 	Jigglypuff,
 	Chansey,
-	Rattata	
+	Rattata,
+	Gengar
 }

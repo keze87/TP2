@@ -72,6 +72,16 @@ public class AlgoMonBuilder {
 		return builder.crearTipoNormal();
 	}
 
+	/* Devuelve un nuevo algoMon con los atributos de Gengar. */
+	public static AlgoMon crearGengar() {
+		AlgoMonBuilder builder = new AlgoMonBuilder();
+
+		builder.setNombre(NombreAlgoMon.Gengar).setVida(550).agregarAtaque(AtaqueBuilder.crearMaldicion()).
+		agregarAtaque(AtaqueBuilder.crearCanto()).agregarAtaque(AtaqueBuilder.crearAtaqueRapido());
+
+		return builder.crearTipoNormal();
+	}
+
 	/**
 	 * Agrega un ataque a la lista de ataques.
 	 * @param ataque ataque a agregar.

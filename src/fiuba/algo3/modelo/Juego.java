@@ -93,4 +93,11 @@ public class Juego {
 		return (this.indiceJugadorActivo + 1) % Juego.maximoJugadores;
 	}
 
+	public void crearComputadora() {
+
+		this.jugadores.remove(1);
+		this.jugadores.add(new Computadora());
+
+	}
+
 }

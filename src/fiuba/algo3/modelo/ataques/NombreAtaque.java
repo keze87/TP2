@@ -8,7 +8,8 @@ public enum NombreAtaque {
 	CHUPAVIDAS("Chupavidas"),
 	LATIGOCEPA("Látigo cepa"),
 	BRASAS("Brasas"),
-	FOGONAZO("Fogonazo");
+	FOGONAZO("Fogonazo"),
+	MALDICION("Maldicion");
 
 	private String nombre;
 

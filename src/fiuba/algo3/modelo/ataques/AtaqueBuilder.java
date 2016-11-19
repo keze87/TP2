@@ -111,4 +111,11 @@ public class AtaqueBuilder {
 		return new AtaqueNormal(this.nombre, this.potencia, this.usosMaximos, this.efectoBase, this.efectoAtacante);
 	}
 
+	/* Crea y devuelve una nueva instancia de Ataque correspondiente a Maldicion. */
+	public static Ataque crearMaldicion() {
+		AtaqueBuilder builder = new AtaqueBuilder(NombreAtaque.MALDICION, 10, 8, new Quemar());
+
+		return builder.crearAtaqueNormal();
+	}
+
 }

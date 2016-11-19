@@ -109,7 +109,17 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 		this.botoneraAcciones.add(botonMochila);
 		this.botoneraAcciones.add(botonCambiar);
 
-		Consola.mostrarMensaje("¿Qué va a hacer " + juego.getJugadorActivo().getAlgoMonActivo().getNombre() + " ?");
+		if (this.juego.getJugadorActivo().esComputadora()) {
+
+			Consola.mostrarMensaje("Turno Computadora");
+
+			this.juego.getJugadorActivo().jugar(botonAtacar, botonMochila);
+
+		} else {
+
+			Consola.mostrarMensaje("¿Qué va a hacer " + juego.getJugadorActivo().getAlgoMonActivo().getNombre() + " ?");
+
+		}
 	}
 
 	private void mostrarBotoneraAtaques() {
