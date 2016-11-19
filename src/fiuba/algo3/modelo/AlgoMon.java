@@ -134,10 +134,6 @@ public class AlgoMon {
 		}
 	}
 
-	public int getCantidadDeUsosRestantes(NombreAtaque nombre) {
-		return this.ataques.get(nombre).getUsosRestantes();
-	}
-
 	public Ataque getAtaque(NombreAtaque nombre) {
 		return this.ataques.get(nombre);
 	}
@@ -146,8 +142,8 @@ public class AlgoMon {
 		return new ArrayList<NombreAtaque>(this.ataques.keySet());
 	}
 
-	public int getUsosRestantesAtaque(NombreAtaque nombreAtaque) {
-		return this.ataques.get(nombreAtaque).getUsosRestantes();
+	public int getUsosRestantesAtaque(NombreAtaque nombre) {
+		return this.ataques.get(nombre).getUsosRestantes();
 	}
 
 	public int getUsosTotalesAtaque(NombreAtaque nombreAtaque) {
@@ -160,6 +156,5 @@ public class AlgoMon {
 			this.ataques.put(ataque.getNombre(), ataque);
 		}
 	}
-
 
 }
