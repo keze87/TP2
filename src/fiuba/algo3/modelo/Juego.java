@@ -71,10 +71,6 @@ public class Juego {
 		this.finTurno();
 	}
 
-	public void jugadorActivoSaltaTurno() {
-		this.getJugadorActivo().saltarTurno();
-		this.finTurno();
-	}
 
 	public void cambiarAlgoMonActivoJugadorActivo(AlgoMon algoMon) {
 		this.getJugadorActivo().cambiarAlgoMonActivo(algoMon);
