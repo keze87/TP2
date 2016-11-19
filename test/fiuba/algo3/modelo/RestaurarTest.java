@@ -6,11 +6,11 @@ import org.junit.Test;
 
 import src.fiuba.algo3.modelo.efectos.Efecto;
 import src.fiuba.algo3.modelo.efectos.Restaurar;
-import src.fiuba.algo3.modelo.estados.AlgoMonRecibeQuemadura;
 import src.fiuba.algo3.modelo.estados.Dormido;
 import src.fiuba.algo3.modelo.estados.Estado;
 import src.fiuba.algo3.modelo.estados.EstadoNormal;
 import src.fiuba.algo3.modelo.estados.Quemado;
+import src.fiuba.algo3.modelo.excepciones.AlgoMonRecibeQuemadura;
 
 public class RestaurarTest {
 	private Efecto restaurar;

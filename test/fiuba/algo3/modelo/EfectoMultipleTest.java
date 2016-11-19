@@ -8,9 +8,9 @@ import src.fiuba.algo3.modelo.efectos.EfectoMultiple;
 import src.fiuba.algo3.modelo.efectos.Quemar;
 import src.fiuba.algo3.modelo.efectos.QuitarVida;
 import src.fiuba.algo3.modelo.efectos.SinEfecto;
-import src.fiuba.algo3.modelo.estados.AlgoMonRecibeQuemadura;
 import src.fiuba.algo3.modelo.estados.Estado;
 import src.fiuba.algo3.modelo.estados.EstadoNormal;
+import src.fiuba.algo3.modelo.excepciones.AlgoMonRecibeQuemadura;
 
 public class EfectoMultipleTest {
 	private EfectoMultiple efecto;

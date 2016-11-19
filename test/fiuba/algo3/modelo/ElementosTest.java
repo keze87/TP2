@@ -14,8 +14,8 @@ import src.fiuba.algo3.modelo.elementos.Pocion;
 import src.fiuba.algo3.modelo.elementos.Restaurador;
 import src.fiuba.algo3.modelo.elementos.SuperPocion;
 import src.fiuba.algo3.modelo.elementos.Vitamina;
-import src.fiuba.algo3.modelo.estados.AlgoMonRecibeQuemadura;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonDormidoNoPuedeAtacar;
+import src.fiuba.algo3.modelo.excepciones.AlgoMonRecibeQuemadura;
 import src.fiuba.algo3.modelo.excepciones.AtaqueAgotado;
 import src.fiuba.algo3.modelo.excepciones.VidaCompleta;
 

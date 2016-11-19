@@ -8,8 +8,8 @@ import org.junit.Test;
 import src.fiuba.algo3.modelo.AlgoMon;
 import src.fiuba.algo3.modelo.AlgoMonBuilder;
 import src.fiuba.algo3.modelo.ataques.NombreAtaque;
-import src.fiuba.algo3.modelo.estados.AlgoMonRecibeQuemadura;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonDormidoNoPuedeAtacar;
+import src.fiuba.algo3.modelo.excepciones.AlgoMonRecibeQuemadura;
 
 
 public class Test2daEntrega {

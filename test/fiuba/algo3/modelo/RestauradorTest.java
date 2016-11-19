@@ -10,9 +10,9 @@ import src.fiuba.algo3.modelo.ataques.NombreAtaque;
 import src.fiuba.algo3.modelo.efectos.Dormir;
 import src.fiuba.algo3.modelo.efectos.Quemar;
 import src.fiuba.algo3.modelo.elementos.Restaurador;
-import src.fiuba.algo3.modelo.estados.AlgoMonRecibeQuemadura;
 import src.fiuba.algo3.modelo.estados.Quemado;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonDormidoNoPuedeAtacar;
+import src.fiuba.algo3.modelo.excepciones.AlgoMonRecibeQuemadura;
 
 public class RestauradorTest {
 	private Restaurador restaurador;
