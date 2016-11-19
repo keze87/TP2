@@ -30,6 +30,7 @@ public final class Dormido extends EstadoAlterado {
 		this.turnosRestantes--;
 		throw e;
 		}
+		this.turnosRestantes--;
 	}
 
 	/* Devuelve la cantidad de turnos para los que el estado corresponde
