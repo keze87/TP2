@@ -14,13 +14,11 @@ public final class Dormido extends EstadoAlterado {
 		this.vida = estadoAnterior.getVida();
 		this.vidaMaxima = estadoAnterior.getVidaMaxima();
 		this.turnosRestantes = Dormido.getTurnosDormido();
-
-		//throw new AlgoMonSeDurmio();
 	}
 
 	@Override
 	public boolean puedeRealizarAccion() {
-		return this.turnosRestantes == 0 && this.getEstadoAnterior().puedeRealizarAccion();
+		return this.turnosRestantes <= 0 && this.getEstadoAnterior().puedeRealizarAccion();
 	}
 
 	@Override

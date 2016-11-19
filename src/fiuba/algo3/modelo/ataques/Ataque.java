@@ -78,7 +78,7 @@ public abstract class Ataque {
 
 	/*Aumenta la cantidad de usos del ataque*/
 	public void aumentarCantidad(int cant) {
-		this.usosRestantes+=cant;
+		this.usosRestantes += cant;
 	}
 
 	public int getUsosTotales() {

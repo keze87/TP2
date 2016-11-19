@@ -1,5 +1,7 @@
 package src.fiuba.algo3.modelo.estados;
 
+import src.fiuba.algo3.modelo.excepciones.AlgoMonActivoMurio;
+
 public abstract class Estado {
 	protected double vida;
 	protected double vidaMaxima;
@@ -51,7 +53,7 @@ public abstract class Estado {
 
 		if(this.vida < 0) {
 			this.vida = 0;
-			//throw new AlgoMonActivoEstaMuerto("El algoMon murió!");
+			throw new AlgoMonActivoMurio();
 		}
 	}
 

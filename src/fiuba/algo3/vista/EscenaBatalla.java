@@ -16,6 +16,8 @@ import javafx.stage.Stage;
 import src.fiuba.algo3.modelo.AlgoMon;
 import src.fiuba.algo3.modelo.Juego;
 import src.fiuba.algo3.modelo.ataques.NombreAtaque;
+import src.fiuba.algo3.modelo.estados.AlgoMonRecibeDañoQuemadura;
+import src.fiuba.algo3.modelo.excepciones.AlgoMonActivoMurio;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonDormidoNoPuedeAtacar;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonSeDurmio;
 import src.fiuba.algo3.modelo.excepciones.AtaqueAgotado;
@@ -124,7 +126,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 
 			String textoBoton = nombreAtaqueActual.toString();
 
-			textoBoton += "\n";
+			textoBoton += " - ";
 			textoBoton += this.juego.getJugadorActivo().getAlgoMonActivo().getAtaque(nombreAtaqueActual).getUsosRestantes();
 			textoBoton += "/";
 			textoBoton += this.juego.getJugadorActivo().getAlgoMonActivo().getAtaque(nombreAtaqueActual).getUsosTotales();
@@ -142,8 +144,14 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 
 					} catch(AtaqueAgotado | AlgoMonDormidoNoPuedeAtacar e) {
 						Consola.mostrarMensaje(e.getMessage());
-					} catch(AlgoMonSeDurmio e) {
+					} catch(AlgoMonSeDurmio | AlgoMonRecibeDañoQuemadura e) {
 						Consola.encolarMensaje(e.getMessage());
+					} catch(AlgoMonActivoMurio e) {
+						Consola.encolarMensaje(e.getMessage());
+
+						if(juego.getJugadorActivo().puedeSeguirJugando()) {
+							Consola.encolarMensaje("Elije a otro algoMon:");
+						}
 					}
 
 					displayAlgoMonActivo.actualizar();
