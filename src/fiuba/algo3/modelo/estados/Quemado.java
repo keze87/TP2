@@ -1,6 +1,6 @@
 package src.fiuba.algo3.modelo.estados;
 
-import src.fiuba.algo3.modelo.excepciones.AlgoMonRecibeQuemadura;
+import src.fiuba.algo3.modelo.excepciones.AlgoMonRecibeDañoQuemadura;
 
 public final class Quemado extends EstadoAlterado {
 	private static double porcentajeVidaQuitada=0.10;
@@ -27,7 +27,7 @@ public final class Quemado extends EstadoAlterado {
 	public void accionRealizada() {
 		this.getEstadoAnterior().accionRealizada();
 		this.quitarVida(this.vidaMaxima * Quemado.getPorcentajeVidaQuitada());
-		throw new AlgoMonRecibeQuemadura();
+		throw new AlgoMonRecibeDañoQuemadura();
 	}
 
 }
