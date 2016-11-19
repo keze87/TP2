@@ -76,8 +76,8 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 	private void actualizarImagenAlgoMon(AlgoMon algoMon, int columna, int fila) {
 		ImageView imagen = ContenedorImagenes.getImageView(algoMon.getNombre());
 
-		imagen.setScaleX(5f);
-		imagen.setScaleY(5f);
+		imagen.setScaleX(3);
+		imagen.setScaleY(3);
 		this.layoutBatalla.add(imagen, columna, fila);
 		GridPane.setHalignment(imagen, HPos.CENTER);
 	}

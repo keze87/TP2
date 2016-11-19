@@ -15,7 +15,7 @@ public abstract class EscenaJuegoAlgoMon extends Scene {
 	protected static String ruta = "file:src/fiuba/algo3/vista/Imagenes/";
 
 	public EscenaJuegoAlgoMon(Stage stage, Juego juego) {
-		super(new Pane(), 1024, 768);
+		super(new Pane(), 1300, 720);
 		this.getStylesheets().add(EscenaJuegoAlgoMon.ruta + "../estilos.css");
 		this.stage = stage;
 		this.stage.setFullScreen(true);
