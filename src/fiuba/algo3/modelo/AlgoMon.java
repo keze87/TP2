@@ -1,5 +1,6 @@
 package src.fiuba.algo3.modelo;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,7 +11,9 @@ import src.fiuba.algo3.modelo.efectos.Efecto;
 import src.fiuba.algo3.modelo.elementos.Elemento;
 import src.fiuba.algo3.modelo.estados.Estado;
 import src.fiuba.algo3.modelo.estados.EstadoNormal;
+import src.fiuba.algo3.modelo.excepciones.AlgoMonDormidoNoPuedeAtacar;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonNoTieneAtaque;
+import src.fiuba.algo3.modelo.excepciones.AlgoMonSeDurmio;
 import src.fiuba.algo3.modelo.tipo.Tipo;
 
 public class AlgoMon {
@@ -73,6 +76,11 @@ public class AlgoMon {
 				this.recibirEfecto(this.ataques.get(nombreAtaque).atacar(contrincante));
 			}
 
+			else {
+				this.estado.accionRealizada();
+				throw new AlgoMonDormidoNoPuedeAtacar(this.nombre + " está dormido. ¡No puede atacar!");
+			}
+
 			this.estado.accionRealizada();
 
 		} catch (NullPointerException e) {
@@ -85,7 +93,11 @@ public class AlgoMon {
 	 * @param efecto efecto a aplicar.
 	 */
 	public void recibirEfecto(Efecto efecto) {
-		this.estado = efecto.aplicar(this.estado);
+		try {
+			this.estado = efecto.aplicar(this.estado);
+		} catch(AlgoMonSeDurmio e) {
+			throw new AlgoMonSeDurmio("¡" + this.getNombre() + " se quedó dormido!");
+		}
 	}
 
 	/**
@@ -118,19 +130,27 @@ public class AlgoMon {
 		}
 	}
 
-	public void aumentarCantidadAtaquesDisponibles(int cant) {
+	public void aumentarCantidadAtaquesDisponibles(int cantidad) {
 		for (Ataque ataque : ataques.values()) {
-			ataque.aumentarCantidad(cant);
+			ataque.aumentarCantidad(cantidad);
 		}
 
 	}
-	
-	public void esperar(){
-		this.estado.accionRealizada();
-	}
+
+//	public void esperar() {
+//		this.estado.accionRealizada();
+//	}
 
 	public int getCantidadDeUsosRestantes(NombreAtaque nombre) {
-		return this.ataques.get(nombre).getCantidadDeUsosRestantes();
+		return this.ataques.get(nombre).getUsosRestantes();
+	}
+
+	public Ataque getAtaque(NombreAtaque nombre) {
+		return this.ataques.get(nombre);
+	}
+
+	public List<NombreAtaque> getNombresAtaques() {
+		return new ArrayList<NombreAtaque>(this.ataques.keySet());
 	}
 
 }

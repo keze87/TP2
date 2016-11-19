@@ -37,23 +37,23 @@ public abstract class Ataque {
 		this.crearEfectoAtacado(vidaQuitada);
 		algoMon.recibirEfecto(efecto);
 		this.usosRestantes--;
-		
+
 		return this.obtenerEfectoAtacante(vidaQuitada);
 	}
-	
+
 	/*Crea el efecto que se aplicara al algomon atacado*/
 	private void crearEfectoAtacado(double vidaQuitada){
 		this.efecto = new EfectoMultiple();
 		this.efecto.agregarEfecto(this.efectoBaseAlgoMonAtacado);
 		this.efecto.agregarEfecto(new QuitarVida(vidaQuitada));
 	}
-	
+
 	/*Devuelve el efecto que se aplicara al algomon atacante*/
 	private Efecto obtenerEfectoAtacante(double vidaQuitada){
 		this.efectoAlgoMonAtacante.setVidaQuitadaAlOponente(vidaQuitada);
 		return efectoAlgoMonAtacante;
 	}
-	
+
 	/**
 	 * Calcula el daño provocado a un algoMon dado.
 	 * @param algoMon algoMon a atacar.
@@ -67,21 +67,25 @@ public abstract class Ataque {
 	private boolean quedanUsos() {
 		return this.usosRestantes > 0;
 	}
-	
+
 	/*Valida la cantidad de usos*/
 	private void validarCantidadDeUsos(){
 		if(!quedanUsos()) {
-			throw new AtaqueAgotado("No quedan más usos para este ataque!");
+			throw new AtaqueAgotado("¡No quedan más usos para este ataque!");
 		}
 
 	}
-	
+
 	/*Aumenta la cantidad de usos del ataque*/
 	public void aumentarCantidad(int cant) {
 		this.usosRestantes+=cant;
 	}
-	
-	public int getCantidadDeUsosRestantes(){
+
+	public int getUsosTotales() {
+		return this.usosTotales;
+	}
+
+	public int getUsosRestantes() {
 		return this.usosRestantes;
 	}
 }

@@ -1,18 +1,24 @@
 package src.fiuba.algo3.vista;
 
+import java.util.Iterator;
+
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.HPos;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 import src.fiuba.algo3.modelo.AlgoMon;
 import src.fiuba.algo3.modelo.Juego;
+import src.fiuba.algo3.modelo.ataques.NombreAtaque;
+import src.fiuba.algo3.modelo.excepciones.AlgoMonDormidoNoPuedeAtacar;
+import src.fiuba.algo3.modelo.excepciones.AlgoMonSeDurmio;
+import src.fiuba.algo3.modelo.excepciones.AtaqueAgotado;
 
 public class EscenaBatalla extends EscenaJuegoAlgoMon {
 
@@ -20,6 +26,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 	private DisplayAlgoMon displayAlgoMonActivo;
 	private DisplayAlgoMon displayAlgoMonContrincante;
 	private HBox contenedorInferior;
+	private BotoneraAcciones botoneraAcciones;
 
 	public EscenaBatalla(Stage stage, Juego juego) {
 		super(stage, "", juego);
@@ -31,15 +38,15 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 		this.juego.inicializar();
 		this.layoutBatalla = new GridPane();
 		this.contenedorInferior = new HBox();
+		this.botoneraAcciones = new BotoneraAcciones();
 
 		this.actualizarImagenAlgoMon(this.juego.getJugadorActivo().getAlgoMonActivo(), 0, 1);
 		this.actualizarImagenAlgoMon(this.juego.getContrincante().getAlgoMonActivo(), 1, 0);
 
 		Consola.agregarAContendedor(this.contenedorInferior);
-		Consola.limpiar();
 
 		this.agregarDisplaysAlgoMon();
-		this.agregarDisplayAcciones();
+		this.mostrarBotoneraAcciones();
 
 		ColumnConstraints columna = new ColumnConstraints(50f);
 		columna.setPercentWidth(50f);
@@ -51,13 +58,13 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 		this.layoutBatalla.getColumnConstraints().add(columna);
 		this.layoutBatalla.getRowConstraints().add(fila);
 		this.layoutBatalla.getRowConstraints().add(fila);
-		//this.layoutBatalla.setGridLinesVisible(true);
 
 		this.layout.setCenter(this.layoutBatalla);
 		this.layout.setBottom(this.contenedorInferior);
 		this.layout.getCenter().getStyleClass().add("contenedor-central-batalla");
 		this.layout.getBottom().getStyleClass().add("contenedor-inferior-batalla");
 
+		this.contenedorInferior.getChildren().add(this.botoneraAcciones);
 		this.setRoot(this.layout);
 	}
 
@@ -82,43 +89,94 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 		GridPane.setHalignment(this.displayAlgoMonActivo, HPos.LEFT);
 	}
 
-	private void agregarDisplayAcciones() {
-		GridPane botoneraAcciones = new GridPane();
-
-		botoneraAcciones.setPrefWidth(500f);
-
+	private void mostrarBotoneraAcciones() {
 		Button botonAtacar = new Button("Atacar");
+
+		botonAtacar.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent arg0) {
+				mostrarBotoneraAtaques();
+			}
+
+		});
+
 		Button botonMochila = new Button("Mochila");
 		Button botonCambiar = new Button("Cambiar");
 
-		botoneraAcciones.add(botonAtacar, 0, 0);
-		botoneraAcciones.add(botonMochila, 1, 0);
-		botoneraAcciones.add(botonCambiar, 0, 1);
+		this.botoneraAcciones.borrarBotones();
+		this.botoneraAcciones.add(botonAtacar);
+		this.botoneraAcciones.add(botonMochila);
+		this.botoneraAcciones.add(botonCambiar);
 
-		botonAtacar.setMaxWidth(Double.MAX_VALUE);
-		botonAtacar.setMaxHeight(Double.MAX_VALUE);
-		botonMochila.setMaxWidth(Double.MAX_VALUE);
-		botonMochila.setMaxHeight(Double.MAX_VALUE);
-		botonCambiar.setMaxWidth(Double.MAX_VALUE);
-		botonCambiar.setMaxHeight(Double.MAX_VALUE);
+		Consola.mostrarMensaje("¿Qué va a hacer " + juego.getJugadorActivo().getAlgoMonActivo().getNombre() + " ?");
+	}
 
-		botonAtacar.setPadding(new Insets(15f));
-		botonMochila.setPadding(new Insets(15f));
-		botonCambiar.setPadding(new Insets(15f));
+	private void mostrarBotoneraAtaques() {
+		Iterable<NombreAtaque> nombresAtaques = this.juego.getJugadorActivo().getAlgoMonActivo().getNombresAtaques();
 
-		botonAtacar.getStyleClass().add("boton-elegir-algoMon");
-		botonMochila.getStyleClass().add("boton-elegir-algoMon");
-		botonCambiar.getStyleClass().add("boton-elegir-algoMon");
+		Iterator<NombreAtaque> it = nombresAtaques.iterator();
 
-		GridPane.setHgrow(botonAtacar, Priority.ALWAYS);
-		GridPane.setHgrow(botonMochila, Priority.ALWAYS);
-		GridPane.setHgrow(botonCambiar, Priority.ALWAYS);
+		this.botoneraAcciones.borrarBotones();
 
-		GridPane.setVgrow(botonAtacar, Priority.ALWAYS);
-		GridPane.setVgrow(botonMochila, Priority.ALWAYS);
-		GridPane.setVgrow(botonCambiar, Priority.ALWAYS);
+		while(it.hasNext()) {
+			NombreAtaque nombreAtaqueActual = it.next();
 
-		this.contenedorInferior.getChildren().add(botoneraAcciones);
+			String textoBoton = nombreAtaqueActual.toString();
+
+			textoBoton += "\n";
+			textoBoton += this.juego.getJugadorActivo().getAlgoMonActivo().getAtaque(nombreAtaqueActual).getUsosRestantes();
+			textoBoton += "/";
+			textoBoton += this.juego.getJugadorActivo().getAlgoMonActivo().getAtaque(nombreAtaqueActual).getUsosTotales();
+
+			Button boton = new Button(textoBoton);
+
+			boton.setOnAction(new EventHandler<ActionEvent>() {
+
+				@Override
+				public void handle(ActionEvent arg0) {
+
+					try {
+						Consola.mostrarMensaje("¡" + juego.getJugadorActivo().getAlgoMonActivo().getNombre() + " usó " + nombreAtaqueActual.toString() + "!");
+						juego.jugadorActivoAtaca(nombreAtaqueActual);
+
+					} catch(AtaqueAgotado | AlgoMonDormidoNoPuedeAtacar e) {
+						Consola.mostrarMensaje(e.getMessage());
+					} catch(AlgoMonSeDurmio e) {
+						Consola.encolarMensaje(e.getMessage());
+					}
+
+					displayAlgoMonActivo.actualizar();
+					displayAlgoMonContrincante.actualizar();
+					mostrarBotonOK();
+				}
+
+			});
+
+			this.botoneraAcciones.add(boton);
+		}
+	}
+
+	private void mostrarBotonOK() {
+		Button botonOK = new Button("OK");
+
+		botonOK.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent arg0) {
+				if(Consola.quedanMensajesEnLaCola()) {
+					Consola.mostrarMensajeSiguiente();
+				}
+
+				else {
+					mostrarBotoneraAcciones();
+				}
+			}
+
+		});
+
+		this.botoneraAcciones.borrarBotones();
+		this.botoneraAcciones.add(botonOK);
 	}
 
 	private void actualizarDisplayParaAlgoMonNuevo(DisplayAlgoMon display, AlgoMon algoMon) {

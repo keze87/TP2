@@ -6,6 +6,7 @@ import java.util.Random;
 
 import src.fiuba.algo3.modelo.ataques.NombreAtaque;
 import src.fiuba.algo3.modelo.elementos.NombreElemento;
+import src.fiuba.algo3.modelo.excepciones.AlgoMonDormidoNoPuedeAtacar;
 
 public class Juego {
 
@@ -55,8 +56,13 @@ public class Juego {
 	}
 
 	public void jugadorActivoAtaca(NombreAtaque nombreAtaque) {
-		this.getJugadorActivo().atacarConAlgoMonActivo(nombreAtaque, this.getContrincante().getAlgoMonActivo());
-		this.finTurno();
+		try {
+			this.getJugadorActivo().atacarConAlgoMonActivo(nombreAtaque, this.getContrincante().getAlgoMonActivo());
+			this.finTurno();
+		} catch(AlgoMonDormidoNoPuedeAtacar e) {
+			this.finTurno();
+			throw e;
+		}
 	}
 
 	public void jugadorActivoUsaElemento(NombreElemento nombreElemento) {
