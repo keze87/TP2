@@ -104,9 +104,9 @@ public class AlgoMon {
 			throw new AlgoMonActivoMurio("¡" + this.nombre + " murió!");
 		}
 
-//		if(!this.estado.puedeRealizarAccion() && this.estado) {
-//			throw new AlgoMonSeDurmio("¡" + this.getNombre() + " se quedó dormido!");
-//		}
+		//		if(!this.estado.puedeRealizarAccion() && this.estado) {
+		//			throw new AlgoMonSeDurmio("¡" + this.getNombre() + " se quedó dormido!");
+		//		}
 	}
 
 	/**

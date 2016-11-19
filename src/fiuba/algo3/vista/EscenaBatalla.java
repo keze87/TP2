@@ -171,6 +171,13 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 
 			this.botoneraAcciones.add(boton);
 		}
+
+		if (this.juego.getJugadorActivo().esComputadora()) {
+
+			this.juego.getJugadorActivo().atacar(this.botoneraAcciones);
+
+		}
+
 	}
 
 	private void mostrarBotonOK() {

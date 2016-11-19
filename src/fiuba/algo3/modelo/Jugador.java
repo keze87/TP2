@@ -11,6 +11,7 @@ import src.fiuba.algo3.modelo.excepciones.AlgoMonNoExiste;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonYaEstaActivo;
 import src.fiuba.algo3.modelo.excepciones.EquipoCompleto;
 import src.fiuba.algo3.modelo.excepciones.NoHayAlgoMonActivo;
+import src.fiuba.algo3.vista.BotoneraAcciones;
 
 public class Jugador {
 
@@ -128,5 +129,6 @@ public class Jugador {
 
 	//Tengo que hacer una interfaz
 	public void jugar(Button botonAtacar, Button botonMochila) {}
+	public void atacar(BotoneraAcciones botoneraAcciones) {}
 
 }
