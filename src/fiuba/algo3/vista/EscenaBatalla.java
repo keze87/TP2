@@ -6,7 +6,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -71,8 +70,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 	}
 
 	private void actualizarImagenAlgoMon(AlgoMon algoMon, int columna, int fila) {
-		Image imagenAlgoMon = new Image(EscenaJuegoAlgoMon.ruta + algoMon.getNombre() + ".gif");
-		ImageView imagen = new ImageView(imagenAlgoMon);
+		ImageView imagen = ContenedorImagenes.getImageView(algoMon.getNombre());
 
 		imagen.setScaleX(5f);
 		imagen.setScaleY(5f);

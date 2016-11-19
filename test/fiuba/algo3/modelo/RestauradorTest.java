@@ -10,7 +10,9 @@ import src.fiuba.algo3.modelo.ataques.NombreAtaque;
 import src.fiuba.algo3.modelo.efectos.Dormir;
 import src.fiuba.algo3.modelo.efectos.Quemar;
 import src.fiuba.algo3.modelo.elementos.Restaurador;
+import src.fiuba.algo3.modelo.estados.AlgoMonRecibeDañoQuemadura;
 import src.fiuba.algo3.modelo.estados.Quemado;
+import src.fiuba.algo3.modelo.excepciones.AlgoMonDormidoNoPuedeAtacar;
 
 public class RestauradorTest {
 	private Restaurador restaurador;
@@ -21,7 +23,7 @@ public class RestauradorTest {
 		double vidaAnterior;
 		restaurador = new Restaurador();
 		algomon.recibirEfecto(new Quemar());
-		algomon.atacar(NombreAtaque.ATAQUERAPIDO, otroAlgomon);
+		try{algomon.atacar(NombreAtaque.ATAQUERAPIDO, otroAlgomon);} catch(AlgoMonRecibeDañoQuemadura e){}
 		vidaAnterior=algomon.getVida();
 		assertEquals(algomon.getVidaMaxima()-Quemado.getVidaQuitada(algomon.getVidaMaxima()),vidaAnterior,0.01);
 		restaurador.aplicar(algomon);
@@ -35,7 +37,7 @@ public class RestauradorTest {
 		AlgoMon otroAlgomon = AlgoMonBuilder.crearCharmander();
 		restaurador = new Restaurador();
 		algomon.recibirEfecto(new Dormir());
-		algomon.atacar(NombreAtaque.ATAQUERAPIDO, otroAlgomon);
+		try{algomon.atacar(NombreAtaque.ATAQUERAPIDO, otroAlgomon);}catch(AlgoMonDormidoNoPuedeAtacar e){}
 		assertEquals(otroAlgomon.getVida(),otroAlgomon.getVidaMaxima(),0.01);
 		
 		restaurador.aplicar(algomon);
@@ -50,7 +52,7 @@ public class RestauradorTest {
 		restaurador = new Restaurador();
 		algomon.recibirEfecto(new Dormir());
 		algomon.recibirEfecto(new Quemar());
-		algomon.atacar(NombreAtaque.ATAQUERAPIDO, otroAlgomon);
+		try{algomon.atacar(NombreAtaque.ATAQUERAPIDO, otroAlgomon);}catch(RuntimeException e){}
 		assertEquals(otroAlgomon.getVida(),otroAlgomon.getVidaMaxima(),0.01);
 		restaurador.aplicar(algomon);
 		algomon.atacar(NombreAtaque.ATAQUERAPIDO, otroAlgomon);

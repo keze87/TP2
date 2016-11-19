@@ -14,6 +14,7 @@ import src.fiuba.algo3.modelo.Juego;
 import src.fiuba.algo3.modelo.Jugador;
 import src.fiuba.algo3.modelo.ataques.NombreAtaque;
 import src.fiuba.algo3.modelo.elementos.NombreElemento;
+import src.fiuba.algo3.modelo.excepciones.AlgoMonDormidoNoPuedeAtacar;
 
 public class JuegoTest {
 
@@ -119,7 +120,7 @@ public class JuegoTest {
 		juego.inicializar();
 
 		juego.jugadorActivoAtaca(NombreAtaque.CANTO);
-		juego.jugadorActivoAtaca(NombreAtaque.ATAQUERAPIDO);
+		try{juego.jugadorActivoAtaca(NombreAtaque.ATAQUERAPIDO);} catch(AlgoMonDormidoNoPuedeAtacar e){}
 
 		assertTrue(juego.getJugadorActivo().getAlgoMonActivo().tieneVidaCompleta());
 	}

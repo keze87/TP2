@@ -6,6 +6,10 @@ import java.util.Random;
 
 import src.fiuba.algo3.modelo.ataques.NombreAtaque;
 import src.fiuba.algo3.modelo.elementos.NombreElemento;
+<<<<<<< HEAD
+=======
+import src.fiuba.algo3.modelo.excepciones.AlgoMonRecibeDañoQuemadura;
+>>>>>>> 06377395e68d7d5be7389d5c251b7b65f8a956c4
 import src.fiuba.algo3.modelo.excepciones.AlgoMonDormidoNoPuedeAtacar;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonRecibeDañoQuemadura;
 import src.fiuba.algo3.modelo.excepciones.JuegoTerminado;

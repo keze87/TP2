@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import src.fiuba.algo3.modelo.efectos.Efecto;
 import src.fiuba.algo3.modelo.efectos.Restaurar;
+import src.fiuba.algo3.modelo.estados.AlgoMonRecibeDañoQuemadura;
 import src.fiuba.algo3.modelo.estados.Dormido;
 import src.fiuba.algo3.modelo.estados.Estado;
 import src.fiuba.algo3.modelo.estados.EstadoNormal;
@@ -18,7 +19,7 @@ public class RestaurarTest {
 	public void testAplicarAQuemadoVuelveANormal() {
 		restaurar= new Restaurar();
 		Estado estado = new Quemado(new EstadoNormal(170));
-		estado.accionRealizada();
+		try{estado.accionRealizada();}catch(AlgoMonRecibeDañoQuemadura e){}
 		double vidaDespuesDeUnaAccionRealizada=estado.getVidaMaxima()-Quemado.getVidaQuitada(estado.getVidaMaxima());
 		assertEquals(vidaDespuesDeUnaAccionRealizada,estado.getVida(),0.01);
 		estado = restaurar.aplicar(estado);
@@ -42,7 +43,7 @@ public class RestaurarTest {
 		Estado estado = new Dormido(new Quemado(new EstadoNormal(170)));
 		double vidaDespuesDeUnaAccionRealizada=estado.getVidaMaxima()-Quemado.getVidaQuitada(estado.getVidaMaxima());
 		assertFalse(estado.puedeRealizarAccion());
-		estado.accionRealizada();
+		try{estado.accionRealizada();}catch(AlgoMonRecibeDañoQuemadura e){}
 		assertEquals(vidaDespuesDeUnaAccionRealizada,estado.getVida(),0.01);
 		estado = restaurar.aplicar(estado);
 		assertTrue(estado.puedeRealizarAccion());

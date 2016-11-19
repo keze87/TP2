@@ -26,8 +26,11 @@ public final class Dormido extends EstadoAlterado {
 	public void accionRealizada() {
 		double vidaAnterior;
 		vidaAnterior=this.getEstadoAnterior().vida;
-		this.getEstadoAnterior().accionRealizada();
+		try{this.getEstadoAnterior().accionRealizada();}catch(RuntimeException e){
 		this.quitarVida(vidaAnterior-this.getEstadoAnterior().getVida());
+		this.turnosRestantes--;
+		throw e;
+		}
 		this.turnosRestantes--;
 	}
 

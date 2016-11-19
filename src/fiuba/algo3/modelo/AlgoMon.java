@@ -9,6 +9,10 @@ import src.fiuba.algo3.modelo.ataques.Ataque;
 import src.fiuba.algo3.modelo.ataques.NombreAtaque;
 import src.fiuba.algo3.modelo.efectos.Efecto;
 import src.fiuba.algo3.modelo.elementos.Elemento;
+<<<<<<< HEAD
+=======
+import src.fiuba.algo3.modelo.excepciones.AlgoMonRecibeDañoQuemadura;
+>>>>>>> 06377395e68d7d5be7389d5c251b7b65f8a956c4
 import src.fiuba.algo3.modelo.estados.Estado;
 import src.fiuba.algo3.modelo.estados.EstadoNormal;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonActivoMurio;
