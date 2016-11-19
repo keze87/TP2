@@ -27,7 +27,7 @@ public final class Quemado extends EstadoAlterado {
 	public void accionRealizada() {
 		this.getEstadoAnterior().accionRealizada();
 		this.quitarVida(this.vidaMaxima * Quemado.getPorcentajeVidaQuitada());
-		throw new AlgoMonRecibeDañoQuemadura();
+		throw new AlgoMonRecibeQuemadura();
 	}
 
 }

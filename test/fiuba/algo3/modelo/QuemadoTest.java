@@ -6,10 +6,9 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import src.fiuba.algo3.modelo.estados.AlgoMonRecibeDañoQuemadura;
+import src.fiuba.algo3.modelo.estados.AlgoMonRecibeQuemadura;
 import src.fiuba.algo3.modelo.estados.EstadoNormal;
 import src.fiuba.algo3.modelo.estados.Quemado;
-import src.fiuba.algo3.modelo.excepciones.AlgoMonDormidoNoPuedeAtacar;
 
 
 public class QuemadoTest {
@@ -26,7 +25,7 @@ public class QuemadoTest {
 	@Test
 	public void testAccionRealizadaQuitaVida() {
 		this.quemado = new Quemado(this.estadoAnterior);
-		try{this.quemado.accionRealizada();}catch(AlgoMonRecibeDañoQuemadura e){}
+		try{this.quemado.accionRealizada();}catch(AlgoMonRecibeQuemadura e){}
 		assertEquals(this.estadoAnterior.getVidaMaxima() - 17, this.quemado.getVida(), 0.01);
 	}
 

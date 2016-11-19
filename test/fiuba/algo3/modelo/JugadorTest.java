@@ -13,7 +13,7 @@ import src.fiuba.algo3.modelo.ataques.NombreAtaque;
 import src.fiuba.algo3.modelo.efectos.AumentarVida;
 import src.fiuba.algo3.modelo.elementos.NombreElemento;
 import src.fiuba.algo3.modelo.elementos.SuperPocion;
-import src.fiuba.algo3.modelo.estados.AlgoMonRecibeDañoQuemadura;
+import src.fiuba.algo3.modelo.estados.AlgoMonRecibeQuemadura;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonActivoMurio;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonDormidoNoPuedeAtacar;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonNoExiste;
@@ -181,7 +181,7 @@ public class JugadorTest {
 		jugador2.listoParaPelear();
 
 		jugador1.atacarConAlgoMonActivo(NombreAtaque.FOGONAZO, jugador2.getAlgoMonActivo());
-		try {jugador2.atacarConAlgoMonActivo(NombreAtaque.ATAQUERAPIDO, jugador1.getAlgoMonActivo());}catch(AlgoMonRecibeDañoQuemadura e){}
+		try {jugador2.atacarConAlgoMonActivo(NombreAtaque.ATAQUERAPIDO, jugador1.getAlgoMonActivo());}catch(AlgoMonRecibeQuemadura e){}
 		assertEquals(jugador2.getAlgoMonActivo().getVidaMaxima() - 15, jugador2.getAlgoMonActivo().getVida(), 0.0001D);
 
 		jugador2.usarElemento(NombreElemento.RESTAURADOR);;

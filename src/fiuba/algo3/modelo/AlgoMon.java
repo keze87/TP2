@@ -9,12 +9,12 @@ import src.fiuba.algo3.modelo.ataques.Ataque;
 import src.fiuba.algo3.modelo.ataques.NombreAtaque;
 import src.fiuba.algo3.modelo.efectos.Efecto;
 import src.fiuba.algo3.modelo.elementos.Elemento;
+import src.fiuba.algo3.modelo.estados.AlgoMonRecibeQuemadura;
 import src.fiuba.algo3.modelo.estados.Estado;
 import src.fiuba.algo3.modelo.estados.EstadoNormal;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonActivoMurio;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonDormidoNoPuedeAtacar;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonNoTieneAtaque;
-import src.fiuba.algo3.modelo.excepciones.AlgoMonRecibeDañoQuemadura;
 import src.fiuba.algo3.modelo.tipo.Tipo;
 
 public class AlgoMon {
@@ -86,8 +86,8 @@ public class AlgoMon {
 
 		} catch(NullPointerException e) {
 			throw new AlgoMonNoTieneAtaque(this.nombre + " no puede usar " + nombreAtaque.toString() + "!");
-		} catch(AlgoMonRecibeDañoQuemadura e) {
-			throw new AlgoMonRecibeDañoQuemadura("¡" + this.nombre + " recibe daño de la quemadura!");
+		} catch(AlgoMonRecibeQuemadura e) {
+			throw new AlgoMonRecibeQuemadura("¡" + this.nombre + " recibe daño de la quemadura!");
 		} catch(AlgoMonActivoMurio e) {
 			throw new AlgoMonActivoMurio("¡" + this.nombre + " murió a causa de su quemadura!");
 		}

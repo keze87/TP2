@@ -14,7 +14,7 @@ import src.fiuba.algo3.modelo.elementos.Pocion;
 import src.fiuba.algo3.modelo.elementos.Restaurador;
 import src.fiuba.algo3.modelo.elementos.SuperPocion;
 import src.fiuba.algo3.modelo.elementos.Vitamina;
-import src.fiuba.algo3.modelo.estados.AlgoMonRecibeDañoQuemadura;
+import src.fiuba.algo3.modelo.estados.AlgoMonRecibeQuemadura;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonDormidoNoPuedeAtacar;
 import src.fiuba.algo3.modelo.excepciones.AtaqueAgotado;
 import src.fiuba.algo3.modelo.excepciones.VidaCompleta;
@@ -142,7 +142,7 @@ public class ElementosTest {
 
 		charmander.atacar(NombreAtaque.FOGONAZO, rattata);
 		try{
-		rattata.atacar(NombreAtaque.ATAQUERAPIDO, charmander);} catch(AlgoMonRecibeDañoQuemadura e){}
+		rattata.atacar(NombreAtaque.ATAQUERAPIDO, charmander);} catch(AlgoMonRecibeQuemadura e){}
 		assertEquals(rattata.getVidaMaxima() - 19, rattata.getVida(), 0.0001D);
 
 		rattata.recibirElemento(restaurador);
