@@ -8,11 +8,14 @@ import org.junit.Test;
 import src.fiuba.algo3.modelo.AlgoMon;
 import src.fiuba.algo3.modelo.AlgoMonBuilder;
 import src.fiuba.algo3.modelo.ataques.NombreAtaque;
+import src.fiuba.algo3.modelo.efectos.AumentarVida;
 import src.fiuba.algo3.modelo.elementos.Elemento;
 import src.fiuba.algo3.modelo.elementos.Pocion;
 import src.fiuba.algo3.modelo.elementos.Restaurador;
 import src.fiuba.algo3.modelo.elementos.SuperPocion;
 import src.fiuba.algo3.modelo.elementos.Vitamina;
+import src.fiuba.algo3.modelo.estados.AlgoMonRecibeDañoQuemadura;
+import src.fiuba.algo3.modelo.excepciones.AlgoMonDormidoNoPuedeAtacar;
 import src.fiuba.algo3.modelo.excepciones.AtaqueAgotado;
 import src.fiuba.algo3.modelo.excepciones.VidaCompleta;
 
@@ -89,11 +92,13 @@ public class ElementosTest {
 
 		try{
 			while(true){
+				
 				charmander.atacar(NombreAtaque.ATAQUERAPIDO, otroCharmander);
+				otroCharmander.recibirEfecto(new AumentarVida(10));				
 				contador++;
 			}
 
-		} catch(AtaqueAgotado e) {
+		} catch(AtaqueAgotado e ) {
 			assertEquals(18, contador);
 		}
 
@@ -120,8 +125,8 @@ public class ElementosTest {
 		Elemento restaurador = new Restaurador();
 
 		jigglypuff.atacar(NombreAtaque.CANTO, rattata);
-
-		rattata.atacar(NombreAtaque.ATAQUERAPIDO, jigglypuff);
+		try{
+		rattata.atacar(NombreAtaque.ATAQUERAPIDO, jigglypuff);} catch(AlgoMonDormidoNoPuedeAtacar e){}
 		assertTrue(jigglypuff.tieneVidaCompleta());
 
 		rattata.recibirElemento(restaurador);
@@ -136,8 +141,8 @@ public class ElementosTest {
 		Elemento restaurador = new Restaurador();
 
 		charmander.atacar(NombreAtaque.FOGONAZO, rattata);
-
-		rattata.atacar(NombreAtaque.ATAQUERAPIDO, charmander);
+		try{
+		rattata.atacar(NombreAtaque.ATAQUERAPIDO, charmander);} catch(AlgoMonRecibeDañoQuemadura e){}
 		assertEquals(rattata.getVidaMaxima() - 19, rattata.getVida(), 0.0001D);
 
 		rattata.recibirElemento(restaurador);
@@ -151,15 +156,17 @@ public class ElementosTest {
 		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
 		AlgoMon rattata = AlgoMonBuilder.crearRattata();
 		Elemento restaurador = new Restaurador();
-
+		try{
 		jigglypuff.atacar(NombreAtaque.CANTO, rattata);
 		charmander.atacar(NombreAtaque.FOGONAZO, rattata);
 		rattata.atacar(NombreAtaque.ATAQUERAPIDO, jigglypuff);
+		} catch(RuntimeException e){}
 		assertTrue(jigglypuff.tieneVidaCompleta());
 		assertEquals(rattata.getVidaMaxima() - 19, rattata.getVida(), 0.0001D);
-
+		try{
 		rattata.recibirElemento(restaurador);
 		rattata.atacar(NombreAtaque.ATAQUERAPIDO, jigglypuff);
+		} catch(RuntimeException e){}
 		assertEquals(jigglypuff.getVidaMaxima() - 10, jigglypuff.getVida(), 0.0001);
 		assertEquals(rattata.getVidaMaxima() - 19, rattata.getVida(), 0.0001D);
 	}
@@ -201,7 +208,9 @@ public class ElementosTest {
 
 		try{
 			while(true){
+				
 				squirtle.atacar(NombreAtaque.ATAQUERAPIDO, tercerBulbasaur);
+				tercerBulbasaur.recibirEfecto(new AumentarVida(10));
 				contador++;
 			}
 
@@ -225,6 +234,7 @@ public class ElementosTest {
 		try{
 			while(true){
 				bulbasaur.atacar(NombreAtaque.CHUPAVIDAS, squirtle);
+				squirtle.recibirEfecto(new AumentarVida(20));
 				contador++;
 			}
 
@@ -249,6 +259,7 @@ public class ElementosTest {
 		try{
 			while(true){
 				bulbasaur.atacar(NombreAtaque.ATAQUERAPIDO, otroSquirtle);
+				otroSquirtle.recibirEfecto(new AumentarVida(10));
 				contador++;
 			}
 
@@ -284,6 +295,7 @@ public class ElementosTest {
 		try{
 			while(true){
 				jigglypuff.atacar(NombreAtaque.BURBUJA, charmander);
+				charmander.recibirEfecto(new AumentarVida(20));
 				contador++;
 			}
 
