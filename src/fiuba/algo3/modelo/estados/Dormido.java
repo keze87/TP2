@@ -1,6 +1,7 @@
 package src.fiuba.algo3.modelo.estados;
 
 public final class Dormido extends EstadoAlterado {
+
 	private static int turnosDormido = 3;
 
 	public static int getTurnosDormido() {
@@ -38,6 +39,5 @@ public final class Dormido extends EstadoAlterado {
 	public int getTurnosRestantesDormido() {
 		return this.turnosRestantes;
 	}
-
 
 }

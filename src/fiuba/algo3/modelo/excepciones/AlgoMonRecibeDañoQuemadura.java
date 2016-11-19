@@ -14,4 +14,5 @@ public class AlgoMonRecibeDañoQuemadura extends RuntimeException {
 	public AlgoMonRecibeDañoQuemadura(String mensaje) {
 		super(mensaje);
 	}
+
 }

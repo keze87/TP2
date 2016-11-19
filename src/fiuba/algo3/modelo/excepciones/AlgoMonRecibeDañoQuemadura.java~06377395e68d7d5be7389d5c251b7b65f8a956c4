@@ -1,4 +1,4 @@
-package src.fiuba.algo3.modelo.estados;
+package src.fiuba.algo3.modelo.excepciones;
 
 public class AlgoMonRecibeDañoQuemadura extends RuntimeException {
 
@@ -14,5 +14,4 @@ public class AlgoMonRecibeDañoQuemadura extends RuntimeException {
 	public AlgoMonRecibeDañoQuemadura(String mensaje) {
 		super(mensaje);
 	}
-
 }

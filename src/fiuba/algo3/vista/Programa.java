@@ -12,6 +12,8 @@ public class Programa extends Application {
 		//Scene introduccion = new Introduccion(primaryStage, new Juego());
 		Scene introduccion = new ElegirEquipoJugador1(primaryStage, new Juego());
 
+		ContenedorImagenes.cargarImagenes();
+
 		primaryStage.setMaximized(true);
 		primaryStage.setFullScreen(true);
 		primaryStage.setFullScreenExitKeyCombination(null);
@@ -24,6 +26,7 @@ public class Programa extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
+
 	}
 
 }

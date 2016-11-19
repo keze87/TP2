@@ -1,0 +1,47 @@
+﻿Merge branch 'master' of https://github.com/keze87/TP2
+
+# Conflicts:
+#	src/fiuba/algo3/modelo/AlgoMon.java
+#	src/fiuba/algo3/modelo/Juego.java
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch and 'origin/master' have diverged,
+# and have 2 and 4 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	deleted:    ../../../../1iu3uqkv.jy1.txt
+#	modified:   AlgoMon.java
+#	modified:   Juego.java
+#	modified:   estados/Dormido.java
+#	deleted:    ../vista/BotonesBatalla.java
+#	new file:   ../vista/Imagenes/Bulbasaur_espalda.gif
+#	new file:   ../vista/Imagenes/Chansey_espalda.gif
+#	new file:   ../vista/Imagenes/Charmander_espalda.gif
+#	new file:   ../vista/Imagenes/Jigglypuff_espalda.gif
+#	new file:   ../vista/Imagenes/Rattata_espalda.gif
+#	new file:   ../vista/Imagenes/Squirtle_espalda.gif
+#	modified:   ../../../../test/fiuba/algo3/modelo/ElementosTest.java
+#	modified:   ../../../../test/fiuba/algo3/modelo/JuegoTest.java
+#	modified:   ../../../../test/fiuba/algo3/modelo/RestauradorTest.java
+#	modified:   ../../../../test/fiuba/algo3/modelo/RestaurarTest.java
+#
+# Changes not staged for commit:
+#	modified:   ../vista/EscenaBatalla.java
+#	modified:   ../vista/Programa.java
+#
+# Untracked files:
+#	"excepciones/AlgoMonRecibeDa\303\261oQuemadura.java~06377395e68d7d5be7389d5c251b7b65f8a956c4"
+#	../vista/ContenedorImagenes.java
+#
+
