@@ -7,18 +7,21 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
+import src.fiuba.algo3.modelo.Juego;
 
 public class BarraMenu extends MenuBar {
 
-	public BarraMenu(Stage stage) {
+	Juego juego;
+
+	public BarraMenu(Stage stage, Juego juego) {
 		super();
 
+		this.juego = juego;
+
 		Menu menuArchivo = this.menuArchivo(stage);
-		Menu menuOpciones = new Menu("Opciones");
-		Menu menuAyuda = new Menu("Ayuda");
 		Menu menuVista = this.menuVista(stage);
 
-		this.getMenus().addAll(menuArchivo, menuOpciones, menuVista, menuAyuda);
+		this.getMenus().addAll(menuArchivo, menuVista);
 	}
 
 	private Menu menuArchivo(Stage stage) {
@@ -38,7 +41,20 @@ public class BarraMenu extends MenuBar {
 
 		});
 
-		menuArchivo.getItems().addAll(salir);
+		MenuItem reiniciar = new MenuItem("Reiniciar");
+
+		reiniciar.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent arg0) {
+
+				stage.setScene(new MenuPrincipal(stage, juego));
+
+			}
+
+		});
+
+		menuArchivo.getItems().addAll(reiniciar, salir);
 
 		return menuArchivo;
 
