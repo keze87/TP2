@@ -30,7 +30,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 	private BotoneraAcciones botoneraAcciones;
 
 	public EscenaBatalla(Stage stage, Juego juego) {
-		super(stage, "", juego);
+		super(stage, juego);
 	}
 
 	@Override

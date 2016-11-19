@@ -22,7 +22,7 @@ import src.fiuba.algo3.modelo.Juego;
 public class MenuPrincipal extends EscenaJuegoAlgoMon {
 
 	public MenuPrincipal(Stage stage, Juego juego) {
-		super(stage, "Fondo.png", juego);
+		super(stage, juego);
 	}
 
 	@Override
@@ -89,8 +89,7 @@ public class MenuPrincipal extends EscenaJuegoAlgoMon {
 		timeline.play();
 
 		layout.setBottom(botonera);
-		layout.setBackground(this.fondo);
-
+		this.agregarFondo("Fondo");
 		this.setRoot(layout);
 	}
 

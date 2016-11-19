@@ -21,7 +21,7 @@ public class IntroduccionParte2 extends EscenaJuegoAlgoMon {
 
 	public IntroduccionParte2(Stage stage, Juego juego) {
 
-		super(stage, "", juego);
+		super(stage, juego);
 
 	}
 

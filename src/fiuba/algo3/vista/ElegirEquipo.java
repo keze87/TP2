@@ -15,7 +15,7 @@ public abstract class ElegirEquipo extends EscenaJuegoAlgoMon {
 	protected Jugador jugador;
 
 	public ElegirEquipo(Stage stage, Juego juego) {
-		super(stage, "FondoElegirEquipo.png", juego);
+		super(stage, juego);
 	}
 
 	@Override
@@ -54,7 +54,7 @@ public abstract class ElegirEquipo extends EscenaJuegoAlgoMon {
 		botonera.setAlignment(Pos.CENTER);
 
 		layout.setCenter(botonera);
-		layout.setBackground(this.fondo);
+		this.agregarFondo("FondoElegirEquipo");
 		Consola.agregarAContenedor(this.layout);
 		Consola.limpiar();
 		this.setRoot(layout);

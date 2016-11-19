@@ -1,12 +1,7 @@
 package src.fiuba.algo3.vista;
 
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -16,11 +11,10 @@ public abstract class EscenaJuegoAlgoMon extends Scene {
 
 	protected Stage stage;
 	protected BorderPane layout;
-	protected Background fondo;
 	protected Juego juego;
 	protected static String ruta = "file:src/fiuba/algo3/vista/Imagenes/";
 
-	public EscenaJuegoAlgoMon(Stage stage, String nombreImagenFondo, Juego juego) {
+	public EscenaJuegoAlgoMon(Stage stage, Juego juego) {
 		super(new Pane(), 1024, 768);
 		this.getStylesheets().add(EscenaJuegoAlgoMon.ruta + "../estilos.css");
 		this.stage = stage;
@@ -28,7 +22,6 @@ public abstract class EscenaJuegoAlgoMon extends Scene {
 		this.stage.setMaximized(true);
 		this.layout = new BorderPane();
 		this.juego = juego;
-		this.crearFondo(nombreImagenFondo);
 		this.agregarElementos();
 	}
 
@@ -38,15 +31,10 @@ public abstract class EscenaJuegoAlgoMon extends Scene {
 	}
 
 	/* Crea y establece la imagen de fondo para la escena. */
-	private void crearFondo(String nombreImagenFondo) {
-		Image imagenFondo = new Image(EscenaJuegoAlgoMon.ruta + nombreImagenFondo);
+	protected void agregarFondo(String nombreImagenFondo) {
+		Background fondo = ContenedorImagenes.getBackground(nombreImagenFondo);
 
-		BackgroundImage fondo = new BackgroundImage(imagenFondo, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT,
-				BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-
-		this.fondo = new Background(fondo);
-
-		//this.fondo = ContenedorImagenes.getBackground(nombreImagenFondo);
+		this.layout.setBackground(fondo);
 	}
 
 }
