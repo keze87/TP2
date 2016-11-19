@@ -1,5 +1,7 @@
 package src.fiuba.algo3.modelo.estados;
 
+import src.fiuba.algo3.modelo.excepciones.AlgoMonRecibeDañoQuemadura;
+
 public final class Quemado extends EstadoAlterado {
 	private static double porcentajeVidaQuitada=0.10;
 

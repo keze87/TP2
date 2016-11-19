@@ -21,4 +21,5 @@ public abstract class Efecto {
 	 * @return el estado actualizado.
 	 */
 	public abstract Estado aplicar(Estado estado);
+
 }
