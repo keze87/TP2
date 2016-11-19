@@ -3,6 +3,7 @@ package src.fiuba.algo3.vista;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
+import src.fiuba.algo3.modelo.excepciones.BotoneraLlena;
 
 public class BotoneraAcciones extends GridPane {
 

@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import src.fiuba.algo3.modelo.AlgoMon;
 import src.fiuba.algo3.modelo.Jugador;
@@ -32,11 +30,7 @@ public class DisplayEquipo extends HBox {
 		List<AlgoMon> equipo = this.jugador.getEquipo();
 
 		for(int i = 0; i < equipo.size(); i++) {
-			String nombreImagen = equipo.get(i).getNombre() + ".gif";
-
-			Image imagenAlgoMon = new Image(EscenaJuegoAlgoMon.ruta + nombreImagen);
-
-			this.botones.get(i).setGraphic(new ImageView(imagenAlgoMon));
+			this.botones.get(i).setGraphic(ContenedorImagenes.getImageView(equipo.get(i).getNombre()));
 		}
 
 	}
