@@ -21,6 +21,7 @@ import src.fiuba.algo3.modelo.excepciones.AlgoMonDormidoNoPuedeAtacar;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonRecibeDañoQuemadura;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonSeDurmio;
 import src.fiuba.algo3.modelo.excepciones.AtaqueAgotado;
+import src.fiuba.algo3.modelo.excepciones.VidaCompleta;
 
 public class EscenaBatalla extends EscenaJuegoAlgoMon {
 
@@ -29,6 +30,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 	private DisplayAlgoMon displayAlgoMonContrincante;
 	private HBox contenedorInferior;
 	private BotoneraAcciones botoneraAcciones;
+	private Button botonVolver;
 
 	public EscenaBatalla(Stage stage, Juego juego) {
 		super(stage, juego);
@@ -41,6 +43,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 		this.layoutBatalla = new GridPane();
 		this.contenedorInferior = new HBox();
 		this.botoneraAcciones = new BotoneraAcciones();
+		this.crearBotonVolver();
 
 		this.actualizarImagenAlgoMon(this.juego.getJugadorActivo().getAlgoMonActivo(), 0, 1);
 		this.actualizarImagenAlgoMon(this.juego.getContrincante().getAlgoMonActivo(), 1, 0);
@@ -150,9 +153,9 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 			textoBoton += "/";
 			textoBoton += this.juego.getJugadorActivo().getAlgoMonActivo().getAtaque(nombreAtaqueActual).getUsosTotales();
 
-			Button boton = new Button(textoBoton);
+			Button botonAtaque = new Button(textoBoton);
 
-			boton.setOnAction(new EventHandler<ActionEvent>() {
+			botonAtaque.setOnAction(new EventHandler<ActionEvent>() {
 
 				@Override
 				public void handle(ActionEvent arg0) {
@@ -180,8 +183,10 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 
 			});
 
-			this.botoneraAcciones.add(boton);
+			this.botoneraAcciones.add(botonAtaque);
 		}
+
+		this.botoneraAcciones.add(this.botonVolver);
 	}
 
 	private void mostrarBotoneraMochila() {
@@ -190,12 +195,38 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 		this.botoneraAcciones.borrarBotones();
 
 		for(NombreElemento nombreElemento : nombresElementos) {
-			Button boton = new Button(nombreElemento.getNombre());
+			String textoBoton = nombreElemento.getNombre();
 
-			boton.setGraphic(ContenedorImagenes.getImageView(nombreElemento.getNombre()));
+			textoBoton += " - ";
+			textoBoton += this.juego.getJugadorActivo().getCantidadRestanteElemento(nombreElemento);
+			textoBoton += "/";
+			textoBoton += this.juego.getJugadorActivo().getCantidadTotalElemento(nombreElemento);
 
-			botoneraAcciones.add(boton);
+			Button botonElemento = new Button(textoBoton);
+
+			botonElemento.setOnAction(new EventHandler<ActionEvent>() {
+
+				@Override
+				public void handle(ActionEvent arg0) {
+					try {
+						juego.jugadorActivoUsaElemento(nombreElemento);
+						Consola.mostrarMensaje("¡" + juego.getContrincante().getAlgoMonActivo().getNombre() + " recibió " + nombreElemento.getNombre() + "!");
+					} catch(VidaCompleta e) {
+						Consola.mostrarMensaje(e.getMessage());
+					}
+
+					displayAlgoMonActivo.actualizar();
+					displayAlgoMonContrincante.actualizar();
+					mostrarBotonOK();
+				}
+
+			});
+
+			botonElemento.setGraphic(ContenedorImagenes.getImageView(nombreElemento.getNombre()));
+			this.botoneraAcciones.add(botonElemento);
 		}
+
+		this.botoneraAcciones.add(botonVolver);
 	}
 
 	private void mostrarBotonOK() {
@@ -222,6 +253,19 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 
 	private void actualizarDisplayParaAlgoMonNuevo(DisplayAlgoMon display, AlgoMon algoMon) {
 		display.actualizar(algoMon);
+	}
+
+	private void crearBotonVolver() {
+		this.botonVolver = new Button("<-");
+
+		this.botonVolver.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				mostrarBotoneraAcciones();
+			}
+
+		});
 	}
 
 }

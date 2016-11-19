@@ -5,9 +5,11 @@ import src.fiuba.algo3.modelo.excepciones.StockAgotado;
 public abstract class StockElemento {
 
 	protected GeneradorElemento generador;
+	protected int cantidadTotal;
 	protected int cantidadRestante;
 
 	public StockElemento(int cantidadTotal) {
+		this.cantidadTotal = cantidadTotal;
 		this.cantidadRestante = cantidadTotal;
 	}
 
@@ -26,6 +28,14 @@ public abstract class StockElemento {
 	/* Determina si quedan elementos en el stock. */
 	protected boolean validarExistencia() {
 		return this.cantidadRestante > 0;
+	}
+
+	public int getCantidadRestante() {
+		return this.cantidadRestante;
+	}
+
+	public int getCantidadTotal() {
+		return this.cantidadTotal;
 	}
 
 }

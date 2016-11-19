@@ -18,7 +18,7 @@ public final class Pocion extends Elemento {
 	@Override
 	public void aplicar(AlgoMon algoMon) {
 		if(algoMon.tieneVidaCompleta()) {
-			throw new VidaCompleta(algoMon.getNombre() + " tiene la vida completa!");
+			throw new VidaCompleta("¡" + algoMon.getNombre() + " tiene la vida completa!");
 		}
 
 		super.aplicar(algoMon);

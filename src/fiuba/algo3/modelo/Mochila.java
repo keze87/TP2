@@ -27,4 +27,12 @@ public class Mochila {
 		return this.elementos.get(nombreElemento).getElemento();
 	}
 
+	public int getCantidadRestanteElemento(NombreElemento nombreElemento) {
+		return this.elementos.get(nombreElemento).getCantidadRestante();
+	}
+
+	public int getCantidadTotalElemento(NombreElemento nombreElemento) {
+		return this.elementos.get(nombreElemento).getCantidadTotal();
+	}
+
 }

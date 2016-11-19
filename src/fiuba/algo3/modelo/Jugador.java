@@ -129,4 +129,12 @@ public class Jugador {
 	//Tengo que hacer una interfaz
 	public void jugar(Button botonAtacar, Button botonMochila) {}
 
+	public int getCantidadRestanteElemento(NombreElemento nombreElemento) {
+		return this.mochila.getCantidadRestanteElemento(nombreElemento);
+	}
+
+	public int getCantidadTotalElemento(NombreElemento nombreElemento) {
+		return this.mochila.getCantidadTotalElemento(nombreElemento);
+	}
+
 }

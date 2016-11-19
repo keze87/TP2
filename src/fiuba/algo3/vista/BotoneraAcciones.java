@@ -7,7 +7,7 @@ import src.fiuba.algo3.modelo.excepciones.BotoneraLlena;
 
 public class BotoneraAcciones extends GridPane {
 
-	private static int cantidadMaximaFilas = 2;
+	private static int cantidadMaximaFilas = 3;
 	private static int cantidadMaximaColumnas = 2;
 	private int filaActual;
 	private int columnaActual;
