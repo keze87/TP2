@@ -80,6 +80,7 @@ public class Jugador {
 	/* Ataca a otro algoMon con el algoMon activo. */
 	public void atacarConAlgoMonActivo(NombreAtaque nombreAtaque, AlgoMon algoMon) {
 		this.getAlgoMonActivo().atacar(nombreAtaque, algoMon);
+		this.elRestoDelEquipoEspera();
 	}
 
 	/**
@@ -110,14 +111,28 @@ public class Jugador {
 		return algoMonInactivos;
 	}
 
-	/* Usa el elemento cuyo nombre es recibirdo por parámetro sobre el algoMon activo. */
+	/* Usa el elemento cuyo nombre es recibido por parámetro sobre el algoMon activo. */
 	public void usarElemento(NombreElemento nombreElemento) {
 		this.usarElemento(this.mochila.getElemento(nombreElemento));
+		this.elRestoDelEquipoEspera();
 	}
 
-	/* Usa el elemento recibirdo por parámetro sobre el algoMon activo. */
+	private void elRestoDelEquipoEspera() {
+		for(AlgoMon algoMon:this.getAlgoMonInactivos()){
+			algoMon.esperar();
+		}
+		
+	}
+
+	/* Usa el elemento recibido por parámetro sobre el algoMon activo. */
 	private void usarElemento(Elemento elemento) {
 		this.getAlgoMonActivo().recibirElemento(elemento);
+	}
+
+	public void saltarTurno() {
+		this.getAlgoMonActivo().esperar();
+		this.elRestoDelEquipoEspera();
+		
 	}
 
 }

@@ -13,3 +13,4 @@ hs_err_pid*
 libs/
 build/
 /bin/
+src/fiuba/algo3/modelo/Juego.java
