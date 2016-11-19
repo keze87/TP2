@@ -40,13 +40,13 @@ public final class ContenedorImagenes {
 		File[] nombresImagenes = carpetaImagenes.listFiles();
 
 		for (File nombreImagen : nombresImagenes) {
-		    if (nombreImagen.isFile()) {
-		    	String[] partes = nombreImagen.getName().split("\\.");
+			if (nombreImagen.isFile()) {
+				String[] partes = nombreImagen.getName().split("\\.");
 
-		    	String claveImagen = partes[0];
+				String claveImagen = partes[0];
 
-		        imagenes.put(claveImagen, new Image(directorio + nombreImagen.getName()));
-		    }
+				imagenes.put(claveImagen, new Image(directorio + nombreImagen.getName()));
+			}
 		}
 	}
 
