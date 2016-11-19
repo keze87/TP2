@@ -8,8 +8,12 @@ import javafx.scene.control.Button;
 import src.fiuba.algo3.modelo.AlgoMon;
 import src.fiuba.algo3.modelo.AlgoMonBuilder;
 import src.fiuba.algo3.modelo.Jugador;
+import src.fiuba.algo3.modelo.ataques.NombreAtaque;
+import src.fiuba.algo3.vista.BotoneraAcciones;
 
 public class Computadora extends Jugador {
+
+	List<Integer> chancesAtaque;
 
 	private enum Accion {
 		ATACAR, MOCHILA;
@@ -22,6 +26,32 @@ public class Computadora extends Jugador {
 		this.capacidadEquipo = 1;
 
 		this.agregarAlgoMonAlEquipo(AlgoMonBuilder.crearGengar());
+
+	}
+
+	private void crearArrayAtaque() {
+
+		chancesAtaque = new ArrayList<>();
+
+		List<NombreAtaque> nombresAtaques = this.getAlgoMonActivo().getNombresAtaques();
+
+		int chancePorAtaque = Math.round(100 / nombresAtaques.size());
+
+		for (int numeroAtaque = 0; numeroAtaque < nombresAtaques.size(); numeroAtaque++) {
+
+			for (int i = 0; i < chancePorAtaque; i++) {
+
+				chancesAtaque.add(numeroAtaque);
+
+			}
+
+		}
+
+		while (chancesAtaque.size() < 100) {
+
+			chancesAtaque.add(0);
+
+		}
 
 	}
 
@@ -75,6 +105,23 @@ public class Computadora extends Jugador {
 		Random random = new Random();
 
 		return array.get(random.nextInt(100));
+
+	}
+
+	@Override
+	public void atacar(BotoneraAcciones botoneraAcciones) {
+
+		if (chancesAtaque == null) {
+
+			this.crearArrayAtaque();
+
+		}
+
+		Random random = new Random();
+
+		int ataqueElegido = chancesAtaque.get(random.nextInt(100));
+
+		((Button) botoneraAcciones.getChildren().get(ataqueElegido)).fire();
 
 	}
 
