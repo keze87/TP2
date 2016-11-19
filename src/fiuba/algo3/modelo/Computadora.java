@@ -73,8 +73,7 @@ public class Computadora extends Jugador {
 
 		} else {
 
-			botonAtacar.fire();
-			//botonMochila.fire(); TODO
+			botonMochila.fire(); //elijo usar elemento
 
 		}
 
@@ -82,34 +81,42 @@ public class Computadora extends Jugador {
 
 	private Accion elegirAccion() {
 
-		List<Accion> array = new ArrayList<>();
+		if (this.getAlgoMonActivo().getEstado().puedeRealizarAccion()) {
 
-		AlgoMon algoMon = this.getAlgoMonActivo();
+			List<Accion> array = new ArrayList<>();
 
-		double porcentajeVidaAlgomon = (algoMon.getVida() * 100) / algoMon.getVidaMaxima();
+			AlgoMon algoMon = this.getAlgoMonActivo();
 
-		int chancesMochila = (int) Math.round(1000 / porcentajeVidaAlgomon);
+			double porcentajeVidaAlgomon = (algoMon.getVida() * 100) / algoMon.getVidaMaxima();
 
-		for (int i = 0; i < chancesMochila; i++) {
+			int chancesMochila = (int) Math.round(1000 / porcentajeVidaAlgomon);
 
-			array.add(Accion.MOCHILA);
+			for (int i = 0; i < chancesMochila; i++) {
+
+				array.add(Accion.MOCHILA);
+
+			}
+
+			while (array.size() < 100) {
+
+				array.add(Accion.ATACAR);
+
+			}
+
+			Random random = new Random();
+
+			return array.get(random.nextInt(100));
+
+		} else {
+
+			return Accion.MOCHILA;
 
 		}
-
-		while (array.size() < 100) {
-
-			array.add(Accion.ATACAR);
-
-		}
-
-		Random random = new Random();
-
-		return array.get(random.nextInt(100));
 
 	}
 
 	@Override
-	public void atacar(BotoneraAcciones botoneraAcciones) {
+	public void elegirAtaque(BotoneraAcciones botoneraAcciones) {
 
 		if (chancesAtaque == null) {
 
@@ -122,6 +129,13 @@ public class Computadora extends Jugador {
 		int ataqueElegido = chancesAtaque.get(random.nextInt(100));
 
 		((Button) botoneraAcciones.getChildren().get(ataqueElegido)).fire();
+
+	}
+
+	@Override
+	public void elegirElemento(BotoneraAcciones botoneraAcciones) {
+
+
 
 	}
 

@@ -221,7 +221,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 
 		if (this.juego.getJugadorActivo().esComputadora()) {
 
-			this.juego.getJugadorActivo().atacar(this.botoneraAcciones);
+			this.juego.getJugadorActivo().elegirAtaque(this.botoneraAcciones);
 
 		}
 	}
@@ -264,6 +264,12 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 		}
 
 		this.botoneraAcciones.add(botonVolver);
+
+		if (this.juego.getJugadorActivo().esComputadora()) {
+
+			this.juego.getJugadorActivo().elegirElemento(this.botoneraAcciones);
+
+		}
 	}
 
 	private void mostrarBotonOK() {

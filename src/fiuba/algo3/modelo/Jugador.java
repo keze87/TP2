@@ -129,7 +129,8 @@ public class Jugador {
 
 	//Tengo que hacer una interfaz
 	public void jugar(Button botonAtacar, Button botonMochila) {}
-	public void atacar(BotoneraAcciones botoneraAcciones) {}
+	public void elegirAtaque(BotoneraAcciones botoneraAcciones) {}
+	public void elegirElemento(BotoneraAcciones botoneraAcciones) {}
 
 	public int getCantidadRestanteElemento(NombreElemento nombreElemento) {
 		return this.mochila.getCantidadRestanteElemento(nombreElemento);
