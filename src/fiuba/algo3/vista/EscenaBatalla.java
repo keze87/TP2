@@ -49,8 +49,8 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 		this.botoneraAcciones = new BotoneraAcciones();
 		this.crearBotonVolver();
 
-		this.actualizarImagenAlgoMon(this.juego.getJugadorActivo().getAlgoMonActivo(), PosAlgomon.ESPALDA);
-		this.actualizarImagenAlgoMon(this.juego.getContrincante().getAlgoMonActivo(), PosAlgomon.FRENTE);
+		this.actualizarImagenAlgoMon(this.juego.getJugador1().getAlgoMonActivo(), PosAlgomon.ESPALDA);
+		this.actualizarImagenAlgoMon(this.juego.getJugador2().getAlgoMonActivo(), PosAlgomon.FRENTE);
 
 		Consola.agregarAContendedor(this.contenedorInferior);
 
@@ -114,8 +114,8 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 	}
 
 	private void agregarDisplaysAlgoMon() {
-		this.displayAlgoMonActivo = new DisplayAlgoMon(juego.getJugadorActivo().getAlgoMonActivo());
-		this.displayAlgoMonContrincante = new DisplayAlgoMon(juego.getContrincante().getAlgoMonActivo());
+		this.displayAlgoMonActivo = new DisplayAlgoMon(juego.getJugador1().getAlgoMonActivo());
+		this.displayAlgoMonContrincante = new DisplayAlgoMon(juego.getJugador2().getAlgoMonActivo());
 
 		this.layoutBatalla.add(this.displayAlgoMonContrincante, 0, 0);
 		this.layoutBatalla.add(this.displayAlgoMonActivo, 1, 1);
