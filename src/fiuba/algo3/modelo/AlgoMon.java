@@ -146,10 +146,6 @@ public class AlgoMon {
 
 	}
 
-//	public void esperar() {
-//		this.estado.accionRealizada();
-//	}
-
 	public int getCantidadDeUsosRestantes(NombreAtaque nombre) {
 		return this.ataques.get(nombre).getUsosRestantes();
 	}
