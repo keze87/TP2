@@ -8,6 +8,7 @@ import src.fiuba.algo3.modelo.efectos.EfectoMultiple;
 import src.fiuba.algo3.modelo.efectos.Quemar;
 import src.fiuba.algo3.modelo.efectos.QuitarVida;
 import src.fiuba.algo3.modelo.efectos.SinEfecto;
+import src.fiuba.algo3.modelo.estados.AlgoMonRecibeDañoQuemadura;
 import src.fiuba.algo3.modelo.estados.Estado;
 import src.fiuba.algo3.modelo.estados.EstadoNormal;
 
@@ -23,7 +24,7 @@ public class EfectoMultipleTest {
 		efecto.agregarEfecto(new QuitarVida(100));
 		efecto.agregarEfecto(new Quemar());
 		nuevoEstado = efecto.aplicar(estado);
-		nuevoEstado.accionRealizada();
+		try{nuevoEstado.accionRealizada();}catch(AlgoMonRecibeDañoQuemadura e){}
 
 		assertEquals(estado.getVidaMaxima()-100-17,nuevoEstado.getVida(),0.01);
 	}

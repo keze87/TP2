@@ -10,8 +10,12 @@ import src.fiuba.algo3.modelo.AlgoMon;
 import src.fiuba.algo3.modelo.AlgoMonBuilder;
 import src.fiuba.algo3.modelo.Jugador;
 import src.fiuba.algo3.modelo.ataques.NombreAtaque;
+import src.fiuba.algo3.modelo.efectos.AumentarVida;
 import src.fiuba.algo3.modelo.elementos.NombreElemento;
 import src.fiuba.algo3.modelo.elementos.SuperPocion;
+import src.fiuba.algo3.modelo.estados.AlgoMonRecibeDañoQuemadura;
+import src.fiuba.algo3.modelo.excepciones.AlgoMonActivoMurio;
+import src.fiuba.algo3.modelo.excepciones.AlgoMonDormidoNoPuedeAtacar;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonNoExiste;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonYaEstaActivo;
 import src.fiuba.algo3.modelo.excepciones.AtaqueAgotado;
@@ -177,7 +181,7 @@ public class JugadorTest {
 		jugador2.listoParaPelear();
 
 		jugador1.atacarConAlgoMonActivo(NombreAtaque.FOGONAZO, jugador2.getAlgoMonActivo());
-		jugador2.atacarConAlgoMonActivo(NombreAtaque.ATAQUERAPIDO, jugador1.getAlgoMonActivo());
+		try {jugador2.atacarConAlgoMonActivo(NombreAtaque.ATAQUERAPIDO, jugador1.getAlgoMonActivo());}catch(AlgoMonRecibeDañoQuemadura e){}
 		assertEquals(jugador2.getAlgoMonActivo().getVidaMaxima() - 15, jugador2.getAlgoMonActivo().getVida(), 0.0001D);
 
 		jugador2.usarElemento(NombreElemento.RESTAURADOR);;
@@ -207,8 +211,8 @@ public class JugadorTest {
 		jugador2.agregarAlgoMonAlEquipo(rattata);
 		jugador2.listoParaPelear();
 
-		jugador2.atacarConAlgoMonActivo(NombreAtaque.CANTO, jugador1.getAlgoMonActivo());
-		jugador1.atacarConAlgoMonActivo(NombreAtaque.ATAQUERAPIDO, jugador2.getAlgoMonActivo());
+		try{jugador2.atacarConAlgoMonActivo(NombreAtaque.CANTO, jugador1.getAlgoMonActivo());} catch(AlgoMonDormidoNoPuedeAtacar e) {}
+		try{jugador1.atacarConAlgoMonActivo(NombreAtaque.ATAQUERAPIDO, jugador2.getAlgoMonActivo());} catch(AlgoMonDormidoNoPuedeAtacar e) {}
 		assertEquals(jugador2.getAlgoMonActivo().getVidaMaxima(), jugador2.getAlgoMonActivo().getVida(), 0.0001D);
 
 		jugador1.usarElemento(NombreElemento.RESTAURADOR);;
@@ -251,10 +255,9 @@ public class JugadorTest {
 		try {
 			while(true) {
 				jugador1.atacarConAlgoMonActivo(NombreAtaque.LATIGOCEPA, jugador2.getAlgoMonActivo());
+				jugador2.getAlgoMonActivo().recibirEfecto(new AumentarVida(10));
 			}
 		} catch(AtaqueAgotado e) {
-			jugador2.getAlgoMonActivo().recibirElemento(new SuperPocion());
-			jugador2.getAlgoMonActivo().recibirElemento(new SuperPocion());
 			jugador2.getAlgoMonActivo().recibirElemento(new SuperPocion());
 			jugador2.getAlgoMonActivo().recibirElemento(new SuperPocion());
 		}
@@ -262,13 +265,10 @@ public class JugadorTest {
 		try {
 			while(true) {
 				jugador1.atacarConAlgoMonActivo(NombreAtaque.ATAQUERAPIDO, jugador2.getAlgoMonActivo());
+				jugador2.getAlgoMonActivo().recibirEfecto(new AumentarVida(10));
 			}
-		} catch(AtaqueAgotado e) {
-			jugador2.getAlgoMonActivo().recibirElemento(new SuperPocion());
-			jugador2.getAlgoMonActivo().recibirElemento(new SuperPocion());
-			jugador2.getAlgoMonActivo().recibirElemento(new SuperPocion());
-			jugador2.getAlgoMonActivo().recibirElemento(new SuperPocion());
-		}
+		} catch(AtaqueAgotado e) {}
+			
 
 		assertEquals(jugador2.getAlgoMonActivo().getVidaMaxima(), jugador2.getAlgoMonActivo().getVida(), 0.0001D);
 		jugador1.usarElemento(NombreElemento.VITAMINA);;
@@ -509,7 +509,7 @@ public class JugadorTest {
 	}
 
 	// TODO: intentar cambiar algoMon activo por otro algoMon muerto lanza excepción.
-	@Test(expected = AlgoMonMuerto.class)
+	@Test(expected = AlgoMonActivoMurio.class)
 	public void test17CambiarAlgoMonActivoPorAlgoMonMuertoLanzaExcepcion() {
 		AlgoMon squirtle = AlgoMonBuilder.crearSquirtle();
 		AlgoMon bulbasaur = AlgoMonBuilder.crearBulbasaur();

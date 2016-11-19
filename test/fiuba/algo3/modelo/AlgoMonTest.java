@@ -9,6 +9,8 @@ import org.junit.Test;
 import src.fiuba.algo3.modelo.AlgoMon;
 import src.fiuba.algo3.modelo.AlgoMonBuilder;
 import src.fiuba.algo3.modelo.ataques.NombreAtaque;
+import src.fiuba.algo3.modelo.excepciones.AlgoMonActivoMurio;
+import src.fiuba.algo3.modelo.excepciones.AlgoMonDormidoNoPuedeAtacar;
 import src.fiuba.algo3.modelo.excepciones.AtaqueAgotado;
 
 public class AlgoMonTest {
@@ -309,7 +311,7 @@ public class AlgoMonTest {
 		assertEquals(bulbasaur.getVidaMaxima() - 128, bulbasaur.getVida(), 0.0001D);
 		assertTrue(bulbasaur.estaVivo());
 
-		charmander.atacar(NombreAtaque.BRASAS, bulbasaur);
+		try{charmander.atacar(NombreAtaque.BRASAS, bulbasaur);}catch(AlgoMonActivoMurio e){}
 		assertEquals(bulbasaur.getVidaMaxima() - 140, bulbasaur.getVida(), 0.0001D);
 		assertFalse(bulbasaur.estaVivo());
 	}

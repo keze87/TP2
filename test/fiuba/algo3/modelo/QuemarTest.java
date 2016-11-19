@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import src.fiuba.algo3.modelo.efectos.Quemar;
+import src.fiuba.algo3.modelo.estados.AlgoMonRecibeDañoQuemadura;
 import src.fiuba.algo3.modelo.estados.Estado;
 import src.fiuba.algo3.modelo.estados.EstadoNormal;
 import src.fiuba.algo3.modelo.estados.Quemado;
@@ -20,7 +21,7 @@ public class QuemarTest {
 		Estado nuevoEstado;
 
 		nuevoEstado = this.quemar.aplicar(estado);
-		nuevoEstado.accionRealizada();
+		try{nuevoEstado.accionRealizada();} catch(AlgoMonRecibeDañoQuemadura e){}
 		assertEquals(estado.getVidaMaxima()-Quemado.getVidaQuitada(estado.getVidaMaxima()), nuevoEstado.getVida(), 0.01);
 	}
 
