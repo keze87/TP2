@@ -12,6 +12,7 @@ import src.fiuba.algo3.modelo.ataques.NombreAtaque;
 import src.fiuba.algo3.modelo.elementos.NombreElemento;
 import src.fiuba.algo3.modelo.estados.Dormido;
 import src.fiuba.algo3.modelo.estados.Estado;
+import src.fiuba.algo3.modelo.estados.Quemado;
 import src.fiuba.algo3.vista.BotoneraAcciones;
 
 public class Computadora extends Jugador {
@@ -153,7 +154,7 @@ public class Computadora extends Jugador {
 
 		double porcentajeVidaAlgomon = (algoMon.getVida() * 100) / algoMon.getVidaMaxima();
 
-		if ((estadoAlgomon instanceof Dormido) &&
+		if (((estadoAlgomon instanceof Dormido) || (estadoAlgomon instanceof Quemado)) &&
 				(this.mochila.getCantidadRestanteElemento(NombreElemento.RESTAURADOR) > 0)) {
 
 			elementoElegido = 2;
