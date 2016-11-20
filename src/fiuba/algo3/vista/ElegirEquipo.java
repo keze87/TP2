@@ -38,19 +38,11 @@ public abstract class ElegirEquipo extends EscenaJuegoAlgoMon {
 		agregarBotonAContenedor(this.crearBotonSeleccionAlgoMon(AlgoMonBuilder.crearSquirtle(), display), filaSuperior);
 		agregarBotonAContenedor(this.crearBotonSeleccionAlgoMon(AlgoMonBuilder.crearBulbasaur(), display), filaSuperior);
 
-//		agregarBotonAContenedor(this.crearBotonSeleccionAlgoMon("Charmander", display), filaSuperior);
-//		agregarBotonAContenedor(this.crearBotonSeleccionAlgoMon("Squirtle", display), filaSuperior);
-//		agregarBotonAContenedor(this.crearBotonSeleccionAlgoMon("Bulbasaur", display), filaSuperior);
-
 		filaSuperior.setAlignment(Pos.CENTER);
 
 		agregarBotonAContenedor(this.crearBotonSeleccionAlgoMon(AlgoMonBuilder.crearJigglypuff(), display), filaInferior);
 		agregarBotonAContenedor(this.crearBotonSeleccionAlgoMon(AlgoMonBuilder.crearChansey(), display), filaInferior);
 		agregarBotonAContenedor(this.crearBotonSeleccionAlgoMon(AlgoMonBuilder.crearRattata(), display), filaInferior);
-
-//		agregarBotonAContenedor(this.crearBotonSeleccionAlgoMon("Jigglypuff", display), filaInferior);
-//		agregarBotonAContenedor(this.crearBotonSeleccionAlgoMon("Chansey", display), filaInferior);
-//		agregarBotonAContenedor(this.crearBotonSeleccionAlgoMon("Rattata", display), filaInferior);
 
 		filaInferior.setAlignment(Pos.CENTER);
 
