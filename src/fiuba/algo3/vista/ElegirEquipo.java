@@ -6,6 +6,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import src.fiuba.algo3.modelo.AlgoMon;
+import src.fiuba.algo3.modelo.AlgoMonBuilder;
 import src.fiuba.algo3.modelo.Juego;
 import src.fiuba.algo3.modelo.Jugador;
 
@@ -32,15 +34,23 @@ public abstract class ElegirEquipo extends EscenaJuegoAlgoMon {
 		this.finalizarSeleccion.getStyleClass().add("boton-listo");
 		this.setAccionFinalizarSeleccion();
 
-		agregarBotonAContenedor(this.crearBotonSeleccionAlgoMon("Charmander", display), filaSuperior);
-		agregarBotonAContenedor(this.crearBotonSeleccionAlgoMon("Squirtle", display), filaSuperior);
-		agregarBotonAContenedor(this.crearBotonSeleccionAlgoMon("Bulbasaur", display), filaSuperior);
+		agregarBotonAContenedor(this.crearBotonSeleccionAlgoMon(AlgoMonBuilder.crearCharmander(), display), filaSuperior);
+		agregarBotonAContenedor(this.crearBotonSeleccionAlgoMon(AlgoMonBuilder.crearSquirtle(), display), filaSuperior);
+		agregarBotonAContenedor(this.crearBotonSeleccionAlgoMon(AlgoMonBuilder.crearBulbasaur(), display), filaSuperior);
+
+//		agregarBotonAContenedor(this.crearBotonSeleccionAlgoMon("Charmander", display), filaSuperior);
+//		agregarBotonAContenedor(this.crearBotonSeleccionAlgoMon("Squirtle", display), filaSuperior);
+//		agregarBotonAContenedor(this.crearBotonSeleccionAlgoMon("Bulbasaur", display), filaSuperior);
 
 		filaSuperior.setAlignment(Pos.CENTER);
 
-		agregarBotonAContenedor(this.crearBotonSeleccionAlgoMon("Jigglypuff", display), filaInferior);
-		agregarBotonAContenedor(this.crearBotonSeleccionAlgoMon("Chansey", display), filaInferior);
-		agregarBotonAContenedor(this.crearBotonSeleccionAlgoMon("Rattata", display), filaInferior);
+		agregarBotonAContenedor(this.crearBotonSeleccionAlgoMon(AlgoMonBuilder.crearJigglypuff(), display), filaInferior);
+		agregarBotonAContenedor(this.crearBotonSeleccionAlgoMon(AlgoMonBuilder.crearChansey(), display), filaInferior);
+		agregarBotonAContenedor(this.crearBotonSeleccionAlgoMon(AlgoMonBuilder.crearRattata(), display), filaInferior);
+
+//		agregarBotonAContenedor(this.crearBotonSeleccionAlgoMon("Jigglypuff", display), filaInferior);
+//		agregarBotonAContenedor(this.crearBotonSeleccionAlgoMon("Chansey", display), filaInferior);
+//		agregarBotonAContenedor(this.crearBotonSeleccionAlgoMon("Rattata", display), filaInferior);
 
 		filaInferior.setAlignment(Pos.CENTER);
 
@@ -61,8 +71,9 @@ public abstract class ElegirEquipo extends EscenaJuegoAlgoMon {
 	}
 
 	/* Crea y devuelve un botón para elegir un algoMon dado. */
-	private Button crearBotonSeleccionAlgoMon(String nombreAlgoMon, DisplayEquipo display) {
-		return new BotonElegirAlgoMon(nombreAlgoMon, this.jugador, display);
+	private Button crearBotonSeleccionAlgoMon(AlgoMon algoMon, DisplayEquipo display) {
+		//return new BotonElegirAlgoMon(nombreAlgoMon, this.jugador, display);
+		return new BotonElegirAlgoMon(algoMon, this.jugador, display);
 	}
 
 	/* Agrega un botón a un contenedor. */

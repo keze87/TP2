@@ -14,6 +14,54 @@
 	-fx-focus-color: transparent;
 }
 
+.boton-juego {
+  /*-fx-padding: 0 24px;*/
+  -fx-font-size: 14px;
+  -fx-text-fill: white;
+  -fx-background-color: #247edd;
+  -fx-border-style: solid;
+  -fx-border-width: 1px;
+  -fx-font-weight: bold;
+}
+
+.boton-juego:before {
+	-fx-background-color: transparent;
+}
+
+.boton-juego:hover {
+	-fx-background-color: #1a74d3;
+	-fx-cursor: hand;
+}
+
+.boton-juego:pressed {
+  -fx-background-color: #1f71c8;
+  -fx-border-color: #113f70 #154c86 #1c65b2;
+}
+
+.boton-juego-rojo {
+  /*-fx-padding: 0 24px;*/
+  -fx-font-size: 14px;
+  -fx-text-fill: white;
+  -fx-background-color: #D60024;
+  -fx-border-style: solid;
+  -fx-border-width: 1px;
+  -fx-font-weight: bold;
+}
+
+.boton-juego-rojo:before {
+	-fx-background-color: transparent;
+}
+
+.boton-juego-rojo:hover {
+	-fx-background-color: #1a74d3;
+	-fx-cursor: hand;
+}
+
+.boton-juego-rojo:pressed {
+  -fx-background-color: #1f71c8;
+  -fx-border-color: #113f70 #154c86 #1c65b2;
+}
+
 .boton-elegir-algoMon {
   -fx-padding: 0 24px;
   -fx-font-size: 14px;
@@ -21,7 +69,6 @@
   -fx-background-color: #247edd;
   -fx-border-style: solid;
   -fx-border-width: 1px;
-  /*-fx-border-radius: 4px;*/
   -fx-font-weight: bold;
 }
 
