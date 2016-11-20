@@ -169,6 +169,8 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 				public void handle(ActionEvent arg0) {
 
 					try {
+						System.out.println("el ataque es: "+nombreAtaqueActual.toString());
+						Sonido.getSeek(nombreAtaqueActual.toString() + ".wav").play();;
 						Consola.mostrarMensaje("¡" + juego.getJugadorActivo().getAlgoMonActivo().getNombre() + " usó " + nombreAtaqueActual.toString() + "!");
 						juego.jugadorActivoAtaca(nombreAtaqueActual);
 
