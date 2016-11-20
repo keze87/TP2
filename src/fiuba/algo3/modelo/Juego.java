@@ -10,6 +10,7 @@ import src.fiuba.algo3.modelo.ataques.NombreAtaque;
 import src.fiuba.algo3.modelo.elementos.NombreElemento;
 import src.fiuba.algo3.modelo.excepciones.AtaqueAgotado;
 import src.fiuba.algo3.modelo.excepciones.JuegoTerminado;
+import src.fiuba.algo3.modelo.excepciones.StockAgotado;
 
 public class Juego {
 
@@ -73,10 +74,11 @@ public class Juego {
 	public void jugadorActivoUsaElemento(NombreElemento nombreElemento) {
 		try {
 			this.getJugadorActivo().usarElemento(nombreElemento);
-		} catch(Exception e) {
+		} catch(StockAgotado e) {
 			throw e;
-		} finally {
+		} catch(Exception e) {
 			this.finTurno();
+			throw e;
 		}
 	}
 
