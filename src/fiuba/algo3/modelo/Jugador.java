@@ -8,11 +8,11 @@ import src.fiuba.algo3.modelo.ataques.NombreAtaque;
 import src.fiuba.algo3.modelo.elementos.Elemento;
 import src.fiuba.algo3.modelo.elementos.NombreElemento;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonNoExiste;
+import src.fiuba.algo3.modelo.excepciones.AlgoMonMuerto;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonYaEstaActivo;
 import src.fiuba.algo3.modelo.excepciones.EquipoCompleto;
 import src.fiuba.algo3.modelo.excepciones.NoHayAlgoMonActivo;
 import src.fiuba.algo3.vista.BotoneraAcciones;
-import test.fiuba.algo3.modelo.AlgoMonMuerto;
 
 public class Jugador {
 

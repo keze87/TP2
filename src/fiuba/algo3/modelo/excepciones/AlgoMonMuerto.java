@@ -1,4 +1,4 @@
-package test.fiuba.algo3.modelo;
+package src.fiuba.algo3.modelo.excepciones;
 
 public class AlgoMonMuerto extends RuntimeException {
 
