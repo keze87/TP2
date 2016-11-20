@@ -1,5 +1,6 @@
 package src.fiuba.algo3.modelo.estados;
 
+
 public final class Dormido extends EstadoAlterado {
 
 	private static int turnosDormido = 3;
@@ -19,6 +20,7 @@ public final class Dormido extends EstadoAlterado {
 
 	@Override
 	public boolean puedeRealizarAccion() {
+		
 		return this.turnosRestantes <= 0 && this.getEstadoAnterior().puedeRealizarAccion();
 	}
 

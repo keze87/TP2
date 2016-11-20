@@ -73,12 +73,13 @@ public class AlgoMon {
 	 */
 	public void atacar(NombreAtaque nombreAtaque, AlgoMon contrincante) throws AlgoMonNoTieneAtaque {
 		try {
-
+			if(!this.estaVivo()) throw new AlgoMonMurio("¡" + this.nombre + " murió!");
 			if (this.estado.puedeRealizarAccion()) {
 				this.recibirEfecto(this.ataques.get(nombreAtaque).atacar(contrincante));
 			}
 
 			else {
+				
 				this.estado.accionRealizada();
 				throw new AlgoMonDormidoNoPuedeAtacar(this.nombre + " está dormido. ¡No puede atacar!");
 			}

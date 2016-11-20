@@ -31,10 +31,10 @@ public class MenuPrincipal extends EscenaJuegoAlgoMon {
 
 		HBox botonera = new HBox(20);
 
-		Media sonido = new Media(new File("src/fiuba/algo3/vista/Sonidos/Pokemon_Opening.mp3").toURI().toString());
-		MediaPlayer mediaPlayer = new MediaPlayer(sonido);
-		mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-		mediaPlayer.play();
+		//Media sonido = new Media(new File("src/fiuba/algo3/vista/Sonidos/Pokemon_Opening.mp3").toURI().toString());
+		//MediaPlayer mediaPlayer = new MediaPlayer(sonido);
+		//mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+		//mediaPlayer.play();
 
 		Image imagenLogo = new Image(ruta + "Logo.png");
 		ImageView logoView = new ImageView(imagenLogo);
