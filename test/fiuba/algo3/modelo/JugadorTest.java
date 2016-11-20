@@ -13,7 +13,7 @@ import src.fiuba.algo3.modelo.ataques.NombreAtaque;
 import src.fiuba.algo3.modelo.efectos.AumentarVida;
 import src.fiuba.algo3.modelo.elementos.NombreElemento;
 import src.fiuba.algo3.modelo.elementos.SuperPocion;
-import src.fiuba.algo3.modelo.excepciones.AlgoMonActivoMurio;
+import src.fiuba.algo3.modelo.excepciones.AlgoMonMurio;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonDormidoNoPuedeAtacar;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonNoExiste;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonRecibeDañoQuemadura;
@@ -509,7 +509,7 @@ public class JugadorTest {
 	}
 
 	// TODO: intentar cambiar algoMon activo por otro algoMon muerto lanza excepción.
-	@Test(expected = AlgoMonActivoMurio.class)
+	@Test(expected = AlgoMonMurio.class)
 	public void test17CambiarAlgoMonActivoPorAlgoMonMuertoLanzaExcepcion() {
 		AlgoMon squirtle = AlgoMonBuilder.crearSquirtle();
 		AlgoMon bulbasaur = AlgoMonBuilder.crearBulbasaur();

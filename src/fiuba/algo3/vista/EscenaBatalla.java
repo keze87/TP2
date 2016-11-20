@@ -18,7 +18,7 @@ import src.fiuba.algo3.modelo.Juego;
 import src.fiuba.algo3.modelo.Jugador;
 import src.fiuba.algo3.modelo.ataques.NombreAtaque;
 import src.fiuba.algo3.modelo.elementos.NombreElemento;
-import src.fiuba.algo3.modelo.excepciones.AlgoMonActivoMurio;
+import src.fiuba.algo3.modelo.excepciones.AlgoMonMurio;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonDormidoNoPuedeAtacar;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonRecibeDañoQuemadura;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonSeDurmio;
@@ -161,7 +161,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 						Consola.mostrarMensaje(e.getMessage());
 					} catch(AlgoMonSeDurmio | AlgoMonRecibeDañoQuemadura e) {
 						Consola.encolarMensaje(e.getMessage());
-					} catch(AlgoMonActivoMurio e) {
+					} catch(AlgoMonMurio e) {
 						Consola.encolarMensaje(e.getMessage());
 
 						if(juego.getJugadorActivo().puedeSeguirJugando()) {
@@ -207,10 +207,12 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 				@Override
 				public void handle(ActionEvent arg0) {
 					try {
+						Consola.mostrarMensaje("¡" + juego.getJugadorActivo().getAlgoMonActivo().getNombre() + " recibió " + nombreElemento.getNombre() + "!");
 						juego.jugadorActivoUsaElemento(nombreElemento);
-						Consola.mostrarMensaje("¡" + juego.getContrincante().getAlgoMonActivo().getNombre() + " recibió " + nombreElemento.getNombre() + "!");
 					} catch(VidaCompleta e) {
 						Consola.mostrarMensaje(e.getMessage());
+					} catch(AlgoMonRecibeDañoQuemadura e) {
+						Consola.encolarMensaje(e.getMessage());
 					}
 
 					actualizarDisplays();

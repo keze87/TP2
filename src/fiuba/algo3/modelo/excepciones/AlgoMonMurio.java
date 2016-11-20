@@ -1,17 +1,17 @@
 package src.fiuba.algo3.modelo.excepciones;
 
-public class AlgoMonActivoMurio extends RuntimeException {
+public class AlgoMonMurio extends RuntimeException {
 
 	/**
 	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public AlgoMonActivoMurio() {
+	public AlgoMonMurio() {
 		super();
 	}
 
-	public AlgoMonActivoMurio(String mensaje) {
+	public AlgoMonMurio(String mensaje) {
 		super(mensaje);
 	}
 

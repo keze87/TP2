@@ -71,7 +71,7 @@ public class Juego {
 	public void jugadorActivoUsaElemento(NombreElemento nombreElemento) {
 		try {
 			this.getJugadorActivo().usarElemento(nombreElemento);
-		} catch(VidaCompleta e) {
+		} catch(VidaCompleta | AlgoMonRecibeDañoQuemadura e) {
 			throw e;
 		} finally {
 			this.finTurno();
