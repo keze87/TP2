@@ -18,8 +18,9 @@ import src.fiuba.algo3.modelo.Juego;
 import src.fiuba.algo3.modelo.Jugador;
 import src.fiuba.algo3.modelo.ataques.NombreAtaque;
 import src.fiuba.algo3.modelo.elementos.NombreElemento;
-import src.fiuba.algo3.modelo.excepciones.AlgoMonMurio;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonDormidoNoPuedeAtacar;
+import src.fiuba.algo3.modelo.excepciones.AlgoMonMurio;
+import src.fiuba.algo3.modelo.excepciones.AlgoMonMurioPorQuemadura;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonRecibeDañoQuemadura;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonSeDurmio;
 import src.fiuba.algo3.modelo.excepciones.AtaqueAgotado;
@@ -161,12 +162,14 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 						Consola.mostrarMensaje(e.getMessage());
 					} catch(AlgoMonSeDurmio | AlgoMonRecibeDañoQuemadura e) {
 						Consola.encolarMensaje(e.getMessage());
-					} catch(AlgoMonMurio e) {
+					} /*catch(AlgoMonMurio e) {
+						 El algoMon atacado murió a causa del daño del ataque.
 						Consola.encolarMensaje(e.getMessage());
-
-						if(juego.getJugadorActivo().puedeSeguirJugando()) {
-							Consola.encolarMensaje("Elije a otro algoMon:");
-						}
+					} catch(AlgoMonMurioPorQuemadura e) {
+						 El algoMon atacante murió a causa de su quemadura.
+						Consola.encolarMensaje(e.getMessage());
+					}*/ catch(AlgoMonMurio | AlgoMonMurioPorQuemadura e) {
+						Consola.encolarMensaje(e.getMessage());
 					}
 
 					actualizarDisplays();
@@ -232,6 +235,10 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 			this.juego.getJugadorActivo().elegirElemento(this.botoneraAcciones);
 
 		}
+	}
+
+	private void mostrarBotoneraCambiar(Jugador jugador) {
+
 	}
 
 	private void mostrarBotonOK() {

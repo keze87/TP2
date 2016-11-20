@@ -16,7 +16,7 @@ public class AlgoMonBuilder {
 	public static AlgoMon crearCharmander() {
 		AlgoMonBuilder builder = new AlgoMonBuilder();
 
-		builder.setNombre(NombreAlgoMon.Charmander).setVida(170).agregarAtaque(AtaqueBuilder.crearBrasas()).
+		builder.setNombre(NombreAlgoMon.Charmander).setVida(/*170*/30).agregarAtaque(AtaqueBuilder.crearBrasas()).
 		agregarAtaque(AtaqueBuilder.crearFogonazo()).agregarAtaque(AtaqueBuilder.crearAtaqueRapido());
 
 		return builder.crearTipoFuego();
@@ -66,7 +66,7 @@ public class AlgoMonBuilder {
 	public static AlgoMon crearRattata() {
 		AlgoMonBuilder builder = new AlgoMonBuilder();
 
-		builder.setNombre(NombreAlgoMon.Rattata).setVida(170).agregarAtaque(AtaqueBuilder.crearFogonazo()).
+		builder.setNombre(NombreAlgoMon.Rattata).setVida(/*170*/35).agregarAtaque(AtaqueBuilder.crearFogonazo()).
 		agregarAtaque(AtaqueBuilder.crearBurbuja()).agregarAtaque(AtaqueBuilder.crearAtaqueRapido());
 
 		return builder.crearTipoNormal();

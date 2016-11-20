@@ -11,8 +11,8 @@ import src.fiuba.algo3.modelo.efectos.Efecto;
 import src.fiuba.algo3.modelo.elementos.Elemento;
 import src.fiuba.algo3.modelo.estados.Estado;
 import src.fiuba.algo3.modelo.estados.EstadoNormal;
-import src.fiuba.algo3.modelo.excepciones.AlgoMonMurio;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonDormidoNoPuedeAtacar;
+import src.fiuba.algo3.modelo.excepciones.AlgoMonMurio;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonMurioPorQuemadura;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonNoTieneAtaque;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonRecibeDañoQuemadura;
@@ -73,25 +73,18 @@ public class AlgoMon {
 	 */
 	public void atacar(NombreAtaque nombreAtaque, AlgoMon contrincante) throws AlgoMonNoTieneAtaque {
 		try {
-			if(!this.estaVivo()) throw new AlgoMonMurio("¡" + this.nombre + " murió!");
 			if (this.estado.puedeRealizarAccion()) {
 				this.recibirEfecto(this.ataques.get(nombreAtaque).atacar(contrincante));
+				this.estado.accionRealizada();
 			}
 
 			else {
-				
 				this.estado.accionRealizada();
 				throw new AlgoMonDormidoNoPuedeAtacar(this.nombre + " está dormido. ¡No puede atacar!");
 			}
 
-			this.estado.accionRealizada();
-
 		} catch(NullPointerException e) {
 			throw new AlgoMonNoTieneAtaque(this.nombre + " no puede usar " + nombreAtaque.toString() + "!");
-		} catch(AlgoMonRecibeDañoQuemadura e) {
-			throw new AlgoMonRecibeDañoQuemadura("¡" + this.nombre + " recibe daño de la quemadura!");
-		} catch(AlgoMonMurioPorQuemadura e) {
-			throw new AlgoMonMurio("¡" + this.nombre + " murió a causa de su quemadura!");
 		}
 	}
 
@@ -117,6 +110,8 @@ public class AlgoMon {
 			this.estado.accionRealizada();
 		} catch (AlgoMonRecibeDañoQuemadura e) {
 			throw new AlgoMonRecibeDañoQuemadura("¡" + this.nombre + " recibe daño de la quemadura!");
+		} catch(AlgoMonMurioPorQuemadura e) {
+			throw e;
 		}
 	}
 

@@ -37,7 +37,7 @@ public class AtaqueBuilder {
 
 	/* Crea y devuelve una nueva instancia de Ataque correspondiente a Ataque Rápido. */
 	public static Ataque crearAtaqueRapido() {
-		AtaqueBuilder builder = new AtaqueBuilder(NombreAtaque.ATAQUERAPIDO, 10, 16, new SinEfecto());
+		AtaqueBuilder builder = new AtaqueBuilder(NombreAtaque.ATAQUERAPIDO, 10, 1/*6*/, new SinEfecto());
 
 		return builder.crearAtaqueNormal();
 	}

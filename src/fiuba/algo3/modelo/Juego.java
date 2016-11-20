@@ -6,6 +6,7 @@ import java.util.Random;
 
 import src.fiuba.algo3.modelo.ataques.NombreAtaque;
 import src.fiuba.algo3.modelo.elementos.NombreElemento;
+import src.fiuba.algo3.modelo.excepciones.AtaqueAgotado;
 import src.fiuba.algo3.modelo.excepciones.JuegoTerminado;
 
 public class Juego {
@@ -58,10 +59,12 @@ public class Juego {
 	public void jugadorActivoAtaca(NombreAtaque nombreAtaque) {
 		try {
 			this.getJugadorActivo().atacarConAlgoMonActivo(nombreAtaque, this.getContrincante().getAlgoMonActivo());
-		} catch(Exception e) {
-			throw e;
-		} finally {
 			this.finTurno();
+		} catch(AtaqueAgotado e) {
+			throw e;
+		} catch(Exception e) {
+			this.finTurno();
+			throw e;
 		}
 	}
 

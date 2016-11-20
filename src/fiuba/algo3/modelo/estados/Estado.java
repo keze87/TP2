@@ -51,7 +51,7 @@ public abstract class Estado {
 	public void quitarVida(double cantidad) {
 		this.vida -= cantidad;
 
-		if(this.vida < 0) {
+		if(this.vida <= 0) {
 			this.vida = 0;
 			throw new AlgoMonMurio();
 		}
