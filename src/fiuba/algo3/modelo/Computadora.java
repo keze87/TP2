@@ -9,6 +9,9 @@ import src.fiuba.algo3.modelo.AlgoMon;
 import src.fiuba.algo3.modelo.AlgoMonBuilder;
 import src.fiuba.algo3.modelo.Jugador;
 import src.fiuba.algo3.modelo.ataques.NombreAtaque;
+import src.fiuba.algo3.modelo.elementos.NombreElemento;
+import src.fiuba.algo3.modelo.estados.Dormido;
+import src.fiuba.algo3.modelo.estados.Estado;
 import src.fiuba.algo3.vista.BotoneraAcciones;
 
 public class Computadora extends Jugador {
@@ -128,6 +131,13 @@ public class Computadora extends Jugador {
 
 		int ataqueElegido = chancesAtaque.get(random.nextInt(100));
 
+		while (this.getAlgoMonActivo().getUsosRestantesAtaque(
+				this.getAlgoMonActivo().getNombresAtaques().get(ataqueElegido)) == 0) {
+
+			ataqueElegido = chancesAtaque.get(random.nextInt(100));
+
+		}
+
 		((Button) botoneraAcciones.getChildren().get(ataqueElegido)).fire();
 
 	}
@@ -135,7 +145,42 @@ public class Computadora extends Jugador {
 	@Override
 	public void elegirElemento(BotoneraAcciones botoneraAcciones) {
 
+		int elementoElegido;
 
+		AlgoMon algoMon = this.getAlgoMonActivo();
+
+		Estado estadoAlgomon = algoMon.getEstado();
+
+		double porcentajeVidaAlgomon = (algoMon.getVida() * 100) / algoMon.getVidaMaxima();
+
+		if ((estadoAlgomon instanceof Dormido) &&
+				(this.mochila.getCantidadRestanteElemento(NombreElemento.RESTAURADOR) > 0)) {
+
+			elementoElegido = 2;
+
+		} else if ((porcentajeVidaAlgomon < 50) &&
+				(this.mochila.getCantidadRestanteElemento(NombreElemento.SUPERPOCION) > 0)) {
+
+			elementoElegido = 1;
+
+		} else if ((porcentajeVidaAlgomon < 50) &&
+				(this.mochila.getCantidadRestanteElemento(NombreElemento.POCION) > 0)) {
+
+			elementoElegido = 0;
+
+		} else if (this.mochila.getCantidadRestanteElemento(NombreElemento.VITAMINA) > 0) {
+
+			elementoElegido = 3;
+
+		} else {							// Si no hay más elementos
+
+			this.mochila = new Mochila();	// Puede hacer trampa :)
+
+			elementoElegido = 2;			// Fair and balanced
+
+		}
+
+		((Button) botoneraAcciones.getChildren().get(elementoElegido)).fire();
 
 	}
 

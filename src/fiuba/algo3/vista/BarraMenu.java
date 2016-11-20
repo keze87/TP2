@@ -48,6 +48,8 @@ public class BarraMenu extends MenuBar {
 			@Override
 			public void handle(ActionEvent arg0) {
 
+				juego = new Juego();
+
 				stage.setScene(new MenuPrincipal(stage, juego));
 
 			}

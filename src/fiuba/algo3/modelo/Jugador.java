@@ -18,7 +18,7 @@ public class Jugador {
 	protected int capacidadEquipo = 3;
 	private List<AlgoMon> equipo;
 	private AlgoMon algoMonActivo;
-	private Mochila mochila;
+	protected Mochila mochila;
 
 	public Jugador() {
 		this.equipo = new ArrayList<AlgoMon>();
@@ -127,7 +127,7 @@ public class Jugador {
 		return false;
 	}
 
-	//Tengo que hacer una interfaz
+	// Computadora redefine
 	public void jugar(Button botonAtacar, Button botonMochila) {}
 	public void elegirAtaque(BotoneraAcciones botoneraAcciones) {}
 	public void elegirElemento(BotoneraAcciones botoneraAcciones) {}
