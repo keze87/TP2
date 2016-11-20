@@ -43,6 +43,9 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 	@Override
 	protected void agregarElementos() {
 		super.agregarElementos();
+
+		Sonido.get("Pokemon_Opening.mp3").stop();
+
 		this.juego.inicializar();
 		this.layoutBatalla = new GridPane();
 		this.contenedorInferior = new HBox();

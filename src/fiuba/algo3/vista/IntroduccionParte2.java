@@ -34,7 +34,6 @@ public class IntroduccionParte2 extends EscenaJuegoAlgoMon {
 
 		StackPane layoutConImagenColor = new StackPane();
 		BorderPane layout = new BorderPane();
-		String rutaSonido = "src/fiuba/algo3/vista/Sonidos/";
 
 		Pane color = new Pane();
 		color.getStyleClass().add("intro2");
@@ -53,7 +52,7 @@ public class IntroduccionParte2 extends EscenaJuegoAlgoMon {
 		FadeTransition desvanecer = Animaciones.animacionDesvanecer(layoutConImagenColor);
 		FadeTransition aparecer = Animaciones.animacionAparecer(layoutConImagenColor);
 
-		Media archivo = new Media(new File(rutaSonido + "RattataMR.mp3").toURI().toString());
+		Media archivo = new Media(new File(Sonido.rutaSonido + "RattataMR.mp3").toURI().toString());
 		MediaPlayer rattataSound = new MediaPlayer(archivo);
 
 		aparecer.setOnFinished(

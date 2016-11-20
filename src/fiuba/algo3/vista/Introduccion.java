@@ -36,7 +36,6 @@ public class Introduccion extends EscenaJuegoAlgoMon {
 		ImageView question = new ImageView(ruta + "Question.png");
 		ImageView yup = new ImageView(ruta + "Yup.png");
 		ImageView nope = new ImageView(ruta + "Nope.png");
-		String rutaSonido = "src/fiuba/algo3/vista/Sonidos/";
 		Media archivo;
 
 		fila.setAlignment(Pos.CENTER);
@@ -66,9 +65,9 @@ public class Introduccion extends EscenaJuegoAlgoMon {
 		FadeTransition aparecerYAlFinalAgregarTick = Animaciones.animacionAparecer(layout);
 		FadeTransition desvanecerYCambiarAParte2 = Animaciones.animacionDesvanecer(layout);
 
-		MediaPlayer wrong = new MediaPlayer(new Media(new File(rutaSonido + "Wrong.mp3").toURI().toString()));
+		MediaPlayer wrong = new MediaPlayer(new Media(new File(Sonido.rutaSonido + "Wrong.mp3").toURI().toString()));
 
-		archivo = new Media(new File(rutaSonido + "Pikachu.mp3").toURI().toString());
+		archivo = new Media(new File(Sonido.rutaSonido + "Pikachu.mp3").toURI().toString());
 		MediaPlayer pikachu = new MediaPlayer(archivo);
 
 		aparecerPikachuYAlFinalAgregarCruz.setOnFinished(
@@ -118,7 +117,7 @@ public class Introduccion extends EscenaJuegoAlgoMon {
 				}
 				);
 
-		archivo = new Media(new File(rutaSonido + "Gengar.mp3").toURI().toString());
+		archivo = new Media(new File(Sonido.rutaSonido + "Gengar.mp3").toURI().toString());
 		MediaPlayer gengar = new MediaPlayer(archivo);
 
 		aparecerYAlFinalAgregarCruzYCambiarARattata.setOnFinished(
@@ -169,10 +168,10 @@ public class Introduccion extends EscenaJuegoAlgoMon {
 				}
 				);
 
-		archivo = new Media(new File(rutaSonido + "Rattata.mp3").toURI().toString());
+		archivo = new Media(new File(Sonido.rutaSonido + "Rattata.mp3").toURI().toString());
 		MediaPlayer rattata = new MediaPlayer(archivo);
 
-		MediaPlayer tick = new MediaPlayer(new Media(new File(rutaSonido + "Tick.mp3").toURI().toString()));
+		MediaPlayer tick = new MediaPlayer(new Media(new File(Sonido.rutaSonido + "Tick.mp3").toURI().toString()));
 
 		aparecerYAlFinalAgregarTick.setOnFinished(
 				new EventHandler<ActionEvent>() {
@@ -235,6 +234,10 @@ public class Introduccion extends EscenaJuegoAlgoMon {
 						desvanecerYAgregarRattata.stop();
 						aparecerYAlFinalAgregarTick.stop();
 						desvanecerYCambiarAParte2.stop();
+
+						pikachu.stop();
+						gengar.stop();
+						rattata.stop();
 
 						stage.setScene(new MenuPrincipal(stage, new Juego())); // Al presionar tecla, avanza
 
