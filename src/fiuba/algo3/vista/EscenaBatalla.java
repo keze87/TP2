@@ -99,6 +99,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 
 			@Override
 			public void handle(ActionEvent arg0) {
+				Sonido.getSeek("BotonPresionado.wav").play();
 				mostrarBotoneraAtaques();
 			}
 
@@ -110,6 +111,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 
 			@Override
 			public void handle(ActionEvent arg0) {
+				Sonido.getSeek("BotonPresionado.wav").play();
 				mostrarBotoneraMochila();
 			}
 
@@ -121,6 +123,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 
 			@Override
 			public void handle(ActionEvent arg0) {
+				Sonido.getSeek("BotonPresionado.wav").play();
 				mostrarBotoneraCambiar(juego.getJugadorActivo());
 			}
 
@@ -167,6 +170,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 
 				@Override
 				public void handle(ActionEvent arg0) {
+					Sonido.getSeek("BotonPresionado.wav").play();
 
 					try {
 
@@ -219,6 +223,8 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 
 				@Override
 				public void handle(ActionEvent arg0) {
+					Sonido.getSeek("BotonPresionado.wav").play();
+
 					try {
 						Consola.mostrarMensaje("¡" + juego.getJugadorActivo().getAlgoMonActivo().getNombre() + " recibió " + nombreElemento.getNombre() + "!");
 						juego.jugadorActivoUsaElemento(nombreElemento);
@@ -268,6 +274,8 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 
 				@Override
 				public void handle(ActionEvent arg0) {
+					Sonido.getSeek("BotonPresionado.wav").play();
+
 					try {
 						juego.cambiarAlgoMonActivoJugadorActivo(algoMonActual);
 						displays.get(jugador).actualizarParaAlgoMonNuevo(algoMonActual);
@@ -314,6 +322,8 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 
 				@Override
 				public void handle(ActionEvent arg0) {
+					Sonido.getSeek("BotonPresionado.wav").play();
+
 					try {
 						jugador.cambiarAlgoMonActivo(algoMonActual);
 						displays.get(jugador).actualizarParaAlgoMonNuevo(algoMonActual);
@@ -336,6 +346,8 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 
 			@Override
 			public void handle(ActionEvent arg0) {
+				Sonido.getSeek("BotonPresionado.wav").play();
+
 				if(Consola.quedanMensajesEnLaCola()) {
 					Consola.mostrarMensajeSiguiente();
 				}
@@ -365,6 +377,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 
 			@Override
 			public void handle(ActionEvent event) {
+				Sonido.getSeek("BotonPresionado.wav").play();
 				mostrarBotoneraAcciones();
 			}
 

@@ -42,6 +42,7 @@ public class Sonido {
 	private static void inicializar(){
 
 		Sonido.agregar("Ataque rápido.wav");
+		Sonido.agregar("BotonPresionado.wav");
 		Sonido.agregar("Brasas.wav");
 		Sonido.agregar("Burbuja.wav");
 		Sonido.agregar("Cañón de agua.wav");

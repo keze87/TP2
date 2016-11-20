@@ -38,6 +38,7 @@ public class BotonElegirAlgoMon extends BotonAlgoMon {
 
 			@Override
 			public void handle(ActionEvent event) {
+				Sonido.getSeek("BotonPresionado.wav").play();
 
 				if(jugador.tieneAlgoMonEnEquipo(algoMon)) {
 					jugador.sacarAlgoMonDelEquipo(algoMon);
