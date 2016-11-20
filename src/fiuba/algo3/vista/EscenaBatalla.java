@@ -84,7 +84,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 		this.layoutBatalla.add(displayAlgoMonPrimerPlano, 0, 1);
 
 		displayAlgoMonPrimerPlano.setAlignment(Pos.CENTER_RIGHT);
-		displayAlgoMonSegundoPlano.setAlignment(Pos.CENTER_LEFT);
+		displayAlgoMonSegundoPlano.setAlignment(Pos.BOTTOM_LEFT);
 	}
 
 	private void mostrarBotoneraAcciones() {
@@ -215,6 +215,8 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 					} catch(VidaCompleta e) {
 						Consola.mostrarMensaje(e.getMessage());
 					} catch(AlgoMonRecibeDañoQuemadura e) {
+						Consola.encolarMensaje(e.getMessage());
+					} catch(AlgoMonMurioPorQuemadura e) {
 						Consola.encolarMensaje(e.getMessage());
 					}
 

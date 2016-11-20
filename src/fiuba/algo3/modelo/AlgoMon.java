@@ -85,6 +85,9 @@ public class AlgoMon {
 
 		} catch(NullPointerException e) {
 			throw new AlgoMonNoTieneAtaque(this.nombre + " no puede usar " + nombreAtaque.toString() + "!");
+		} catch(AlgoMonMurio e) {
+			this.estado.accionRealizada();
+			throw e;
 		}
 	}
 
