@@ -1,12 +1,13 @@
 package src.fiuba.algo3.vista;
 
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.HPos;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -14,6 +15,7 @@ import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 import src.fiuba.algo3.modelo.AlgoMon;
 import src.fiuba.algo3.modelo.Juego;
+import src.fiuba.algo3.modelo.Jugador;
 import src.fiuba.algo3.modelo.ataques.NombreAtaque;
 import src.fiuba.algo3.modelo.elementos.NombreElemento;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonActivoMurio;
@@ -26,18 +28,13 @@ import src.fiuba.algo3.modelo.excepciones.VidaCompleta;
 public class EscenaBatalla extends EscenaJuegoAlgoMon {
 
 	private GridPane layoutBatalla;
-	private DisplayAlgoMon displayAlgoMonActivo;
-	private DisplayAlgoMon displayAlgoMonContrincante;
+	private Map<Jugador, DisplayAlgoMon> displays;
 	private HBox contenedorInferior;
 	private BotoneraAcciones botoneraAcciones;
 	private Button botonVolver;
 
 	public EscenaBatalla(Stage stage, Juego juego) {
 		super(stage, juego);
-	}
-
-	private enum PosAlgomon {
-		FRENTE, ESPALDA;
 	}
 
 	@Override
@@ -48,9 +45,6 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 		this.contenedorInferior = new HBox();
 		this.botoneraAcciones = new BotoneraAcciones();
 		this.crearBotonVolver();
-
-		this.actualizarImagenAlgoMon(this.juego.getJugadorActivo().getAlgoMonActivo(), PosAlgomon.ESPALDA);
-		this.actualizarImagenAlgoMon(this.juego.getContrincante().getAlgoMonActivo(), PosAlgomon.FRENTE);
 
 		Consola.agregarAContendedor(this.contenedorInferior);
 
@@ -77,51 +71,19 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 		this.setRoot(this.layout);
 	}
 
-	private void actualizarImagenAlgoMon(AlgoMon algoMon, PosAlgomon posAlgomon) {
-
-		String nombreImagen;
-		int size;
-		int columna;
-		int fila;
-
-		if (posAlgomon == PosAlgomon.FRENTE) {
-
-			nombreImagen = algoMon.getNombre();
-
-			size = 2;
-
-			columna = 1;
-			fila = 0;
-
-		} else {
-
-			nombreImagen = algoMon.getNombre() + "_espalda";
-
-			size = 3;
-
-			columna = 0;
-			fila = 1;
-
-		}
-
-		ImageView imagen = ContenedorImagenes.getImageView(nombreImagen);
-
-		imagen.setScaleX(size);
-		imagen.setScaleY(size);
-
-		this.layoutBatalla.add(imagen, columna, fila);
-		GridPane.setHalignment(imagen, HPos.CENTER);
-	}
-
 	private void agregarDisplaysAlgoMon() {
-		this.displayAlgoMonActivo = new DisplayAlgoMon(juego.getJugadorActivo().getAlgoMonActivo());
-		this.displayAlgoMonContrincante = new DisplayAlgoMon(juego.getContrincante().getAlgoMonActivo());
+		DisplayAlgoMon displayAlgoMonPrimerPlano = new DisplayAlgoMonPrimerPlano(juego.getJugador1().getAlgoMonActivo());
+		DisplayAlgoMon displayAlgoMonSegundoPlano = new DisplayAlgoMonSegundoPlano(juego.getJugador2().getAlgoMonActivo());
 
-		this.layoutBatalla.add(this.displayAlgoMonContrincante, 0, 0);
-		this.layoutBatalla.add(this.displayAlgoMonActivo, 1, 1);
+		this.displays = new HashMap<Jugador, DisplayAlgoMon>();
+		this.displays.put(this.juego.getJugador1(), displayAlgoMonPrimerPlano);
+		this.displays.put(this.juego.getJugador2(), displayAlgoMonSegundoPlano);
 
-		GridPane.setHalignment(this.displayAlgoMonContrincante, HPos.RIGHT);
-		GridPane.setHalignment(this.displayAlgoMonActivo, HPos.LEFT);
+		this.layoutBatalla.add(displayAlgoMonSegundoPlano, 1, 0);
+		this.layoutBatalla.add(displayAlgoMonPrimerPlano, 0, 1);
+
+		displayAlgoMonPrimerPlano.setAlignment(Pos.CENTER_RIGHT);
+		displayAlgoMonSegundoPlano.setAlignment(Pos.CENTER_LEFT);
 	}
 
 	private void mostrarBotoneraAcciones() {
@@ -207,8 +169,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 						}
 					}
 
-					displayAlgoMonActivo.actualizar();
-					displayAlgoMonContrincante.actualizar();
+					actualizarDisplays();
 					mostrarBotonOK();
 				}
 
@@ -252,8 +213,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 						Consola.mostrarMensaje(e.getMessage());
 					}
 
-					displayAlgoMonActivo.actualizar();
-					displayAlgoMonContrincante.actualizar();
+					actualizarDisplays();
 					mostrarBotonOK();
 				}
 
@@ -288,8 +248,14 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 		this.botoneraAcciones.add(botonOK);
 	}
 
+	private void actualizarDisplays() {
+		for(DisplayAlgoMon display : this.displays.values()) {
+			display.actualizarInformacion();
+		}
+	}
+
 	private void actualizarDisplayParaAlgoMonNuevo(DisplayAlgoMon display, AlgoMon algoMon) {
-		display.actualizar(algoMon);
+		display.actualizarParaAlgoMonNuevo(algoMon);
 	}
 
 	private void crearBotonVolver() {
