@@ -18,7 +18,7 @@ public abstract class StockElemento {
 	 */
 	public Elemento getElemento() {
 		if(!this.validarExistencia()) {
-			throw new StockAgotado("No queda más stock de este elemento!");
+			throw new StockAgotado("¡No queda más stock de este elemento!");
 		}
 
 		this.cantidadRestante--;

@@ -24,6 +24,7 @@ import src.fiuba.algo3.modelo.excepciones.AlgoMonMurioPorQuemadura;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonRecibeDañoQuemadura;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonSeDurmio;
 import src.fiuba.algo3.modelo.excepciones.AtaqueAgotado;
+import src.fiuba.algo3.modelo.excepciones.StockAgotado;
 import src.fiuba.algo3.modelo.excepciones.VidaCompleta;
 
 public class EscenaBatalla extends EscenaJuegoAlgoMon {
@@ -170,6 +171,9 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 						Consola.encolarMensaje(e.getMessage());
 					}*/ catch(AlgoMonMurio | AlgoMonMurioPorQuemadura e) {
 						Consola.encolarMensaje(e.getMessage());
+
+
+
 					}
 
 					actualizarDisplays();
@@ -218,6 +222,8 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 						Consola.encolarMensaje(e.getMessage());
 					} catch(AlgoMonMurioPorQuemadura e) {
 						Consola.encolarMensaje(e.getMessage());
+					} catch(StockAgotado e) {
+						Consola.mostrarMensaje(e.getMessage());
 					}
 
 					actualizarDisplays();

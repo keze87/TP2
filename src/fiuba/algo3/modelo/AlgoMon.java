@@ -88,6 +88,10 @@ public class AlgoMon {
 		} catch(AlgoMonMurio e) {
 			this.estado.accionRealizada();
 			throw e;
+		} catch(AlgoMonRecibeDañoQuemadura e) {
+			throw new AlgoMonRecibeDañoQuemadura("¡" + this.nombre + " recibe daño de la quemadura!");
+		} catch(AlgoMonMurioPorQuemadura e) {
+			throw new AlgoMonMurioPorQuemadura("¡" + this.nombre + " murió a causa de la quemadura!");
 		}
 	}
 
@@ -114,7 +118,7 @@ public class AlgoMon {
 		} catch (AlgoMonRecibeDañoQuemadura e) {
 			throw new AlgoMonRecibeDañoQuemadura("¡" + this.nombre + " recibe daño de la quemadura!");
 		} catch(AlgoMonMurioPorQuemadura e) {
-			throw e;
+			throw new AlgoMonMurioPorQuemadura("¡" + this.nombre + " murió a causa de la quemadura!");
 		}
 	}
 
