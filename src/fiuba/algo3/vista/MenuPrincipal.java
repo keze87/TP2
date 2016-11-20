@@ -1,7 +1,5 @@
 package src.fiuba.algo3.vista;
 
-import java.io.File;
-
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -13,7 +11,6 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -31,8 +28,7 @@ public class MenuPrincipal extends EscenaJuegoAlgoMon {
 
 		HBox botonera = new HBox(20);
 
-		Media sonido = new Media(new File("src/fiuba/algo3/vista/Sonidos/Pokemon_Opening.mp3").toURI().toString());
-		MediaPlayer mediaPlayer = new MediaPlayer(sonido);
+		MediaPlayer mediaPlayer = Sonido.getSeek("Pokemon_Opening.mp3");
 		mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
 		mediaPlayer.play();
 
@@ -57,9 +53,7 @@ public class MenuPrincipal extends EscenaJuegoAlgoMon {
 
 			@Override
 			public void handle(ActionEvent event) {
-				Sonido.click.play();
-				Sonido.click.seek(Duration.ZERO);
-				mediaPlayer.stop();
+				Sonido.getSeek("click.mp3").play();
 				stage.setScene(new ElegirEquipoJugador1(stage, juego, 1));
 			}
 
@@ -69,9 +63,7 @@ public class MenuPrincipal extends EscenaJuegoAlgoMon {
 
 			@Override
 			public void handle(ActionEvent event) {
-				Sonido.click.play();
-				Sonido.click.seek(Duration.ZERO);
-				mediaPlayer.stop();
+				Sonido.getSeek("click.mp3").play();
 				stage.setScene(new ElegirEquipoJugador1(stage, juego, 2));
 			}
 

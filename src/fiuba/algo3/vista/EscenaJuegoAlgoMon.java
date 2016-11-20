@@ -23,7 +23,6 @@ public abstract class EscenaJuegoAlgoMon extends Scene {
 		this.layout = new BorderPane();
 		this.juego = juego;
 		this.agregarElementos();
-		Sonido sonidos = new Sonido();
 	}
 
 	/* Agrega los elementos correspondientes a la escena. */

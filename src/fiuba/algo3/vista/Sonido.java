@@ -1,25 +1,67 @@
-
 package src.fiuba.algo3.vista;
 
 import java.io.File;
+import java.util.HashMap;
 
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 
 public class Sonido {
-	public static MediaPlayer click;
-	private String rutaSonido = "src/fiuba/algo3/vista/Sonidos/";
 
-	public Sonido(){
-		click = setSonido("click.mp3");
+	static String rutaSonido = "src/fiuba/algo3/vista/Sonidos/";
+
+	private static HashMap<String, MediaPlayer> sonidos = new HashMap<>();
+
+	public static MediaPlayer getSeek(String nombreArchivo) {
+
+		MediaPlayer retorno = Sonido.get(nombreArchivo);
+
+		retorno.seek(Duration.ZERO);
+
+		return retorno;
+
 	}
 
-	/*Crea y devuelve un sonido*/
-	private MediaPlayer setSonido(String nombreSonido) {
-		Media sonido = new Media(new File(rutaSonido + nombreSonido).toURI().toString());
-		MediaPlayer mediaPlayer = new MediaPlayer(sonido);
-		return mediaPlayer;
+	public static MediaPlayer get(String nombreArchivo) {
+
+		if (sonidos.size() == 0) {
+			Sonido.inicializar();
+		}
+
+		MediaPlayer retorno = sonidos.get(nombreArchivo);
+
+		if (retorno == null) {
+			retorno = Sonido.get("Wrong.mp3");
+		}
+
+		return retorno;
+
 	}
 
+	private static void inicializar(){
+
+		Sonido.agregar("AtaqueRapido.wav");
+		Sonido.agregar("Brasas.wav");
+		Sonido.agregar("Burbuja.wav");
+		Sonido.agregar("CanionAgua.wav");
+		Sonido.agregar("Canto.wav");
+		Sonido.agregar("Chupavidas.wav");
+		Sonido.agregar("click.mp3");
+		Sonido.agregar("Fogonazo.wav");
+		Sonido.agregar("LatigoCepa.wav");
+		Sonido.agregar("Maldicion.wav");
+		Sonido.agregar("Pokemon_Opening.mp3");
+		Sonido.agregar("Wrong.mp3");
+
+	}
+
+	private static void agregar(String key) {
+
+		String nombreArchivo = rutaSonido + key;
+		Media media = new Media(new File(nombreArchivo).toURI().toString());
+		sonidos.put(key, new MediaPlayer(media));
+
+	}
 
 }

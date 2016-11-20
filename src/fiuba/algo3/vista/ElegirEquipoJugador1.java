@@ -3,7 +3,6 @@ package src.fiuba.algo3.vista;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import src.fiuba.algo3.modelo.Juego;
 
 public class ElegirEquipoJugador1 extends ElegirEquipo {
@@ -28,8 +27,7 @@ public class ElegirEquipoJugador1 extends ElegirEquipo {
 
 			@Override
 			public void handle(ActionEvent arg0) {
-				Sonido.click.play();
-				Sonido.click.seek(Duration.ZERO);
+				Sonido.getSeek("click.mp3").play();
 				if(!jugador.equipoEstaCompleto()) {
 					Consola.mostrarMensaje("El equipo no está completo!");
 				}
