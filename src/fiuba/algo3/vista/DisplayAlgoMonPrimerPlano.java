@@ -5,7 +5,7 @@ import src.fiuba.algo3.modelo.AlgoMon;
 public class DisplayAlgoMonPrimerPlano extends DisplayAlgoMon {
 
 	public DisplayAlgoMonPrimerPlano(AlgoMon algoMon) {
-		super(algoMon);
+		super(algoMon, 3);
 	}
 
 	@Override

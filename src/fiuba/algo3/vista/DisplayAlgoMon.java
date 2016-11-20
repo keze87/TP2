@@ -13,13 +13,15 @@ public abstract class DisplayAlgoMon extends HBox {
 	private Label vida;
 	protected VBox contenedorInformacion;
 	protected ImageView imagen;
+	protected int size;
 
-	public DisplayAlgoMon(AlgoMon algoMon) {
+	public DisplayAlgoMon(AlgoMon algoMon, int size) {
 		super(100f);
 		this.algoMon = algoMon;
 		this.nombre = new Label();
 		this.vida = new Label();
 		this.contenedorInformacion = new VBox();
+		this.size = size;
 		this.inicializar();
 	}
 
@@ -51,8 +53,8 @@ public abstract class DisplayAlgoMon extends HBox {
 	}
 
 	protected void actualizarImagen() {
-		this.imagen.setScaleX(3f);
-		this.imagen.setScaleY(3f);
+		this.imagen.setScaleX(size);
+		this.imagen.setScaleY(size);
 	}
 
 }

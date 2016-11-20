@@ -13,8 +13,8 @@ public class Programa extends Application {
 		Scene introduccion = new Introduccion(primaryStage, new Juego());
 		//Scene introduccion = new ElegirEquipoJugador1(primaryStage, new Juego(), 1);
 
-		primaryStage.setMaximized(true);
-		primaryStage.setFullScreen(true);
+		primaryStage.setMaximized(false);
+		primaryStage.setFullScreen(false);
 		primaryStage.setFullScreenExitKeyCombination(null);
 		primaryStage.setFullScreenExitHint("");
 
