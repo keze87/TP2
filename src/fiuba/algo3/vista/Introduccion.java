@@ -1,5 +1,7 @@
 package src.fiuba.algo3.vista;
 
+import java.io.File;
+
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -9,6 +11,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.Media;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -32,6 +36,8 @@ public class Introduccion extends EscenaJuegoAlgoMon {
 		ImageView question = new ImageView(ruta + "Question.png");
 		ImageView yup = new ImageView(ruta + "Yup.png");
 		ImageView nope = new ImageView(ruta + "Nope.png");
+		String rutaSonido = "src/fiuba/algo3/vista/Sonidos/";
+		Media archivo;
 
 		fila.setAlignment(Pos.CENTER);
 
@@ -60,15 +66,34 @@ public class Introduccion extends EscenaJuegoAlgoMon {
 		FadeTransition aparecerYAlFinalAgregarTick = Animaciones.animacionAparecer(layout);
 		FadeTransition desvanecerYCambiarAParte2 = Animaciones.animacionDesvanecer(layout);
 
+		MediaPlayer wrong = new MediaPlayer(new Media(new File(rutaSonido + "Wrong.mp3").toURI().toString()));
+
+		archivo = new Media(new File(rutaSonido + "Pikachu.mp3").toURI().toString());
+		MediaPlayer pikachu = new MediaPlayer(archivo);
+
 		aparecerPikachuYAlFinalAgregarCruz.setOnFinished(
 				new EventHandler<ActionEvent>() {
 
 					@Override
 					public void handle(ActionEvent event) {
 
-						layout.getChildren().add(nope);
+						pikachu.setOnEndOfMedia(
+								new Runnable() {
 
-						desvanecerYAgregarGengar.play();
+									@Override
+									public void run() {
+
+										layout.getChildren().add(nope);
+
+										wrong.play();
+
+										desvanecerYAgregarGengar.play();
+
+									}
+								}
+								);
+
+						pikachu.play();
 
 					}
 				}
@@ -93,15 +118,33 @@ public class Introduccion extends EscenaJuegoAlgoMon {
 				}
 				);
 
+		archivo = new Media(new File(rutaSonido + "Gengar.mp3").toURI().toString());
+		MediaPlayer gengar = new MediaPlayer(archivo);
+
 		aparecerYAlFinalAgregarCruzYCambiarARattata.setOnFinished(
 				new EventHandler<ActionEvent>() {
 
 					@Override
 					public void handle(ActionEvent event) {
 
-						layout.getChildren().add(nope);
+						gengar.setOnEndOfMedia(
+								new Runnable() {
 
-						desvanecerYAgregarRattata.play();
+									@Override
+									public void run() {
+
+										layout.getChildren().add(nope);
+
+										wrong.seek(Duration.ZERO);
+										wrong.play();
+
+										desvanecerYAgregarRattata.play();
+
+									}
+								}
+								);
+
+						gengar.play();
 
 					}
 				}
@@ -126,15 +169,34 @@ public class Introduccion extends EscenaJuegoAlgoMon {
 				}
 				);
 
+		archivo = new Media(new File(rutaSonido + "Rattata.mp3").toURI().toString());
+		MediaPlayer rattata = new MediaPlayer(archivo);
+
+		MediaPlayer tick = new MediaPlayer(new Media(new File(rutaSonido + "Tick.mp3").toURI().toString()));
+
 		aparecerYAlFinalAgregarTick.setOnFinished(
 				new EventHandler<ActionEvent>() {
 
 					@Override
 					public void handle(ActionEvent event) {
 
-						yup.setOpacity(100);
+						rattata.setOnEndOfMedia(
+								new Runnable() {
 
-						desvanecerYCambiarAParte2.play();
+									@Override
+									public void run() {
+
+										yup.setOpacity(100);
+
+										tick.play();
+
+										desvanecerYCambiarAParte2.play();
+
+									}
+								}
+								);
+
+						rattata.play();
 
 					}
 				}

@@ -1,5 +1,7 @@
 package src.fiuba.algo3.vista;
 
+import java.io.File;
+
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -12,6 +14,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -30,6 +34,7 @@ public class IntroduccionParte2 extends EscenaJuegoAlgoMon {
 
 		StackPane layoutConImagenColor = new StackPane();
 		BorderPane layout = new BorderPane();
+		String rutaSonido = "src/fiuba/algo3/vista/Sonidos/";
 
 		Pane color = new Pane();
 		color.getStyleClass().add("intro2");
@@ -48,19 +53,33 @@ public class IntroduccionParte2 extends EscenaJuegoAlgoMon {
 		FadeTransition desvanecer = Animaciones.animacionDesvanecer(layoutConImagenColor);
 		FadeTransition aparecer = Animaciones.animacionAparecer(layoutConImagenColor);
 
+		Media archivo = new Media(new File(rutaSonido + "RattataMR.mp3").toURI().toString());
+		MediaPlayer rattataSound = new MediaPlayer(archivo);
+
 		aparecer.setOnFinished(
 				new EventHandler<ActionEvent>() {
 
 					@Override
 					public void handle(ActionEvent event) {
 
-						desvanecer.play();
+						rattataSound.setOnEndOfMedia(
+								new Runnable() {
+
+									@Override
+									public void run() {
+
+										desvanecer.play();
+
+									}
+								}
+								);
+
+						rattataSound.play();
 
 					}
 				}
 				);
 
-		desvanecer.setDelay(Duration.seconds(4));
 		desvanecer.setOnFinished(
 				new EventHandler<ActionEvent>() {
 
