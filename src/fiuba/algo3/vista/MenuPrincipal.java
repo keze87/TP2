@@ -1,7 +1,5 @@
 package src.fiuba.algo3.vista;
 
-import java.io.File;
-
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -13,8 +11,6 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import src.fiuba.algo3.modelo.Juego;
@@ -48,7 +44,6 @@ public class MenuPrincipal extends EscenaJuegoAlgoMon {
 		salir.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent arg0) {
-
 				System.exit(0);
 
 			}
@@ -58,6 +53,8 @@ public class MenuPrincipal extends EscenaJuegoAlgoMon {
 
 			@Override
 			public void handle(ActionEvent event) {
+				Sonido.click.play();
+				Sonido.click.seek(Duration.ZERO);
 				stage.setScene(new ElegirEquipoJugador1(stage, juego, 1));
 			}
 
@@ -67,6 +64,8 @@ public class MenuPrincipal extends EscenaJuegoAlgoMon {
 
 			@Override
 			public void handle(ActionEvent event) {
+				Sonido.click.play();
+				Sonido.click.seek(Duration.ZERO);
 				stage.setScene(new ElegirEquipoJugador1(stage, juego, 2));
 			}
 
