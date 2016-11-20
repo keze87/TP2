@@ -17,7 +17,7 @@ public class DisplayAlgoMonPrimerPlano extends DisplayAlgoMon {
 
 	@Override
 	protected void actualizarImagen() {
-		this.imagen = ContenedorImagenes.getImageView(this.algoMon.getNombre() + "_espalda");
+		this.imagen.setImage(ContenedorImagenes.getImagen(this.algoMon.getNombre() + "_espalda"));
 		super.actualizarImagen();
 	}
 

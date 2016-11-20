@@ -21,6 +21,7 @@ public abstract class DisplayAlgoMon extends HBox {
 		this.nombre = new Label();
 		this.vida = new Label();
 		this.contenedorInformacion = new VBox();
+		this.imagen = new ImageView();
 		this.size = size;
 		this.inicializar();
 	}

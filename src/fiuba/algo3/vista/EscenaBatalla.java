@@ -3,11 +3,13 @@ package src.fiuba.algo3.vista;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Queue;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -194,6 +196,58 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 		}
 	}
 
+	private void reemplazarAlgoMonMuertos() {
+		Queue<Jugador> jugadoresConAlgoMonActivoMuerto = this.juego.getJugadoresConAlgoMonActivoMuerto();
+
+		if(!jugadoresConAlgoMonActivoMuerto.isEmpty()) {
+			this.mostrarBotoneraReemplazar(jugadoresConAlgoMonActivoMuerto.remove());
+		}
+
+		else {
+			this.mostrarBotoneraAcciones();
+		}
+	}
+
+	private void mostrarBotoneraReemplazar(Jugador jugador) {
+		Iterable<AlgoMon> algoMonInactivos = jugador.getAlgoMonInactivos();
+
+		Iterator<AlgoMon> it = algoMonInactivos.iterator();
+
+		Consola.mostrarMensaje("Elije un algoMon para reemplazar a " + jugador.getAlgoMonActivo().getNombre() + ":");
+		this.botoneraAcciones.borrarBotones();
+
+		while(it.hasNext()) {
+			AlgoMon algoMonActual = it.next();
+
+			String textoBoton = algoMonActual.getNombre() + "\n" + (int) algoMonActual.getVida() + "/" + (int) algoMonActual.getVidaMaxima();
+
+			Button boton = new Button(textoBoton);
+
+			ImageView graficoBoton = ContenedorImagenes.getImageView(algoMonActual.getNombre());
+
+			graficoBoton.setScaleX(0.5f);
+			graficoBoton.setScaleY(0.5f);
+
+			boton.setGraphic(graficoBoton);
+			boton.setOnAction(new EventHandler<ActionEvent>() {
+
+				@Override
+				public void handle(ActionEvent arg0) {
+					try {
+						jugador.cambiarAlgoMonActivo(algoMonActual);
+						displays.get(jugador).actualizarParaAlgoMonNuevo(algoMonActual);
+						reemplazarAlgoMonMuertos();
+					} catch(Exception e) {
+						Consola.mostrarMensaje(e.getMessage());
+					}
+				}
+
+			});
+
+			this.botoneraAcciones.add(boton);
+		}
+	}
+
 	private void mostrarBotoneraMochila() {
 		NombreElemento[] nombresElementos = NombreElemento.values();
 
@@ -245,6 +299,8 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 		}
 	}
 
+
+
 	private void mostrarBotoneraCambiar(Jugador jugador) {
 
 	}
@@ -261,7 +317,8 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 				}
 
 				else {
-					mostrarBotoneraAcciones();
+					//mostrarBotoneraAcciones();
+					reemplazarAlgoMonMuertos();
 				}
 			}
 

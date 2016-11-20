@@ -17,7 +17,7 @@ public class DisplayAlgoMonSegundoPlano extends DisplayAlgoMon {
 
 	@Override
 	protected void actualizarImagen() {
-		this.imagen = ContenedorImagenes.getImageView(this.algoMon.getNombre());
+		this.imagen.setImage(ContenedorImagenes.getImagen(this.algoMon.getNombre()));
 		super.actualizarImagen();
 	}
 

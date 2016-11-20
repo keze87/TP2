@@ -1,7 +1,9 @@
 package src.fiuba.algo3.modelo;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.Random;
 
 import src.fiuba.algo3.modelo.ataques.NombreAtaque;
@@ -104,6 +106,18 @@ public class Juego {
 		this.jugadores.remove(1);
 		this.jugadores.add(new Computadora());
 
+	}
+
+	public Queue<Jugador> getJugadoresConAlgoMonActivoMuerto() {
+		Queue<Jugador> jugadoresConAlgoMonActivoMuerto = new LinkedList<Jugador>();
+
+		for(Jugador jugador : this.jugadores) {
+			if(!jugador.getAlgoMonActivo().estaVivo()) {
+				jugadoresConAlgoMonActivoMuerto.add(jugador);
+			}
+		}
+
+		return jugadoresConAlgoMonActivoMuerto;
 	}
 
 }
