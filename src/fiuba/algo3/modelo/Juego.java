@@ -74,6 +74,7 @@ public class Juego {
 	public void jugadorActivoUsaElemento(NombreElemento nombreElemento) {
 		try {
 			this.getJugadorActivo().usarElemento(nombreElemento);
+			this.finTurno();
 		} catch(StockAgotado e) {
 			throw e;
 		} catch(Exception e) {
