@@ -1,6 +1,6 @@
 package src.fiuba.algo3.vista;
 
-import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -30,16 +30,16 @@ public abstract class DisplayAlgoMon extends HBox {
 		this.actualizarInformacion();
 		this.actualizarImagen();
 
-		this.nombre.setPadding(new Insets(0f, 0f, 0f, 10f));
+		this.nombre.setAlignment(Pos.CENTER);
 		this.nombre.getStyleClass().add("texto-display-algoMon");
 
-		this.vida.setPadding(new Insets(0f, 0f, 0f, 10f));
+		this.nombre.setAlignment(Pos.CENTER);
 		this.vida.getStyleClass().add("texto-display-algoMon");
 
 		this.contenedorInformacion.getStyleClass().add("display-algoMon");
 		this.contenedorInformacion.getChildren().add(this.nombre);
 		this.contenedorInformacion.getChildren().add(this.vida);
-		this.contenedorInformacion.setMaxSize(120f, 80f);
+		this.contenedorInformacion.setMaxSize(200f, 80f);
 	}
 
 	public void actualizarInformacion() {
