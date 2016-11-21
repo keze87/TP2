@@ -65,7 +65,7 @@ public class Introduccion extends EscenaJuegoAlgoMon {
 		FadeTransition aparecerYAlFinalAgregarTick = Animaciones.animacionAparecer(layout);
 		FadeTransition desvanecerYCambiarAParte2 = Animaciones.animacionDesvanecer(layout);
 
-		MediaPlayer wrong = Sonido.getSeek("Wrong.mp3");
+		MediaPlayer wrong = Sonido.get("Wrong.mp3");
 
 		archivo = new Media(new File(Sonido.rutaSonido + "Pikachu.mp3").toURI().toString());
 		MediaPlayer pikachu = new MediaPlayer(archivo);
