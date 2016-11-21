@@ -123,4 +123,8 @@ public class Juego {
 		return jugadoresConAlgoMonActivoMuerto;
 	}
 
+	public boolean hayGanador() {
+		return !(this.jugadores.get(0).puedeSeguirJugando() && this.jugadores.get(1).puedeSeguirJugando());
+	}
+
 }

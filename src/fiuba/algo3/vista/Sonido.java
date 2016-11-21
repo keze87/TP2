@@ -29,6 +29,7 @@ public class Sonido {
 		Sonido.agregar("RecibirElemento.wav");
 		Sonido.agregar("Wrong.mp3");
 		Sonido.agregar("Pokemon_Battle.mp3");
+		Sonido.agregar("Victoria.mp3");
 
 	}
 

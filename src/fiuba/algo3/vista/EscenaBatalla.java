@@ -183,8 +183,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 						Consola.mostrarMensaje(e.getMessage());
 					} catch(AlgoMonSeDurmio e){
 						Consola.encolarMensaje(e.getMessage());
-					}
-					catch(AlgoMonRecibeDañoQuemadura e) {
+					} catch(AlgoMonRecibeDañoQuemadura e) {
 						Sonido.play(nombreAtaqueActual.toString() + ".wav");
 						Consola.encolarMensaje(e.getMessage());
 					} catch(AlgoMonMurio | AlgoMonMurioPorQuemadura e) {
@@ -359,6 +358,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 				}
 
 				else {
+					buscarGanador();
 					reemplazarAlgoMonMuertos();
 				}
 			}
@@ -367,6 +367,15 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 
 		this.botoneraAcciones.borrarBotones();
 		this.botoneraAcciones.add(botonOK);
+	}
+
+	private void buscarGanador() {
+		if(this.juego.hayGanador()) {
+			this.botoneraAcciones.setVisible(false);
+			Sonido.stop("Pokemon_Battle.mp3");
+			Sonido.play("Victoria.mp3");
+			Consola.mostrarMensaje("¡Fin del juego!");
+		}
 	}
 
 	private void actualizarDisplays() {
