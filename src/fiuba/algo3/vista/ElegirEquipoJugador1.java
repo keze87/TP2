@@ -28,15 +28,20 @@ public class ElegirEquipoJugador1 extends ElegirEquipo {
 			@Override
 			public void handle(ActionEvent arg0) {
 				Sonido.getSeek("click.mp3").play();
+
 				if(!jugador.equipoEstaCompleto()) {
 					Consola.mostrarMensaje("El equipo no está completo!");
 				}
 
-				if (jugadores == 2) {
-					stage.setScene(new ElegirEquipoJugador2(stage, juego));
-				} else {
-					juego.crearComputadora();
-					stage.setScene(new EscenaBatalla(stage, juego));
+				else {
+					if (jugadores == 2) {
+						stage.setScene(new ElegirEquipoJugador2(stage, juego));
+					}
+
+					else {
+						juego.crearComputadora();
+						stage.setScene(new EscenaBatalla(stage, juego));
+					}
 				}
 			}
 
