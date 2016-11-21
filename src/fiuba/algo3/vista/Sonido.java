@@ -26,6 +26,7 @@ public class Sonido {
 		Sonido.agregar("Látigo cepa.wav");
 		Sonido.agregar("Maldicion.wav");
 		Sonido.agregar("Pokemon_Opening.mp3");
+		Sonido.agregar("RecibirElemento.wav");
 		Sonido.agregar("Wrong.mp3");
 		Sonido.agregar("Pokemon_Battle.mp3");
 
@@ -73,7 +74,6 @@ public class Sonido {
 
 	}
 
-<<<<<<< HEAD
 	private static void inicializar(){
 
 		Sonido.agregar("Ataque rápido.wav");
@@ -94,8 +94,6 @@ public class Sonido {
 
 	}
 
-=======
->>>>>>> bbbe8f023eb9aa78b473ab5f1c5ebbf3c625df52
 	private static void agregar(String key) {
 
 		String nombreArchivo = rutaSonido + key;
