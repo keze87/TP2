@@ -183,7 +183,12 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 					} catch(AlgoMonRecibeDañoQuemadura e) {
 						Sonido.play(nombreAtaqueActual.toString() + ".wav");
 						Consola.encolarMensaje(e.getMessage());
+<<<<<<< HEAD
 					} catch(AlgoMonMurio e) {
+=======
+					} catch(AlgoMonMurio | AlgoMonMurioPorQuemadura e) {
+						Sonido.play(nombreAtaqueActual.toString() + ".wav");
+>>>>>>> 169d887942ac6f166ce61c239421b4d6f5237bfe
 						Consola.encolarMensaje(e.getMessage());
 					} catch(AlgoMonMurioPorQuemadura e) {
 						/* El algoMon atacado también murió. */
