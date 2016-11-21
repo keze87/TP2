@@ -1,6 +1,7 @@
 package src.fiuba.algo3.modelo;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -147,7 +148,18 @@ public class AlgoMon {
 	}
 
 	public List<NombreAtaque> getNombresAtaques() {
-		return new ArrayList<NombreAtaque>(this.ataques.keySet());
+		List<NombreAtaque> nombresAtaques = new ArrayList<NombreAtaque>(this.ataques.keySet());
+
+		nombresAtaques.sort(new Comparator<NombreAtaque>() {
+
+			@Override
+			public int compare(NombreAtaque a, NombreAtaque b) {
+				return a.toString().compareTo(b.toString());
+			}
+
+		});
+
+		return nombresAtaques;
 	}
 
 	public int getUsosRestantesAtaque(NombreAtaque nombre) {
