@@ -233,6 +233,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 					try {
 						Consola.mostrarMensaje("¡" + juego.getJugadorActivo().getAlgoMonActivo().getNombre() + " recibió " + nombreElemento.getNombre() + "!");
 						juego.jugadorActivoUsaElemento(nombreElemento);
+						Sonido.getSeek("RecibirElemento.wav").play();
 					} catch(VidaCompleta e) {
 						Consola.mostrarMensaje(e.getMessage());
 					} catch(AlgoMonRecibeDañoQuemadura e) {
