@@ -10,24 +10,58 @@ import javafx.util.Duration;
 public class Sonido {
 
 	static String rutaSonido = "src/fiuba/algo3/vista/Sonidos/";
-
 	private static HashMap<String, MediaPlayer> sonidos = new HashMap<>();
 
-	public static MediaPlayer getSeek(String nombreArchivo) {
+	static {
+
+		Sonido.agregar("Ataque rápido.wav");
+		Sonido.agregar("BotonPresionado.wav");
+		Sonido.agregar("Brasas.wav");
+		Sonido.agregar("Burbuja.wav");
+		Sonido.agregar("Cañón de agua.wav");
+		Sonido.agregar("Canto.wav");
+		Sonido.agregar("Chupavidas.wav");
+		Sonido.agregar("click.mp3");
+		Sonido.agregar("Fogonazo.wav");
+		Sonido.agregar("Látigo cepa.wav");
+		Sonido.agregar("Maldicion.wav");
+		Sonido.agregar("Pokemon_Opening.mp3");
+		Sonido.agregar("Wrong.mp3");
+		Sonido.agregar("Pokemon_Battle.mp3");
+
+	}
+
+	public static void play(String nombreArchivo) {
 
 		MediaPlayer retorno = Sonido.get(nombreArchivo);
 
 		retorno.seek(Duration.ZERO);
 
-		return retorno;
+		retorno.play();
+
+	}
+
+	public static void play(String nombreArchivo, double volumen) {
+
+		MediaPlayer retorno = Sonido.get(nombreArchivo);
+
+		retorno.seek(Duration.ZERO);
+
+		retorno.setVolume(volumen);
+
+		retorno.play();
+
+	}
+
+	public static void stop(String nombreArchivo) {
+
+		MediaPlayer retorno = Sonido.get(nombreArchivo);
+
+		retorno.stop();
 
 	}
 
 	public static MediaPlayer get(String nombreArchivo) {
-
-		if (sonidos.size() == 0) {
-			Sonido.inicializar();
-		}
 
 		MediaPlayer retorno = sonidos.get(nombreArchivo);
 
@@ -39,6 +73,7 @@ public class Sonido {
 
 	}
 
+<<<<<<< HEAD
 	private static void inicializar(){
 
 		Sonido.agregar("Ataque rápido.wav");
@@ -59,6 +94,8 @@ public class Sonido {
 
 	}
 
+=======
+>>>>>>> bbbe8f023eb9aa78b473ab5f1c5ebbf3c625df52
 	private static void agregar(String key) {
 
 		String nombreArchivo = rutaSonido + key;

@@ -28,7 +28,7 @@ public class MenuPrincipal extends EscenaJuegoAlgoMon {
 
 		HBox botonera = new HBox(20);
 
-		MediaPlayer mediaPlayer = Sonido.getSeek("Pokemon_Opening.mp3");
+		MediaPlayer mediaPlayer = Sonido.get("Pokemon_Opening.mp3");
 		mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
 		mediaPlayer.play();
 
@@ -53,7 +53,7 @@ public class MenuPrincipal extends EscenaJuegoAlgoMon {
 
 			@Override
 			public void handle(ActionEvent event) {
-				Sonido.getSeek("click.mp3").play();
+				Sonido.play("click.mp3");
 				stage.setScene(new ElegirEquipoJugador1(stage, juego, 1));
 			}
 
@@ -63,7 +63,7 @@ public class MenuPrincipal extends EscenaJuegoAlgoMon {
 
 			@Override
 			public void handle(ActionEvent event) {
-				Sonido.getSeek("click.mp3").play();
+				Sonido.play("click.mp3");
 				stage.setScene(new ElegirEquipoJugador1(stage, juego, 2));
 			}
 
