@@ -188,6 +188,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 						Sonido.play(nombreAtaqueActual.toString() + ".wav");
 						Consola.encolarMensaje(e.getMessage());
 					} catch(AlgoMonMurio | AlgoMonMurioPorQuemadura e) {
+						Sonido.play(nombreAtaqueActual.toString() + ".wav");
 						Consola.encolarMensaje(e.getMessage());
 					}
 
