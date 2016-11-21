@@ -353,7 +353,6 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 				}
 
 				else {
-					//mostrarBotoneraAcciones();
 					reemplazarAlgoMonMuertos();
 				}
 			}
