@@ -7,8 +7,8 @@ import javafx.scene.control.Button;
 import src.fiuba.algo3.modelo.ataques.NombreAtaque;
 import src.fiuba.algo3.modelo.elementos.Elemento;
 import src.fiuba.algo3.modelo.elementos.NombreElemento;
-import src.fiuba.algo3.modelo.excepciones.AlgoMonNoExiste;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonMuerto;
+import src.fiuba.algo3.modelo.excepciones.AlgoMonNoExiste;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonYaEstaActivo;
 import src.fiuba.algo3.modelo.excepciones.EquipoCompleto;
 import src.fiuba.algo3.modelo.excepciones.NoHayAlgoMonActivo;
@@ -62,7 +62,7 @@ public class Jugador {
 
 	/* Determina si el jugador tiene algún algoMon vivo. */
 	public boolean puedeSeguirJugando() {
-		boolean hayAlgoMonVivos = true;
+		boolean hayAlgoMonVivos = false;
 
 		for(AlgoMon algoMon : this.equipo) {
 			hayAlgoMonVivos |= algoMon.estaVivo();

@@ -9,7 +9,6 @@ import java.util.Random;
 import src.fiuba.algo3.modelo.ataques.NombreAtaque;
 import src.fiuba.algo3.modelo.elementos.NombreElemento;
 import src.fiuba.algo3.modelo.excepciones.AtaqueAgotado;
-import src.fiuba.algo3.modelo.excepciones.JuegoTerminado;
 import src.fiuba.algo3.modelo.excepciones.StockAgotado;
 
 public class Juego {
@@ -89,10 +88,6 @@ public class Juego {
 	}
 
 	private void finTurno() {
-		if(!this.getContrincante().puedeSeguirJugando()) {
-			throw new JuegoTerminado("El juego terminó!");
-		}
-
 		this.cambiarJugadorActivo();
 	}
 

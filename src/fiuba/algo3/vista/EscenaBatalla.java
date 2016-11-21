@@ -25,6 +25,7 @@ import src.fiuba.algo3.modelo.excepciones.AlgoMonMurioPorQuemadura;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonRecibeDañoQuemadura;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonSeDurmio;
 import src.fiuba.algo3.modelo.excepciones.AtaqueAgotado;
+import src.fiuba.algo3.modelo.excepciones.JuegoTerminado;
 import src.fiuba.algo3.modelo.excepciones.StockAgotado;
 import src.fiuba.algo3.modelo.excepciones.VidaCompleta;
 
@@ -302,11 +303,11 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 		Queue<Jugador> jugadoresConAlgoMonActivoMuerto = this.juego.getJugadoresConAlgoMonActivoMuerto();
 
 		if(!jugadoresConAlgoMonActivoMuerto.isEmpty()) {
-			if(jugadoresConAlgoMonActivoMuerto.element().puedeSeguirJugando())
+			//if(jugadoresConAlgoMonActivoMuerto.element().puedeSeguirJugando())
 			this.mostrarBotoneraReemplazar(jugadoresConAlgoMonActivoMuerto.remove());
-			else{
-				//GANO ALGUIEN
-			};
+//			else{
+//				//GANO ALGUIEN
+//			};
 		}
 
 		else {
@@ -362,8 +363,15 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 				}
 
 				else {
-					buscarGanador();
-					reemplazarAlgoMonMuertos();
+					try {
+						buscarGanador();
+						reemplazarAlgoMonMuertos();
+					} catch(JuegoTerminado e) {
+						botoneraAcciones.setVisible(false);
+						Sonido.stop("Pokemon_Battle.mp3");
+						Sonido.play("Victoria.mp3");
+						Consola.mostrarMensaje("¡Fin del juego!");
+					}
 				}
 			}
 
@@ -375,10 +383,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 
 	private void buscarGanador() {
 		if(this.juego.hayGanador()) {
-			this.botoneraAcciones.setVisible(false);
-			Sonido.stop("Pokemon_Battle.mp3");
-			Sonido.play("Victoria.mp3");
-			Consola.mostrarMensaje("¡Fin del juego!");
+			throw new JuegoTerminado("¡El juego terminó!");
 		}
 	}
 
