@@ -83,4 +83,9 @@ public class Sonido {
 
 	}
 
+
+	public static void stopSonidos(){
+		stop("Pokemon_Battle.mp3");
+		stop("Pokemon_Opening.mp3");
+	}
 }

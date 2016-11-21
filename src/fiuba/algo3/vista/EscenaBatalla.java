@@ -302,7 +302,11 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 		Queue<Jugador> jugadoresConAlgoMonActivoMuerto = this.juego.getJugadoresConAlgoMonActivoMuerto();
 
 		if(!jugadoresConAlgoMonActivoMuerto.isEmpty()) {
+			if(jugadoresConAlgoMonActivoMuerto.element().puedeSeguirJugando())
 			this.mostrarBotoneraReemplazar(jugadoresConAlgoMonActivoMuerto.remove());
+			else{
+				//GANO ALGUIEN
+			};
 		}
 
 		else {

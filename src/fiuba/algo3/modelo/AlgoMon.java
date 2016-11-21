@@ -106,6 +106,9 @@ public class AlgoMon {
 		} catch(AlgoMonMurio e) {
 			throw new AlgoMonMurio("¡" + this.nombre + " murió!");
 		}
+			catch(AlgoMonMurioPorQuemadura e) {
+		throw new AlgoMonMurioPorQuemadura("¡" + this.nombre + " murió a causa de la quemadura!");
+		}
 	}
 
 	/**
