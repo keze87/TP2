@@ -105,9 +105,8 @@ public class AlgoMon {
 			this.estado = efecto.aplicar(this.estado);
 		} catch(AlgoMonMurio e) {
 			throw new AlgoMonMurio("¡" + this.nombre + " murió!");
-		}
-			catch(AlgoMonMurioPorQuemadura e) {
-		throw new AlgoMonMurioPorQuemadura("¡" + this.nombre + " murió a causa de la quemadura!");
+		} catch(AlgoMonMurioPorQuemadura e) {
+			throw new AlgoMonMurioPorQuemadura("¡" + this.nombre + " murió a causa de la quemadura!");
 		}
 	}
 

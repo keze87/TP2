@@ -33,7 +33,7 @@ public final class Quemado extends EstadoAlterado {
 			this.quitarVida((int) (this.vidaMaxima * Quemado.getPorcentajeVidaQuitada()));
 			throw new AlgoMonRecibeDañoQuemadura(/*"¡El algoMon recibe daño de la quemadura!"*/);
 		} catch(AlgoMonMurio e) {
-			throw new AlgoMonMurioPorQuemadura(/*"¡El algoMon murió a causa de la quemadura!"*/);
+			throw new AlgoMonMurioPorQuemadura();
 		}
 	}
 

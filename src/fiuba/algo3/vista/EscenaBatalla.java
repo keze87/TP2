@@ -23,7 +23,6 @@ import src.fiuba.algo3.modelo.excepciones.AlgoMonDormidoNoPuedeAtacar;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonMurio;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonMurioPorQuemadura;
 import src.fiuba.algo3.modelo.excepciones.AlgoMonRecibeDañoQuemadura;
-import src.fiuba.algo3.modelo.excepciones.AlgoMonSeDurmio;
 import src.fiuba.algo3.modelo.excepciones.AtaqueAgotado;
 import src.fiuba.algo3.modelo.excepciones.JuegoTerminado;
 import src.fiuba.algo3.modelo.excepciones.StockAgotado;
@@ -175,20 +174,24 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 					Sonido.play("BotonPresionado.wav");
 
 					try {
-
 						Consola.mostrarMensaje("¡" + juego.getJugadorActivo().getAlgoMonActivo().getNombre() + " usó " + nombreAtaqueActual.toString() + "!");
 						juego.jugadorActivoAtaca(nombreAtaqueActual);
 						Sonido.play(nombreAtaqueActual.toString() + ".wav");
 
 					} catch(AtaqueAgotado | AlgoMonDormidoNoPuedeAtacar e) {
 						Consola.mostrarMensaje(e.getMessage());
-					} catch(AlgoMonSeDurmio e){
-						Consola.encolarMensaje(e.getMessage());
 					} catch(AlgoMonRecibeDañoQuemadura e) {
 						Sonido.play(nombreAtaqueActual.toString() + ".wav");
 						Consola.encolarMensaje(e.getMessage());
-					} catch(AlgoMonMurio | AlgoMonMurioPorQuemadura e) {
+					} catch(AlgoMonMurio e) {
 						Consola.encolarMensaje(e.getMessage());
+					} catch(AlgoMonMurioPorQuemadura e) {
+						/* El algoMon atacado también murió. */
+						if(!juego.getJugadorActivo().getAlgoMonActivo().estaVivo()) {
+							Consola.encolarMensaje("¡" + juego.getJugadorActivo().getAlgoMonActivo().getNombre() + " murió!");
+						}
+
+						Consola.encolarMensaje("¡" + juego.getContrincante().getAlgoMonActivo().getNombre() + " murió a causa de la quemadura!");
 					}
 
 					actualizarDisplays();
@@ -303,14 +306,10 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 		Queue<Jugador> jugadoresConAlgoMonActivoMuerto = this.juego.getJugadoresConAlgoMonActivoMuerto();
 
 		if(!jugadoresConAlgoMonActivoMuerto.isEmpty()) {
-			//if(jugadoresConAlgoMonActivoMuerto.element().puedeSeguirJugando())
 			Jugador jugador = jugadoresConAlgoMonActivoMuerto.remove();
 
 			this.displays.get(jugador).esconder();
 			this.mostrarBotoneraReemplazar(jugador);
-//			else{
-//				//GANO ALGUIEN
-//			};
 		}
 
 		else {
@@ -370,10 +369,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 						buscarGanador();
 						reemplazarAlgoMonMuertos();
 					} catch(JuegoTerminado e) {
-						botoneraAcciones.setVisible(false);
-						Sonido.stop("Pokemon_Battle.mp3");
-						Sonido.play("Victoria.mp3");
-						Consola.mostrarMensaje("¡Fin del juego!");
+						finJuego();
 					}
 				}
 			}
@@ -388,6 +384,25 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 		if(this.juego.hayGanador()) {
 			throw new JuegoTerminado("¡El juego terminó!");
 		}
+	}
+
+	private void finJuego() {
+		this.ocultarAlgoMonMuertos();
+		botoneraAcciones.setVisible(false);
+		Sonido.stop("Pokemon_Battle.mp3");
+		Sonido.play("Victoria.mp3");
+		Consola.mostrarMensaje("¡Fin del juego!");
+	}
+
+	private void ocultarAlgoMonMuertos() {
+		Queue<Jugador> jugadoresConAlgoMonActivoMuerto = juego.getJugadoresConAlgoMonActivoMuerto();
+
+		while(!jugadoresConAlgoMonActivoMuerto.isEmpty()) {
+			Jugador jugadorActual = jugadoresConAlgoMonActivoMuerto.remove();
+
+			this.displays.get(jugadorActual).esconder();
+		}
+
 	}
 
 	private void actualizarDisplays() {
