@@ -181,17 +181,28 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 						juego.jugadorActivoAtaca(nombreAtaqueActual);
 						Sonido.play(nombreAtaqueActual.toString());
 
+						displays.get(juego.getJugadorActivo()).atacar();
+
 					} catch(AtaqueAgotado | AlgoMonDormidoNoPuedeAtacar e) {
 						Consola.mostrarMensaje(e.getMessage());
 					} catch(AlgoMonRecibeDañoQuemadura e) {
 						Sonido.play(nombreAtaqueActual.toString());
+
+						displays.get(juego.getJugadorActivo()).atacar();
+
 						Consola.encolarMensaje(e.getMessage());
 					} catch(AlgoMonMurio e) {
 						Sonido.play(nombreAtaqueActual.toString());
+
+						displays.get(juego.getJugadorActivo()).atacar();
+
 						Consola.encolarMensaje(e.getMessage());
 					} catch(AlgoMonMurioPorQuemadura e) {
 						/* El algoMon atacado también murió. */
 						Sonido.play(nombreAtaqueActual.toString());
+
+						displays.get(juego.getJugadorActivo()).atacar();
+
 						if(!juego.getJugadorActivo().getAlgoMonActivo().estaVivo()) {
 							Consola.encolarMensaje("¡" + juego.getJugadorActivo().getAlgoMonActivo().getNombre() + " murió!");
 						}
