@@ -51,6 +51,15 @@ public abstract class DisplayAlgoMon extends HBox {
 		this.algoMon = algoMon;
 		this.actualizarInformacion();
 		this.actualizarImagen();
+		this.mostrar();
+	}
+
+	public void esconder() {
+		this.setVisible(false);
+	}
+
+	protected void mostrar() {
+		this.setVisible(true);
 	}
 
 	protected void actualizarImagen() {
