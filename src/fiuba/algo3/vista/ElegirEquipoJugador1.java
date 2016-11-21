@@ -27,7 +27,7 @@ public class ElegirEquipoJugador1 extends ElegirEquipo {
 
 			@Override
 			public void handle(ActionEvent arg0) {
-				Sonido.play("click.mp3");
+				Sonido.play("click");
 
 				if(!jugador.equipoEstaCompleto()) {
 					Consola.mostrarMensaje("El equipo no está completo!");

@@ -24,14 +24,14 @@ public class ElegirEquipoJugador2 extends ElegirEquipo {
 
 			@Override
 			public void handle(ActionEvent arg0) {
-				Sonido.play("click.mp3");
+				Sonido.play("click");
 
 				if(!jugador.equipoEstaCompleto()) {
 					Consola.mostrarMensaje("El equipo no está completo!");
 				}
 
 				else {
-					Sonido.play("Pokemon_Battle.mp3", 0.3f);
+					Sonido.play("Pokemon_Battle", 0.3f);
 					stage.setScene(new EscenaBatalla(stage, juego));
 				}
 			}

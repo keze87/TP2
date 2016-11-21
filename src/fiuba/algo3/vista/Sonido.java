@@ -64,11 +64,15 @@ public class Sonido {
 	}
 
 	public static MediaPlayer get(String nombreArchivo) {
+		String nombreCompleto = nombreArchivo.concat(".mp3");
 
-		MediaPlayer retorno = sonidos.get(nombreArchivo);
+		if(!sonidos.containsKey(nombreCompleto)){
+			nombreCompleto = nombreArchivo.concat(".wav");
+		}
+		MediaPlayer retorno = sonidos.get(nombreCompleto);
 
 		if (retorno == null) {
-			retorno = Sonido.get("Wrong.mp3");
+			retorno = Sonido.get("Wrong");
 		}
 
 		return retorno;
@@ -85,7 +89,7 @@ public class Sonido {
 
 
 	public static void stopSonidos(){
-		stop("Pokemon_Battle.mp3");
-		stop("Pokemon_Opening.mp3");
+		stop("Pokemon_Battle");
+		stop("Pokemon_Opening");
 	}
 }

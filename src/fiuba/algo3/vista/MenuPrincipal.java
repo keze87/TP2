@@ -28,8 +28,8 @@ public class MenuPrincipal extends EscenaJuegoAlgoMon {
 
 		HBox botonera = new HBox(20);
 
-		Sonido.get("Pokemon_Opening.mp3").setCycleCount(MediaPlayer.INDEFINITE);
-		Sonido.play("Pokemon_Opening.mp3", 0.1);
+		Sonido.get("Pokemon_Opening").setCycleCount(MediaPlayer.INDEFINITE);
+		Sonido.play("Pokemon_Opening", 0.1);
 
 		Image imagenLogo = new Image(ruta + "Logo.png");
 		ImageView logoView = new ImageView(imagenLogo);
@@ -52,7 +52,7 @@ public class MenuPrincipal extends EscenaJuegoAlgoMon {
 
 			@Override
 			public void handle(ActionEvent event) {
-				Sonido.play("click.mp3");
+				Sonido.play("click");
 				stage.setScene(new ElegirEquipoJugador1(stage, juego, 1));
 			}
 
@@ -62,7 +62,7 @@ public class MenuPrincipal extends EscenaJuegoAlgoMon {
 
 			@Override
 			public void handle(ActionEvent event) {
-				Sonido.play("click.mp3");
+				Sonido.play("click");
 				stage.setScene(new ElegirEquipoJugador1(stage, juego, 2));
 			}
 

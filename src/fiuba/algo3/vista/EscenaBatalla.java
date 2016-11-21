@@ -44,8 +44,8 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 	protected void agregarElementos() {
 		super.agregarElementos();
 
-		Sonido.stop("Pokemon_Opening.mp3");
-		Sonido.play("Pokemon_Battle.mp3", 0.1f);
+		Sonido.stop("Pokemon_Opening");
+		Sonido.play("Pokemon_Battle", 0.1f);
 
 		this.juego.inicializar();
 		this.layoutBatalla = new GridPane();
@@ -102,7 +102,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 
 			@Override
 			public void handle(ActionEvent arg0) {
-				Sonido.play("BotonPresionado.wav");
+				Sonido.play("BotonPresionado");
 				mostrarBotoneraAtaques();
 			}
 
@@ -114,7 +114,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 
 			@Override
 			public void handle(ActionEvent arg0) {
-				Sonido.play("BotonPresionado.wav");
+				Sonido.play("BotonPresionado");
 				mostrarBotoneraMochila();
 			}
 
@@ -126,7 +126,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 
 			@Override
 			public void handle(ActionEvent arg0) {
-				Sonido.play("BotonPresionado.wav");
+				Sonido.play("BotonPresionado");
 				mostrarBotoneraCambiar(juego.getJugadorActivo());
 			}
 
@@ -174,23 +174,24 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 
 				@Override
 				public void handle(ActionEvent arg0) {
-					Sonido.play("BotonPresionado.wav");
+					Sonido.play("BotonPresionado");
 
 					try {
 						Consola.mostrarMensaje("¡" + juego.getJugadorActivo().getAlgoMonActivo().getNombre() + " usó " + nombreAtaqueActual.toString() + "!");
 						juego.jugadorActivoAtaca(nombreAtaqueActual);
-						Sonido.play(nombreAtaqueActual.toString() + ".wav");
+						Sonido.play(nombreAtaqueActual.toString());
 
 					} catch(AtaqueAgotado | AlgoMonDormidoNoPuedeAtacar e) {
 						Consola.mostrarMensaje(e.getMessage());
 					} catch(AlgoMonRecibeDañoQuemadura e) {
-						Sonido.play(nombreAtaqueActual.toString() + ".wav");
+						Sonido.play(nombreAtaqueActual.toString());
 						Consola.encolarMensaje(e.getMessage());
 					} catch(AlgoMonMurio e) {
-						Sonido.play(nombreAtaqueActual.toString() + ".wav");
+						Sonido.play(nombreAtaqueActual.toString());
 						Consola.encolarMensaje(e.getMessage());
 					} catch(AlgoMonMurioPorQuemadura e) {
 						/* El algoMon atacado también murió. */
+						Sonido.play(nombreAtaqueActual.toString());
 						if(!juego.getJugadorActivo().getAlgoMonActivo().estaVivo()) {
 							Consola.encolarMensaje("¡" + juego.getJugadorActivo().getAlgoMonActivo().getNombre() + " murió!");
 						}
@@ -236,12 +237,12 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 
 				@Override
 				public void handle(ActionEvent arg0) {
-					Sonido.play("BotonPresionado.wav");
+					Sonido.play("BotonPresionado");
 
 					try {
 						Consola.mostrarMensaje("¡" + juego.getJugadorActivo().getAlgoMonActivo().getNombre() + " recibió " + nombreElemento.getNombre() + "!");
 						juego.jugadorActivoUsaElemento(nombreElemento);
-						Sonido.play("RecibirElemento.wav");
+						Sonido.play("RecibirElemento");
 					} catch(VidaCompleta e) {
 						Consola.mostrarMensaje(e.getMessage());
 					} catch(AlgoMonRecibeDañoQuemadura e) {
@@ -292,7 +293,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 
 				@Override
 				public void handle(ActionEvent arg0) {
-					Sonido.play("BotonPresionado.wav");
+					Sonido.play("BotonPresionado");
 
 					try {
 						juego.cambiarAlgoMonActivoJugadorActivo(algoMonActual);
@@ -350,7 +351,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 
 				@Override
 				public void handle(ActionEvent arg0) {
-					Sonido.play("BotonPresionado.wav");
+					Sonido.play("BotonPresionado");
 
 					try {
 						jugador.cambiarAlgoMonActivo(algoMonActual);
@@ -376,7 +377,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 
 			@Override
 			public void handle(ActionEvent arg0) {
-				Sonido.play("BotonPresionado.wav");
+				Sonido.play("BotonPresionado");
 
 				if(Consola.quedanMensajesEnLaCola()) {
 					Consola.mostrarMensajeSiguiente();
@@ -413,8 +414,8 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 	private void finJuego() {
 		this.ocultarAlgoMonMuertos();
 		botoneraAcciones.setVisible(false);
-		Sonido.stop("Pokemon_Battle.mp3");
-		Sonido.play("Victoria.mp3");
+		Sonido.stop("Pokemon_Battle");
+		Sonido.play("Victoria");
 		Consola.mostrarMensaje("¡Fin del juego!");
 	}
 
@@ -447,7 +448,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 
 			@Override
 			public void handle(ActionEvent event) {
-				Sonido.play("BotonPresionado.wav");
+				Sonido.play("BotonPresionado");
 				mostrarBotoneraAcciones();
 			}
 
