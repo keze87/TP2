@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import src.fiuba.algo3.modelo.estados.Estado;
 import src.fiuba.algo3.modelo.estados.EstadoNormal;
+import src.fiuba.algo3.modelo.excepciones.AlgoMonMurio;
 
 
 public class EstadoNormalTest {
@@ -62,9 +63,12 @@ public class EstadoNormalTest {
 
 	@Test
 	public void testNoEstaVivo() {
-		estado = new EstadoNormal(170);
-		estado.quitarVida(170);
-		assertFalse(estado.estaVivo());
+		try {
+			estado = new EstadoNormal(170);
+			estado.quitarVida(170);
+		} catch(AlgoMonMurio e) {
+			assertFalse(estado.estaVivo());
+		}
 	}
 
 }

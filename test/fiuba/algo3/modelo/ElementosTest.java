@@ -272,9 +272,7 @@ public class ElementosTest {
 	@Test
 	public void test11VitaminaAumentaEn2LaCantidadDeTodosLosAtaquesDeJigglypuff(){
 		AlgoMon jigglypuff = AlgoMonBuilder.crearJigglypuff();
-		AlgoMon squirtle = AlgoMonBuilder.crearSquirtle();
 		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
-		AlgoMon otroCharmarder = AlgoMonBuilder.crearCharmander();
 		Vitamina vitamina = new Vitamina();
 
 		jigglypuff.recibirElemento(vitamina);
@@ -305,16 +303,12 @@ public class ElementosTest {
 
 		contador = 0;
 
-		while(otroCharmarder.estaVivo()){
-			jigglypuff.atacar(NombreAtaque.ATAQUERAPIDO, otroCharmarder);
-			contador++;
-		}
-
-		jigglypuff.atacar(NombreAtaque.ATAQUERAPIDO, squirtle);
-		contador++;
-
 		try{
-			jigglypuff.atacar(NombreAtaque.BURBUJA, charmander);
+			while(true){
+				jigglypuff.atacar(NombreAtaque.ATAQUERAPIDO, charmander);
+				charmander.recibirEfecto(new AumentarVida(20));
+				contador++;
+			}
 
 		} catch(AtaqueAgotado e) {
 			assertEquals(18, contador);
@@ -325,7 +319,6 @@ public class ElementosTest {
 	public void test12VitaminaAumentaEn2LaCantidadDeTodosLosAtaquesDeChansey(){
 		AlgoMon chansey = AlgoMonBuilder.crearChansey();
 		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
-		AlgoMon otroCharmander = AlgoMonBuilder.crearCharmander();
 		Vitamina vitamina = new Vitamina();
 
 		chansey.recibirElemento(vitamina);
@@ -355,27 +348,21 @@ public class ElementosTest {
 
 		contador = 0;
 
-		while(otroCharmander.estaVivo()){
-			chansey.atacar(NombreAtaque.ATAQUERAPIDO, otroCharmander);
-			contador++;
-		}
-
-		chansey.atacar(NombreAtaque.ATAQUERAPIDO, charmander);
-		contador++;
-
 		try{
-			chansey.atacar(NombreAtaque.ATAQUERAPIDO, charmander);
+			while(true){
+				chansey.atacar(NombreAtaque.ATAQUERAPIDO, charmander);
+				charmander.recibirEfecto(new AumentarVida(20));
+				contador++;
+			}
 
 		} catch(AtaqueAgotado e) {
 			assertEquals(18, contador);
 		}
-
 	}
 
 	@Test
 	public void test13VitaminaAumentaEn2LaCantidadDeTodosLosAtaquesDeRattata(){
 		AlgoMon rattata = AlgoMonBuilder.crearRattata();
-		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
 		AlgoMon squirtle = AlgoMonBuilder.crearSquirtle();
 		Vitamina vitamina = new Vitamina();
 
@@ -406,16 +393,12 @@ public class ElementosTest {
 
 		contador = 0;
 
-		while(charmander.estaVivo()){
-			rattata.atacar(NombreAtaque.ATAQUERAPIDO, charmander);
-			contador++;
-		}
-
-		rattata.atacar(NombreAtaque.ATAQUERAPIDO, squirtle);
-		contador++;
-
 		try{
-			rattata.atacar(NombreAtaque.ATAQUERAPIDO, squirtle);
+			while(true){
+				rattata.atacar(NombreAtaque.ATAQUERAPIDO, squirtle);
+				squirtle.recibirEfecto(new AumentarVida(20));
+				contador++;
+			}
 
 		} catch(AtaqueAgotado e) {
 			assertEquals(18, contador);
