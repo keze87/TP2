@@ -17,7 +17,7 @@ public final class ContenedorImagenes {
 	private static Map<String, Image> imagenes;
 
 	static {
-		imagenes = new HashMap<String, Image>();
+		cargarImagenes();
 	}
 
 	/**
@@ -52,6 +52,8 @@ public final class ContenedorImagenes {
 
 	/* Agrega las imágenes de la carpeta de imágenes al diccionario. */
 	public static void cargarImagenes() {
+		imagenes = new HashMap<String, Image>();
+
 		File carpetaImagenes = new File(directorio);
 		File[] nombresImagenes = carpetaImagenes.listFiles();
 

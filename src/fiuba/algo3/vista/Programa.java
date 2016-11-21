@@ -9,9 +9,7 @@ public class Programa extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
-		ContenedorImagenes.cargarImagenes();
 		Scene introduccion = new Introduccion(primaryStage, new Juego());
-		//Scene introduccion = new ElegirEquipoJugador1(primaryStage, new Juego(), 2);
 
 		primaryStage.setMaximized(false);
 		primaryStage.setFullScreen(false);
