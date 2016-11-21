@@ -74,26 +74,6 @@ public class Sonido {
 
 	}
 
-	private static void inicializar(){
-
-		Sonido.agregar("Ataque rápido.wav");
-		Sonido.agregar("BotonPresionado.wav");
-		Sonido.agregar("Brasas.wav");
-		Sonido.agregar("Burbuja.wav");
-		Sonido.agregar("Cañón de agua.wav");
-		Sonido.agregar("Canto.wav");
-		Sonido.agregar("Chupavidas.wav");
-		Sonido.agregar("click.mp3");
-		Sonido.agregar("Fogonazo.wav");
-		Sonido.agregar("Látigo cepa.wav");
-		Sonido.agregar("Maldicion.wav");
-		Sonido.agregar("Pokemon_Opening.mp3");
-		Sonido.agregar("RecibirElemento.wav");
-		Sonido.agregar("Wrong.mp3");
-		Sonido.agregar("Pokemon_Battle.mp3");
-
-	}
-
 	private static void agregar(String key) {
 
 		String nombreArchivo = rutaSonido + key;
