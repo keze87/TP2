@@ -31,7 +31,6 @@ public class ElegirEquipoJugador2 extends ElegirEquipo {
 				}
 
 				else {
-					Sonido.play("Pokemon_Battle.mp3", 0.1f);
 					stage.setScene(new EscenaBatalla(stage, juego));
 				}
 			}

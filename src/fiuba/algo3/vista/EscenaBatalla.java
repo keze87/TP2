@@ -44,7 +44,8 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 	protected void agregarElementos() {
 		super.agregarElementos();
 
-		Sonido.get("Pokemon_Opening.mp3").stop();
+		Sonido.stop("Pokemon_Opening.mp3");
+		Sonido.play("Pokemon_Battle.mp3", 0.1f);
 
 		this.juego.inicializar();
 		this.layoutBatalla = new GridPane();
