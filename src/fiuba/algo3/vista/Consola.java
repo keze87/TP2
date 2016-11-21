@@ -58,14 +58,20 @@ public final class Consola {
 		HBox.setHgrow(consola, Priority.ALWAYS);
 	}
 
+	/**
+	 * Agrega un mensaje a la cola de mensajes.
+	 * @param mensaje mensaje a encolar.
+	 */
 	public static void encolarMensaje(String mensaje) {
 		colaMensajes.add(mensaje);
 	}
 
+	/* Determina si hay mensajes en la cola de mensajes. */
 	public static boolean quedanMensajesEnLaCola() {
 		return !colaMensajes.isEmpty();
 	}
 
+	/* Muestra el próximo mensaje de la cola. */
 	public static void mostrarMensajeSiguiente() {
 		mostrarMensaje(colaMensajes.remove());
 	}

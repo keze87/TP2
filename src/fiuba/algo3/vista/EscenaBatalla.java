@@ -78,6 +78,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 		this.setRoot(this.layout);
 	}
 
+	/* Agrega una display a la escena para cada jugador. */
 	private void agregarDisplaysAlgoMon() {
 		DisplayAlgoMon displayAlgoMonPrimerPlano = new DisplayAlgoMonPrimerPlano(juego.getJugador1().getAlgoMonActivo());
 		DisplayAlgoMon displayAlgoMonSegundoPlano = new DisplayAlgoMonSegundoPlano(juego.getJugador2().getAlgoMonActivo());
@@ -93,6 +94,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 		displayAlgoMonSegundoPlano.setAlignment(Pos.BOTTOM_LEFT);
 	}
 
+	/* Muestra la botonera de acciones. */
 	private void mostrarBotoneraAcciones() {
 		Button botonAtacar = new Button("Atacar");
 
@@ -148,6 +150,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 		}
 	}
 
+	/* Muestra la botonera de ataques. */
 	private void mostrarBotoneraAtaques() {
 		Iterable<NombreAtaque> nombresAtaques = this.juego.getJugadorActivo().getAlgoMonActivo().getNombresAtaques();
 
@@ -183,12 +186,8 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 					} catch(AlgoMonRecibeDañoQuemadura e) {
 						Sonido.play(nombreAtaqueActual.toString() + ".wav");
 						Consola.encolarMensaje(e.getMessage());
-<<<<<<< HEAD
 					} catch(AlgoMonMurio e) {
-=======
-					} catch(AlgoMonMurio | AlgoMonMurioPorQuemadura e) {
 						Sonido.play(nombreAtaqueActual.toString() + ".wav");
->>>>>>> 169d887942ac6f166ce61c239421b4d6f5237bfe
 						Consola.encolarMensaje(e.getMessage());
 					} catch(AlgoMonMurioPorQuemadura e) {
 						/* El algoMon atacado también murió. */
@@ -217,6 +216,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 		}
 	}
 
+	/* Muestra la botonera para elegir un elemento. */
 	private void mostrarBotoneraMochila() {
 		NombreElemento[] nombresElementos = NombreElemento.values();
 
@@ -271,6 +271,10 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 		}
 	}
 
+	/**
+	 * Muestra la botonera para cambiar el algoMon activo.
+	 * @param jugador jugador que desea hacer el cambio.
+	 */
 	private void mostrarBotoneraCambiar(Jugador jugador) {
 		Iterable<AlgoMon> algoMonInactivos = jugador.getAlgoMonInactivos();
 
@@ -307,6 +311,9 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 		this.botoneraAcciones.add(this.botonVolver);
 	}
 
+	/* Determina qué jugadores tienen su algoMon activo muerto, y para cada uno
+	 * muestra la botonera para que puedan reemplazarlo.
+	 */
 	private void reemplazarAlgoMonMuertos() {
 		Queue<Jugador> jugadoresConAlgoMonActivoMuerto = this.juego.getJugadoresConAlgoMonActivoMuerto();
 
@@ -322,6 +329,10 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 		}
 	}
 
+	/**
+	 * Muestra la botonera para reemplazar a un algoMon muerto.
+	 * @param jugador jugador que necesita hacer el cambio.
+	 */
 	private void mostrarBotoneraReemplazar(Jugador jugador) {
 		Iterable<AlgoMon> algoMonInactivos = jugador.getAlgoMonInactivos();
 
@@ -356,6 +367,8 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 		}
 	}
 
+	/* Muestra el botón que muestra los mensajes encolados en
+	 * la consola. */
 	private void mostrarBotonOK() {
 		Button botonOK = new Button("OK");
 
@@ -385,12 +398,18 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 		this.botoneraAcciones.add(botonOK);
 	}
 
+	/* Determina si alguno de los jugadores ganó. En caso afirmativo
+	 * lanza una excepción.
+	 */
 	private void buscarGanador() {
 		if(this.juego.hayGanador()) {
 			throw new JuegoTerminado("¡El juego terminó!");
 		}
 	}
 
+	/* Realiza las acciones correspondientes al finalizar
+	 * el juego.
+	 */
 	private void finJuego() {
 		this.ocultarAlgoMonMuertos();
 		botoneraAcciones.setVisible(false);
@@ -399,6 +418,7 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 		Consola.mostrarMensaje("¡Fin del juego!");
 	}
 
+	/* Oculta los display de cada algoMon activo que está muerto. */
 	private void ocultarAlgoMonMuertos() {
 		Queue<Jugador> jugadoresConAlgoMonActivoMuerto = juego.getJugadoresConAlgoMonActivoMuerto();
 
@@ -410,12 +430,16 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 
 	}
 
+	/* Actualiza la información de los displays. */
 	private void actualizarDisplays() {
 		for(DisplayAlgoMon display : this.displays.values()) {
 			display.actualizarInformacion();
 		}
 	}
 
+	/* Crea el botón que se utiliza para volver a la botonera de acciones desde
+	 * otra botonera.
+	 */
 	private void crearBotonVolver() {
 		this.botonVolver = new Button("<-");
 

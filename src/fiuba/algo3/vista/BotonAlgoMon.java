@@ -23,10 +23,12 @@ public class BotonAlgoMon extends BotonJuego {
 		this.agregarImagen();
 	}
 
+	/* Agrega el texto del botón a partir de la información del algoMon. */
 	protected void agregarTexto() {
 		this.setText(this.algoMon.getNombre());
 	}
 
+	/* Agrega una imagen que representa al algoMon. */
 	protected void agregarImagen() {
 		this.setGraphic(ContenedorImagenes.getImageView(this.algoMon.getNombre()));
 	}

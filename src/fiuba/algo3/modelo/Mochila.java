@@ -23,14 +23,29 @@ public class Mochila {
 		this.elementos.put(NombreElemento.VITAMINA, new StockVitaminas());
 	}
 
+	/**
+	 * Devuelve una nueva instancia de un elemento.
+	 * @param nombreElemento nombre del elemento.
+	 * @return una instancia Elemento correspondiente al nombre.
+	 */
 	public Elemento getElemento(NombreElemento nombreElemento) {
 		return this.elementos.get(nombreElemento).getElemento();
 	}
 
+	/**
+	 * Devuelve la cantidad restante de un elemento.
+	 * @param nombreElemento nombre del elemento.
+	 * @return la cantidad restante.
+	 */
 	public int getCantidadRestanteElemento(NombreElemento nombreElemento) {
 		return this.elementos.get(nombreElemento).getCantidadRestante();
 	}
 
+	/**
+	 * Devuelve la cantidad total de un elemento.
+	 * @param nombreElemento nombre del elemento.
+	 * @return la cantidad total.
+	 */
 	public int getCantidadTotalElemento(NombreElemento nombreElemento) {
 		return this.elementos.get(nombreElemento).getCantidadTotal();
 	}

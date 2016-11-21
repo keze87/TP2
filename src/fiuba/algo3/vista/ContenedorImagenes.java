@@ -20,14 +20,29 @@ public final class ContenedorImagenes {
 		imagenes = new HashMap<String, Image>();
 	}
 
+	/**
+	 * Devuelve una instancia de Image a partir del nombre de una imagen.
+	 * @param nombreImagen nombre de la imagen.
+	 * @return una nueva instancia de Image.
+	 */
 	public static Image getImagen(String nombreImagen) {
 		return imagenes.get(nombreImagen);
 	}
 
+	/**
+	 * Devuelve una instancia de ImageView a partir del nombre de una imagen.
+	 * @param nombreImagen nombre de la imagen.
+	 * @return una nueva instancia de ImageView.
+	 */
 	public static ImageView getImageView(String nombreImagen) {
 		return new ImageView(getImagen(nombreImagen));
 	}
 
+	/**
+	 * Devuelve una instancia de Background a partir del nombre de una imagen.
+	 * @param nombreImagen nombre de la imagen.
+	 * @return una nueva instancia de Background.
+	 */
 	public static Background getBackground(String nombreImagen) {
 		BackgroundImage imagenFondo = new BackgroundImage(getImagen(nombreImagen), BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT,
 				BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
@@ -35,6 +50,7 @@ public final class ContenedorImagenes {
 		return new Background(imagenFondo);
 	}
 
+	/* Agrega las imágenes de la carpeta de imágenes al diccionario. */
 	public static void cargarImagenes() {
 		File carpetaImagenes = new File(directorio);
 		File[] nombresImagenes = carpetaImagenes.listFiles();

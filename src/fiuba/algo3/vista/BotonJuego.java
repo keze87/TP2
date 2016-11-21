@@ -17,6 +17,7 @@ public class BotonJuego extends Button {
 		super(text, graphic);
 	}
 
+	/* Agrega el contenido del botón. */
 	protected void agregarContenido() {
 		this.getStyleClass().add("boton-juego");
 	}

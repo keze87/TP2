@@ -145,10 +145,18 @@ public class AlgoMon {
 		}
 	}
 
+	/**
+	 * Devuelve un ataque del algoMon.
+	 * @param nombre nombre del ataque
+	 * @return la instancia de Ataque correspondiente.
+	 */
 	public Ataque getAtaque(NombreAtaque nombre) {
 		return this.ataques.get(nombre);
 	}
 
+	/* Devuelve una lista con los nombres de los ataques que conoce el algoMon,
+	 * ordenados alfabéticamente.
+	 */
 	public List<NombreAtaque> getNombresAtaques() {
 		List<NombreAtaque> nombresAtaques = new ArrayList<NombreAtaque>(this.ataques.keySet());
 
@@ -164,10 +172,20 @@ public class AlgoMon {
 		return nombresAtaques;
 	}
 
+	/**
+	 * Devuelve la cantidad de usos restantes de un ataque.
+	 * @param nombre nombre del ataque.
+	 * @return la cantidad de usos restantes.
+	 */
 	public int getUsosRestantesAtaque(NombreAtaque nombre) {
 		return this.ataques.get(nombre).getUsosRestantes();
 	}
 
+	/**
+	 * Devuelve la cantidad de usos totales de un ataque.
+	 * @param nombre nombre del ataque.
+	 * @return la cantidad de usos totales.
+	 */
 	public int getUsosTotalesAtaque(NombreAtaque nombreAtaque) {
 		return this.ataques.get(nombreAtaque).getUsosTotales();
 	}

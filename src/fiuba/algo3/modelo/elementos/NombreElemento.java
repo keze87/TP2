@@ -12,6 +12,7 @@ public enum NombreElemento {
 		this.nombre = nombre;
 	}
 
+	/* Devuelve el nombre como cadena. */
 	public String getNombre() {
 		return this.nombre;
 	}

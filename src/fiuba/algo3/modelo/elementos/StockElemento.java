@@ -30,10 +30,12 @@ public abstract class StockElemento {
 		return this.cantidadRestante > 0;
 	}
 
+	/* Devuelve la cantidad restante. */
 	public int getCantidadRestante() {
 		return this.cantidadRestante;
 	}
 
+	/* Devuelve la cantidad total. */
 	public int getCantidadTotal() {
 		return this.cantidadTotal;
 	}

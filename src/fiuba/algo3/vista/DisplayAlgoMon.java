@@ -26,6 +26,7 @@ public abstract class DisplayAlgoMon extends HBox {
 		this.inicializar();
 	}
 
+	/* Inicializa el contenido del display. */
 	public void inicializar() {
 		this.actualizarInformacion();
 		this.actualizarImagen();
@@ -42,11 +43,15 @@ public abstract class DisplayAlgoMon extends HBox {
 		this.contenedorInformacion.setMaxSize(200f, 80f);
 	}
 
+	/* Actualiza el display a partir del estado del algoMon. */
 	public void actualizarInformacion() {
 		this.nombre.setText(this.algoMon.getNombre());
 		this.vida.setText((int) this.algoMon.getVida() + "/" + (int) this.algoMon.getVidaMaxima() + " HP");
 	}
 
+	/* Actualiza el display para mostrar la información y la imagen de un
+	 * algoMon nuevo.
+	 */
 	public void actualizarParaAlgoMonNuevo(AlgoMon algoMon) {
 		this.algoMon = algoMon;
 		this.actualizarInformacion();
@@ -54,14 +59,17 @@ public abstract class DisplayAlgoMon extends HBox {
 		this.mostrar();
 	}
 
+	/* Esconde el display. */
 	public void esconder() {
 		this.setVisible(false);
 	}
 
+	/* Muestra el display. */
 	protected void mostrar() {
 		this.setVisible(true);
 	}
 
+	/* Actualiza la imagen del algoMon. */
 	protected void actualizarImagen() {
 		this.imagen.setScaleX(size);
 		this.imagen.setScaleY(size);

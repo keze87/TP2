@@ -133,10 +133,20 @@ public class Jugador {
 	public void elegirAtaque(BotoneraAcciones botoneraAcciones) {}
 	public void elegirElemento(BotoneraAcciones botoneraAcciones) {}
 
+	/**
+	 * Devuelve la cantidad restante de un elemento.
+	 * @param nombreElemento nombre del elemento.
+	 * @return la cantidad restante.
+	 */
 	public int getCantidadRestanteElemento(NombreElemento nombreElemento) {
 		return this.mochila.getCantidadRestanteElemento(nombreElemento);
 	}
 
+	/**
+	 * Devuelve la cantidad total de un elemento.
+	 * @param nombreElemento nombre del elemento.
+	 * @return la cantidad total.
+	 */
 	public int getCantidadTotalElemento(NombreElemento nombreElemento) {
 		return this.mochila.getCantidadTotalElemento(nombreElemento);
 	}
