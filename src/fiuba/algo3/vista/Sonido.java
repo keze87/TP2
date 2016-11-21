@@ -53,6 +53,7 @@ public class Sonido {
 		Sonido.agregar("Látigo cepa.wav");
 		Sonido.agregar("Maldicion.wav");
 		Sonido.agregar("Pokemon_Opening.mp3");
+		Sonido.agregar("RecibirElemento.wav");
 		Sonido.agregar("Wrong.mp3");
 		Sonido.agregar("Pokemon_Battle.mp3");
 
