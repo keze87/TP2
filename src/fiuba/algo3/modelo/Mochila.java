@@ -1,7 +1,15 @@
-package src.fiuba.algo3.modelo.elementos;
+package src.fiuba.algo3.modelo;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import src.fiuba.algo3.modelo.elementos.Elemento;
+import src.fiuba.algo3.modelo.elementos.NombreElemento;
+import src.fiuba.algo3.modelo.elementos.StockElemento;
+import src.fiuba.algo3.modelo.elementos.StockPociones;
+import src.fiuba.algo3.modelo.elementos.StockRestauradores;
+import src.fiuba.algo3.modelo.elementos.StockSuperPociones;
+import src.fiuba.algo3.modelo.elementos.StockVitaminas;
 
 public class Mochila {
 
