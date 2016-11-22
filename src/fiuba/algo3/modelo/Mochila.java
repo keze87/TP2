@@ -3,6 +3,7 @@ package src.fiuba.algo3.modelo;
 import java.util.HashMap;
 import java.util.Map;
 
+import src.fiuba.algo3.modelo.ataques.Ataque;
 import src.fiuba.algo3.modelo.elementos.Elemento;
 import src.fiuba.algo3.modelo.elementos.NombreElemento;
 import src.fiuba.algo3.modelo.elementos.StockElemento;
@@ -48,6 +49,18 @@ public class Mochila {
 	 */
 	public int getCantidadTotalElemento(NombreElemento nombreElemento) {
 		return this.elementos.get(nombreElemento).getCantidadTotal();
+	}
+
+	public boolean quedanElementos() {
+
+		boolean quedanElementos = false;
+
+		for(StockElemento elemento : this.elementos.values()) {
+			quedanElementos |= elemento.getCantidadRestante() > 0;
+		}
+
+		return quedanElementos;
+
 	}
 
 }

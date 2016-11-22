@@ -85,6 +85,8 @@ public class Computadora extends Jugador {
 
 	private Accion elegirAccion() {
 
+		Accion retorno;
+
 		if (this.getAlgoMonActivo().getEstado().puedeRealizarAccion()) {
 
 			List<Accion> array = new ArrayList<>();
@@ -109,13 +111,34 @@ public class Computadora extends Jugador {
 
 			Random random = new Random();
 
-			return array.get(random.nextInt(100));
+			retorno = array.get(random.nextInt(100));
 
 		} else {
 
-			return Accion.MOCHILA;
+			retorno = Accion.MOCHILA;
 
 		}
+
+		if (retorno == Accion.MOCHILA) {
+
+			if ( ! mochila.quedanElementos()) {
+
+				retorno = Accion.ATACAR;
+
+			}
+
+		} else {
+
+			if ( ! this.getAlgoMonActivo().quedanAtaques()) {
+
+				retorno = Accion.MOCHILA;
+
+			}
+
+		}
+
+
+		return retorno;
 
 	}
 
@@ -169,15 +192,17 @@ public class Computadora extends Jugador {
 
 			elementoElegido = 0;
 
-		} else if (this.mochila.getCantidadRestanteElemento(NombreElemento.VITAMINA) > 0) {
+		} else {
 
-			elementoElegido = 3;
-
-		} else {							// Si no hay más elementos
-
-			this.mochila = new Mochila();	// Puede hacer trampa :)
-
-			elementoElegido = 2;			// Fair and balanced
+			if (this.mochila.getCantidadRestanteElemento(NombreElemento.RESTAURADOR) > 0) {
+				elementoElegido = 2;
+			} else if (this.mochila.getCantidadRestanteElemento(NombreElemento.SUPERPOCION) > 0) {
+				elementoElegido = 1;
+			} else if (this.mochila.getCantidadRestanteElemento(NombreElemento.POCION) > 0) {
+				elementoElegido = 0;
+			} else {
+				elementoElegido = 3;
+			}
 
 		}
 
