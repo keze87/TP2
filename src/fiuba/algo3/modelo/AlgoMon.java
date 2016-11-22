@@ -197,4 +197,14 @@ public class AlgoMon {
 		}
 	}
 
+	public boolean quedanAtaques() {
+		boolean quedanAtaques = false;
+
+		for(Ataque ataque : this.ataques.values()) {
+			quedanAtaques |= ataque.getUsosRestantes() > 0;
+		}
+
+		return quedanAtaques;
+	}
+
 }

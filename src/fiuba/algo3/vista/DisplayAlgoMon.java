@@ -1,10 +1,13 @@
 package src.fiuba.algo3.vista;
 
+import javafx.animation.RotateTransition;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.util.Duration;
 import src.fiuba.algo3.modelo.AlgoMon;
 
 public abstract class DisplayAlgoMon extends HBox {
@@ -14,6 +17,7 @@ public abstract class DisplayAlgoMon extends HBox {
 	protected VBox contenedorInformacion;
 	protected ImageView imagen;
 	protected int size;
+	protected Text activo = new Text("Activo");
 
 	public DisplayAlgoMon(AlgoMon algoMon, int size) {
 		super(100f);
@@ -73,6 +77,26 @@ public abstract class DisplayAlgoMon extends HBox {
 	protected void actualizarImagen() {
 		this.imagen.setScaleX(size);
 		this.imagen.setScaleY(size);
+	}
+
+	public void atacar(){
+
+		RotateTransition rotacion = new RotateTransition(Duration.seconds(1));
+
+		rotacion.setNode(imagen);
+		rotacion.setByAngle(360);
+		rotacion.setCycleCount(1);
+
+		rotacion.play();
+
+	}
+
+	public void esconderActivo() {
+		this.contenedorInformacion.getChildren().remove(activo);
+	}
+
+	public void mostrarActivo() {
+		this.contenedorInformacion.getChildren().add(activo);
 	}
 
 }

@@ -74,6 +74,8 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 		this.layout.getCenter().getStyleClass().add("contenedor-central-batalla");
 		this.layout.getBottom().getStyleClass().add("contenedor-inferior-batalla");
 
+		this.actualizarDisplays();
+
 		this.contenedorInferior.getChildren().add(this.botoneraAcciones);
 		this.setRoot(this.layout);
 	}
@@ -181,17 +183,28 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 						juego.jugadorActivoAtaca(nombreAtaqueActual);
 						Sonido.play(nombreAtaqueActual.toString());
 
+						displays.get(juego.getJugadorActivo()).atacar();
+
 					} catch(AtaqueAgotado | AlgoMonDormidoNoPuedeAtacar e) {
 						Consola.mostrarMensaje(e.getMessage());
 					} catch(AlgoMonRecibeDañoQuemadura e) {
 						Sonido.play(nombreAtaqueActual.toString());
+
+						displays.get(juego.getJugadorActivo()).atacar();
+
 						Consola.encolarMensaje(e.getMessage());
 					} catch(AlgoMonMurio e) {
 						Sonido.play(nombreAtaqueActual.toString());
+
+						displays.get(juego.getJugadorActivo()).atacar();
+
 						Consola.encolarMensaje(e.getMessage());
 					} catch(AlgoMonMurioPorQuemadura e) {
 						/* El algoMon atacado también murió. */
 						Sonido.play(nombreAtaqueActual.toString());
+
+						displays.get(juego.getJugadorActivo()).atacar();
+
 						if(!juego.getJugadorActivo().getAlgoMonActivo().estaVivo()) {
 							Consola.encolarMensaje("¡" + juego.getJugadorActivo().getAlgoMonActivo().getNombre() + " murió!");
 						}
@@ -436,6 +449,9 @@ public class EscenaBatalla extends EscenaJuegoAlgoMon {
 		for(DisplayAlgoMon display : this.displays.values()) {
 			display.actualizarInformacion();
 		}
+
+		this.displays.get(this.juego.getJugadorActivo()).mostrarActivo();
+		this.displays.get(this.juego.getContrincante()).esconderActivo();
 	}
 
 	/* Crea el botón que se utiliza para volver a la botonera de acciones desde
