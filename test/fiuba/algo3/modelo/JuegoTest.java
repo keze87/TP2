@@ -160,4 +160,29 @@ public class JuegoTest {
 		assertNotSame(jugadorActivoActual, jugadorActivoInicial);
 	}
 
+//	@Test(expected = JuegoTerminado.class)
+//	public void test05SiUnJugadorSeQuedaSinAlgoMonesVivosTerminaElJuego() {
+//		Juego juego = new Juego();
+//
+//		AlgoMon charmander = AlgoMonBuilder.crearCharmander();
+//		AlgoMon squirtle = AlgoMonBuilder.crearSquirtle();
+//		AlgoMon bulbasaur = AlgoMonBuilder.crearBulbasaur();
+//		Jugador jugador1 = juego.getJugador1();
+//
+//		jugador1.agregarAlgoMonAlEquipo(charmander);
+//		jugador1.agregarAlgoMonAlEquipo(squirtle);
+//		jugador1.agregarAlgoMonAlEquipo(bulbasaur);
+//
+//		AlgoMon jigglypuff = AlgoMonBuilder.crearJigglypuff();
+//		AlgoMon chansey = AlgoMonBuilder.crearChansey();
+//		AlgoMon rattata = AlgoMonBuilder.crearRattata();
+//		Jugador jugador2 = juego.getJugador2();
+//
+//		jugador2.agregarAlgoMonAlEquipo(jigglypuff);
+//		jugador2.agregarAlgoMonAlEquipo(chansey);
+//		jugador2.agregarAlgoMonAlEquipo(rattata);
+//
+//		juego.inicializar();
+//	}
+
 }
